@@ -6,15 +6,16 @@
     "react-scripts": "0.7.0"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.2",
     "milligram": "^1.2.2",
     "react": "^15.4.1",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0",
-    "isomorphic-fetch": "^2.2.1"
+    "redux-thunk": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,7 +6,7 @@ import {fetchContacts} from '../actions';
 class App extends Component {
     componentDidMount() {
         const {dispatch} = this.props;
-        dispatch(fetchContacts());
+       // dispatch(fetchContacts());
     }
 
     render() {
