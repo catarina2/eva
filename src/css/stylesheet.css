@@ -8,7 +8,11 @@
     font-family:"Caviar dreams bold";
     src:url('../../fonts/CaviarDreams_Bold.ttf');
 }
-
+@font-face
+{
+    font-family:"jk abode";
+    src:url('../../fonts/JKAbode-Demo.ttf');
+}
 * {
     box-sizing: border-box;
     font-family: "Caviar dreams";
@@ -20,8 +24,16 @@ html, body {
     box-sizing: border-box;
 }
 
+.logoeva {
+    font-family: "jk abode";
+    font-size: 60px;
+
+}
+
 .eva {
     color: white;
+    margin-top: 46px;
+    margin-left: 10px;
 }
 
 .row {
@@ -378,6 +390,11 @@ header .btn-list {
     margin-top: 10%;
 }
 
+.list-group-horizontal-eva {
+    display: -webkit-box;
+    top: -19px;
+}
+
 .list-group-horizontal {
     display: -webkit-box;
     margin-left: 50%;
@@ -585,7 +602,7 @@ footer {
     position: absolute;
     padding: 10px 30px;
     top: 78px;
-    left:0;
+    left:12px;
     background-color: rgba(255,255,255,0); 
     background-repeat: no-repeat;
 }
@@ -629,7 +646,7 @@ footer {
 }
 
 .ovo {
-    background-image: url("../../img/lista/pascoa_adicionar.png");
+    background-image: url("../../img/lista/ovobranco.png");
     position: absolute;
     padding: 25px 22px;
     left: 0;
@@ -640,17 +657,17 @@ footer {
 }
 
 .ferias {
-    background-image: url("../../img/lista/natal.png");
+    background-image: url("../../img/lista/praiabranca.png");
     position: absolute;
-    padding: 25px 22px;
-    left: 0;
+    padding: 25px 32px;
+    left: -5px;
     margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
 
 .roupa {
-    background-image: url("../../img/lista/natal.png");
+    background-image: url("../../img/lista/camisolabranca.png");
     position: absolute;
     padding: 25px 22px;
     left: 0;
