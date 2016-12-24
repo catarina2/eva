@@ -8,39 +8,49 @@ class Inicioeva extends Component {
         
         return(
             <div>
-                <header>
+                <header className="header-initial">
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-2"><h1>logo</h1></div>
                             <div className="col-xs-10 wrapper">
-                                <h4>Environmental Virtual Assistant</h4>
+                                <h5 className="eva"><b>Environmental Virtual Assistant</b></h5>
                             </div>
+                            <button className="btn setainicial"></button>
                         </div>
                     </div>
                 </header>
                 <section>
                     <div className="container">
                         <div className="row">
+                        <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                             <Link to={`/list`}>
-                                <p>botão lista compras</p>
+                                <button className="btn btn-shoplist"></button>
                             </Link>
                         </div>
+                        </div>
                         <div className="row">
-                            <div className="col-xs-6">
+                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                                 <Link to={`/mirror`}>
-                                    <p>botão espelho</p>
+                                    <button className="btn btn-mirror"></button>
                                 </Link>
-                            </div>
-                            <div className="col-xs-6">
                                 <Link to={`/definition`}>
-                                    <p>botão definições</p>
+                                    <button className="btn btn-definition"></button>
                                 </Link>
                             </div>
                         </div>
                         <div className="row">
-                            <Link to={`/agend`}>
-                                <p>botão agenda familiar</p>
-                            </Link>
+                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
+                                <Link to={`/agend`}>
+                                   <button className="btn btn-agend"></button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
+                                <Link to={`/`}>
+                                   <button className="btn btn-more"></button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </section>

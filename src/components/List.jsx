@@ -8,18 +8,10 @@ const List = ({items}) => {
             <ul className="list-group">
                 {items.map((item, key) => {
                     return (
-                        <div>
-                            <div className="row">
-                                <li key={key} className="list-group-item">
-                                            <Item item={item}/>
-                                </li>
-                            </div>
-                            <div className="row whitelist">
-                                <div className="col-xs-12">
-    
-                                </div>
-                            </div>
-                        </div>
+                        <li key={key}>
+                                <Item item={item} key= {key}/>
+                        </li>
+                    
                     );
                 })}
             </ul>

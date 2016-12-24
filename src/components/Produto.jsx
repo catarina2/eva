@@ -6,30 +6,28 @@ class Produto extends Component {
     constructor(props) {
         super(props)
         this.handleClick = this.handleClick.bind(this);
-        this.state = {unline: false};
+        this.state = {unline: false, showModal:false};
     }
 
     render() {
         var item = this.props.item;
-        var panel, cheched = null;
+        var panel, cheched, line = null;
         if(this.state.unline === true)
         {
+            line = <hr className="line" />;
             panel =<h4 className="blackletter"><s>{item.name}</s></h4>;
-            cheched =<input type="checkbox" onClick={this.handleClick} checked/>;
+            cheched =<input type="checkbox" className="check" onClick={this.handleClick} checked/>;
         }
         else
         {
-            panel =<h4 className="blackletter">{item.name}</h4>;
-            cheched =  <input type="checkbox" onClick={this.handleClick}/>;
+            panel =<h4 className="blackletter" onClick={this.handleModal}>{item.name}</h4>;
+            cheched =  <input type="checkbox" className="check" onClick={this.handleClick}/>;
         }
         return (
             <div className="row">
-               <div className="col-xs-10">
-                    {panel}
-               </div>
-               <div className="col-xs-2">
-                   {cheched}
-               </div>
+                {line}
+                {panel} 
+                {cheched}
             </div>
 
         );
