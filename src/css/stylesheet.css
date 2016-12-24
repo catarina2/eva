@@ -374,6 +374,37 @@ header .btn-list {
     background-size: 30px 35px;
 }
 
+.btn-smmirror {
+    background-image: url("../../img/hamburguer/espelho20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 20px 20px;
+}
+
+.btn-smdef {
+    background-image: url("../../img/hamburguer/def20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 20px 20px;
+}
+
+.btn-smlist {
+    background-image: url("../../img/hamburguer/list20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 20px 20px;
+} 
+.btn-smagend {
+    background-image: url("../../img/hamburguer/list20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 20px 20px;
+} 
+
 .submit {
     background-image: url("../../img/lista/certo30.png");
     background-color: rgba(255,255,255,0);
@@ -500,7 +531,20 @@ footer {
 .nav {
     background-color: #f08143;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 10px;
+    margin-top: -44px;
+}
+
+.nav>li {
+        margin-top: 70px;
+}
+.nav>li>a {
+    padding: 0px 0px;
+}
+.hamburguer {
+    margin-top: -20px;
+    position: absolute;
+    left: 31px;
 }
 .list {
     padding-left: 15px;
@@ -678,4 +722,12 @@ footer {
 
 input[type=checkbox]{
     margin: 6px 66px 0;
+}
+
+.dropdown-menu {
+    margin-top: -20px;
+}
+li .dropdown{
+    margin-top: -32px;
+    position: absolute;
 }

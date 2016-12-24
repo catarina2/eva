@@ -64,20 +64,55 @@ class List extends Component {
                         <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" >
                         <ul className="nav sidebar-nav">
                             <li className="sidebar-brand">
-                                    <h3><b>Agenda</b> Familiar</h3>
+                                    <Link to={`/agend`}>
+                                        <div className="row">
+                                        <div className="col-xs-2">
+                                             <input type="button" className="btn btn-smlist" />
+                                        </div>
+                                        <div className="col-xs-10 hamburguer">
+                                            <h3><b>Agenda</b> Familiar</h3>
+                                        </div>
+                                        </div>
+                                        
+                                    </Link>
+                                    
                             </li>
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3> <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li class="dropdown-header">Dropdown heading</li>
-                                    <li><h3><b>Nova Lista</b></h3></li>
-                                </ul>
+                                <div className="row">
+                                    <div className="col-xs-2">
+                                         <input type="button" className="btn btn-smlist" />
+                                    </div>
+                                    <div className="col-xs-10 hamburguer">
+                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3> <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li className="dropdown"><h3 onClick={this.handleModal}><b>Nova Lista</b></h3></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                    <h3><b>Espelho</b></h3>
+                                    <Link to={`/mirror`}>
+                                        <div className="row">
+                                        <div className="col-xs-2">
+                                             <input type="button" className="btn btn-smmirror" />
+                                        </div>
+                                        <div className="col-xs-10 hamburguer">
+                                            <h3><b>Espelho</b></h3>
+                                        </div>
+                                        </div>
+                                    </Link>
                             </li>
                             <li>
-                                    <h3><b>Definições</b></h3>
+                                    <Link to={`/definition`}>
+                                        <div className="row">
+                                        <div className="col-xs-2">
+                                             <input type="button" className="btn btn-smdef" />
+                                        </div>
+                                        <div className="col-xs-10 hamburguer">
+                                            <h3><b>Definições</b></h3>
+                                        </div>
+                                        </div>
+                                    </Link>
                             </li>
                         </ul>
                     </nav>
@@ -253,7 +288,7 @@ class List extends Component {
     handleModal(){
         console.log(this.props, 'handleclick');
         var css = (this.state.showModal === false) ? true : false;
-        this.setState({showModal:css, checked1: false, checked2: false, checked3: false, checked4: false, checked5: false, checked6: false,  checkedu1: false, checkedu2: false, checkedu3: false, checkedu4: false });
+        this.setState({showModal:css, showHideSidenav: 'hidden', checked1: false, checked2: false, checked3: false, checked4: false, checked5: false, checked6: false,  checkedu1: false, checkedu2: false, checkedu3: false, checkedu4: false });
     }
 
     _submit(event) {

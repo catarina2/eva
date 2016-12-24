@@ -18,13 +18,19 @@ export default (
             <Route path="/edit/:id" component={Edit} />
         </Route>
         <Route path="/mirror" component={List} >
-            
+            <Route path="/c/:id" component={ItemDetail} />
+            <Route path="/add" component={Add} />
+            <Route path="/edit/:id" component={Edit} />
         </Route>
         <Route path="/definition" component={List} >
-          
+          <Route path="/c/:id" component={ItemDetail} />
+            <Route path="/add" component={Add} />
+            <Route path="/edit/:id" component={Edit} />
         </Route>
         <Route path="/agend" component={List} >
-           
+           <Route path="/c/:id" component={ItemDetail} />
+            <Route path="/add" component={Add} />
+            <Route path="/edit/:id" component={Edit} />
         </Route>
     </Route>
 );
