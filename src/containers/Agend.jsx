@@ -11,7 +11,9 @@ class Agend extends Component{
      constructor(props) {
         super(props);
         this.handleDayClick  = this.handleDayClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.state = {
+            showHideSidenav: "hidden",
             selectedDay: null,
             day: null,
             month: new Date(),
@@ -70,13 +72,77 @@ class Agend extends Component{
                     </ul>
                     );
         }
+        var showNav;
+        if(this.state.showHideSidenav === 'hidden')
+        {
+            showNav = <button type="button" className="btn btn-agend1" aria-label="Left Align" onClick={this.handleClick}>
+                            <span className="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+                        </button>;
+        }
+        else {
+            showNav = <div className="modal">
+                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" >
+                        <ul className="nav sidebar-nav">
+                            <li className="sidebar-brand">
+                                <div className="row">
+                                    <div className="col-xs-2">
+                                         <input type="button" className="btn btn-smlist" />
+                                    </div>
+                                    <div className="col-xs-10 hamburguer" onClick={this.handleClick}>
+                                        <h3><b>Agenda</b> Familiar</h3>
+                                    </div>
+                                </div>
+                            </li>
+                            <li className="dropdown">
+                                <Link to={`/list`}>
+                                        <div className="row">
+                                        <div className="col-xs-2">
+                                             <input type="button" className="btn btn-smlist" />
+                                        </div>
+                                        <div className="col-xs-10 hamburguer">
+                                            <h3><b>Lista de Compras</b></h3>
+                                        </div>
+                                        </div>
+                                    </Link>
+                            </li>
+                            <li>
+                                    <Link to={`/mirror`}>
+                                        <div className="row">
+                                        <div className="col-xs-2">
+                                             <input type="button" className="btn btn-smmirror" />
+                                        </div>
+                                        <div className="col-xs-10 hamburguer">
+                                            <h3><b>Espelho</b></h3>
+                                        </div>
+                                        </div>
+                                    </Link>
+                            </li>
+                            <li>
+                                    <Link to={`/definition`}>
+                                        <div className="row">
+                                        <div className="col-xs-2">
+                                             <input type="button" className="btn btn-smdef" />
+                                        </div>
+                                        <div className="col-xs-10 hamburguer">
+                                            <h3><b>Definições</b></h3>
+                                        </div>
+                                        </div>
+                                    </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                 </div>;
+
+        }
 
         return (
             <div>
                 <header className="header-agend">
                     <div className="container">
                     <h2><b>Agenda </b>Familiar</h2>
+                        {showNav}
                         <button className="btn setaagend"></button>
+                    
                     </div>
                 </header>
                 <section>
@@ -142,7 +208,12 @@ class Agend extends Component{
         }
         console.log(this.state.showev, 'mes');
         this.setState({selectedDay:day});
-        }
+    }
+    handleClick(){
+        console.log(this.props, 'handleclick');
+        var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
+        this.setState({showHideSidenav:css});
+    }
 }
 
 Agend.propTypes = {

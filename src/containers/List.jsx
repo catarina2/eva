@@ -48,7 +48,7 @@ class List extends Component {
         var showmodal;
         console.log(this.state.lc);
 
-    if(this.state.showHideSidenav === 'hidden')
+        if(this.state.showHideSidenav === 'hidden')
         {
             console.log('lalalallalalal');
             showNav = <button type="button" className="btn btn-list" aria-label="Left Align" onClick={this.handleClick}>
