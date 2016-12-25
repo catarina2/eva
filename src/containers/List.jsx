@@ -1,7 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {Modal, ModalHeader, ModalTitle, ModalBody, ModalFooter, Button} from 'react-bootstrap';
-
 import ListComponent from '../components/List';
 import {Link} from 'react-router';
 
