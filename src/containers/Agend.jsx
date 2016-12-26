@@ -288,12 +288,12 @@ class Agend extends Component{
                     </div>
                 </header>
                 <section>
-                        <div className="container">
                         <div className="row">
                             <div className="col-xs-12">
                                 <DayPicker selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) } onDayClick={ this.handleDayClick } />
                             </div>
                         </div>
+                        <div className="container">
                         <div className="row">
                             <div className="col-xs-12 date">
                                 <p>{(this.state.selectedDay!==null) ? currentDate1 : currentDate }</p>
