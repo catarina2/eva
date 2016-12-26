@@ -26,7 +26,7 @@ html, body {
 
 .logoeva {
     font-family: "jk abode";
-    font-size: 60px;
+    font-size: 18vmin;
 
 }
 
@@ -603,6 +603,19 @@ h1 {
 h1, h2, h3 {
     color: #FFFFFF;
 }
+
+h2 {
+    font-size: 8vmin;
+}
+
+h3 {
+    font-size: 6vmin;
+}
+
+h4 {
+    font-size: 5vmin;
+}
+
 
 footer {
     bottom: 0px;
