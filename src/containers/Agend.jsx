@@ -13,7 +13,16 @@ class Agend extends Component{
         this.handleDayClick  = this.handleDayClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleModal = this.handleModal.bind(this);
+        this.handleiconclicku1 = this.handleiconclicku1.bind(this);
+        this.handleiconclicku2 = this.handleiconclicku2.bind(this);
+        this.handleiconclicku3 = this.handleiconclicku3.bind(this);
+        this.handleiconclicku4 = this.handleiconclicku4.bind(this);
+        this._submit = this._submit.bind(this);
         this.state = {
+            checkedu1: false,
+            checkedu2: false,
+            checkedu3: false,
+            checkedu4: false,
             showModal: false,
             showHideSidenav: "hidden",
             selectedDay: null,
@@ -139,17 +148,128 @@ class Agend extends Component{
         var showmodal;
         if(this.state.showModal)
         {
+
+            var userslist;
+            if(this.state.family.users.length === 2)
+            {
+               userslist= ( <div className="cc-selector">
+                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
+                            </div>);
+            }
+            else if(this.state.family.users.length === 3)
+            {
+               userslist= ( <div className="cc-selector">
+                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
+                                     <input id="user2" type="radio" name="user2" ref="user2" value={this.state.family.users[1].name} checked={this.state.checkedu2}/>
+                                     <label className="user-cc btn-user2" For="user2" onClick={this.handleiconclicku2}></label>
+                            </div>);
+            }
+            else if(this.state.family.users.length === 4)
+            {
+               userslist= ( <div className="cc-selector">
+                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
+                                     <input id="user2" type="radio" name="user2" ref="user2" value={this.state.family.users[1].name} checked={this.state.checkedu2}/>
+                                     <label className="user-cc btn-user2" For="user2" onClick={this.handleiconclicku2}></label>
+                                     <input id="user3" type="radio" name="user3" ref="user3" value={this.state.family.users[2].name} checked={this.state.checkedu3}/>
+                                     <label className="user-cc btn-user3" For="user3" onClick={this.handleiconclicku3}></label>
+                            </div>);
+            }
         showmodal = (
                 <div className="modal">
                     <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
+                        <div className="modal-content modal-contentagend">
+                            <div className="modal-header modal-headeragend">
                                 <button className="btn btn-default" onClick={this.handleModal}> <span className="glyphicon glyphicon-remove"></span></button>
-                                <h4 className="modal-title"><b>Nova Lista</b></h4>
+                                <h4 className="modal-title"><b>Novo Evento</b></h4>
 
                             </div>
                             <div className="modal-body">
-                                
+                                  <form id="form" method="POST" onSubmit={this._submit}>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-time"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                             <h4 >Dia do Evento</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="name" name="name" placeholder="DD-M-YYYY" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-peopleagend"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Convidar pessoas</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                        </div>
+                                        <div className="col-xs-10">
+                                          {userslist}
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-hour"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Hora do Evento</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                      <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="hour" name="name" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-location"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Adicionar Localização</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                      <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="location" name="name" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-note"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Adicionar Nota</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                      <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="note" name="name" />
+                                        </div>
+                                    </div>
+                                     <div className="modal-footer">
+                                        <div className="row">
+                                            <div className="col-xs-2">
+                                            </div>
+                                            <div className="col-xs-8">
+                                                <Link to={`/`}>
+                                                    <button className="btn logolistsmallagend"></button>
+                                                </Link>
+                                            </div>
+                                            <div className="col-xs-2">
+                                                <button type="submit" className="btn submitagend"></button>
+                                            </div>
+                                    </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -240,6 +360,65 @@ class Agend extends Component{
         console.log(this.props, 'handleclick');
         var css = (this.state.showModal === false) ? true : false;
         this.setState({showModal:css, showHideSidenav: 'hidden'});
+    }
+    handleiconclicku1(event) {
+        event.preventDefault();
+        var css = (this.state.checkedu1 === false) ? true : false;
+        this.setState({checkedu1:css});
+    }
+
+    handleiconclicku2(event) {
+        event.preventDefault();
+        var css = (this.state.checkedu2 === false) ? true : false;
+        this.setState({checkedu2:css});
+    }
+
+    handleiconclicku3(event) {
+        event.preventDefault();
+        var css = (this.state.checkedu3 === false) ? true : false;
+        this.setState({checkedu3:css});
+    }
+
+    handleiconclicku4(event) {
+        event.preventDefault();
+        var css = (this.state.checkedu4 === false) ? true : false;
+        this.setState({checkedu4:css});
+    }
+       _submit(event) {
+        event.preventDefault();
+        var ref;
+        var users = {name:this.state.family.name, color:"red"};
+        var listusers = [];
+        listusers.push(users);
+
+        if(this.refs.user4.checked) {
+                users = {name: this.refs.user4.value, color:"pink"};
+                listusers.push(users);
+            }
+        if(this.refs.user2.checked) {
+                users = {name: this.refs.user2.value,  color:"green"};
+                listusers.push(users);
+            }
+        if(this.refs.user3.checked) {
+                users = {name: this.refs.user3.value, color:"blue"};
+                listusers.push(users);
+            }
+        console.log(listusers);
+        var add = {
+            day: this.refs.name.value,
+            users: listusers,
+            location: this.refs.location.value,
+            note: this.refs.note.value,
+            hour: this.refs.hour.value
+        };
+            
+        var l = this.state.ev;
+        l.push(add);
+
+        console.log(add, 'novo evento');
+
+        this.setState({ev: l, showModal: false, checkedu1: false, checkedu2: false, checkedu3: false, checkedu4:false});  
+
     }
 }
 

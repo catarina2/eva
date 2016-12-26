@@ -238,6 +238,51 @@ header .btn-agend1 {
     margin-top: 10px;
 }
 
+.btn-time {
+    background-image: url("../../img/agenda/repetir_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+
+.btn-peopleagend {
+    background-image: url("../../img/agenda/adicionar_pessoas_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-location {
+    background-image: url("../../img/agenda/adicionar_localizacao_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-note {
+    background-image: url("../../img/agenda/adicionar_nota_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-hour {
+    background-image: url("../../img/agenda/nao_repete_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
 .cc-selector input{
     margin:0;padding:0;
     -webkit-appearance:none;
@@ -480,6 +525,13 @@ header .btn-agend1 {
     padding: 20px 20px;
 }
 
+.submitagend {
+    background-image: url("../../img/lista/certo30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+}
+
 .btn-photo {
     background-image: url("../../img/lista/photo80.png");
     background-color: rgba(255,255,255,0);
@@ -594,6 +646,19 @@ footer {
 
 }
 
+.logolistsmallagend {
+    text-align: center;
+    background-image: url("../../img/agenda/eva_pequeno.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 15px 44px;
+    position: absolute;
+    right: 23%;
+    margin-top: 10px;
+    background-size: 50px 15px;
+
+}
+
 .wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -645,6 +710,11 @@ footer {
     border-radius:none;
 }
 
+.modal-contentagend {
+    border-color: #cc5027;
+    border-radius:none;
+}
+
 .modal .modal-dialog {
     margin: 10%;
     border-color: #f7aa47;
@@ -659,6 +729,14 @@ footer {
 
 }
 
+.modal .modal-headeragend {
+    border-bottom: none;
+    position: relative;
+    background-color: #cc5027;
+    color:#000;
+
+}
+
 .modal .modal-header .btn {
     position: absolute;
     top: 0;
@@ -667,14 +745,23 @@ footer {
     background-color: #f7aa47;
 }
 
+.modal .modal-headeragend .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 9px;
+    background-color: #cc5027;
+}
+
 .btn-default {
-    border-color:#f7aa47;
+    border-color: transparent;
 }
 
 .btn-default:hover {
-    background-color: #f7aa47;
-    border-color:#f7aa47;
+    background-color: none;    
+    border-color: transparent;
 }
+
 
 .modal .modal-footer {
     border-top: none;
