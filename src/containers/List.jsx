@@ -65,7 +65,7 @@ class List extends Component {
                                     <Link to={`/agend`}>
                                         <div className="row">
                                         <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smlist" />
+                                             <input type="button" className="btn btn-smagend" />
                                         </div>
                                         <div className="col-xs-10 hamburguer">
                                             <h3><b>Agenda</b> Familiar</h3>

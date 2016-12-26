@@ -12,7 +12,9 @@ class Agend extends Component{
         super(props);
         this.handleDayClick  = this.handleDayClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleModal = this.handleModal.bind(this);
         this.state = {
+            showModal: false,
             showHideSidenav: "hidden",
             selectedDay: null,
             day: null,
@@ -86,7 +88,7 @@ class Agend extends Component{
                             <li className="sidebar-brand">
                                 <div className="row">
                                     <div className="col-xs-2">
-                                         <input type="button" className="btn btn-smlist" />
+                                         <input type="button" className="btn btn-smagend" />
                                     </div>
                                     <div className="col-xs-10 hamburguer" onClick={this.handleClick}>
                                         <h3><b>Agenda</b> Familiar</h3>
@@ -134,13 +136,33 @@ class Agend extends Component{
                  </div>;
 
         }
+        var showmodal;
+        if(this.state.showModal)
+        {
+        showmodal = (
+                <div className="modal">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button className="btn btn-default" onClick={this.handleModal}> <span className="glyphicon glyphicon-remove"></span></button>
+                                <h4 className="modal-title"><b>Nova Lista</b></h4>
 
+                            </div>
+                            <div className="modal-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
         return (
             <div>
                 <header className="header-agend">
                     <div className="container">
                     <h2><b>Agenda </b>Familiar</h2>
                         {showNav}
+                        {showmodal}
                         <button className="btn setaagend"></button>
                     
                     </div>
@@ -174,7 +196,7 @@ class Agend extends Component{
                                 </Link>
                             </div>
                             <div className="col-xs-2">
-                                <button className="btn btn-newagend"></button>
+                                <button className="btn btn-newagend" onClick={this.handleModal}></button>
                             </div>
                         </div>
                     </div>
@@ -213,6 +235,11 @@ class Agend extends Component{
         console.log(this.props, 'handleclick');
         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
         this.setState({showHideSidenav:css});
+    }
+     handleModal(){
+        console.log(this.props, 'handleclick');
+        var css = (this.state.showModal === false) ? true : false;
+        this.setState({showModal:css, showHideSidenav: 'hidden'});
     }
 }
 
