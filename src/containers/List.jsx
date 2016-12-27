@@ -83,7 +83,7 @@ class List extends Component {
                                     <div className="col-xs-10 hamburguer">
                                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3> <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li className="dropdown"><h3 onClick={this.handleModal}><b>Nova Lista</b></h3></li>
+                                            <li className="dropdown"><h3 className="dropownsize" onClick={this.handleModal}><b>Nova Lista</b></h3></li>
                                         </ul>
                                     </div>
                                 </div>

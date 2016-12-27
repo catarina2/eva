@@ -101,6 +101,9 @@ class Agend extends Component{
                                     </div>
                                     <div className="col-xs-10 hamburguer" onClick={this.handleClick}>
                                         <h3><b>Agenda</b> Familiar</h3>
+                                    <ul class="dropdown-menu" role="menu">
+                                            <li className="dropdown"><h3 className="dropownsize" onClick={this.handleModal}><b>Novo Evento</b></h3></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </li>

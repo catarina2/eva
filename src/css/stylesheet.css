@@ -19,10 +19,17 @@
 }
 
 html, body {
+    font-size:3vmin;;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+h1 { font-size: 6.5vmin }
+h2 { font-size: 6vmin }
+h3 { font-size: 5.75vmin }
+h4 { font-size: 5.5vmin }
+h5 { font-size: 5vmin }
+h6 { font-size: 4.75vmin }
 
 .logoeva {
     font-family: "jk abode";
@@ -132,7 +139,7 @@ header .btn-list {
     font-size: 25px;
     background-color: #f08143;
     position: absolute;
-    margin: -47px -55px;
+    margin: -47px -70px;
     right: 84px;
 }
 
@@ -140,8 +147,8 @@ header .btn-agend1 {
     font-size: 25px;
     background-color: #cc5027;
     position: absolute;
-    margin: -47px -55px;
-    right: 84px;
+    margin: -47px -4vmin;
+    right: 12vmin;
 }
 
 .btn-user {
@@ -154,12 +161,13 @@ header .btn-agend1 {
 
 .btn-produto {
     font-size: 15px;
-    background-color: #f08143;
+    background-color: #f7aa47;
+    width: 38px;
+    height: 38px;
     position: absolute;
-    margin: 0px -83px;
+    margin: 0 -75px;
     right: 84px;
-    padding: 22px 22px;
-    background-image: url("../../img/lista/adicionar_personas25.png");
+    background-image: url("../../img/lista/adicionar_produto_30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
@@ -180,26 +188,32 @@ header .btn-agend1 {
     background-image: url("../../img/lista/adicionar_lista.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 32px 32px;
+
+    height: 66px;
+    width: 66px;
     position: absolute;
-    right: 0;
+    right: 20%;
 }
 
 .btn-newagend {
     background-image: url("../../img/agenda/adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 32px 32px;
+
+    height: 66px;
+    width: 66px;
     position: absolute;
-    right: 24%;
+    right: 20%;
 }
 
 .btn-imageclass {
     background-image: url("../../img/lista/carrinho_70.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 60px 45px;
-    position: absolute;
+    width: 70px;
+    height: 70px;
+    margin-top: 0px;
+    position: relative;
     left: 0;
 }
 .btn-imageclassagend {
@@ -628,10 +642,11 @@ footer {
     background-image: url("../../img/lista/eva_lista.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 44px;
+    width: 85px;
+    height: 30px;
     position: absolute;
     right: 31%;
-    margin-top: 19px;
+    margin-top: 70px;
 
 }
 .logoagend {
@@ -639,10 +654,11 @@ footer {
     background-image: url("../../img/agenda/eva.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 44px;
+    width: 85px;
+    height: 30px;
     position: absolute;
     right: 31%;
-    margin-top: 19px;
+    margin-top: 50px;
 
 }
 
@@ -729,7 +745,8 @@ footer {
 }
 
 .modal .modal-dialog {
-    margin: 10%;
+    margin: 10vmin;
+    margin-top: 11vmin;
     border-color: #f7aa47;
 
 }
@@ -796,9 +813,12 @@ footer {
 }
 
 .check {
+    width: 5vmin;
+    height: 5vmin;
     position: absolute;
     right: 0;
     top: 0;
+    margin-top: 0 !important;
 }
 .line {
     position: absolute;
@@ -839,7 +859,7 @@ footer {
     background-image: url("../../img/agenda/triangulo.png");
     position: absolute;
     padding: 10px 30px;
-    top: 77px;
+    top: 75px;
     background-color: rgba(255,255,255,0); 
     background-repeat: no-repeat;
     z-index: +1;
@@ -922,32 +942,35 @@ input[type=checkbox]{
     margin-top: -20px;
 }
 li .dropdown{
-    margin-top: -32px;
+    margin-top: -6vmin;
     position: absolute;
+    margin-left: -6vmin;
 }
+
+.dropownsize {
+    font-size: 5vmin;
+} 
 
 .agend{
     text-align: left;
 }
 
 .DayPicker-Weekday {
-    padding: 2rem;
+    padding: 5.6vmin;
+    color: black;
 }
 
 .DayPicker-Caption {
+    width: 100%;
     display: table-caption;
     height: 5.5rem;
     text-align: left;
     background-color: #f47828;
     font-size: 20px;
     padding: 15px 60px;
-    margin-top: -11px;
+    margin-top: -13px;
     color: white;
     font-weight: bold;
-}
-
-.DayPicker-Weekday {
-    color: black;
 }
 
 .DayPicker-Day {
@@ -960,7 +983,7 @@ li .dropdown{
 }
 
 .DayPicker {
-    margin-left: 11px;
+    margin-left: 3.6vmin;
 }
 .date {
     margin-top: 25px;
@@ -974,17 +997,40 @@ li .dropdown{
 .list-group-agend {
     padding-left: 25px;
 }
-
+.DayPicker-NavButton {
+    width: 3.5vmin;
+    height: 6.5vmin;
+}
+.DayPicker-NavButton--prev {
+    left: 2vmin;
+    top: 1.5vmin;
+}
+.DayPicker-NavButton--next {
+    right: 2vmin;
+    top: 1.5vmin;
+}
 @media screen and (max-width: 374px)
 {
     .DayPicker-Weekday {
-        padding: 1.6rem;
+        padding: 5.7vmin;
+    }
+    .DayPicker {
+        margin-left: 3.9vmin;
     }
 }
 
 @media screen and (min-width: 425px)
 {
     .DayPicker-Weekday {
-        padding: 2.35rem;
+        padding: 5.66vmin;
     }
+    .DayPicker {
+    margin-left: 2.9vmin;
+    }
+}
+.specification {
+    margin-top: 12vmin;
+}
+label {
+    color:#f7aa47;
 }
