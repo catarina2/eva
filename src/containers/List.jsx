@@ -46,18 +46,14 @@ class List extends Component {
         const htmlContent = isFetching ? <p>Loading...</p> : <ListComponent items={this.state.lc} />;
         var showNav;
         var showmodal;
-        console.log(this.state.lc);
 
         if(this.state.showHideSidenav === 'hidden')
         {
-            console.log('lalalallalalal');
             showNav = <button type="button" className="btn btn-list" aria-label="Left Align" onClick={this.handleClick}>
                             <span className="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
                         </button>;
         }
         else {
-            console.log('kahnkdjsfh');
-
             showNav = <div className="modal">
                         <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" >
                         <ul className="nav sidebar-nav">
@@ -278,13 +274,11 @@ class List extends Component {
     }
 
     handleClick(){
-        console.log(this.props, 'handleclick');
         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
         this.setState({showHideSidenav:css});
     }
 
     handleModal(){
-        console.log(this.props, 'handleclick');
         var css = (this.state.showModal === false) ? true : false;
         this.setState({showModal:css, showHideSidenav: 'hidden', checked1: false, checked2: false, checked3: false, checked4: false, checked5: false, checked6: false,  checkedu1: false, checkedu2: false, checkedu3: false, checkedu4: false });
     }
@@ -314,7 +308,7 @@ class List extends Component {
                 users = {name: this.refs.user3.value, color:"blue"};
                 listusers.push(users);
             }
-        console.log(listusers);
+    
         var add = {
             name: this.refs.name.value,
             icon: ref,
@@ -324,9 +318,6 @@ class List extends Component {
             
         var l = this.state.lc;
         l.push(add);
-
-        console.log(add);
-
         this.setState({lc: l, showModal: false});  
 
     }
@@ -334,7 +325,6 @@ class List extends Component {
     handleiconclick1(event) {
         event.preventDefault();
         var css = (this.state.checked1 === false) ? true : false;
-        console.log(this.state.checked1)
         this.setState({checked1:css});
         if(this.state.checked1)
         {

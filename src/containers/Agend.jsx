@@ -35,7 +35,6 @@ class Agend extends Component{
            }
     }
     render(){
-        console.log(this.state.selectedDay, "lalalallalalalaal");
         var fullDate = this.state.month;
         var weekday = new Array(7);
                 weekday[0] =  "Domingo";
@@ -57,15 +56,12 @@ class Agend extends Component{
             currentDate1 = fullDate1.getDate()+n1;
         }
         var show;
-        console.log(this.state.cd);
         if(this.state.showev === false)
         {
                 show = <p>Não existe nenhum evento neste dia</p>;
                 
         }
         else{
-                
-                console.log(this.state.cd, "lista eventos");
                 show = (<ul className="list-group-agend">
                     {this.state.cd.map((i, key) => {
                             return (
@@ -329,8 +325,6 @@ class Agend extends Component{
     }
 
     handleDayClick(e, day) {
-        console.log(e, this.state.ev, 'lalalalallala');
-
         var fullDate = day;
         var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : (fullDate.getMonth()+1);
         var currentDate = fullDate.getDate()+ "-"+twoDigitMonth+"-"+day.getFullYear();
@@ -351,16 +345,13 @@ class Agend extends Component{
         {
             this.setState({showev:true, cd:ev});
         }
-        console.log(this.state.showev, 'mes');
         this.setState({selectedDay:day});
     }
     handleClick(){
-        console.log(this.props, 'handleclick');
         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
         this.setState({showHideSidenav:css});
     }
      handleModal(){
-        console.log(this.props, 'handleclick');
         var css = (this.state.showModal === false) ? true : false;
         this.setState({showModal:css, showHideSidenav: 'hidden'});
     }
@@ -406,7 +397,6 @@ class Agend extends Component{
                 users = {name: this.refs.user3.value, color:"blue"};
                 listusers.push(users);
             }
-        console.log(listusers);
         var add = {
             day: this.refs.name.value,
             users: listusers,
@@ -417,8 +407,6 @@ class Agend extends Component{
             
         var l = this.state.ev;
         l.push(add);
-
-        console.log(add, 'novo evento');
 
         this.setState({ev: l, showModal: false, checkedu1: false, checkedu2: false, checkedu3: false, checkedu4:false});  
 

@@ -27,7 +27,6 @@ class Produto extends Component {
         }
         if(this.state.showModal)
         {
-                console.log("sou o produto", this.props.item);
                 var showmodal;
                 showmodal = (
                 <div className="modal">

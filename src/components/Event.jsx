@@ -14,31 +14,25 @@ class Event extends Component {
             ev.users.map((i, key) => {
                  if(i.color === "red")
                 {
-                    console.log(1);
                     persona.push(<input type="button" className='btn btn-personaredsmall'/>);
                 }
                 if(i.color === "blue")
                 {
-                    console.log(2);
                     persona.push(<input type="button" className='btn btn-personabluesmall'/>);
                 }
                 if(i.color === "green")
                 {
-                    console.log(3);
                     persona.push(<input type="button" className='btn btn-personagreensmall'/>);
                 }
                 if(i.color === "pink")
                 {
-                    console.log(4);
                     persona.push(<input type="button" className='btn btn-personapinksmall'/>);
                 }
                 if(i.color === "bluedark")
                 {
-                    console.log(5);
                     persona.push(<input type="button" className='btn btn-personabluedarksmall'/>);
                 }
             });
-            console.log(persona);
             
                
         return (

@@ -99,7 +99,6 @@ class Item extends Component {
         }
         if(this.state.showpanel === true)
         {
-            console.log(item.produtos, 'lalalalalalal');
             if(item.produtos)
             {
                     panel = (<div className="panel-body">
@@ -135,38 +134,30 @@ class Item extends Component {
         }
         var icon;
         if(item.icon === "casa"){
-
-                    console.log('lallalalaallalalalalalall');
                     icon= <button className="btn casa"></button>;
         }
         else if (item.icon === "trabalho")
         {
-                    console.log('lallalalaallalalalalalall1');
                     icon= <button className="btn trabalho"></button>;
         }
         else if (item.icon === "natal")
         {
-                    console.log('lallalalaallalalalalalall2');
                     icon= <button className="btn natal"></button>;
         }
         else if (item.icon === "prenda")
         {
-                    console.log('lallalalaallalalalalalall2');
                     icon= <button className="btn prenda"></button>;
         }
         else if (item.icon === "ovo")
         {
-                    console.log('lallalalaallalalalalalall2');
                     icon= <button className="btn ovo"></button>;
         }
         else if (item.icon === "ferias")
         {
-                    console.log('lallalalaallalalalalalall2');
                     icon= <button className="btn ferias"></button>;
         }
         else if (item.icon === "roupa")
         {
-                    console.log('lallalalaallalalalalalall2');
                     icon= <button className="btn roupa"></button>;
         }
 
@@ -201,13 +192,11 @@ class Item extends Component {
     }
 
     handleClick(){
-        console.log(this.props, 'handleclick');
         var css = (this.state.showpanel === false) ? true : false;
         this.setState({showpanel:css});
     }
 
     handleModal(){
-        console.log('handleclick');
         var css = (this.state.showModal === false) ? true : false;
         this.setState({showModal:css});
     }
@@ -222,9 +211,6 @@ class Item extends Component {
         
             var l = this.props.item.produtos;
             l.push(add);
-
-            console.log(l);
-
             this.setState({lc: l, showModal: false}); 
 
     }
