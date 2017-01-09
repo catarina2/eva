@@ -99,11 +99,10 @@ class Item extends Component {
         }
         if(this.state.showpanel === true)
         {
-            if(item.produtos === '[]')
+            if(item.produtos.length === 0)
                 {
-                    console.log(item.produtos, 'lalalalallalalnull');
                     panel = <div className="panel-body">
-                                Não existem produtos nesta lista 
+                                <h4>Adicione o primeiro produto à lista</h4>
                             <div className="col-xs-12">
                                 <button className="btn btn-produto" onClick={this.handleModal}></button>
                             </div>
@@ -111,7 +110,6 @@ class Item extends Component {
                 }
             else
             {
-                console.log(item.produtos, 'lalalalallalal');
                     panel = (<div className="panel-body">
                             {item.produtos.map((item, key) => {
                             return (
@@ -212,9 +210,9 @@ class Item extends Component {
         };
         
             var l = this.props.item.produtos;
+    
             l.push(add);
-            this.setState({lc: l, showModal: false}); 
-
+            this.setState({lc: l, showModal: false});
     }
 }
 

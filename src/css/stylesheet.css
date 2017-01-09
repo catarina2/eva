@@ -1007,6 +1007,20 @@ header .btn-agend1 {
     margin-top: 9px;
     background-color: #cc5027;
 }
+
+#sidebar-wrapper-agend {
+    background-color: #cc5027;
+    height: 100%;
+    border: none;
+    margin-left: 28%;
+}
+
+.nav-agend {
+    background-color: #cc5027;
+    text-align: left;
+    padding-left: 10px;
+    margin-top: -44px;
+}
 /*final do css para Agenda Familiar*/
 
 /*css para Definições*/
@@ -1018,8 +1032,32 @@ header .btn-agend1 {
     text-align: left;
 }
 
+#sidebar-wrapper-perfil {
+    background-color: #6cc5d3;
+    height: 100%;
+    border: none;
+    margin-left: 28%;
+}
+
+.nav-perfil {
+    background-color: #6cc5d3;
+    text-align: left;
+    padding-left: 10px;
+    margin-top: -44px;
+}
+
 section .perfil{
    padding-left: 14vmin;
+}
+
+.setaperfil {
+    background-image: url("../../img/perfil/triangulo.png");
+    position: absolute;
+    padding: 10px 30px;
+    top: 78px;
+    left:12px;
+    background-color: rgba(255,255,255,0); 
+    background-repeat: no-repeat;
 }
 
 .btn-imageclassperfil {
@@ -1032,13 +1070,12 @@ section .perfil{
 }
 
 .btn-perfil {
-    background-image: url("../../img/perfil/perfil_25.png");
+    background-image: url("../../img/perfil/perfil_20.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 13px 13px;
     position:absolute;
     left: 21px;
-    margin-top: 1.5vmin;
 }
 
 .btn-seg {
@@ -1048,17 +1085,71 @@ section .perfil{
     padding: 13px 13px;
     position:absolute;
     left: 21px;
-    margin-top: 1.5vmin;
 }
 
 .btn-notif {
-    background-image: url("../../img/perfil/seg_25.png");
+    background-image: url("../../img/perfil/notificacoes_20.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 13px 13px;
     position:absolute;
     left: 21px;
-    margin-top: 1.5vmin;
+}
+
+.btn-account {
+    background-image: url("../../img/perfil/conta_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+}
+
+.btn-sounds {
+    background-image: url("../../img/perfil/som_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+}
+
+.btn-widgets {
+    background-image: url("../../img/perfil/wid_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+}
+
+.btn-lang {
+    background-image: url("../../img/perfil/idioma_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+}
+
+.btn-access {
+    background-image: url("../../img/perfil/ace_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+}
+
+.btn-version {
+    background-image: url("../../img/perfil/eva_pequeno.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+    background-size: 27px;
+    margin-top: 2vmin;
 }
 
 .perfiltext {
@@ -1075,6 +1166,14 @@ section .perfil{
     position: absolute;
     right: 31%;
     margin-top: 60px;
+}
+
+header .btn-perfil {
+    font-size: 25px;
+    background-color: #6cc5d3;
+    position: absolute;
+    margin: -13vmin 71vmin;
+    right: 84px;
 }
 /*final do css para Definições*/
 

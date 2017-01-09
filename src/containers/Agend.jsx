@@ -86,8 +86,8 @@ class Agend extends Component{
         }
         else {
             showNav = <div className="modal">
-                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" >
-                        <ul className="nav sidebar-nav">
+                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper-agend" role="navigation" >
+                        <ul className="nav nav-agend sidebar-nav">
                             <li className="sidebar-brand">
                                 <div className="row">
                                     <div className="col-xs-2">

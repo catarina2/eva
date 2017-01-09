@@ -44,15 +44,12 @@ class PerfilComponent extends Component {
         {
             show = (<input type='button' className='btn btn-version'/>);
         }
+
         return (
             <div>
                 <hr/>
                 {show}
-                <div className='row'>
-                <div className='col-xs-12'>
                     <h4 className='perfiltext'>{item.name}</h4>
-                </div>
-                </div>
             </div>
         );
     }
