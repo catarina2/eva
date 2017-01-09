@@ -466,9 +466,9 @@ header .btn-list {
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     width: 70px;
-    height: 70px;
-    margin-top: 0px;
-    position: relative;
+    height: 65px;
+    padding: 0px 36px;
+    position: absolute;
     left: 0;
 }
 
@@ -480,8 +480,8 @@ header .btn-list {
     width: 85px;
     height: 30px;
     position: absolute;
-    right: 31%;
-    margin-top: 70px;
+    right: 34%;
+    margin-top: 36px;
 }
 
 .btn-newlist {
@@ -743,8 +743,8 @@ header .btn-list {
     width: 85px;
     height: 30px;
     position: absolute;
-    right: 31%;
-    margin-top: 70px;
+    right: 34%;
+    margin-top: 42px;
 
 }
 
@@ -822,9 +822,9 @@ header .btn-agend1 {
     background-image: url("../../img/agenda/agenda_70.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 60px 45px;
+    padding: 35px 45px;
     position: absolute;
-    left: 0;
+    left:0;
 }
 
 /*Parte do calendário*/
@@ -971,8 +971,8 @@ header .btn-agend1 {
     width: 85px;
     height: 30px;
     position: absolute;
-    right: 31%;
-    margin-top: 50px;
+    right: 34%;
+    margin-top: 42px;
 }
 
 .logolistsmallagend {
@@ -1064,9 +1064,9 @@ section .perfil{
     background-image: url("../../img/perfil/editperfil_70.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 60px 45px;
+    padding: 34px 45px;
     position: absolute;
-    left: -1px;
+    left: 15px;
 }
 
 .btn-perfil {
@@ -1164,8 +1164,8 @@ section .perfil{
     width: 85px;
     height: 30px;
     position: absolute;
-    right: 31%;
-    margin-top: 60px;
+    right: 34%;
+    margin-top: 42px;
 }
 
 header .btn-perfil {

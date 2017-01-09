@@ -104,18 +104,16 @@ class Perfil extends Component {
                         </div>
                 </section>
                 <footer>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-xs-2">
-                                 <button className="btn btn-imageclassperfil"></button>
-                            </div>
-                            <div className="col-xs-8">
-                                <Link to={`/`}>
-                                    <button className="btn logoperfil"></button>
-                                </Link>
-                            </div>
-                            <div className="col-xs-2">
-                            </div>
+                    <div className="row">
+                        <div className="col-xs-2">
+                             <button className="btn btn-imageclassperfil"></button>
+                        </div>
+                        <div className="col-xs-8">
+                            <Link to={`/`}>
+                                <button className="btn logoperfil"></button>
+                            </Link>
+                        </div>
+                        <div className="col-xs-2">
                         </div>
                     </div>
                 </footer>
