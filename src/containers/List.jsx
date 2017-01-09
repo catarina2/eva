@@ -1,9 +1,17 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import ListComponent from '../components/List';
 import {Link} from 'react-router';
+import ListComponent from '../components/List';
+
+import {fetchLists} from '../actions';
 
 class List extends Component {
+    componentDidMount() {
+        console.log('componentdidMount');
+        const {dispatch} = this.props;
+        dispatch(fetchLists());
+    }
+
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -42,8 +50,7 @@ class List extends Component {
     }
 
     render() {
-        const {isFetching, items} = this.props;
-        const htmlContent = isFetching ? <p>Loading...</p> : <ListComponent items={this.state.lc} />;
+        console.log(this.props.items, 'lista do martinho');
         var showNav;
         var showmodal;
 

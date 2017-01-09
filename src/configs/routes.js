@@ -9,6 +9,7 @@ import Add from '../containers/Add';
 import Edit from '../containers/Edit';
 import Inicioeva from '../containers/Inicioeva';
 import Agend from '../containers/Agend';
+import Perfil from '../containers/Perfil';
 
 export default (
     <Route path="/" component={App}>
@@ -23,7 +24,7 @@ export default (
             <Route path="/add" component={Add} />
             <Route path="/edit/:id" component={Edit} />
         </Route>
-        <Route path="/definition" component={List} >
+        <Route path="/definition" component={Perfil} >
           <Route path="/c/:id" component={ItemDetail} />
             <Route path="/add" component={Add} />
             <Route path="/edit/:id" component={Edit} />

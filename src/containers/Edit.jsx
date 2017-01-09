@@ -19,7 +19,7 @@ class Edit extends Component {
         if (!this.props.item) {
             return <div>{htmlNotFound}{htmlButtonBack}</div>;
         } else {
-            const {nome, phone, address, mail, photo} = this.props.item;
+            const {nome, phone, address, mail} = this.props.item;
 
             return (
                 <div>

@@ -1,16 +1,15 @@
 import {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {fetchContacts} from '../actions';
-
+//
 class App extends Component {
     componentDidMount() {
-        const {dispatch} = this.props;
-       // dispatch(fetchContacts());
+        //const {dispatch} = this.props;
+        //dispatch(fetchLists());
     }
 
     render() {
-        // console.info('container App', this);
+        //console.info('container App', this);
         return this.props.children;
     }
 }

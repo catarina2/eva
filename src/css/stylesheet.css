@@ -1,3 +1,4 @@
+/*css geral*/
 @font-face
 {
     font-family:"Caviar dreams";
@@ -24,12 +25,100 @@ html, body {
     padding: 0;
     box-sizing: border-box;
 }
-h1 { font-size: 6.5vmin }
-h2 { font-size: 6vmin }
-h3 { font-size: 5.75vmin }
-h4 { font-size: 5.5vmin }
+
+.row {
+    margin-right: 0px;
+}
+
+h1, h2, h3 {
+    color: #FFFFFF;
+}
+
+h1 { 
+    font-size: 6.5vmin;
+    font-family:"Caviar dreams bold"; 
+}
+h2 { font-size: 8vmin }
+h3 { font-size: 6vmin }
+h4 { font-size: 5vmin }
 h5 { font-size: 4vmin }
 h6 { font-size: 4.75vmin }
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+footer {
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+}
+
+section {
+    width: 100%;
+}
+
+
+
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+.cc-selector input:active +.icon-cc{opacity: .9;}
+.cc-selector input:checked +.icon-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.cc-selector input:checked +.user-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.icon-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.icon-cc:hover{
+    -webkit-filter: brightness(1) grayscale(0) opacity(1);
+       -moz-filter: brightness(1) grayscale(0) opacity(1);
+            filter: brightness(1) grayscale(0) opacity(1);
+}
+.user-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.user-cc:hover{
+    -webkit-filter: brightness(1) grayscale(0) opacity(1);
+       -moz-filter: brightness(1) grayscale(0) opacity(1);
+            filter: brightness(1) grayscale(0) opacity(1);
+}
+
 
 .logoeva {
     font-family: "jk abode";
@@ -43,26 +132,166 @@ h6 { font-size: 4.75vmin }
     margin-left: 10px;
 }
 
-.row {
-    margin-right: 0px;
+.panel {
+    background-color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
-.header-agend {
+.panel-primary {
+    border: none;
+}
+
+.panel-body {
+    padding: 35px;
+}
+
+.panel-heading {
+    padding: 10px 43px;
+    background-color: #f7aa47;
     width: 100%;
-    height: 80px;
-    background: #cc5027;
-    position: relative;
-    text-align: left;
 }
 
-.header-list{
+.btn-default {
+    border-color: transparent;
+}
+
+.btn-default:hover {
+    background-color: none;    
+    border-color: transparent;
+}
+
+
+.modal .modal-footer {
+    border-top: none;
+    padding-top: 20px;
+}
+
+.modal .modal-footer .btn-group > .btn:first-child{
+    border-bottom-left-radius: 0;
+}
+
+.modal .modal-footer .btn-group > .btn:last-child{
+    border-bottom-right-radius: 0;
+}
+
+.blackletter {
+    color: #000;
+    margin-top: -11px;
+    margin-left: 40px;
+}
+
+.check {
+    width: 5vmin;
+    height: 5vmin;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 0 !important;
+}
+
+.glyphicon {
+    color:white;
+}
+
+.modal-title{
+    color: white;
+}
+.line {
+    position: absolute;
+    border-top: 1px solid #f7aa47;
+    top:0;
     width: 100%;
-    height: 80px;
-    background: #f08143;
-    position: relative;
-    text-align: left;
+    margin-top: 10px;
+    z-index: +1;
+}
+input[type=checkbox]{
+    margin: 6px 66px 0;
 }
 
+.dropdown-menu {
+    margin-top: -20px;
+}
+li .dropdown{
+    margin-top: -6vmin;
+    position: absolute;
+    margin-left: -6vmin;
+}
+
+.dropownsize {
+    font-size: 5vmin;
+} 
+
+.specification {
+    margin-top: 12vmin;
+}
+
+.list-group-horizontal-eva {
+    display: -webkit-box;
+    top: -19px;
+}
+
+.list-group-horizontal {
+    display: -webkit-box;
+    margin-left: 50%;
+}
+
+.list-margin {
+    margin: 0px 6px;
+    margin-top: -33px;
+}
+
+.list-group-item {
+    border: none;
+    margin-top: 15px;
+}
+
+.wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    background-color: #f08143;
+    height: 100%;
+    border: none;
+    margin-left: 28%;
+}
+
+.nav {
+    background-color: #f08143;
+    text-align: left;
+    padding-left: 10px;
+    margin-top: -44px;
+}
+
+.nav>li {
+        margin-top: 70px;
+}
+.nav>li>a {
+    padding: 0px 0px;
+}
+
+.modal {
+    display: block;
+    background: rgba(0,0,1,0.5);
+}
+/*final do css geral*/
+
+/*css para Página Registo*/
+/*final do css para Página Registo*/
+
+/*css para Página Login*/
+/*final do css para Página Login*/
+
+/*css para Página Inicial*/
 .header-initial{
     width: 100%;
     height: 80px;
@@ -71,13 +300,14 @@ h6 { font-size: 4.75vmin }
     text-align: left;
 }
 
-
-.container {
-    width: 100%;
-}
-
-section {
-    width: 100%;
+.setainicial {
+    background-image: url("../../img/menu/triangulo_inicial.png");
+    position: absolute;
+    padding: 10px 30px;
+    top: 78px;
+    left:12px;
+    background-color: rgba(255,255,255,0); 
+    background-repeat: no-repeat;
 }
 
 .btn-shoplist {
@@ -135,6 +365,17 @@ section {
     top: 215px;
 }
 
+/*final do css para Página Inicial*/
+
+/*css para Lista de Compras*/
+.header-list{
+    width: 100%;
+    height: 80px;
+    background: #f08143;
+    position: relative;
+    text-align: left;
+}
+
 header .btn-list {
     font-size: 25px;
     background-color: #f08143;
@@ -143,45 +384,104 @@ header .btn-list {
     right: 84px;
 }
 
-header .btn-agend1 {
-    font-size: 25px;
-    background-color: #cc5027;
-    position: absolute;
-    margin: -47px -4vmin;
-    right: 12vmin;
+.row .panelrow {
+    background-c0lor: #f08143;
+} 
+.list {
+    padding-left: 15px;
 }
-
-.btn-user {
-    font-size: 15px;
-    background-color: #f08143;
+/*Linhas de água para cada lista*/
+.casa{
+    background-image: url("../../img/lista/casa.png");
     position: absolute;
-    margin: -47px -51px;
-    right: 84px;
+    padding-top: 21px;
+    padding-bottom: 28px;
+    padding-right: 47px;
+    margin-top: -40px;
+    left: 0;
+    background-color: rgba(255,255,255,0); 
+    background-repeat: no-repeat;
 }
-
-.btn-produto {
-    font-size: 15px;
-    background-color: #f7aa47;
-    width: 38px;
-    height: 38px;
+.trabalho {
+    background-image: url("../../img/lista/trabalho.png");
     position: absolute;
-    margin: 0 -75px;
-    right: 84px;
-    background-image: url("../../img/lista/adicionar_produto_30.png");
+    padding: 25px 25px;
+    left: 0;
+    margin-top: -39px;
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+}
+.natal {
+    background-image: url("../../img/lista/natal.png");
+    position: absolute;
+    padding: 25px 22px;
+    left: 0;
+    margin-top: -39px;
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+}
+.prenda {
+    background-image: url("../../img/lista/aniversario.png");
+    position: absolute;
+    padding: 25px 40px;
+    left: -16px;
+    margin-top: -40px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
 
-.btn-personas {
-    font-size: 15px;
-    background-color: #f08143;
+.ovo {
+    background-image: url("../../img/lista/ovobranco.png");
     position: absolute;
-    margin-top: -35px;
-    margin-left: 37%;
-    padding: 22px 22px;
-    background-image: url("../../img/lista/adicionar_personas25.png");
+    padding: 25px 22px;
+    left: 0;
+    margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
+    background-size: 44px 50px;
+}
+
+.ferias {
+    background-image: url("../../img/lista/praiabranca.png");
+    position: absolute;
+    padding: 25px 32px;
+    left: -5px;
+    margin-top: -39px;
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+}
+
+.roupa {
+    background-image: url("../../img/lista/camisolabranca.png");
+    position: absolute;
+    padding: 25px 22px;
+    left: 0;
+    margin-top: -39px;
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+}
+/*---------------------------------------*/
+.btn-imageclass {
+    background-image: url("../../img/lista/carrinho_70.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+    margin-top: 0px;
+    position: relative;
+    left: 0;
+}
+
+.logolist {
+    text-align: center;
+    background-image: url("../../img/lista/eva_lista.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    right: 31%;
+    margin-top: 70px;
 }
 
 .btn-newlist {
@@ -195,191 +495,16 @@ header .btn-agend1 {
     right: 20%;
 }
 
-.btn-newagend {
-    background-image: url("../../img/agenda/adicionar.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-
-    height: 66px;
-    width: 66px;
+.btn-personas {
+    font-size: 15px;
+    background-color: #f08143;
     position: absolute;
-    right: 20%;
-}
-
-.btn-imageclass {
-    background-image: url("../../img/lista/carrinho_70.png");
+    margin-top: -35px;
+    margin-left: 37%;
+    padding: 22px 22px;
+    background-image: url("../../img/lista/adicionar_personas25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    width: 70px;
-    height: 70px;
-    margin-top: 0px;
-    position: relative;
-    left: 0;
-}
-.btn-imageclassagend {
-    background-image: url("../../img/agenda/agenda_70.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 60px 45px;
-    position: absolute;
-    left: 0;
-}
-
-.btn-edit {
-    background-image: url("../../img/lista/nome_lista_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 10px;
-}
-
-.btn-people {
-    background-image: url("../../img/lista/adidiconar_pessoas15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 13px;
-}
-
-.btn-invit {
-    background-image: url("../../img/lista/alterar_imagem_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 10px;
-}
-
-.btn-time {
-    background-image: url("../../img/agenda/repetir_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 10px;
-}
-
-.btn-peopleagend {
-    background-image: url("../../img/agenda/adicionar_pessoas_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 13px;
-}
-
-.btn-location {
-    background-image: url("../../img/agenda/adicionar_localizacao_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 13px;
-}
-
-.btn-note {
-    background-image: url("../../img/agenda/adicionar_nota_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 13px;
-}
-
-.btn-hour {
-    background-image: url("../../img/agenda/nao_repete_15.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 13px 13px;
-    position:absolute;
-    margin-top: 13px;
-}
-
-.cc-selector input{
-    margin:0;padding:0;
-    -webkit-appearance:none;
-       -moz-appearance:none;
-            appearance:none;
-}
-
-.cc-selector input:active +.icon-cc{opacity: .9;}
-.cc-selector input:checked +.icon-cc{
-    -webkit-filter: none;
-       -moz-filter: none;
-            filter: none;
-}
-.cc-selector input:checked +.user-cc{
-    -webkit-filter: none;
-       -moz-filter: none;
-            filter: none;
-}
-.icon-cc{
-    cursor:pointer;
-    background-size:contain;
-    background-repeat:no-repeat;
-    display:inline-block;
-    width:100px;height:70px;
-    -webkit-transition: all 100ms ease-in;
-       -moz-transition: all 100ms ease-in;
-            transition: all 100ms ease-in;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
-}
-.icon-cc:hover{
-    -webkit-filter: brightness(1) grayscale(0) opacity(1);
-       -moz-filter: brightness(1) grayscale(0) opacity(1);
-            filter: brightness(1) grayscale(0) opacity(1);
-}
-.user-cc{
-    cursor:pointer;
-    background-size:contain;
-    background-repeat:no-repeat;
-    display:inline-block;
-    width:100px;height:70px;
-    -webkit-transition: all 100ms ease-in;
-       -moz-transition: all 100ms ease-in;
-            transition: all 100ms ease-in;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
-}
-.user-cc:hover{
-    -webkit-filter: brightness(1) grayscale(0) opacity(1);
-       -moz-filter: brightness(1) grayscale(0) opacity(1);
-            filter: brightness(1) grayscale(0) opacity(1);
-}
-.btn-user1 {
-    background-image: url("../../img/lista/persona_azulescuro30.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 10px 10px;
-    height: 0px;
-}
-.btn-user2 {
-    background-image: url("../../img/lista/persona_verde30.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 10px 10px;
-    height: 0px;
-    margin-left: -70px;
-}
-.btn-user3 {
-    background-image: url("../../img/lista/persona_azul30.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 10px 10px;
-    height: 0px;
-    margin-left: -70px;
-}
-.btn-user4 {
-    background-image: url("../../img/lista/persona_rosa30.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 10px 10px;
-    height: 0px;
 }
 
 .btn-personared {
@@ -501,6 +626,459 @@ header .btn-agend1 {
     background-size: 30px 35px;
 }
 
+.btn-user {
+    font-size: 15px;
+    background-color: #f08143;
+    position: absolute;
+    margin: -47px -51px;
+    right: 84px;
+}
+
+.btn-user1 {
+    background-image: url("../../img/lista/persona_azulescuro30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+}
+.btn-user2 {
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    margin-left: -70px;
+}
+.btn-user3 {
+    background-image: url("../../img/lista/persona_azul30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    margin-left: -70px;
+}
+.btn-user4 {
+    background-image: url("../../img/lista/persona_rosa30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+}
+
+
+.submit {
+    background-image: url("../../img/lista/certo30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+}
+
+
+
+.btn-people {
+    background-image: url("../../img/lista/adidiconar_pessoas15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-invit {
+    background-image: url("../../img/lista/alterar_imagem_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+.btn-edit {
+    background-image: url("../../img/lista/nome_lista_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+
+
+
+
+.btn-produto {
+    font-size: 15px;
+    background-color: #f7aa47;
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    margin: 0 -75px;
+    right: 84px;
+    background-image: url("../../img/lista/adicionar_produto_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+}
+
+.btn-photo {
+    background-image: url("../../img/lista/photo80.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 35px 45px;
+    margin-left: 29%;
+    margin-top: 10%;
+}
+
+.seta{
+    background-image: url("../../img/lista/triangulo_lista.png");
+    position: absolute;
+    padding: 10px 30px;
+    top: 78px;
+    background-color: rgba(255,255,255,0); 
+    background-repeat: no-repeat;
+}
+
+.logolist{
+    text-align: center;
+    background-image: url("../../img/lista/eva_lista.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    right: 31%;
+    margin-top: 70px;
+
+}
+
+.logolistsmall {
+    text-align: center;
+    background-image: url("../../img/lista/evapequeno_lista.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 15px 44px;
+    position: absolute;
+    right: 23%;
+    margin-top: 10px;
+    background-size: 50px 15px;
+}
+
+.modal .modal-dialog {
+    margin: 10vmin;
+    margin-top: 11vmin;
+    border-color: #f7aa47;
+
+}
+.modal-content {
+    border-color: #f7aa47;
+    border-radius:none;
+}
+.modal .modal-header {
+    border-bottom: none;
+    position: relative;
+    background-color: #f7aa47;
+    color:#000;
+
+}
+
+.modal .modal-header .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 9px;
+    background-color: #f7aa47;
+}
+
+label {
+    color:#f7aa47;
+}
+/*final do css para Lista de Compras*/
+
+/*css para Agenda Familiar*/
+.header-agend {
+    width: 100%;
+    height: 80px;
+    background: #cc5027;
+    position: relative;
+    text-align: left;
+}
+header .btn-agend1 {
+    font-size: 25px;
+    background-color: #cc5027;
+    position: absolute;
+    margin: -47px -4vmin;
+    right: 12vmin;
+}
+
+.btn-newagend {
+    background-image: url("../../img/agenda/adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+
+    height: 66px;
+    width: 66px;
+    position: absolute;
+    right: 20%;
+}
+
+.btn-imageclassagend {
+    background-image: url("../../img/agenda/agenda_70.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 60px 45px;
+    position: absolute;
+    left: 0;
+}
+
+/*Parte do calendário*/
+.DayPicker-Weekday {
+    padding: 5.6vmin;
+    color: black;
+}
+
+.DayPicker-Caption {
+    width: 100%;
+    display: table-caption;
+    height: 5.5rem;
+    text-align: left;
+    background-color: #f47828;
+    font-size: 20px;
+    padding: 15px 60px;
+    margin-top: -13px;
+    color: white;
+    font-weight: bold;
+}
+
+.DayPicker-Day {
+    border: 1px solid #f47828;
+    text-align: left;
+}
+
+.DayPicker-NavBar {
+    padding: 12px 3.5rem;
+}
+
+.DayPicker {
+    margin-left: 3.6vmin;
+}
+
+.date {
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+.DayPicker-NavButton {
+    width: 3.5vmin;
+    height: 6.5vmin;
+}
+.DayPicker-NavButton--prev {
+    left: 2vmin;
+    top: 1.5vmin;
+}
+.DayPicker-NavButton--next {
+    right: 2vmin;
+    top: 1.5vmin;
+}
+/*final parte do calendário*/
+
+.classhr{
+    margin-bottom: 12px;
+    margin-top: 2px;
+    border-top: 2px solid #f47828;
+}
+.list-group-agend {
+    padding-left: 25px;
+}
+
+
+
+
+
+.btn-time {
+    background-image: url("../../img/agenda/repetir_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+
+.btn-peopleagend {
+    background-image: url("../../img/agenda/adicionar_pessoas_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-location {
+    background-image: url("../../img/agenda/adicionar_localizacao_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-note {
+    background-image: url("../../img/agenda/adicionar_nota_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.btn-hour {
+    background-image: url("../../img/agenda/nao_repete_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 13px;
+}
+
+.submitagend {
+    background-image: url("../../img/agenda/certofamilia30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+}
+
+.setaagend {
+    background-image: url("../../img/agenda/triangulo.png");
+    position: absolute;
+    padding: 10px 30px;
+    top: 75px;
+    background-color: rgba(255,255,255,0); 
+    background-repeat: no-repeat;
+    z-index: +1;
+}
+
+.agend{
+    text-align: left;
+}
+
+.panel-heading-agend {
+    padding: 10px 43px;
+    background-color: #f47828;
+    width: 100%;
+}
+
+.logoagend {
+    text-align: center;
+    background-image: url("../../img/agenda/eva.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    right: 31%;
+    margin-top: 50px;
+}
+
+.logolistsmallagend {
+    text-align: center;
+    background-image: url("../../img/agenda/eva_pequeno.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 15px 44px;
+    position: absolute;
+    right: 23%;
+    margin-top: 10px;
+    background-size: 50px 15px;
+}
+
+.modal-contentagend {
+    border-color: #cc5027;
+    border-radius:none;
+}
+
+.modal .modal-headeragend {
+    border-bottom: none;
+    position: relative;
+    background-color: #cc5027;
+    color:#000;
+
+}
+
+.modal .modal-headeragend .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 9px;
+    background-color: #cc5027;
+}
+/*final do css para Agenda Familiar*/
+
+/*css para Definições*/
+.header-perfil {
+    width: 100%;
+    height: 80px;
+    background: #6cc5d3;
+    position: relative;
+    text-align: left;
+}
+
+section .perfil{
+   padding-left: 14vmin;
+}
+
+.btn-imageclassperfil {
+    background-image: url("../../img/perfil/editperfil_70.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 60px 45px;
+    position: absolute;
+    left: -1px;
+}
+
+.btn-perfil {
+    background-image: url("../../img/perfil/perfil_25.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+    margin-top: 1.5vmin;
+}
+
+.btn-seg {
+    background-image: url("../../img/perfil/seg_25.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+    margin-top: 1.5vmin;
+}
+
+.btn-notif {
+    background-image: url("../../img/perfil/seg_25.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    left: 21px;
+    margin-top: 1.5vmin;
+}
+
+.perfiltext {
+    color: #000; 
+}
+
+.logoperfil {
+    text-align: center;
+    background-image: url("../../img/perfil/eva_grande.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    right: 31%;
+    margin-top: 60px;
+}
+/*final do css para Definições*/
+
+/*botão hamburguer*/
 .btn-smmirror {
     background-image: url("../../img/hamburguer/espelho20.png");
     background-color: rgba(255,255,255,0);
@@ -532,483 +1110,14 @@ header .btn-agend1 {
     padding: 20px 20px;
 } 
 
-.submit {
-    background-image: url("../../img/lista/certo30.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 20px 20px;
-}
-
-.submitagend {
-    background-image: url("../../img/agenda/certofamilia30.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 20px 20px;
-}
-
-.btn-photo {
-    background-image: url("../../img/lista/photo80.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 35px 45px;
-    margin-left: 29%;
-    margin-top: 10%;
-}
-
-.list-group-horizontal-eva {
-    display: -webkit-box;
-    top: -19px;
-}
-
-.list-group-horizontal {
-    display: -webkit-box;
-    margin-left: 50%;
-}
-
-.list-margin {
-    margin: 0px 6px;
-    margin-top: -33px;
-}
-
-.list-group-item {
-    border: none;
-    margin-top: 15px;
-}
-
-.panel {
-    background-color: #fff;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.panel-primary {
-    border: none;
-}
-
-.panel-body {
-    padding: 35px;
-}
-
-.panel-heading {
-    padding: 10px 43px;
-    background-color: #f7aa47;
-    width: 100%;
-}
-
-.panel-heading-agend {
-    padding: 10px 43px;
-    background-color: #f47828;
-    width: 100%;
-}
-
-.row .panelrow {
-    background-clor: #f08143;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-}
-
-h1 {
-    font-family:"Caviar dreams bold";
-}
-
-h1, h2, h3 {
-    color: #FFFFFF;
-}
-
-h2 {
-    font-size: 8vmin;
-}
-
-h3 {
-    font-size: 6vmin;
-}
-
-h4 {
-    font-size: 5vmin;
-}
-
-
-footer {
-    bottom: 0px;
-    width: 100%;
-    position: relative;
-}
-
-.logolist {
-    text-align: center;
-    background-image: url("../../img/lista/eva_lista.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    width: 85px;
-    height: 30px;
-    position: absolute;
-    right: 31%;
-    margin-top: 70px;
-
-}
-.logoagend {
-    text-align: center;
-    background-image: url("../../img/agenda/eva.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    width: 85px;
-    height: 30px;
-    position: absolute;
-    right: 31%;
-    margin-top: 50px;
-
-}
-
-.logolistsmall {
-    text-align: center;
-    background-image: url("../../img/lista/evapequeno_lista.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 15px 44px;
-    position: absolute;
-    right: 23%;
-    margin-top: 10px;
-    background-size: 50px 15px;
-
-}
-
-.logolistsmallagend {
-    text-align: center;
-    background-image: url("../../img/agenda/eva_pequeno.png");
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    padding: 15px 44px;
-    position: absolute;
-    right: 23%;
-    margin-top: 10px;
-    background-size: 50px 15px;
-
-}
-
-.wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-.wrapper.toggled {
-    padding-left: 220px;
-}
-
-#sidebar-wrapper {
-    background-color: #f08143;
-    height: 100%;
-    border: none;
-    margin-left: 28%;
-}
-
-.nav {
-    background-color: #f08143;
-    text-align: left;
-    padding-left: 10px;
-    margin-top: -44px;
-}
-
-.nav>li {
-        margin-top: 70px;
-}
-.nav>li>a {
-    padding: 0px 0px;
-}
 .hamburguer {
     margin-top: -20px;
     position: absolute;
     left: 31px;
 }
-.list {
-    padding-left: 15px;
-}
+/*final botão hamburguer*/
 
-.modal {
-    display: block;
-    background: rgba(0,0,1,0.5);
-}
-
-.modal-content {
-    border-color: #f7aa47;
-    border-radius:none;
-}
-
-.modal-contentagend {
-    border-color: #cc5027;
-    border-radius:none;
-}
-
-.modal .modal-dialog {
-    margin: 10vmin;
-    margin-top: 11vmin;
-    border-color: #f7aa47;
-
-}
-
-.modal .modal-header {
-    border-bottom: none;
-    position: relative;
-    background-color: #f7aa47;
-    color:#000;
-
-}
-
-.modal .modal-headeragend {
-    border-bottom: none;
-    position: relative;
-    background-color: #cc5027;
-    color:#000;
-
-}
-
-.modal .modal-header .btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 9px;
-    background-color: #f7aa47;
-}
-
-.modal .modal-headeragend .btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 9px;
-    background-color: #cc5027;
-}
-
-.btn-default {
-    border-color: transparent;
-}
-
-.btn-default:hover {
-    background-color: none;    
-    border-color: transparent;
-}
-
-
-.modal .modal-footer {
-    border-top: none;
-    padding-top: 20px;
-}
-
-.modal .modal-footer .btn-group > .btn:first-child{
-    border-bottom-left-radius: 0;
-}
-
-.modal .modal-footer .btn-group > .btn:last-child{
-    border-bottom-right-radius: 0;
-}
-
-.blackletter {
-    color: #000;
-    margin-top: -11px;
-    margin-left: 40px;
-}
-
-.check {
-    width: 5vmin;
-    height: 5vmin;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-top: 0 !important;
-}
-.line {
-    position: absolute;
-    border-top: 1px solid #f7aa47;
-    top:0;
-    width: 100%;
-    margin-top: 10px;
-    z-index: +1;
-}
-.glyphicon {
-    color:white;
-}
-
-.modal-title{
-    color: white;
-}
-
-
-
-.seta{
-    background-image: url("../../img/lista/triangulo_lista.png");
-    position: absolute;
-    padding: 10px 30px;
-    top: 78px;
-    background-color: rgba(255,255,255,0); 
-    background-repeat: no-repeat;
-}
-.setainicial {
-    background-image: url("../../img/menu/triangulo_inicial.png");
-    position: absolute;
-    padding: 10px 30px;
-    top: 78px;
-    left:12px;
-    background-color: rgba(255,255,255,0); 
-    background-repeat: no-repeat;
-}
-.setaagend {
-    background-image: url("../../img/agenda/triangulo.png");
-    position: absolute;
-    padding: 10px 30px;
-    top: 75px;
-    background-color: rgba(255,255,255,0); 
-    background-repeat: no-repeat;
-    z-index: +1;
-}
-.casa{
-    background-image: url("../../img/lista/casa.png");
-    position: absolute;
-    padding-top: 21px;
-    padding-bottom: 28px;
-    padding-right: 47px;
-    margin-top: -40px;
-    left: 0;
-    background-color: rgba(255,255,255,0); 
-    background-repeat: no-repeat;
-}
-.trabalho {
-    background-image: url("../../img/lista/trabalho.png");
-    position: absolute;
-    padding: 25px 25px;
-    left: 0;
-    margin-top: -39px;
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-}
-.natal {
-    background-image: url("../../img/lista/natal.png");
-    position: absolute;
-    padding: 25px 22px;
-    left: 0;
-    margin-top: -39px;
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-}
-.prenda {
-    background-image: url("../../img/lista/aniversario.png");
-    position: absolute;
-    padding: 25px 40px;
-    left: -16px;
-    margin-top: -40px;
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-}
-
-.ovo {
-    background-image: url("../../img/lista/ovobranco.png");
-    position: absolute;
-    padding: 25px 22px;
-    left: 0;
-    margin-top: -39px;
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-    background-size: 44px 50px;
-}
-
-.ferias {
-    background-image: url("../../img/lista/praiabranca.png");
-    position: absolute;
-    padding: 25px 32px;
-    left: -5px;
-    margin-top: -39px;
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-}
-
-.roupa {
-    background-image: url("../../img/lista/camisolabranca.png");
-    position: absolute;
-    padding: 25px 22px;
-    left: 0;
-    margin-top: -39px;
-    background-color: rgba(255,255,255,0);
-    background-repeat: no-repeat;
-}
-
-input[type=checkbox]{
-    margin: 6px 66px 0;
-}
-
-.dropdown-menu {
-    margin-top: -20px;
-}
-li .dropdown{
-    margin-top: -6vmin;
-    position: absolute;
-    margin-left: -6vmin;
-}
-
-.dropownsize {
-    font-size: 5vmin;
-} 
-
-.agend{
-    text-align: left;
-}
-
-.DayPicker-Weekday {
-    padding: 5.6vmin;
-    color: black;
-}
-
-.DayPicker-Caption {
-    width: 100%;
-    display: table-caption;
-    height: 5.5rem;
-    text-align: left;
-    background-color: #f47828;
-    font-size: 20px;
-    padding: 15px 60px;
-    margin-top: -13px;
-    color: white;
-    font-weight: bold;
-}
-
-.DayPicker-Day {
-    border: 1px solid #f47828;
-    text-align: left;
-}
-
-.DayPicker-NavBar {
-    padding: 12px 3.5rem;
-}
-
-.DayPicker {
-    margin-left: 3.6vmin;
-}
-.date {
-    margin-top: 25px;
-    font-size: 20px;
-}
-.classhr{
-    margin-bottom: 12px;
-    margin-top: 2px;
-    border-top: 2px solid #f47828;
-}
-.list-group-agend {
-    padding-left: 25px;
-}
-.DayPicker-NavButton {
-    width: 3.5vmin;
-    height: 6.5vmin;
-}
-.DayPicker-NavButton--prev {
-    left: 2vmin;
-    top: 1.5vmin;
-}
-.DayPicker-NavButton--next {
-    right: 2vmin;
-    top: 1.5vmin;
-}
+/*media-queries*/
 @media screen and (max-width: 374px)
 {
     .DayPicker-Weekday {
@@ -1016,6 +1125,19 @@ li .dropdown{
     }
     .DayPicker {
         margin-left: 3.9vmin;
+    }
+    .btn-perfil {
+        background-image: url("../../img/perfil/perfil_10.png");
+        left: 18px;
+        margin-top: 2.5vmin;
+    }
+}
+@media screen and (max-width: 424px)
+{
+    .btn-perfil {
+        background-image: url("../../img/perfil/perfil_20.png");
+        left: 22px;
+        margin-top: 2vmin;
     }
 }
 
@@ -1028,9 +1150,4 @@ li .dropdown{
     margin-left: 2.9vmin;
     }
 }
-.specification {
-    margin-top: 12vmin;
-}
-label {
-    color:#f7aa47;
-}
+/*final media-queries*/

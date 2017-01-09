@@ -8,8 +8,8 @@ export function requestContacts() {
     }
 }
 
-export function receiveContacts(json) {
-    // console.info('action receiveContacts', json);
+export function receiveLists(json) {
+    console.info('action receiveLists', json);
     return {
         type: types.RECEIVE_CONTACTS,
         items: json
@@ -58,13 +58,23 @@ export function postContact(data) {
     }
 }
 
-export function fetchContacts() {
+export function fetchLists() {
+    console.log('fetchLists');
     return function(dispatch) {
         dispatch(requestContacts());
-
-        return fetch(`http://catblog.myddns.me/api/contacts`)
+        return fetch(`http://localhost:8000/api/lists`)
             .then(response => response.json())
-            .then(json => dispatch(receiveContacts(json)));
+            .then(json => dispatch(receiveLists(json)));
+    }
+}
+
+export function fetchProducts() {
+    console.log('fetchLists');
+    return function(dispatch) {
+        dispatch(requestContacts());
+        return fetch(`http://localhost:8000/api/products`)
+            .then(response => response.json())
+            .then(json => dispatch(receiveLists(json)));
     }
 }
 

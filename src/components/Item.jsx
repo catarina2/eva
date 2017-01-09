@@ -99,8 +99,19 @@ class Item extends Component {
         }
         if(this.state.showpanel === true)
         {
-            if(item.produtos)
+            if(item.produtos === '[]')
+                {
+                    console.log(item.produtos, 'lalalalallalalnull');
+                    panel = <div className="panel-body">
+                                Não existem produtos nesta lista 
+                            <div className="col-xs-12">
+                                <button className="btn btn-produto" onClick={this.handleModal}></button>
+                            </div>
+                            </div>;
+                }
+            else
             {
+                console.log(item.produtos, 'lalalalallalal');
                     panel = (<div className="panel-body">
                             {item.produtos.map((item, key) => {
                             return (
@@ -121,15 +132,6 @@ class Item extends Component {
                             </div>
                         </div>
                     </div>);
-                }
-                else
-                {
-                    panel = <div className="panel-body">
-                                Não existem produtos nesta lista 
-                            <div className="col-xs-12">
-                                <button className="btn btn-produto" onClick={this.handleModal}></button>
-                            </div>
-                            </div>;
                 }
         }
         var icon;

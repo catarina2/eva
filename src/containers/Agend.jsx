@@ -44,14 +44,12 @@ class Agend extends Component{
                 weekday[4] = "Quinta-feira";
                 weekday[5] = "Sexta-feira";
                 weekday[6] = "Sábado";
-        var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : (fullDate.getMonth()+1);
         var n = weekday[fullDate.getDay()];
         var currentDate = fullDate.getDate()+n;
         let currentDate1=null;
         if(this.state.selectedDay!==null)
         {
             var fullDate1 = this.state.selectedDay;
-            var twoDigitMonth1 = ((fullDate1.getMonth().length+1) === 1)? (fullDate1.getMonth()+1) : (fullDate1.getMonth()+1);
             var n1 = weekday[fullDate1.getDay()];
             currentDate1 = fullDate1.getDate()+n1;
         }
@@ -380,7 +378,7 @@ class Agend extends Component{
     }
        _submit(event) {
         event.preventDefault();
-        var ref;
+
         var users = {name:this.state.family.name, color:"red"};
         var listusers = [];
         listusers.push(users);
