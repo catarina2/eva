@@ -1,6 +1,5 @@
 import React from 'react';
 import {Component} from 'react';
-import {connect} from 'react-redux';
 
 class Personas extends Component {
     constructor(props) {
@@ -9,25 +8,25 @@ class Personas extends Component {
     }
 
     render() {
-        var item = this.props.item;
+        var user = this.props.user;
         var persona;
-        if(item.color === "red")
+        if(user.color === "red")
         {
             persona=<input type="button" className='btn btn-personared'/>;
         }
-        if(item.color === "blue")
+        if(user.color === "blue")
         {
             persona=<input type="button" className='btn btn-personablue'/>
         }
-        if(item.color === "green")
+        if(user.color === "green")
         {
             persona=<input type="button" className='btn btn-personagreen'/>
         }
-        if(item.color === "pink")
+        if(user.color === "pink")
         {
             persona=<input type="button" className='btn btn-personapink'/>
         }
-        if(item.color === "bluedark")
+        if(user.color === "bluedark")
         {
             persona=<input type="button" className='btn btn-personabluedark'/>
         }
@@ -42,13 +41,6 @@ class Personas extends Component {
 }
 
 Personas.propTypes = {
-    item: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired
 }
-
-const mapStateToProps = (state, ownProps) => {
-    // console.info('container App mapStateToProps', state, ownProps);
-    return state.contacts;
-}
-
-
-export default connect(mapStateToProps)(Personas);
+export default Personas;

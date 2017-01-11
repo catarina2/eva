@@ -1,14 +1,15 @@
 import React from 'react';
 import Item from './Item';
 
-const List = ({items}) => {
-    console.log(items, 'items list');
+const List = ({lists}) => {
+   // console.log(items, 'items list');
         return (
             <ul className="list-group">
-                {items.map((item, key) => {
+                {lists.map((list, key) => {
+                    //console.log(item, 'item lalalalalall');
                     return (
                         <li key={key}>
-                                <Item item={item} key={key}/>
+                                <Item list={list} key={key}/>
                         </li>
                     
                     );
@@ -19,7 +20,7 @@ const List = ({items}) => {
 };
 
 List.propTypes = {
-    items: React.PropTypes.array.isRequired
+    lists: React.PropTypes.array.isRequired
 };
 
 export default List;

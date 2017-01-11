@@ -1,9 +1,12 @@
 import React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux';
-import Produto from './Produto';
-import Personas from './Personas';
+import Produtos from './Produtos';
+import User from './User';
 import {Link} from 'react-router';
+
+import {fetchListUsers} from '../actions';
+import {fetchListProducts} from '../actions';
 
 class Item extends Component {
     constructor(props) {
@@ -18,8 +21,15 @@ class Item extends Component {
         }
     }
 
+     componentDidMount() {
+          //console.log(this.props.item, 'componentDidMount');
+        const {dispatch} = this.props;
+        dispatch(fetchListUsers(this.props.list.id));
+        dispatch(fetchListProducts(this.props.list.id));
+    }
+
     render() {
-        var item = this.props.item;
+        var list = this.props.list;
         var panel = null;
         var showmodal;
         if(this.state.showModal === true)
@@ -97,101 +107,61 @@ class Item extends Component {
                 </div>
             );
         }
+
         if(this.state.showpanel === true)
         {
-            if(item.produtos.length === 0)
-                {
-                    panel = <div className="panel-body">
-                                <h4>Adicione o primeiro produto à lista</h4>
-                            <div className="col-xs-12">
-                                <button className="btn btn-produto" onClick={this.handleModal}></button>
-                            </div>
-                            </div>;
-                }
-            else
-            {
-                    panel = (<div className="panel-body">
-                            {item.produtos.map((item, key) => {
-                            return (
-                                <div>
-                                    <div className="row">
-                                        <div className="col-xs-12">
-                                            <li key={key} className="list-group-item">
-                                                        <Produto item={item}/>
-                                            </li>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                        <div className="row">
-                            <div className="col-xs-12">
-                                <button className="btn btn-produto" onClick={this.handleModal}></button>
-                            </div>
-                        </div>
-                    </div>);
-                }
+            panel = <Produtos id={list.id} />;
         }
         var icon;
-        if(item.icon === "casa"){
+        if(list.icon === "casa"){
                     icon= <button className="btn casa"></button>;
         }
-        else if (item.icon === "trabalho")
+        else if (list.icon === "trabalho")
         {
                     icon= <button className="btn trabalho"></button>;
         }
-        else if (item.icon === "natal")
+        else if (list.icon === "natal")
         {
                     icon= <button className="btn natal"></button>;
         }
-        else if (item.icon === "prenda")
+        else if (list.icon === "prenda")
         {
                     icon= <button className="btn prenda"></button>;
         }
-        else if (item.icon === "ovo")
+        else if (list.icon === "ovo")
         {
                     icon= <button className="btn ovo"></button>;
         }
-        else if (item.icon === "ferias")
+        else if (list.icon === "ferias")
         {
                     icon= <button className="btn ferias"></button>;
         }
-        else if (item.icon === "roupa")
+        else if (list.icon === "roupa")
         {
                     icon= <button className="btn roupa"></button>;
         }
 
         return (
-                                <div className="panel panel-primary" >
-                                    <div className="panelrow">
-                                        <div className="panel-heading ">
-                                            <div onClick={this.handleClick}>
-                                                <h3 className="list"><b>{item.name}</b></h3>
-                                                {icon}
-                                            </div>
-                                            <input type="button" className='btn btn-personas'/>
-                                        <ul className="list-group-horizontal">
-                                                
-                                                {item.users.map((item, key) => {
-                                                    return (
-                                                            <div className="row">
-                                                                    <li key={key} className="list-margin">
-                                                                            <Personas item={item}/>
-                                                                    </li>
-                                                            </div>
-                                                    );
-                                                })}
-                                            </ul>
-                                        </div>
-                                        
-                                    </div>
-                                     {panel}
-                                     {showmodal}
+                    <div className="panel panel-primary" >
+                        <div className="panelrow">
+                            <div className="panel-heading ">
+                                <div onClick={this.handleClick}>
+                                    <h3 className="list"><b>{list.name}</b></h3>
+                                    {icon}
                                 </div>
+                                <input type="button" className='btn btn-personas'/>
+                                <User id={list.id}/>
+                            </div>
+                            
+                        </div>
+                         {panel}
+                         {showmodal}
+                    </div>
         );
     }
 
     handleClick(){
+        //console.log('handleClick');
         var css = (this.state.showpanel === false) ? true : false;
         this.setState({showpanel:css});
     }
@@ -217,12 +187,12 @@ class Item extends Component {
 }
 
 Item.propTypes = {
-    item: React.PropTypes.object.isRequired
+    list: React.PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
     // console.info('container App mapStateToProps', state, ownProps);
-    return state.contacts;
+    return state.lists;
 }
 
 

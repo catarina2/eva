@@ -66,7 +66,7 @@ Inicioeva.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     // console.info('container List mapStateToProps', state, ownProps);
-    return state.contacts;
+    return state.lists;
 }
 
 export default connect(mapStateToProps)(Inicioeva);

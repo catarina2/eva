@@ -14,15 +14,16 @@ class Produto extends Component {
     render() {
         var item = this.props.item;
         var panel, cheched, line = null;
+        console.log(item);
         if(this.state.unline === true)
         {
             line = <hr className="line" />;
-            panel =<h4 className="blackletter" onClick={this.handleClickProdut}>{item.name}</h4>;
+            panel =<h4 className="blackletter" onClick={this.handleClickProdut}>{item.title}</h4>;
             cheched =<input type="checkbox" className="check" onClick={this.handleClick} checked/>;
         }
         else
         {
-            panel =<h4 className="blackletter" onClick={this.handleClickProdut}>{item.name}</h4>;
+            panel =<h4 className="blackletter" onClick={this.handleClickProdut}>{item.title}</h4>;
             cheched =  <input type="checkbox" className="check" onClick={this.handleClick}/>;
         }
         if(this.state.showModal)
@@ -42,7 +43,7 @@ class Produto extends Component {
                                     <div className="col-xs-6">
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <h4 className="specification">{item.name}</h4>
+                                            <h4 className="specification">{item.title}</h4>
                                         </div>
                                     </div>
                                     </div>
@@ -67,7 +68,7 @@ class Produto extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label>{item.desc}</label>
+                                            <label>{item.description}</label>
                                         </div>
                                     </div>
                                     <div className="modal-footer">
@@ -114,10 +115,4 @@ Produto.propTypes = {
     item: React.PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => {
-    // console.info('container App mapStateToProps', state, ownProps);
-    return state.contacts;
-}
-
-
-export default connect(mapStateToProps)(Produto);
+export default Produto;

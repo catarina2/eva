@@ -134,7 +134,7 @@ Perfil.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     // console.info('container List mapStateToProps', state, ownProps);
-    return state.contacts;
+    return state.perfil;
 }
 
 export default connect(mapStateToProps)(Perfil);

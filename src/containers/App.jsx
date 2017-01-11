@@ -16,7 +16,7 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     // console.info('container App mapStateToProps', state, ownProps);
-    return state.contacts;
+    return state.lists;
 }
 
 export default connect(mapStateToProps)(App);

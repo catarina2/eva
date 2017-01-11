@@ -7,7 +7,7 @@ import {fetchLists} from '../actions';
 
 class List extends Component {
     componentDidMount() {
-        console.log('componentdidMount');
+        //console.log('componentdidMount');
         const {dispatch} = this.props;
         dispatch(fetchLists());
     }
@@ -50,7 +50,7 @@ class List extends Component {
     }
 
     render() {
-        console.log(this.props.items, 'lista do martinho');
+        //console.log(this.props.items, 'lista do martinho');
         var showNav;
         var showmodal;
 
@@ -84,8 +84,8 @@ class List extends Component {
                                          <input type="button" className="btn btn-smlist" />
                                     </div>
                                     <div className="col-xs-10 hamburguer">
-                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3> <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
+                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3> <span className="caret"></span></a>
+                                        <ul className="dropdown-menu" role="menu">
                                             <li className="dropdown"><h3 className="dropownsize" onClick={this.handleModal}><b>Nova Lista</b></h3></li>
                                         </ul>
                                     </div>
@@ -257,7 +257,7 @@ class List extends Component {
                     </div>
                 </header>
                 <section>
-                            <ListComponent items={this.state.lc} />
+                            <ListComponent lists={this.props.lists} />
                 </section>
                 <footer>
                     <div className="container">
@@ -416,12 +416,12 @@ class List extends Component {
 }
 
 List.propTypes = {
-    items: PropTypes.array
+    lists: PropTypes.array
 }
 
 const mapStateToProps = (state, ownProps) => {
     // console.info('container List mapStateToProps', state, ownProps);
-    return state.contacts;
+    return state.lists;
 }
 
 export default connect(mapStateToProps)(List);
