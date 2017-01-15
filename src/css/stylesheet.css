@@ -62,8 +62,17 @@ section {
     width: 100%;
 }
 
-
-
+.display {
+    display: inline-flex;
+}
+.display1 {
+    display: inline-flex;
+    margin-left: 82%;
+    padding-left: 0%;
+}
+.cc-selector {
+    width: 10vmin;
+}
 .cc-selector input{
     margin:0;padding:0;
     -webkit-appearance:none;
@@ -193,6 +202,15 @@ section {
 .glyphicon {
     color:white;
 }
+.glyphicon-trash {
+    color: #f7aa47;
+}
+.glyphicon-edit {
+    color: #f7aa47;
+}
+.glist {
+    color: white;
+}
 
 .modal-title{
     color: white;
@@ -233,7 +251,7 @@ li .dropdown{
 
 .list-group-horizontal {
     display: -webkit-box;
-    margin-left: 50%;
+    margin-left: 35%;
 }
 
 .list-margin {
@@ -508,6 +526,29 @@ header .btn-list {
     background-repeat: no-repeat;
 }
 
+.btn-delete {
+     background-color: #f7AA47;
+     position: absolute;
+     right: 0;
+     margin-top: -14vmin;
+     padding-left: 0vmin;
+}
+
+.btn-delete1 {
+     background-color: #f7AA47;
+     position: absolute;
+     right: 6vmin;
+     margin-top: -14vmin;
+     padding-left: 0vmin;
+}
+
+.btn-removeprodut {
+     background-color: #fff;
+     position: absolute;
+     right: 0;
+     margin-top: -14vmin;
+}
+
 .btn-personared {
     background-image: url("../../img/lista/persona_vermelho20.png");
     background-color: rgba(255,255,255,0);
@@ -579,6 +620,10 @@ header .btn-list {
     height: 0px;
 }
 
+.icon {
+    margin-right: 4vmin;
+}
+
 .btn-icon1 {
     background-image: url("../../img/lista/trabalho_selecionar.png");
     background-color: rgba(255,255,255,0);
@@ -635,35 +680,120 @@ header .btn-list {
     right: 84px;
 }
 
-.btn-user1 {
+.btn-userbluedark {
     background-image: url("../../img/lista/persona_azulescuro30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
 }
-.btn-user2 {
+.btn-usergreen {
     background-image: url("../../img/lista/persona_verde30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
-    margin-left: -70px;
 }
-.btn-user3 {
+.btn-userblue {
     background-image: url("../../img/lista/persona_azul30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
-    margin-left: -70px;
 }
-.btn-user4 {
+.btn-userpink {
     background-image: url("../../img/lista/persona_rosa30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
+}
+.btn-userred {
+    background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+}
+.userred {
+    background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guserred{
+    background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.userpink {
+    background-image: url("../../img/lista/persona_rosa30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guserpink{
+    background-image: url("../../img/lista/persona_rosa30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.usergreen {
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.gusergreen{
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.userblue {
+    background-image: url("../../img/lista/persona_azul30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guserblue{
+    background-image: url("../../img/lista/persona_azul30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
 }
 
 
@@ -722,7 +852,7 @@ header .btn-list {
     background-image: url("../../img/lista/photo80.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 35px 45px;
+    padding: 45px 45px;
     margin-left: 29%;
     margin-top: 10%;
 }
@@ -763,6 +893,8 @@ header .btn-list {
     position: relative;
     background-color: #f7aa47;
     color:#000;
+    height: 60px;
+    border-radius: 3px;
 
 }
 
@@ -1238,3 +1370,41 @@ header .btn-perfil {
     }
 }
 /*final media-queries*/
+#upload-file-selector {
+    display:none;   
+}
+
+.image{
+    width: 17vmin;
+    margin-left: 2vmin;
+    margin-top: 5vmin;
+    transform: rotate(-48deg);
+}
+.imagediv{
+    border: 3px solid #f7aa47;
+    transform: rotate(47deg);
+    height: 24vmin;
+    width: 24vmin;
+    margin-left: 5vmin;
+    margin-top: 5vmin;
+}
+.btn-upload {
+     background-image: url("../../img/lista/para_foto80.png");
+     background-repeat:no-repeat;
+     width: 25vmin;
+     padding: 6.5vmin;
+    margin-left: 29%;
+    margin-top: 10%;
+}
+.modal-footer .btn+.btn {
+    padding-left: 0vmin; 
+    margin-left: 0px;
+}
+.btn-confirm {
+    margin-right: 16%;
+    padding-left: 5vmin;
+    padding-right: 5vmin;
+    border-radius: inherit;
+    background-color:#f7aa47;
+    color: white;
+}

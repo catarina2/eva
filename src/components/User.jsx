@@ -7,7 +7,7 @@ import { each } from 'lodash';
 class User extends Component {
     render() {
         var { users } = this.props;
-
+        console.log(users, 'users');
         let lis = [];   
         each(users, (user, key) => {
             lis.push(
