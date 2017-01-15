@@ -47,21 +47,6 @@ export function requestContacts() {
 
 // THUNKS
 
-export function putContact(id, data) {
-   // console.log(id, data);
-
-    return function(dispatch) {
-        return fetch(`http://catblog.myddns.me/api/contacts/${id}`, {
-                method: 'PUT',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json());
-    }
-}
-
 export function fetchLists() {
     //console.log('fetchLists');
     return function(dispatch) {
@@ -136,6 +121,19 @@ export function postLists(lists) {
             })
             .then(response => response.json())
             .then(json => dispatch(receivelists(json)));
+    }
+}
+
+
+export function editLists(id, lists) {
+    return function(dispatch) {
+    //console.info(lists, 'postLists');
+        return fetch(`http://develop.mmota.online/api/lists/${id}`, {
+                method: "PUT",
+                body: lists
+            })
+            .then(response => response.json())
+            .then(json => dispatch(receivelists(id, json)));
     }
 }
 
