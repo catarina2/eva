@@ -34,13 +34,24 @@ h1, h2, h3 {
     color: #FFFFFF;
 }
 
+.font-large{
+    font-size: 5vmax;
+    color: white;
+}
+.font-medium{
+    font-size: 3vmax;
+    color: white;
+}
+.glyphicon-remove{
+    font-size: 3vmax;
+}
 h1 { 
     font-size: 6.5vmin;
     font-family:"Caviar dreams bold"; 
 }
 h2 { font-size: 8vmin }
 h3 { font-size: 5vmin }
-h4 { font-size: 5vmin}
+h4 { font-size: 3vmax; color: gray }
 h5 { font-size: 4vmin }
 h6 { font-size: 4.75vmin }
 
@@ -50,15 +61,29 @@ ul {
 }
 
 footer {
-    width: 100%;
+   width: 100%;
     position: relative;
+    bottom: -15vmin;
 }
 
 .container {
     width: 100%;
 }
 
+.header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vmin;
+    height: 20vmin;
+    z-index: 2;
+    text-align: left;
+}
+
 section {
+   position: relative;
+    top: 16vmin;
+    z-index: 1;
     width: 100%;
 }
 
@@ -156,9 +181,21 @@ section {
 }
 
 .panel-heading {
-    padding: 10px 43px;
+    padding: 4vmin 0 0 0;
     background-color: #f7aa47;
     width: 100%;
+}
+
+.panel-title{
+    display: inline-block;
+    vertical-align: top;
+    width: 23vmax;
+    padding-left: 5px;
+}
+.user-container{
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .btn-default {
@@ -172,8 +209,8 @@ section {
 
 
 .modal .modal-footer {
-    border-top: none;
-    padding-top: 20px;
+        border-top: none;
+    padding: 20px 0 10px 0;
 }
 
 .modal .modal-footer .btn-group > .btn:first-child{
@@ -212,6 +249,9 @@ section {
     color: white;
 }
 
+.modal-body{
+    padding: 15px 15px 0 20px;
+}
 .modal-title{
     color: white;
 }
@@ -241,22 +281,13 @@ li .dropdown{
 } 
 
 .specification {
-    margin-top: 12vmin;
+     margin-bottom: 7vmin;
+    margin-top: 7vmin;
 }
 
 .list-group-horizontal-eva {
     display: -webkit-box;
     top: -19px;
-}
-
-.list-group-horizontal {
-    display: -webkit-box;
-    margin-left: 35%;
-}
-
-.list-margin {
-    margin: 0px 6px;
-    margin-top: -33px;
 }
 
 .list-group-item {
@@ -387,74 +418,60 @@ li .dropdown{
 
 /*css para Lista de Compras*/
 .header-list{
-    width: 100%;
-    height: 80px;
-    background: #f08143;
-    position: relative;
-    text-align: left;
+    background-image: url("../../img/lista/banner_laranja.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
-
+header .menu-title{
+    padding: 10px 0;
+    display: inline-block;
+    float: left;
+}
 header .btn-list {
-    font-size: 25px;
+    font-size: 4.5vmax;
     background-color: #f08143;
-    position: absolute;
-    margin: -47px -70px;
-    right: 84px;
+    padding: 2.5vmin 1vmin 0 0;
+    position: relative;
+    float: right;
 }
 
 .row .panelrow {
-    background-c0lor: #f08143;
+    background-color: #f08143;
 } 
 .list {
     padding-left: 15px;
-    width: 53%;
 }
 /*Linhas de água para cada lista*/
+.list-icon{
+    position: relative;
+    width: 60px;
+    height: 51px;
+    left: 0;
+    vertical-align: bottom;
+}
 .casa{
     background-image: url("../../img/lista/casa.png");
-    position: absolute;
-    padding-top: 21px;
-    padding-bottom: 28px;
-    padding-right: 47px;
-    margin-top: -40px;
-    left: 0;
     background-color: rgba(255,255,255,0); 
     background-repeat: no-repeat;
 }
 .trabalho {
     background-image: url("../../img/lista/trabalho.png");
-    position: absolute;
-    padding: 25px 25px;
-    left: 0;
-    margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
 .natal {
     background-image: url("../../img/lista/natal.png");
-    position: absolute;
-    padding: 25px 22px;
-    left: 0;
-    margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
 .prenda {
     background-image: url("../../img/lista/aniversario.png");
-    position: absolute;
-    padding: 25px 40px;
-    left: -16px;
-    margin-top: -40px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
 
 .ovo {
     background-image: url("../../img/lista/ovobranco.png");
-    position: absolute;
-    padding: 25px 22px;
-    left: 0;
-    margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     background-size: 44px 50px;
@@ -462,20 +479,12 @@ header .btn-list {
 
 .ferias {
     background-image: url("../../img/lista/praiabranca.png");
-    position: absolute;
-    padding: 25px 32px;
-    left: -5px;
-    margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
 
 .roupa {
     background-image: url("../../img/lista/camisolabranca.png");
-    position: absolute;
-    padding: 25px 22px;
-    left: 0;
-    margin-top: -39px;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 }
@@ -486,9 +495,9 @@ header .btn-list {
     background-repeat: no-repeat;
     width: 70px;
     height: 65px;
-    padding: 0px 36px;
     position: absolute;
     left: 0;
+    top: 6vmin;
 }
 
 .logolist {
@@ -499,8 +508,8 @@ header .btn-list {
     width: 85px;
     height: 30px;
     position: absolute;
-    right: 34%;
-    margin-top: 33px;
+    left: 12vmax;
+    margin-top: 18vmin;
 }
 
 .btn-newlist {
@@ -514,13 +523,15 @@ header .btn-list {
     right: 20%;
 }
 
+.personas{
+    border: 0 solid transparent;
+    width: 29px;
+    height: 27px;
+}
+
 .btn-personas {
-    font-size: 15px;
-    background-color: #f08143;
-    position: absolute;
-    margin-top: -35px;
-    margin-left: 37%;
-    padding: 22px 22px;
+    position: relative;
+    display: inline-block;
     background-image: url("../../img/lista/adicionar_personas25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
@@ -548,48 +559,44 @@ header .btn-list {
      right: 0;
      margin-top: -14vmin;
 }
+.list-group-horizontal {
+    position: relative;
+    display: inline-block;
+    -webkit-padding-start: 0px;
+}
+.list-margin{
+    display: inline-block;
+}
 
 .btn-personared {
-    background-image: url("../../img/lista/persona_vermelho20.png");
+    background-image: url("../../img/lista/persona_vermelho25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 15px;
-    height: 0px;
 }
 .btn-personablue {
-    background-image: url("../../img/lista/persona_azul20.png");
+    background-image: url("../../img/lista/persona_azul25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 15px;
-    height: 0px;
 }
 .btn-personapink {
-    background-image: url("../../img/lista/persona_rosa20.png");
+    background-image: url("../../img/lista/persona_rosa25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 15px;
-    height: 0px;
 }
 .btn-personagreen {
-    background-image: url("../../img/lista/persona_verde20.png");
+    background-image: url("../../img/lista/persona_verde25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 15px;
-    height: 0px;
 }
 .btn-personabluedark {
-    background-image: url("../../img/lista/persona_azulescuro20.png");
+    background-image: url("../../img/lista/persona_azulescuro25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 15px;
-    height: 0px;
 }
 .btn-personaredsmall {
     background-image: url("../../img/lista/persona_vermelho10.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 9px 9px;
-    height: 0px;
 }
 .btn-personabluesmall {
     background-image: url("../../img/lista/persona_azul10.png");
@@ -852,9 +859,10 @@ header .btn-list {
     background-image: url("../../img/lista/photo80.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 45px 45px;
-    margin-left: 29%;
-    margin-top: 10%;
+    padding: 35px 45px;
+    position: absolute;
+    margin-left: 3vmax;
+    margin-top: 5vmin;
 }
 
 .seta{
@@ -867,20 +875,21 @@ header .btn-list {
 }
 
 .logolistsmall {
-    text-align: center;
     background-image: url("../../img/lista/evapequeno_lista.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 15px 44px;
-    position: absolute;
-    right: 23%;
-    margin-top: 10px;
+    width: 71px;
+    height: 24px;
+    position: relative;
+    left: 7vmax;
+    float: left;
+    align-self: auto;
     background-size: 50px 15px;
 }
 
 .modal .modal-dialog {
-    margin: 10vmin;
-    margin-top: 11vmin;
+     margin: 10vmin;
+    margin-top: 28vmin;
     border-color: #f7aa47;
 
 }
@@ -907,24 +916,24 @@ header .btn-list {
 }
 
 label {
-    color:#f7aa47;
+    margin-left: 2vmax;
+    font-size: 2.5vmax;
+    color: #f7aa47;
 }
 /*final do css para Lista de Compras*/
 
 /*css para Agenda Familiar*/
 .header-agend {
-    width: 100%;
-    height: 80px;
-    background: #cc5027;
-    position: relative;
-    text-align: left;
+    background-image: url("../../img/agenda/banner_laranja_escuro.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 header .btn-agend1 {
-    font-size: 25px;
     background-color: #cc5027;
-    position: absolute;
-    margin: -47px -4vmin;
-    right: 12vmin;
+    font-size: 4.5vmax;
+    padding: 2.5vmin 1vmin 0 0;
+    position: relative;
+    float: right;
 }
 
 .btn-newagend {
@@ -942,9 +951,11 @@ header .btn-agend1 {
     background-image: url("../../img/agenda/agenda_70.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 35px 45px;
+    height: 66px;
+    width: 66px;
     position: absolute;
-    left:0;
+    left: 0;
+    top: 6vmin;
 }
 
 /*Parte do calendário*/
@@ -954,29 +965,31 @@ header .btn-agend1 {
 }
 
 .DayPicker-Caption {
-    width: 100%;
+    width: 100vmin;
     display: table-caption;
-    height: 5.5rem;
+    height: 15vmin;
     text-align: left;
     background-color: #f47828;
-    font-size: 20px;
-    padding: 15px 60px;
-    margin-top: -13px;
+    font-size: 4vmax;
+    margin-top: -4vmin;
+    padding: 2vmin 0 0 7vmax;
     color: white;
     font-weight: bold;
 }
-
+.DayPicker-Weekday {
+    padding: 5.6vmin 0 5.6vmin 0;
+}
 .DayPicker-Day {
     border: 1px solid #f47828;
     text-align: left;
 }
 
 .DayPicker-NavBar {
-    padding: 12px 3.5rem;
+
 }
 
 .DayPicker {
-    margin-left: 3.6vmin;
+
 }
 
 .date {
@@ -1070,7 +1083,7 @@ header .btn-agend1 {
     top: 75px;
     background-color: rgba(255,255,255,0); 
     background-repeat: no-repeat;
-    z-index: +1;
+    z-index: 1;
 }
 
 .agend{
@@ -1084,15 +1097,15 @@ header .btn-agend1 {
 }
 
 .logoagend {
-    text-align: center;
+     text-align: center;
     background-image: url("../../img/agenda/eva.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     width: 85px;
     height: 30px;
     position: absolute;
-    right: 34%;
-    margin-top: 42px;
+    left: 12vmax;
+    margin-top: 16vmin;
 }
 
 .logolistsmallagend {
@@ -1339,12 +1352,6 @@ header .btn-perfil {
 /*media-queries*/
 @media screen and (max-width: 374px)
 {
-    .DayPicker-Weekday {
-        padding: 5.7vmin;
-    }
-    .DayPicker {
-        margin-left: 3.9vmin;
-    }
     .btn-perfil {
         background-image: url("../../img/perfil/perfil_10.png");
         left: 18px;
@@ -1360,15 +1367,6 @@ header .btn-perfil {
     }
 }
 
-@media screen and (min-width: 425px)
-{
-    .DayPicker-Weekday {
-        padding: 5.66vmin;
-    }
-    .DayPicker {
-    margin-left: 2.9vmin;
-    }
-}
 /*final media-queries*/
 #upload-file-selector {
     display:none;   

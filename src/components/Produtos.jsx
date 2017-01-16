@@ -92,7 +92,7 @@ class Produtos extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <button className="btn btn-default" onClick={this.handleModal}> <span className="glyphicon glyphicon-remove"></span></button>
-                                <h4 className="modal-title"><b>Novo Produto</b></h4>
+                                <h4 className="modal-title "><b>Novo Produto</b></h4>
 
                             </div>
                             <div className="modal-body">
@@ -178,11 +178,11 @@ class Produtos extends Component {
             each(produtos, (item, key) => {
                 lis.push(
                         <div>
-                            <div key={key} className="row">
-                                <div className="col-xs-12">
-                                    <li className="list-group-item">
+                            <div className="row">
+                                <div key={key} className="col-xs-12">
+                                    <div className="list-group-item">
                                                 <Produto item={item} key={key}/>
-                                    </li>
+                                    </div>
                                 </div>
                             </div>
                         </div>

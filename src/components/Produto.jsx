@@ -70,7 +70,7 @@ class Produto extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <button className="btn btn-default" onClick={this.handleClickProdut}> <span className="glyphicon glyphicon-remove"></span></button>
-                                <h4 className="modal-title"><b>Especificações</b></h4>
+                                <h4 className="modal-title font-medium"><b>Especificações</b></h4>
 
                             </div>
                             <div className="modal-body">

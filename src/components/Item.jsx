@@ -53,31 +53,31 @@ class Item extends Component {
         }
         var icon;
         if(list.icon === "casa"){
-                    icon= <button className="btn casa"></button>;
+                    icon= <button className="btn casa list-icon"></button>;
         }
         else if (list.icon === "trabalho")
         {
-                    icon= <button className="btn trabalho"></button>;
+                    icon= <button className="btn trabalho list-icon"></button>;
         }
         else if (list.icon === "natal")
         {
-                    icon= <button className="btn natal"></button>;
+                    icon= <button className="btn natal list-icon"></button>;
         }
         else if (list.icon === "prenda")
         {
-                    icon= <button className="btn prenda"></button>;
+                    icon= <button className="btn prenda list-icon"></button>;
         }
         else if (list.icon === "ovo")
         {
-                    icon= <button className="btn ovo"></button>;
+                    icon= <button className="btn ovo list-icon"></button>;
         }
         else if (list.icon === "ferias")
         {
-                    icon= <button className="btn ferias"></button>;
+                    icon= <button className="btn ferias list-icon"></button>;
         }
         else if (list.icon === "roupa")
         {
-                    icon= <button className="btn roupa"></button>;
+                    icon= <button className="btn roupa list-icon"></button>;
         }
 
         var showedit;
@@ -183,17 +183,20 @@ class Item extends Component {
             );
         }
 
+
         return (
                     <div className="panel panel-primary" >
                         <div className="panelrow">
-                            <div className="panel-heading ">
-                                <div onClick={this.handleClick}>
-                                    <h3 className="list"><b>{list.name}</b></h3>
-                                    {icon}
+                            <div className="panel-heading">
+                            {icon}
+                                <div className="panel-title" onClick={this.handleClick}>
+                                    <div className="list font-medium"><b>{list.name}</b></div> 
                                 </div>
+                            <div className="user-container">
                                 <button className="btn btn-delete1" onClick={this.handleEdit}> <span className="glyphicon glyphicon-edit glist"></span></button>
                                 <button className="btn btn-delete" onClick={this.handleDelete}> <span className="glyphicon glyphicon-trash glist"></span></button>
                                 <User id={list.id}/>
+                            </div>
                             </div>
                             
                         </div>
@@ -277,12 +280,26 @@ class Item extends Component {
 
         var user ="1,2";
         var FormData = require('form-data');
-        const form = new FormData();
-        form.append('name', this.refs.name.value);
-        form.append('icon', ref);
-        form.append('users', user);
+        //const form = new FormData();
+        //form.append('name', this.refs.name.value);
+        //form.append('icon', ref);
+        //form.append('users', user);
+
+
+
+        const form = document.querySelector('#form');
+        const data = new FormData(form);
+
+        let obj = {};
+        for (var pair of data.entries()) {
+            obj[pair[0]] = pair[1];
+        }
+
+        console.log(obj, 'edição');
+
+
         const {dispatch} = this.props;
-        dispatch(editLists(this.props.list.id, form));
+        dispatch(editLists(this.props.list.id, obj));
     }
 
     _submit(event) {
@@ -305,7 +322,7 @@ Item.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.info('container App mapStateToProps', state, ownProps);
+    console.info('container LIST mapStateToProps', state, ownProps);
     return state.lists;
 }
 

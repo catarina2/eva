@@ -7,7 +7,7 @@ import { each } from 'lodash';
 class User extends Component {
     render() {
         var { users } = this.props;
-        console.log(users, 'users');
+        console.log(users, 'userssdfsdgdg');
         let lis = [];   
         each(users, (user, key) => {
             lis.push(
@@ -32,7 +32,7 @@ User.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //console.info('container App mapStateToProps', state, ownProps);
+    console.info(state.userslist, 'container USER mapStateToProps', state, ownProps);
     return {users: state.userslist.userslist[ownProps.id]};
 }
 

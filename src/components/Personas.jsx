@@ -13,23 +13,23 @@ class Personas extends Component {
         var persona;
         if(user.color === "red")
         {
-            persona=<input type="button" className='btn btn-personared'/>;
+            persona=<input type="button" className='btn btn-personared personas'/>;
         }
         if(user.color === "blue")
         {
-            persona=<input type="button" className='btn btn-personablue'/>
+            persona=<input type="button" className='btn btn-personablue personas'/>
         }
         if(user.color === "green")
         {
-            persona=<input type="button" className='btn btn-personagreen'/>
+            persona=<input type="button" className='btn btn-personagreen personas'/>
         }
         if(user.color === "pink")
         {
-            persona=<input type="button" className='btn btn-personapink'/>
+            persona=<input type="button" className='btn btn-personapink personas'/>
         }
         if(user.color === "bluedark")
         {
-            persona=<input type="button" className='btn btn-personabluedark'/>
+            persona=<input type="button" className='btn btn-personabluedark personas'/>
         }
         return (
             <div>

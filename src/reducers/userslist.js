@@ -10,9 +10,8 @@ const users = (state = initState, action) => {
             console.info('reducer RECEIVE_USER_BY_ID', state, action);
 
             var temp = {};
-            temp[action.id] = action.userslist;
-            temp = Object.assign(state.userslist, temp)
-
+            temp[action.id] = action.userslist.data;
+            temp = Object.assign(state.userslist, temp);
             return Object.assign({}, state, {
                 userslist: temp
             });
