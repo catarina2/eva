@@ -284,8 +284,8 @@ class Agend extends Component{
                     </div>
                 </header>
                 <section>
-                        <div className="row">
-                            <div className="col-xs-12">
+                        <div className="">
+                            <div className="">
                                 <DayPicker selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) } onDayClick={ this.handleDayClick } />
                             </div>
                         </div>
