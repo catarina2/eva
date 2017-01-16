@@ -9,7 +9,7 @@ class Produtos extends Component {
         super(props)
         this.handleModal = this.handleModal.bind(this);
         this.state = {
-            showModal: false,
+            showModal: false
         }
     }
     render() {
@@ -33,9 +33,9 @@ class Produtos extends Component {
                         <div>
                             <div className="row">
                                 <div key={key} className="col-xs-12">
-                                    <li className="list-group-item">
+                                    <div className="list-group-item">
                                                 <Produto item={item} key={key}/>
-                                    </li>
+                                    </div>
                                 </div>
                             </div>
                         </div>

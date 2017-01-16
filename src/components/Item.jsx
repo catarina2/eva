@@ -114,43 +114,45 @@ class Item extends Component {
         }
         var icon;
         if(list.icon === "casa"){
-                    icon= <button className="btn casa"></button>;
+                    icon= <button className="btn casa list-icon"></button>;
         }
         else if (list.icon === "trabalho")
         {
-                    icon= <button className="btn trabalho"></button>;
+                    icon= <button className="btn trabalho list-icon"></button>;
         }
         else if (list.icon === "natal")
         {
-                    icon= <button className="btn natal"></button>;
+                    icon= <button className="btn natal list-icon"></button>;
         }
         else if (list.icon === "prenda")
         {
-                    icon= <button className="btn prenda"></button>;
+                    icon= <button className="btn prenda list-icon"></button>;
         }
         else if (list.icon === "ovo")
         {
-                    icon= <button className="btn ovo"></button>;
+                    icon= <button className="btn ovo list-icon"></button>;
         }
         else if (list.icon === "ferias")
         {
-                    icon= <button className="btn ferias"></button>;
+                    icon= <button className="btn ferias list-icon"></button>;
         }
         else if (list.icon === "roupa")
         {
-                    icon= <button className="btn roupa"></button>;
+                    icon= <button className="btn roupa list-icon"></button>;
         }
 
         return (
                     <div className="panel panel-primary" >
                         <div className="panelrow">
                             <div className="panel-heading ">
-                                <div onClick={this.handleClick}>
-                                    <h3 className="list"><b>{list.name}</b></h3>
-                                    {icon}
+                                {icon}
+                                <div className="panel-title" onClick={this.handleClick}>
+                                    <div className="list font-medium"><b>{list.name}</b></div>
                                 </div>
-                                <input type="button" className='btn btn-personas'/>
-                                <User id={list.id}/>
+                                <div className="user-container">
+                                    <input type="button" className='btn btn-personas personas'/>
+                                    <User id={list.id}/>
+                                </div>
                             </div>
                             
                         </div>
