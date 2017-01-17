@@ -1,4 +1,4 @@
-/************** CSS GLOBAL *******************/
+/*css geral*/
 @font-face
 {
     font-family:"Caviar dreams";
@@ -20,7 +20,7 @@
 }
 
 html, body {
-    font-size:14px;;
+    font-size:3vmin;;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -33,6 +33,7 @@ html, body {
 h1, h2, h3 {
     color: #FFFFFF;
 }
+
 .font-large{
     font-size: 5vmax;
     color: white;
@@ -60,7 +61,7 @@ ul {
 }
 
 footer {
-    width: 100%;
+   width: 100%;
     position: relative;
     bottom: -15vmin;
 }
@@ -68,6 +69,7 @@ footer {
 .container {
     width: 100%;
 }
+
 .header{
     position: absolute;
     top: 0;
@@ -77,16 +79,25 @@ footer {
     z-index: 2;
     text-align: left;
 }
+
 section {
-    position: relative;
+   position: relative;
     top: 16vmin;
     z-index: 1;
     width: 100%;
-
 }
 
-
-
+.display {
+    display: inline-flex;
+}
+.display1 {
+    display: inline-flex;
+    margin-left: 82%;
+    padding-left: 0%;
+}
+.cc-selector {
+    width: 10vmin;
+}
 .cc-selector input{
     margin:0;padding:0;
     -webkit-appearance:none;
@@ -173,17 +184,34 @@ section {
     padding: 4vmin 0 0 0;
     background-color: #f7aa47;
     width: 100%;
+    min-height: 65px;
+
 }
+
 .panel-title{
     display: inline-block;
     vertical-align: top;
-    width: 23vmax;
-    padding-left: 5px;
+    width: 19vmax;
 }
-.user-container{
+.list-info-container{
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+}
+.content-container{
+
+}
+.user-container, .edit-container{
     margin-left: 10px;
     display: inline-block;
     vertical-align: top;
+}
+.edit-container{
+    float: right;
+    margin: 0 10px 0 20px;
+}
+.clear-container{
+    clear: right;
 }
 .btn-default {
     border-color: transparent;
@@ -196,7 +224,7 @@ section {
 
 
 .modal .modal-footer {
-    border-top: none;
+        border-top: none;
     padding: 20px 0 10px 0;
 }
 
@@ -226,6 +254,16 @@ section {
 .glyphicon {
     color:white;
 }
+.glyphicon-trash {
+    color: #f7aa47;
+}
+.glyphicon-edit {
+    color: #f7aa47;
+}
+.glist {
+    color: white;
+}
+
 .modal-body{
     padding: 15px 15px 0 20px;
 }
@@ -258,15 +296,15 @@ li .dropdown{
 } 
 
 .specification {
-    margin-bottom: 7vmin;
-    margin-top: 7vmin;
+    margin-bottom: 18vmin;
+    margin-top: 15vmin;
+    padding-left: 7vmin;
 }
 
 .list-group-horizontal-eva {
     display: -webkit-box;
     top: -19px;
 }
-
 
 .list-group-item {
     border: none;
@@ -392,9 +430,9 @@ li .dropdown{
     top: 215px;
 }
 
-/************************** final do css para Página Inicial ***************************/
+/*final do css para Página Inicial*/
 
-/************************** CSS para Lista de Compras **********************************/
+/*css para Lista de Compras*/
 .header-list{
     background-image: url("../../img/lista/banner_laranja.png");
     background-size: 100% 100%;
@@ -413,8 +451,14 @@ header .btn-list {
     float: right;
 }
 
+.menu-perfil {
+    color: white;
+    padding: 5vmin 0 0 6vmin;
+    font-size: 5vmin;
+}
+
 .row .panelrow {
-    background-c0lor: #f08143;
+    background-color: #f08143;
 } 
 .list {
     padding-left: 15px;
@@ -423,7 +467,8 @@ header .btn-list {
 .list-icon{
     position: relative;
     width: 60px;
-    height: 51px;
+    height: 52px;
+    padding: 0;
     left: 0;
     vertical-align: bottom;
 }
@@ -476,7 +521,6 @@ header .btn-list {
     position: absolute;
     left: 0;
     top: 6vmin;
-
 }
 
 .logolist {
@@ -501,17 +545,39 @@ header .btn-list {
     position: absolute;
     right: 20%;
 }
+
 .personas{
     border: 0 solid transparent;
     width: 29px;
     height: 27px;
 }
+
 .btn-personas {
     position: relative;
     display: inline-block;
     background-image: url("../../img/lista/adicionar_personas25.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
+}
+
+.btn-delete {
+    background-color: #f7AA47;
+    padding:0;
+    font-size: 15px;
+    clear: right;
+}
+
+.btn-delete1 {
+    background-color: #f7AA47;
+    padding: 0 10px 0 0;
+    font-size: 15px;
+}
+
+.btn-removeprodut {
+     background-color: #fff;
+     position: absolute;
+     right: 0;
+     margin-top: -14vmin;
 }
 .list-group-horizontal {
     position: relative;
@@ -581,6 +647,10 @@ header .btn-list {
     height: 0px;
 }
 
+.icon {
+    margin-right: 4vmin;
+}
+
 .btn-icon1 {
     background-image: url("../../img/lista/trabalho_selecionar.png");
     background-color: rgba(255,255,255,0);
@@ -637,35 +707,120 @@ header .btn-list {
     right: 84px;
 }
 
-.btn-user1 {
+.btn-userbluedark {
     background-image: url("../../img/lista/persona_azulescuro30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
 }
-.btn-user2 {
+.btn-usergreen {
     background-image: url("../../img/lista/persona_verde30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
-    margin-left: -70px;
 }
-.btn-user3 {
+.btn-userblue {
     background-image: url("../../img/lista/persona_azul30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
-    margin-left: -70px;
 }
-.btn-user4 {
+.btn-userpink {
     background-image: url("../../img/lista/persona_rosa30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
     height: 0px;
+}
+.btn-userred {
+    background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+}
+.userred {
+    background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guserred{
+    background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.userpink {
+    background-image: url("../../img/lista/persona_rosa30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guserpink{
+    background-image: url("../../img/lista/persona_rosa30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.usergreen {
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.gusergreen{
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.userblue {
+    background-image: url("../../img/lista/persona_azul30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guserblue{
+    background-image: url("../../img/lista/persona_azul30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
 }
 
 
@@ -730,6 +885,17 @@ header .btn-list {
     margin-top: 5vmin;
 }
 
+.btn-photoperfil {
+    background-image: url("../../img/perfil/avatar1_60.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 35px 45px;
+    position: absolute;
+    margin-left: 10vmax;
+    margin-top: 8vmin;
+    background-size: 20vmin;
+}
+
 .seta{
     background-image: url("../../img/lista/triangulo_lista.png");
     position: absolute;
@@ -753,8 +919,8 @@ header .btn-list {
 }
 
 .modal .modal-dialog {
-    margin: 10vmin;
-    margin-top: 28vmin;
+     margin: 10vmin;
+    margin-top: 16vmin;
     border-color: #f7aa47;
 
 }
@@ -767,6 +933,8 @@ header .btn-list {
     position: relative;
     background-color: #f7aa47;
     color:#000;
+    height: 60px;
+    border-radius: 3px;
 
 }
 
@@ -865,12 +1033,14 @@ header .btn-agend1 {
     height: 6.5vmin;
 }
 .DayPicker-NavButton--prev {
+    background-image: url("../../img/agenda/agend_seta_esq.png");
     left: 2vmin;
-    top: 1.5vmin;
+    top: 1vmin;
 }
 .DayPicker-NavButton--next {
+    background-image: url("../../img/agenda/agend_seta_dir.png");
     right: 2vmin;
-    top: 1.5vmin;
+    top: 1vmin;
 }
 /*final parte do calendário*/
 
@@ -946,7 +1116,7 @@ header .btn-agend1 {
     top: 75px;
     background-color: rgba(255,255,255,0); 
     background-repeat: no-repeat;
-    z-index: +1;
+    z-index: 1;
 }
 
 .agend{
@@ -960,7 +1130,7 @@ header .btn-agend1 {
 }
 
 .logoagend {
-    text-align: center;
+     text-align: center;
     background-image: url("../../img/agenda/eva.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
@@ -1021,9 +1191,14 @@ header .btn-agend1 {
 
 /*css para Definições*/
 .header-perfil {
+   background-image: url("../../img/perfil/banner_azul.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.section-perfil {
     width: 100%;
-    height: 80px;
-    background: #6cc5d3;
+    height: 62px;
+    background: #6483A1;
     position: relative;
     text-align: left;
 }
@@ -1165,11 +1340,11 @@ section .perfil{
 }
 
 header .btn-perfil {
-    font-size: 25px;
+    font-size: 4.5vmax;
     background-color: #6cc5d3;
-    position: absolute;
-    margin: -13vmin 71vmin;
-    right: 84px;
+    position: relative;
+    padding: 2.5vmin 9vmin 0 0;
+    float: right;
 }
 /*final do css para Definições*/
 
@@ -1215,11 +1390,30 @@ header .btn-perfil {
 /*media-queries*/
 @media screen and (max-width: 374px)
 {
+    .panel-title{
+        width: 15vmax;
+    }
     .btn-perfil {
         background-image: url("../../img/perfil/perfil_10.png");
         left: 18px;
         margin-top: 2.5vmin;
     }
+    .font-medium{
+        font-size: 2.5vmax;
+    }
+    .font-large{
+        font-size: 4vmax;
+    }
+    header .btn-list {
+        font-size: 4vmax;
+    }
+    .list{
+        padding-left: 10px;
+    }
+    .list-icon{
+        float: left;
+    }
+
 }
 @media screen and (max-width: 424px)
 {
@@ -1228,5 +1422,45 @@ header .btn-perfil {
         left: 22px;
         margin-top: 2vmin;
     }
+
 }
+
 /*final media-queries*/
+#upload-file-selector {
+    display:none;   
+}
+
+.image{
+    width: 17vmin;
+    margin-left: 2vmin;
+    margin-top: 5vmin;
+    transform: rotate(-48deg);
+}
+.imagediv{
+    border: 3px solid #f7aa47;
+    transform: rotate(47deg);
+    height: 24vmin;
+    width: 24vmin;
+    margin-left: 5vmin;
+    margin-top: 5vmin;
+}
+.btn-upload {
+     background-image: url("../../img/lista/para_foto80.png");
+     background-repeat:no-repeat;
+     width: 25vmin;
+     padding: 6.5vmin;
+    margin-left: 29%;
+    margin-top: 10%;
+}
+.modal-footer .btn+.btn {
+    padding-left: 0vmin; 
+    margin-left: 0px;
+}
+.btn-confirm {
+    margin-right: 16%;
+    padding-left: 5vmin;
+    padding-right: 5vmin;
+    border-radius: inherit;
+    background-color:#f7aa47;
+    color: white;
+}

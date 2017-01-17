@@ -48,7 +48,7 @@ class Perfil extends Component {
                                              <input type="button" className="btn btn-smlist" />
                                         </div>
                                         <div className="col-xs-10 hamburguer">
-                                            <h3><b>Lista de Comptas</b></h3>
+                                            <h3><b>Lista de Compras</b></h3>
                                         </div>
                                         </div>
                                 </Link>
@@ -80,13 +80,13 @@ class Perfil extends Component {
                  </div>;
 
         }
+       // console.log(this.props.children, "filhos");
         return (
             <div>
-                <header className="header-perfil">
+                <header className="header header-perfil">
                     <div className="container">
-                        <h2>Definições</h2>
+                        <div className="menu-title font-large">Definições</div>
                         {showNav}
-                        <button className="btn setaperfil"></button>
                     </div>
                 </header>
                 <section>

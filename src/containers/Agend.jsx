@@ -275,11 +275,12 @@ class Agend extends Component{
         }
         return (
             <div>
-                <header className=" header header-agend">
+                <header className="header header-agend">
                     <div className="container">
                     <div className="menu-title font-large"><b>Agenda </b>Familiar</div>
                         {showNav}
                         {showmodal}
+                    
                     </div>
                 </header>
                 <section>

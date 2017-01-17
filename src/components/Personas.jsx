@@ -9,6 +9,7 @@ class Personas extends Component {
 
     render() {
         var user = this.props.user;
+        //console.log(user, 'sersdfsdg');
         var persona;
         if(user.color === "red")
         {
