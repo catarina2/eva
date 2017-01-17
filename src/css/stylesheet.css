@@ -184,8 +184,23 @@ section {
     padding: 4vmin 0 0 0;
     background-color: #f7aa47;
     width: 100%;
+    min-height: 65px;
+
 }
 
+.panel-title{
+    display: inline-block;
+    vertical-align: top;
+    width: 19vmax;
+}
+.list-info-container{
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+}
+.content-container{
+
+<<<<<<< HEAD
 .panel-title{
     display: inline-block;
     vertical-align: top;
@@ -193,11 +208,25 @@ section {
     padding-left: 5px;
 }
 .user-container{
+=======
+}
+.user-container, .edit-container{
+>>>>>>> dev
     margin-left: 10px;
     display: inline-block;
     vertical-align: top;
 }
+<<<<<<< HEAD
 
+=======
+.edit-container{
+    float: right;
+    margin: 0 10px 0 20px;
+}
+.clear-container{
+    clear: right;
+}
+>>>>>>> dev
 .btn-default {
     border-color: transparent;
 }
@@ -452,7 +481,12 @@ header .btn-list {
 .list-icon{
     position: relative;
     width: 60px;
+<<<<<<< HEAD
     height: 51px;
+=======
+    height: 52px;
+    padding: 0;
+>>>>>>> dev
     left: 0;
     vertical-align: bottom;
 }
@@ -545,6 +579,7 @@ header .btn-list {
 }
 
 .btn-delete {
+<<<<<<< HEAD
      background-color: #f7AA47;
      position: relative;
      left: 55%;
@@ -556,6 +591,18 @@ header .btn-list {
      position: relative;
      left: 65%;
      margin-top: -6vmin;
+=======
+    background-color: #f7AA47;
+    padding:0;
+    font-size: 15px;
+    clear: right;
+}
+
+.btn-delete1 {
+    background-color: #f7AA47;
+    padding: 0 10px 0 0;
+    font-size: 15px;
+>>>>>>> dev
 }
 
 .btn-removeprodut {
@@ -1018,12 +1065,14 @@ header .btn-agend1 {
     height: 6.5vmin;
 }
 .DayPicker-NavButton--prev {
+    background-image: url("../../img/agenda/agend_seta_esq.png");
     left: 2vmin;
-    top: 1.5vmin;
+    top: 1vmin;
 }
 .DayPicker-NavButton--next {
+    background-image: url("../../img/agenda/agend_seta_dir.png");
     right: 2vmin;
-    top: 1.5vmin;
+    top: 1vmin;
 }
 /*final parte do calendário*/
 
@@ -1373,11 +1422,33 @@ header .btn-perfil {
 /*media-queries*/
 @media screen and (max-width: 374px)
 {
+<<<<<<< HEAD
+=======
+    .panel-title{
+        width: 15vmax;
+    }
+>>>>>>> dev
     .btn-perfil {
         background-image: url("../../img/perfil/perfil_10.png");
         left: 18px;
         margin-top: 2.5vmin;
     }
+    .font-medium{
+        font-size: 2.5vmax;
+    }
+    .font-large{
+        font-size: 4vmax;
+    }
+    header .btn-list {
+        font-size: 4vmax;
+    }
+    .list{
+        padding-left: 10px;
+    }
+    .list-icon{
+        float: left;
+    }
+
 }
 @media screen and (max-width: 424px)
 {
@@ -1386,8 +1457,12 @@ header .btn-perfil {
         left: 22px;
         margin-top: 2vmin;
     }
+
+<<<<<<< HEAD
+=======
 }
 
+>>>>>>> dev
 /*final media-queries*/
 #upload-file-selector {
     display:none;   

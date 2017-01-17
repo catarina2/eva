@@ -24,24 +24,36 @@ class Item extends Component {
         this.noconfirm = this.noconfirm.bind(this);
         this._submit = this._submit.bind(this);
         this._submitEdit = this._submitEdit.bind(this);
+<<<<<<< HEAD
         
         this.state = {
             showpanel: false,
             produtos: null,
             showModalEdit:false, 
+=======
+
+        this.state = {
+            showpanel: false,
+            produtos: null,
+            showModalEdit: false,
+>>>>>>> dev
             checked1: false,
             checked2: false,
             checked3: false,
             checked4: false,
             checked5: false,
             checked6: false,
+<<<<<<< HEAD
             confirmdelete:false,
+=======
+            confirmdelete: false,
+>>>>>>> dev
             msg: null
         }
     }
 
-     componentDidMount() {
-          //console.log(this.props.item, 'componentDidMount');
+    componentDidMount() {
+        //console.log(this.props.item, 'componentDidMount');
         const {dispatch} = this.props;
         dispatch(fetchListUsers(this.props.list.id));
         dispatch(fetchListProducts(this.props.list.id));
@@ -51,6 +63,7 @@ class Item extends Component {
         var list = this.props.list;
         var panel = null;
 
+<<<<<<< HEAD
        // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
         if(this.state.msg === "OK")
         {
@@ -90,34 +103,90 @@ class Item extends Component {
         else if (list.icon === "roupa")
         {
                     icon= <button className="btn roupa list-icon"></button>;
+=======
+        // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
+        if (this.state.msg === "OK") {
+            this.state.confirmdelete = false;
+            this.state.msg = null;
+            //setTimeout(() => {this.setState({confirmdelete: false, msg: null})}, 500);
+        }
+
+        if (this.state.showpanel === true) {
+            panel = <Produtos id={list.id}/>;
+        }
+        var icon;
+        if (list.icon === "casa") {
+            icon = <button className="btn casa list-icon"></button>;
+        }
+        else if (list.icon === "trabalho") {
+            icon = <button className="btn trabalho list-icon"></button>;
+        }
+        else if (list.icon === "natal") {
+            icon = <button className="btn natal list-icon"></button>;
+        }
+        else if (list.icon === "prenda") {
+            icon = <button className="btn prenda list-icon"></button>;
+        }
+        else if (list.icon === "ovo") {
+            icon = <button className="btn ovo list-icon"></button>;
+        }
+        else if (list.icon === "ferias") {
+            icon = <button className="btn ferias list-icon"></button>;
+        }
+        else if (list.icon === "roupa") {
+            icon = <button className="btn roupa list-icon"></button>;
+>>>>>>> dev
         }
 
         var showedit;
         //console.log(this.state.showModalEdit);
+<<<<<<< HEAD
         if(this.state.showModalEdit)
         {
              showedit = (
+=======
+        if (this.state.showModalEdit) {
+            showedit = (
+>>>>>>> dev
                 <div className="modal">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
+<<<<<<< HEAD
                                 <button className="btn btn-default" onClick={this.handleEdit}> <span className="glyphicon glyphicon-remove"></span></button>
+=======
+                                <button className="btn btn-default" onClick={this.handleEdit}><span
+                                    className="glyphicon glyphicon-remove"></span></button>
+>>>>>>> dev
                                 <h4 className="modal-title"><b>Lista {list.name}</b></h4>
 
                             </div>
                             <div className="modal-body">
+<<<<<<< HEAD
                                 <form id="form" method="POST" onSubmit={this._submitEdit}  encType="multipart/form-data">
+=======
+                                <form id="form" method="POST" onSubmit={this._submitEdit} encType="multipart/form-data">
+>>>>>>> dev
                                     <div className="row">
                                         <div className="col-xs-1">
                                             <button type="button" className="btn btn-edit"></button>
                                         </div>
                                         <div className="col-xs-10">
+<<<<<<< HEAD
                                              <h4 >Nome da Lista</h4>
+=======
+                                            <h4 >Nome da Lista</h4>
+>>>>>>> dev
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
+<<<<<<< HEAD
                                             <input type="text" className="form-control" ref="name" name="name" defaultValue={list.name} />
+=======
+                                            <input type="text" className="form-control" ref="name" name="name"
+                                                   defaultValue={list.name}/>
+>>>>>>> dev
                                         </div>
                                     </div>
                                     <div className="row">
@@ -132,11 +201,19 @@ class Item extends Component {
                                         <div className="col-xs-1">
                                         </div>
                                         <div className="col-xs-10 display">
+<<<<<<< HEAD
                                          
                                         </div>
                                     </div>
                                     <div className="row">
                                        <div className="col-xs-12">
+=======
+
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-12">
+>>>>>>> dev
                                         </div>
                                     </div>
                                     <div className="row">
@@ -145,6 +222,41 @@ class Item extends Component {
                                         </div>
                                         <div className="col-xs-10">
                                             <h4>Alterar Icon</h4>
+<<<<<<< HEAD
+=======
+                                        </div>
+                                    </div>
+                                    <div className="row cc-selector display">
+                                        <div className="col-xs-2 icon">
+                                            <input id="icon1" type="radio" name="icon1" ref="icon1" value="trabalho"/>
+                                            <label className="icon-cc btn-icon1" htmlFor="icon1"
+                                                   onClick={this.handleiconclick1}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                            <input id="icon2" type="radio" name="icon2" ref="icon2" value="natal"/>
+                                            <label className="icon-cc btn-icon2" htmlFor="icon2"
+                                                   onClick={this.handleiconclick2}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                            <input id="icon3" type="radio" name="icon3" ref="icon3" value="prenda"/>
+                                            <label className="icon-cc btn-icon3" htmlFor="icon3"
+                                                   onClick={this.handleiconclick3}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                            <input id="icon4" type="radio" name="icon4" ref="icon4" value="ovo"/>
+                                            <label className="icon-cc btn-icon4" htmlFor="icon4"
+                                                   onClick={this.handleiconclick4}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                            <input id="icon5" type="radio" name="icon5" ref="icon5" value="ferias"/>
+                                            <label className="icon-cc btn-icon5" htmlFor="icon5"
+                                                   onClick={this.handleiconclick5}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                            <input id="icon6" type="radio" name="icon6" ref="icon6" value="roupa"/>
+                                            <label className="icon-cc btn-icon6" htmlFor="icon6"
+                                                   onClick={this.handleiconclick6}></label>
+>>>>>>> dev
                                         </div>
                                     </div>
                                     <div className="row cc-selector display">
@@ -185,8 +297,12 @@ class Item extends Component {
                                             <div className="col-xs-2">
                                                 <button type="submit" className="btn submit"></button>
                                             </div>
+                                        </div>
                                     </div>
+<<<<<<< HEAD
                                     </div>
+=======
+>>>>>>> dev
                                 </form>
                             </div>
                         </div>
@@ -195,6 +311,7 @@ class Item extends Component {
             );
         }
 
+<<<<<<< HEAD
          if(this.state.confirmdelete)
         {
                 var showconfirm;
@@ -211,6 +328,24 @@ class Item extends Component {
                                         <button className="btn btn-confirm" onClick={this.confirmdelete}>Sim</button>
                                         <button className="btn btn-confirm" onClick={this.noconfirm}>Não</button> 
                                     </div>
+=======
+        if (this.state.confirmdelete) {
+            var showconfirm;
+            showconfirm = (
+                <div className="modal">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h4 className="modal-title"><b>Lista {list.name}</b></h4>
+                            </div>
+                            <div className="modal-body">
+                                <h4>Deseja apagar esta lista?</h4>
+
+                                <div className="modal-footer">
+                                    <button className="btn btn-confirm" onClick={this.confirmdelete}>Sim</button>
+                                    <button className="btn btn-confirm" onClick={this.noconfirm}>Não</button>
+                                </div>
+>>>>>>> dev
                             </div>
                         </div>
                     </div>
@@ -220,6 +355,7 @@ class Item extends Component {
 
 
         return (
+<<<<<<< HEAD
                     <div className="panel panel-primary" >
                         <div className="panelrow">
                             <div className="panel-heading">
@@ -238,19 +374,189 @@ class Item extends Component {
                          {panel}
                          {showedit}
                          {showconfirm}
+=======
+            <div className="panel panel-primary">
+                <div className="panelrow">
+                    <div className="panel-heading">
+                        {icon}
+
+                            <div className="panel-title" onClick={this.handleClick}>
+                                <div className="list font-medium"><b>{list.name}</b></div>
+                            </div>
+                            <div className="list-info-container">
+                                <div className="user-container">
+                                    <User id={list.id}/>
+                                </div>
+                                <div className="edit-container">
+                                    <button className="btn btn-delete1" onClick={this.handleEdit}><span
+                                        className="glyphicon glyphicon-edit glist"></span></button>
+                                    <button className="btn btn-delete" onClick={this.handleDelete}><span
+                                        className="glyphicon glyphicon-trash glist"></span></button>
+                                </div>
+                            </div>
+                            <div className="clear-container"></div>
+
+>>>>>>> dev
                     </div>
+
+                </div>
+                {panel}
+                {showedit}
+                {showconfirm}
+            </div>
         );
     }
 
-    handleClick(){
+    handleClick() {
         //console.log('handleClick');
         var css = (this.state.showpanel === false) ? true : false;
-        this.setState({showpanel:css});
+        this.setState({showpanel: css});
     }
 
-    handleModal(){
+    handleModal() {
         var css = (this.state.showModal === false) ? true : false;
-        this.setState({showModal:css});
+        this.setState({showModal: css});
+    }
+
+    handleDelete() {
+        // console.log(this.props, 'handleDelete');
+        this.setState({confirmdelete: true});
+    }
+
+    confirmdelete() {
+        const {dispatch} = this.props;
+        dispatch(deleteLists(this.props.list.id));
+        setTimeout(() => {
+            this.setState({msg: this.props.msg})
+        }, 500);
+    }
+
+    noconfirm() {
+        this.setState({confirmdelete: false});
+    }
+
+    handleEdit() {
+        //console.log(this.props, 'handleEdit');
+        var css = (this.state.showModalEdit === false) ? true : false;
+        this.setState({showModalEdit: css});
+    }
+
+    handleiconclick1(event) {
+        event.preventDefault();
+        //console.log(this.state.checked1, 'handleiconclick1');
+        var css = (this.state.checked1 === false) ? true : false;
+        this.setState({
+            checked1: css,
+            checked2: false,
+            checked3: false,
+            checked4: false,
+            checked5: false,
+            checked6: false
+        });
+    }
+
+    handleiconclick2(event) {
+        event.preventDefault();
+        var css = (this.state.checked2 === false) ? true : false;
+        this.setState({
+            checked2: css,
+            checked1: false,
+            checked3: false,
+            checked4: false,
+            checked5: false,
+            checked6: false
+        });
+    }
+
+    handleiconclick3(event) {
+        event.preventDefault();
+        var css = (this.state.checked3 === false) ? true : false;
+        this.setState({
+            checked3: css,
+            checked2: false,
+            checked1: false,
+            checked4: false,
+            checked5: false,
+            checked6: false
+        });
+    }
+
+    handleiconclick4(event) {
+        event.preventDefault();
+        var css = (this.state.checked4 === false) ? true : false;
+        this.setState({
+            checked4: css,
+            checked2: false,
+            checked3: false,
+            checked1: false,
+            checked5: false,
+            checked6: false
+        });
+    }
+
+    handleiconclick5(event) {
+        event.preventDefault();
+        var css = (this.state.checked5 === false) ? true : false;
+        this.setState({
+            checked5: css,
+            checked2: false,
+            checked3: false,
+            checked4: false,
+            checked1: false,
+            checked6: false
+        });
+    }
+
+    handleiconclick6(event) {
+        event.preventDefault();
+        var css = (this.state.checked6 === false) ? true : false;
+        this.setState({
+            checked6: css,
+            checked2: false,
+            checked3: false,
+            checked4: false,
+            checked5: false,
+            checked1: false
+        });
+    }
+
+    _submitEdit(event) {
+        event.preventDefault();
+        var ref;
+        var listusers = [];
+        // console.log(this.state, 'icons');
+        if (this.state.checked1) ref = this.refs.icon1.value;
+        else if (this.state.checked2) ref = this.refs.icon2.value;
+        else if (this.state.checked3) ref = this.refs.icon3.value;
+        else if (this.state.checked4) ref = this.refs.icon4.value;
+        else if (this.state.checked5) ref = this.refs.icon5.value;
+        else if (this.state.checked6) ref = this.refs.icon6.value;
+        //console.log(this.refs.name.value, ref);
+
+        var user = "1,2";
+        var FormData = require('form-data');
+        //const form = new FormData();
+        //form.append('name', this.refs.name.value);
+        //form.append('icon', ref);
+        //form.append('users', user);
+
+
+        const form = document.querySelector('#form');
+        const data = new FormData(form);
+
+        let obj = {};
+        for (var pair of data.entries()) {
+            obj[pair[0]] = pair[1];
+        }
+
+        var data1 = [];
+        data1.push(obj);
+
+        // console.log(data1, 'edição');
+
+
+        const {dispatch} = this.props;
+        dispatch(editLists(this.props.list.id, obj));
     }
 
     handleDelete() {
@@ -351,15 +657,15 @@ class Item extends Component {
     _submit(event) {
         event.preventDefault();
         var add = {
-            name: this.refs.name.value, 
+            name: this.refs.name.value,
             quant: this.refs.quant.value,
             desc: this.refs.description.value
         };
-        
-            var l = this.props.item.produtos;
-    
-            l.push(add);
-            this.setState({lc: l, showModal: false});
+
+        var l = this.props.item.produtos;
+
+        l.push(add);
+        this.setState({lc: l, showModal: false});
     }
 }
 
