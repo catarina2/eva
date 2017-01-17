@@ -241,14 +241,17 @@ class Produto extends Component {
         event.preventDefault();
        //console.log(this.refs.title.value, this.refs.quant.value, this.refs.description.value );
 
-        var FormData = require('form-data');
-        const form = new FormData();
-        form.append('title', this.refs.title.value);
-        form.append('quant', this.refs.quant.value);
-        form.append('description', this.refs.description.value);
+        let obj = {};
+
+        obj['title'] = this.refs.title.value;
+        obj['quant'] = this.refs.quant.value;
+        obj['description'] = this.refs.description.value;
+        obj['list_id'] = this.props.item.list_id;
+       // console.log(obj, this.props);
         const {dispatch} = this.props;
-        dispatch(updateProducts(this.props.item.id, form));
+        dispatch(updateProducts(this.props.item.id, obj));
     }
+
 
     handleClick(){
         var underline = (this.state.unline === false) ? true : false;
@@ -291,7 +294,7 @@ Produto.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log('container produto mapStateToProps', state, ownProps.item.id);
+   console.log('container produto mapStateToProps', state, ownProps.item.id);
  //  console.log(state.productslist.productslist[ownProps.item.id]);
  // console.log('produto', state);
     return {msg: state.productslist.msgdelete};

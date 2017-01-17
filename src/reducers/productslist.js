@@ -7,6 +7,8 @@ const initState = {
 
 const productslist = (state = initState, action) => {
     switch (action.type) {
+      case types.RECEIVE_EDIT_PRODUTS:
+        console.log(state, action, 'RECEIVE_DELETE_PRODUTS');
         case types.RECEIVE_DELETE_PRODUTS:
         //console.log(state, action, 'RECEIVE_DELETE_PRODUTS');
         if(action.productslist.msg === 'OK'){

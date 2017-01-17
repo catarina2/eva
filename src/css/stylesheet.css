@@ -200,25 +200,13 @@ section {
 }
 .content-container{
 
-<<<<<<< HEAD
-.panel-title{
-    display: inline-block;
-    vertical-align: top;
-    width: 23vmax;
-    padding-left: 5px;
-}
-.user-container{
-=======
 }
 .user-container, .edit-container{
->>>>>>> dev
     margin-left: 10px;
     display: inline-block;
     vertical-align: top;
 }
-<<<<<<< HEAD
 
-=======
 .edit-container{
     float: right;
     margin: 0 10px 0 20px;
@@ -226,7 +214,6 @@ section {
 .clear-container{
     clear: right;
 }
->>>>>>> dev
 .btn-default {
     border-color: transparent;
 }
@@ -481,12 +468,8 @@ header .btn-list {
 .list-icon{
     position: relative;
     width: 60px;
-<<<<<<< HEAD
-    height: 51px;
-=======
     height: 52px;
     padding: 0;
->>>>>>> dev
     left: 0;
     vertical-align: bottom;
 }
@@ -579,19 +562,6 @@ header .btn-list {
 }
 
 .btn-delete {
-<<<<<<< HEAD
-     background-color: #f7AA47;
-     position: relative;
-     left: 55%;
-     margin-top: -6vmin;
-}
-
-.btn-delete1 {
-     background-color: #f7AA47;
-     position: relative;
-     left: 65%;
-     margin-top: -6vmin;
-=======
     background-color: #f7AA47;
     padding:0;
     font-size: 15px;
@@ -602,7 +572,6 @@ header .btn-list {
     background-color: #f7AA47;
     padding: 0 10px 0 0;
     font-size: 15px;
->>>>>>> dev
 }
 
 .btn-removeprodut {
@@ -1422,12 +1391,9 @@ header .btn-perfil {
 /*media-queries*/
 @media screen and (max-width: 374px)
 {
-<<<<<<< HEAD
-=======
     .panel-title{
         width: 15vmax;
     }
->>>>>>> dev
     .btn-perfil {
         background-image: url("../../img/perfil/perfil_10.png");
         left: 18px;
@@ -1458,11 +1424,8 @@ header .btn-perfil {
         margin-top: 2vmin;
     }
 
-<<<<<<< HEAD
-=======
 }
 
->>>>>>> dev
 /*final media-queries*/
 #upload-file-selector {
     display:none;   

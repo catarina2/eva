@@ -85,6 +85,15 @@ export function receiveproducts(id, json) {
     }
 }
 
+export function receiveeditproducts(id, json) {
+    console.info('action receiveeditproducts', json);
+    return {
+        type: types.RECEIVE_EDIT_PRODUTS,
+        productslist: json,
+        id: id
+    }
+}
+
 export function receivedeleteproduct(idlist, id, json) {
   //  console.info('action receiveproducts', json);
     return {
@@ -139,11 +148,14 @@ export function editLists(id, lists) {
     return function(dispatch) {
     //console.info(lists, 'postLists');
         return fetch(`http://develop.mmota.online/api/lists/${id}`, {
-                method: "PUT",
-                body: lists
+                method: 'PUT',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(lists)
             })
             .then(response => response.json())
-            .then(json => dispatch(receivelists(id, json)));
+           // .then(json => dispatch(receiveeditlists(id, json)));
     }
 }
 
@@ -182,17 +194,16 @@ export function updateProducts(id, product) {
     return function(dispatch) {
     //console.info(product, id, 'postProducts');
         return fetch(`http://develop.mmota.online/api/products/${id}`, {
-                method: "PUT",
-                headers: {
-                    'Accept': '*/*'
+                method: 'PUT',
+                  headers: {
+                    'Content-Type': 'application/json'
                   },
-                  credentials: 'same-origin',
-                body: product
+                body: JSON.stringify(product)
             })
             .then(response =>  {
             console.log('request succeeded with JSON response', product);
         })
-            .then(json => dispatch(receiveproducts(id, json)));
+            .then(json => dispatch(receiveeditproducts(id, json)));
     }
 }
 
