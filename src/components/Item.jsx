@@ -20,6 +20,8 @@ class Item extends Component {
         this.handleiconclick4 = this.handleiconclick4.bind(this);
         this.handleiconclick5 = this.handleiconclick5.bind(this);
         this.handleiconclick6 = this.handleiconclick6.bind(this);
+        this.confirmdelete = this.confirmdelete.bind(this);
+        this.noconfirm = this.noconfirm.bind(this);
         this._submit = this._submit.bind(this);
         this._submitEdit = this._submitEdit.bind(this);
         
@@ -33,6 +35,8 @@ class Item extends Component {
             checked4: false,
             checked5: false,
             checked6: false,
+            confirmdelete:false,
+            msg: null
         }
     }
 
@@ -46,6 +50,14 @@ class Item extends Component {
     render() {
         var list = this.props.list;
         var panel = null;
+
+       // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
+        if(this.state.msg === "OK")
+        {
+            this.state.confirmdelete = false;
+            this.state.msg = null;
+             //setTimeout(() => {this.setState({confirmdelete: false, msg: null})}, 500);
+        }
 
         if(this.state.showpanel === true)
         {
@@ -81,7 +93,7 @@ class Item extends Component {
         }
 
         var showedit;
-        console.log(this.state.showModalEdit);
+        //console.log(this.state.showModalEdit);
         if(this.state.showModalEdit)
         {
              showedit = (
@@ -183,6 +195,29 @@ class Item extends Component {
             );
         }
 
+         if(this.state.confirmdelete)
+        {
+                var showconfirm;
+                showconfirm = (
+                <div className="modal">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                             <div className="modal-header">
+                               <h4 className="modal-title"><b>Lista {list.name}</b></h4>
+                            </div>
+                            <div className="modal-body">
+                                   <h4>Deseja apagar esta lista?</h4>
+                                    <div className="modal-footer">
+                                        <button className="btn btn-confirm" onClick={this.confirmdelete}>Sim</button>
+                                        <button className="btn btn-confirm" onClick={this.noconfirm}>Não</button> 
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
 
         return (
                     <div className="panel panel-primary" >
@@ -193,15 +228,16 @@ class Item extends Component {
                                     <div className="list font-medium"><b>{list.name}</b></div> 
                                 </div>
                             <div className="user-container">
+                                <User id={list.id}/>
                                 <button className="btn btn-delete1" onClick={this.handleEdit}> <span className="glyphicon glyphicon-edit glist"></span></button>
                                 <button className="btn btn-delete" onClick={this.handleDelete}> <span className="glyphicon glyphicon-trash glist"></span></button>
-                                <User id={list.id}/>
                             </div>
-                            </div>
+                             </div>
                             
                         </div>
                          {panel}
                          {showedit}
+                         {showconfirm}
                     </div>
         );
     }
@@ -219,18 +255,25 @@ class Item extends Component {
 
     handleDelete() {
        // console.log(this.props, 'handleDelete');
-         const {dispatch} = this.props;
+       this.setState({confirmdelete: true});
+    }
+    confirmdelete() {
+        const {dispatch} = this.props;
         dispatch(deleteLists(this.props.list.id));
+        setTimeout(() => {this.setState({msg: this.props.msg})}, 500);
+    }
+    noconfirm() {
+        this.setState({confirmdelete: false});
     }
     handleEdit() {
-        console.log(this.props, 'handleEdit');
+        //console.log(this.props, 'handleEdit');
         var css = (this.state.showModalEdit === false) ? true : false;
         this.setState({showModalEdit:css});
     }
 
     handleiconclick1(event) {
         event.preventDefault();
-        console.log(this.state.checked1, 'handleiconclick1');
+        //console.log(this.state.checked1, 'handleiconclick1');
         var css = (this.state.checked1 === false) ? true : false;
         this.setState({checked1:css, checked2:false, checked3:false, checked4:false,checked5:false,checked6:false});
     }
@@ -269,14 +312,14 @@ class Item extends Component {
         event.preventDefault();
         var ref;
         var listusers = [];
-        console.log(this.state, 'icons');
+       // console.log(this.state, 'icons');
         if(this.state.checked1) ref=this.refs.icon1.value;
         else if(this.state.checked2) ref=this.refs.icon2.value;
         else if(this.state.checked3) ref=this.refs.icon3.value;
         else if(this.state.checked4) ref=this.refs.icon4.value;
         else if(this.state.checked5) ref=this.refs.icon5.value;
         else if(this.state.checked6) ref=this.refs.icon6.value;
-        console.log(this.refs.name.value, ref);
+        //console.log(this.refs.name.value, ref);
 
         var user ="1,2";
         var FormData = require('form-data');
@@ -295,7 +338,10 @@ class Item extends Component {
             obj[pair[0]] = pair[1];
         }
 
-        console.log(obj, 'edição');
+        var data1 = [];
+        data1.push(obj);
+
+       // console.log(data1, 'edição');
 
 
         const {dispatch} = this.props;
@@ -322,8 +368,8 @@ Item.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.info('container LIST mapStateToProps', state, ownProps);
-    return state.lists;
+    //console.info('container Item mapStateToProps', state, ownProps);
+    return {msg: state.lists.msgdelete};
 }
 
 

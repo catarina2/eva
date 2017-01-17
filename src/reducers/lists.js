@@ -11,14 +11,12 @@ const lists = (state = initState, action) => {
         //console.info('reducer DELETE_LISTS', state, action);
         var lists = state.lists;
         var list;
-        var lposition;
          each(lists, (item, key) => {
               if(item.id === action.id)
               {
                // console.log(key);
                 list = key;
               }
-             lposition = key;
              });
          //console.log(list, lposition, 'lista a ser removida do state');
          //var temp = state.lists.pop(list);

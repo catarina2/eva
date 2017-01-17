@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import ListComponent from '../components/List';
 import {fetchLists} from '../actions';
 import {postLists, fetchFamilyUsers} from '../actions';
-import { each } from 'lodash';
 
 class List extends Component {
     componentDidMount() {
@@ -173,9 +172,9 @@ class List extends Component {
         {
             var userslist=[];
             
-            var family = this.props.usersfamily.userslist[3];
-            console.log(this.props.usersfamily, this.props.list, 'usersfamily');
-            console.log(family, 'tamanho usersfamily');
+            var family = this.props.users;
+             //console.log(this.props.users, 'usersfamily');
+            //console.log(family, 'tamanho usersfamily');
 
             var fun1, fun2, fun3, fun4, fun5;
             var fun;
@@ -222,7 +221,7 @@ class List extends Component {
                             </div></div>);
             }
             var user1, user2, user3;
-            if(family.lengtj===3)
+            if(family.length===3)
             {
                   usercolor1='user'+family[0].color;
                   usercolor2='user'+family[1].color;
@@ -577,9 +576,9 @@ List.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-   // console.info('container List mapStateToProps', state, ownProps);
-   console.log(state.userslist, 'fgdfxgsdfgdgf users');
-    return {lists: state.lists, usersfamily: state.userslist, msg: state.lists.msgadd, data: state.lists.dataadd};
+    //console.info('container List mapStateToProps', state, ownProps);
+   // console.log(state.users, 'fgdfxgsdfgdgf users');
+    return {lists: state.lists, usersfamily: state.userslist, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.users};
 }
 
 export default connect(mapStateToProps)(List);

@@ -3,8 +3,7 @@ import {Component} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
-import {fetchListUsers} from '../actions';
-        import {fetchListProduct, deleteProducts, updateProducts} from '../actions';
+import {deleteProducts, updateProducts} from '../actions';
 
 class Produto extends Component {
     constructor(props) {
@@ -27,17 +26,14 @@ class Produto extends Component {
     }
 
     render() {
-        console.log(this.props.item, 'produto id');
+        //console.log(this.props.item, 'produto id');
         var item = this.props.item;
         var panel, cheched, line = null;
         //console.log(item, 'produtos');
        //console.log(this.props.msg, 'mensagem apagada com sucesso');
         if(this.state.msg === 'OK') {
-            //console.log('mensagem apagada com sucesso');
-            //this.state.showModal = false;
-           // this.state.confirmdelete= false;
-           // this.state.msg=null;
-           setTimeout(() => {this.setState({showModal: false, confirmdelete: false, msg: null})}, 1000);
+
+           setTimeout(() => {this.setState({showModal: false, confirmdelete: false, msg: null})}, 500);
             
         }
         if(this.state.unline === true)
@@ -57,14 +53,14 @@ class Produto extends Component {
                 var showmodal;
                 var image;
                 if(item.image) {
-                    image =  <div className="imagediv">
+                    image = <div className="imagediv">
                                     <img className= "image" src= {`http://develop.mmota.online/images/${item.image}`} />
                             </div>;
                 }
                 else{
-                    image = (<input type="button" ref="photo" className="btn btn-photo"></input>);
+                    image =(<input type="button" ref="photo" className="btn btn-photo"></input>);
                 }
-                showmodal = (
+                showmodal =(
                 <div className="modal">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -243,7 +239,7 @@ class Produto extends Component {
 
     _submit(event){
         event.preventDefault();
-       console.log(this.refs.title.value, this.refs.quant.value, this.refs.description.value );
+       //console.log(this.refs.title.value, this.refs.quant.value, this.refs.description.value );
 
         var FormData = require('form-data');
         const form = new FormData();

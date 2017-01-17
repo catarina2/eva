@@ -9,19 +9,15 @@ class PerfilComponent extends Component {
         var item = this.props.item;
        // console.log(item.icon, 'item perfil');
         var show;
-        if(item.icon ==='perfil')
-        {
-            show = (<div><Link to={`/definition/per`}><input type='button' className='btn btn-perfil'/><h4 className='perfiltext'>{item.name}</h4></Link></div>);
-        }
-        else if(item.icon ==='seg')
+        if (item.icon ==='perfil') {
+            show = (<div><Link to={`/definition/perfil`}><input type='button' className='btn btn-perfil'/><h4 className='perfiltext'>{item.name}</h4></Link></div>);
+        } else if (item.icon ==='seg')
         {
             show = (<div><input type='button' className='btn btn-seg'/><h4 className='perfiltext'>{item.name}</h4></div>);
-        }
-        else if(item.icon ==='notif')
+        } else if (item.icon ==='notif')
         {
             show = (<div><input type='button' className='btn btn-notif'/><h4 className='perfiltext'>{item.name}</h4></div>);
-        }
-        else if(item.icon ==='account')
+        } else if (item.icon ==='account')
         {
             show = (<div><input type='button' className='btn btn-account'/><h4 className='perfiltext'>{item.name}</h4></div>);
         }

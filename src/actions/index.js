@@ -29,10 +29,10 @@ export function receiveProdutsList(id, json) {
 }
 
 export function receiveUsersFamily(id, json) {
-    //console.info('action receiveUsersFamily', id, json);
+   // console.info('action receiveUsersFamily',id, json);
     return {
         type: types.RECEIVE_USERS_BY_FAMILY,
-        usersfamily: json,
+        users: json, 
         id: id
     }
 }
@@ -102,6 +102,16 @@ export function receivelists(json) {
         lists: json
     }
 }
+
+export function receiveUsers(json) {
+    console.info('action receiveUsers', json);
+    return {
+        type: types.REQUEST_USERS,
+        users: json
+    }
+}
+
+
 
 export function receivelistsdelete(id, json) {
    // console.info('action receivelists', json);
@@ -173,9 +183,15 @@ export function updateProducts(id, product) {
     //console.info(product, id, 'postProducts');
         return fetch(`http://develop.mmota.online/api/products/${id}`, {
                 method: "PUT",
+                headers: {
+                    'Accept': '*/*'
+                  },
+                  credentials: 'same-origin',
                 body: product
             })
-            .then(response => response.json())
+            .then(response =>  {
+            console.log('request succeeded with JSON response', product);
+        })
             .then(json => dispatch(receiveproducts(id, json)));
     }
 }

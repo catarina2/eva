@@ -10,24 +10,28 @@ const productslist = (state = initState, action) => {
         case types.RECEIVE_DELETE_PRODUTS:
         //console.log(state, action, 'RECEIVE_DELETE_PRODUTS');
         if(action.productslist.msg === 'OK'){
-            var products = state.productslist[action.idlist];
-           // console.log(state.productslist, 'produtos da lista');
+            var products = state.productslist[action.idlist].data;
             var product;
-           // console.log(products, 'produtos da lista');
              each(products, (item, key) => {
               if(item.id === action.id)
               {
-               // console.log(key);
                 product = key;
               }
 
              })
-            //console.log(product,'produto para eliminar');
-             //console.log(products.splice(product,1), products);
-             //var x = products.splice(product,1);
-             state.productslist[action.idlist].splice(product, 1);
-            //console.log(state, 'produtos sem o que é para eliminar');
-             var temp = state;
+             products.splice(product, 1);
+            if(products.length === 0){
+              var rv = {};
+              rv["data"] = "List doesn't have products";
+            }
+            else{
+            var rv = {};
+            rv["data"] = products;
+            }
+            var x = {};
+             x[action.idlist] = rv;
+             var temp = Object.assign(state.productslist, x);
+             
             return  Object.assign({}, state, {
                    productslist: temp,
                    msgdelete: action.productslist.msg,
@@ -43,17 +47,38 @@ const productslist = (state = initState, action) => {
              temp = state.productslist;
            }
            else {
-             var temp = state.productslist[action.id];
-             temp.push(action.productslist.data);
-             var x = {};
-             x[action.id] = temp;
-             temp = Object.assign(state.productslist, x);
-             //console.log(temp, 'adicionar');
+                var products;
+                //console.log(state.productslist[action.id].data, 'listasasa');
+                if(state.productslist[action.id].data !== "List doesn't have products")
+                {temp = state.productslist[action.id].data;
+                 //console.log(temp, 'temp produtoslista');
+                 temp.push(action.productslist.data);
+                 //console.log(temp, 'temp produtoslista1');
+                var rv = {};
+                 rv["data"] = temp;
+                 // console.log(rv);
+                 var x = {};
+                 x[action.id] = rv;
+                 products = Object.assign(state.productslist, x);
+               }
+               else {
+                  var r = [];
+                  r[0] = action.productslist.data;
+                  var rv = {};
+                  rv["data"] = r;
+                 // console.log(rv, 'rvprodutos');
+                  var x = {};
+                  x[action.id] = rv;
+                 // console.log(x, 'x produtos');
+                  products = Object.assign(state.productslist, x);
+               }
+            // console.log(products, 'adicionar');
            }
+           
           
           // console.log(temp, 'produtos');
             return Object.assign({}, state, {
-                productslist: temp,
+                productslist: products,
                 msgadd: action.productslist.msg,
                 dataadd: action.productslist.data
             });

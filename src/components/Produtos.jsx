@@ -34,11 +34,11 @@ class Produtos extends Component {
         if(this.props.msgd === 'OK')
         {
            // console.log(this.props, 'podutos quando eliminamos');
-            produtos  = this.props.produtos.productslist.productslist[this.props.id];
+            produtos  = this.props.produtos.productslist[this.props.id].data;
         }
         else {
            // console.log(this.props, 'podutos normal');
-            produtos  = this.props.produtos.productslist[this.props.id];
+            produtos  = this.props.produtos.productslist[this.props.id].data;
         }
         
         var panel;
@@ -161,8 +161,8 @@ class Produtos extends Component {
                 </div>
             );
         } 
-        
-        if(produtos.length === 0)
+        //console.log(produtos, 'produtos da lista');
+        if(produtos === "List doesn't have products")
         {
             panel = (<div className="panel-body">
                         <h4>Adicione o primeiro produto à lista</h4>

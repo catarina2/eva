@@ -6,8 +6,13 @@ const initState = {
 
 const users = (state = initState, action) => {
     switch (action.type) {
+        case types.RECEIVE_USERS_BY_FAMILY:
+        //console.info('reducer RECEIVE_USERS_BY_FAMILY', state, action);
+        return Object.assign({}, state, {
+                users: action.users.data
+            });
         case types.RECEIVE_USERS_BY_LIST:
-            console.info('reducer RECEIVE_USER_BY_ID', state, action);
+            //console.info('reducer RECEIVE_USER_BY_ID', state, action);
 
             var temp = {};
             temp[action.id] = action.userslist.data;
