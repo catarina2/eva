@@ -2,8 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import ListComponent from '../components/List';
-import {fetchLists} from '../actions';
-import {postLists, fetchFamilyUsers} from '../actions';
+import {fetchLists, postLists, fetchFamilyUsers} from '../actions';
 
 class List extends Component {
     componentDidMount() {
@@ -27,6 +26,7 @@ class List extends Component {
         this.handleiconclickred = this.handleiconclickred.bind(this);
         this.handleiconclickblue = this.handleiconclickblue.bind(this);
         this.handleiconclickgreen = this.handleiconclickgreen.bind(this);
+        this.handleiconclickyellow = this.handleiconclickyellow.bind(this);
         this._submit = this._submit.bind(this);
 
         this.state = {
@@ -43,10 +43,12 @@ class List extends Component {
             blue: false,
             green: false,
             red: false,
+            yellow:false,
             cpink: 'userpink',
             cblue: 'userblue',
             cgreen: 'usergreen',
             cred: 'userred',
+            cyellow: 'useryellow',
             msg: null,
             name: null,
             user: null,
@@ -69,10 +71,12 @@ class List extends Component {
            this.state.blue = false;
            this.state.green =  false;
            this.state.red =  false;
+           this.state.yellow =  false;
             this.state.cpink =  'userpink';
            this.state.cblue = 'userblue';
            this.state.cgreen =  'usergreen';
            this.state.cred =  'userred';
+           this.state.cyellow =  'useryellow';
            this.state.name = null;
           this.state.user =null;
           //setTimeout(() => {this.setState({showModal: false})}, 500)
@@ -190,6 +194,7 @@ class List extends Component {
                   if(check === 'pink') {fun = this.handleiconclickpink; className = this.state.cpink}
                   if(check === 'blue') {fun = this.handleiconclickblue; className = this.state.cblue}
                   if(check === 'green') {fun = this.handleiconclickgreen; className = this.state.cgreen}
+                  if(check === 'yellow') {fun = this.handleiconclickyellow; className = this.state.cyellow}
                   userslist=(<div className="cc-selector">
                                 <input id={usercolor} type="radio" name={usercolor} ref={usercolor} value={family[0].id} defaultChecked={check}/>
                                 <label className={className} htmlFor={usercolor} onClick={fun}></label>    
@@ -234,14 +239,17 @@ class List extends Component {
                   if(check1 === 'pink') {fun1 = this.handleiconclickpink; check1 = this.state.pink; className1 = this.state.cpink}
                   if(check1 === 'blue') {fun1 = this.handleiconclickblue; check1 = this.state.blue; className1 = this.state.cblue}
                   if(check1 === 'green') {fun1 = this.handleiconclickgreen; check1 = this.state.green; className1 = this.state.cgreen}
+                  if(check1 === 'yellow') {fun1 = this.handleiconclickyellow; check1 = this.state.yellow; className1 = this.state.cyellow}
                   if(check2 === 'red' ) {fun2 = this.handleiconclickred; check2 = this.state.red; className2 = this.state.cred}
                   if(check2 === 'pink') {fun2 = this.handleiconclickpink; check2 = this.state.pink; className2 = this.state.cpink}
                   if(check2 === 'blue') {fun2 = this.handleiconclickblue; check2 = this.state.blue; className2 = this.state.cblue}
                   if(check2 === 'green') {fun2 = this.handleiconclickgreen; check2 = this.state.green; className2 = this.state.cgreen}
+                  if(check2 === 'yellow') {fun2 = this.handleiconclickyellow; check2 = this.state.yellow; className2 = this.state.cyellow}
                   if(check3 === 'red' ) {fun3 = this.handleiconclickred; check3 = this.state.red; className3 = this.state.cred}
                   if(check3 === 'pink') {fun3 = this.handleiconclickpink; check3 = this.state.pink; className3 = this.state.cpink}
                   if(check3 === 'blue') {fun3 = this.handleiconclickblue; check3 = this.state.blue; className3 = this.state.cblue}
                   if(check3 === 'green') {fun3 = this.handleiconclickgreen; check3 = this.state.green; className3 = this.state.cgreen}
+                  if(check3 === 'yellow') {fun3 = this.handleiconclickyellow; check3 = this.state.yellow; className3 = this.state.cyellow}
                   //if(check1)
 
                   userslist=(<div className='display'><div className="cc-selector">
@@ -272,18 +280,22 @@ class List extends Component {
                   if(check1 === 'pink') {fun1 = this.handleiconclickpink; check1 = this.state.pink; className1 = this.state.cpink}
                   if(check1 === 'blue') {fun1 = this.handleiconclickblue; check1 = this.state.blue; className1 = this.state.cblue}
                   if(check1 === 'green') {fun1 = this.handleiconclickgreen; check1 = this.state.green; className1 = this.state.cgreen}
+                  if(check1 === 'yellow') {fun1 = this.handleiconclickyellow; check1 = this.state.yellow; className1 = this.state.cyellow}
                   if(check2 === 'red' ) {fun2 = this.handleiconclickred; check2 = this.state.red; className2 = this.state.cred}
                   if(check2 === 'pink') {fun2 = this.handleiconclickpink; check2 = this.state.pink; className2 = this.state.cpink}
                   if(check2 === 'blue') {fun2 = this.handleiconclickblue; check2 = this.state.blue; className2 = this.state.cblue}
                   if(check2 === 'green') {fun2 = this.handleiconclickgreen; check2 = this.state.green; className2 = this.state.cgreen}
+                  if(check2 === 'yellow') {fun2 = this.handleiconclickyellow; check2 = this.state.yellow; className2 = this.state.cyellow}
                   if(check3 === 'red' ) {fun3 = this.handleiconclickred; check3 = this.state.red; className3 = this.state.cred}
                   if(check3 === 'pink') {fun3 = this.handleiconclickpink; check3 = this.state.pink; className3 = this.state.cpink}
                   if(check3 === 'blue') {fun3 = this.handleiconclickblue; check3 = this.state.blue; className3 = this.state.cblue}
                   if(check3 === 'green') {fun3 = this.handleiconclickgreen; check3 = this.state.green; className3 = this.state.cgreen}
+                  if(check3 === 'yellow') {fun3 = this.handleiconclickyellow; check3 = this.state.yellow; className3 = this.state.cyellow}
                   if(check4 === 'red' ) {fun4 = this.handleiconclickred; check4 = this.state.red; className4 = this.state.cred}
                   if(check4 === 'pink') {fun4 = this.handleiconclickpink; check4 = this.state.pink; className4 = this.state.cpink}
                   if(check4 === 'blue') {fun4 = this.handleiconclickblue; check4 = this.state.blue; className4 = this.state.cblue}
                   if(check4 === 'green') {fun4 = this.handleiconclickgreen; check4 = this.state.green; className4 = this.state.cgreen}
+                  if(check4 === 'yellow') {fun4 = this.handleiconclickyellow; check4 = this.state.yellow; className4 = this.state.cyellow}
                   //if(check1)
                   
                   userslist=(<div className='display'><div className="cc-selector">
@@ -480,6 +492,10 @@ class List extends Component {
                 users = this.refs.usergreen.value;
                 listusers.push(users);
             }
+         if(this.state.yellow) {
+                users = this.refs.useryellow.value;
+                listusers.push(users);
+            }
         let user = [];
         user = listusers;
       
@@ -566,6 +582,13 @@ class List extends Component {
         var color = (this.state.cgreen === 'usergreen') ? 'gusergreen' : 'usergreen';
         this.setState({green:css, cgreen: color});
     }
+    handleiconclickyellow(event) {
+        event.preventDefault();
+        //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser green');
+        var css = (this.state.yellow === false) ? true : false;
+        var color = (this.state.cyellow === 'useryellow') ? 'guseryellow' : 'useryellow';
+        this.setState({yellow:css, cyellow: color});
+    }
 
 
 }
@@ -576,7 +599,7 @@ List.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //console.info('container List mapStateToProps', state, ownProps);
+    console.info('container List mapStateToProps', state, ownProps);
    // console.log(state.users, 'fgdfxgsdfgdgf users');
     return {lists: state.lists, usersfamily: state.userslist, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.users};
 }

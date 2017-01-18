@@ -7,6 +7,33 @@ const initState = {
 
 const lists = (state = initState, action) => {
     switch (action.type) {
+      case types.RECEIVE_EDIT_LISTS:
+         // console.info('reducer RECEIVE_EDIT_LISTS', state, action);
+          var temp;
+          var x = {};
+          if(action.lists.msg === 'NOK'){
+            temp = state.lists;
+           }else{
+                var list;
+                each(state.lists, (item, key) => {
+                  if(item.id === action.id)
+                  {
+                   // console.log(key);
+                    list = key;
+                  }
+                 });
+                //console.log(list);
+                x[list] = action.lists.data;
+                temp = Object.assign(state.lists, x);
+           }
+          // console.log(temp);
+           return Object.assign({}, state, {
+                lists: temp,
+                msgedit: action.lists.msg,
+                dataedit: action.lists.data
+            });
+
+
         case types.DELETE_LISTS:
         //console.info('reducer DELETE_LISTS', state, action);
         var lists = state.lists;
@@ -51,7 +78,7 @@ const lists = (state = initState, action) => {
         case types.RECEIVE_LISTS:
             // console.info('reducer RECEIVE_CONTACTS', state, action);
             return Object.assign({}, state, {
-                lists: action.lists
+                lists: action.lists.data
             });
         default:
              //console.info('reducer DEFAULT', state);

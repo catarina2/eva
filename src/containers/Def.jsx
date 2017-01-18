@@ -3,18 +3,102 @@ import {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
+import {fetchLists, fetchFamilyUsers, editUsers} from '../actions';
+
 class Def extends Component {
+    componentDidMount() {
+       // console.log('componentdidMount');
+        const {dispatch} = this.props;
+        dispatch(fetchLists());
+        dispatch(fetchFamilyUsers(2));
+    }
+
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this._submitedit = this._submitedit.bind(this);
         
         this.state = {
             showHideSidenav: 'hidden',
-            user: {name: "Catarina Silva", res: "Vascoveiro", data:"22/09/1991", color:"yellow" }
+            user: {name: null, family_id: null, birthday:null, color:null, email: null}, 
+            showEdit: 'hidden'
         }
     }
+
     render() {
-        console.log('DEfinições de perfil');
+        //console.log('Definições de perfil');
+        if(this.state.showEdit === 'show')
+        {
+                console.log('Definições de perfil');
+                var showedit;
+                showedit = (
+                <div className="modal">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button className="btn btn-default" onClick={this.handleEdit}> <span className="glyphicon glyphicon-remove"></span></button>
+                                <h4 className="modal-title"><b>Editar Perfil</b></h4>
+
+                            </div>
+                            <div className="modal-body">
+                                <form id="form" method="POST" onSubmit={this._submitedit}  encType="multipart/form-data">
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-edit"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                             <h4 >Nome do Utilizador</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="name" name="name" defaultValue={this.state.user.name}/>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-people"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Data de Nascimento</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="birthday" name="name" defaultValue={this.state.user.birthday}/>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-invit"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Cor do Avatar</h4>
+                                        </div>
+                                    </div>
+                                   
+                                     <div className="modal-footer">
+                                        <div className="row">
+                                            <div className="col-xs-2">
+                                            </div>
+                                            <div className="col-xs-8">
+                                                <Link to={`/`}>
+                                                    <button className="btn logolistsmall"></button>
+                                                </Link>
+                                            </div>
+                                            <div className="col-xs-2">
+                                                <button type="submit" className="btn submit"></button>
+                                            </div>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
         var showNav;
         if(this.state.showHideSidenav === 'hidden')
         {
@@ -79,17 +163,29 @@ class Def extends Component {
                  </div>;
 
         }
+        var user = this.props.users;
+        console.log(user);
+        if(user)
+        {
+            this.state.user = user[3];
+        }
         return (
              <div>
                 <header className="header header-perfil">
                     <div className="container">
                         <div className="menu-title font-large">Definições</div>
                             {showNav}
+                            {showedit}
                     </div>
                 </header>
                 <section  className="section-perfil">
                      <div className="container">
-                        <div className="menu-perfil"><b>Informação Pessoal</b></div>
+                        <div className="menu-perfil"><b>Informação Pessoal</b>
+                         <div className="edit-container">
+                            <button className="btn btn-editperfil" onClick={this.handleEdit}><span
+                                className="glyphicon glyphicon-edit gperfil"></span></button>
+                        </div>
+                        </div>
                         <div className="modal-body">
                         <div className="row">
                                     <div className="col-xs-6">
@@ -105,12 +201,12 @@ class Def extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <h4>Residência</h4>
+                                            <h4>Familia</h4>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label >{this.state.user.res}</label>
+                                            <label >{this.state.user.family_id}</label>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -120,12 +216,12 @@ class Def extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label>{this.state.user.data}</label>
+                                            <label>{this.state.user.birthday}</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <h4>Cor de Perfil</h4>
+                                            <h4>Cor do Avatar</h4>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -159,7 +255,25 @@ class Def extends Component {
         this.setState({showHideSidenav:css});
     }
 
+    handleEdit(){
+        console.log('click no edit');
+         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
+        console.log(css);
+        this.setState({showEdit:css});
+    }
+
+    _submitedit() {
+        event.preventDefault();
+        console.log('dszfsdgdsg');
+    }
+
 
 }
 
-export default Def;
+const mapStateToProps = (state, ownProps) => {
+    console.info('container DEF mapStateToProps', state, ownProps );
+    console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
+    return {users:state.userslist.users};
+}
+
+export default connect(mapStateToProps)(Def);

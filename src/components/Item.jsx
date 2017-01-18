@@ -36,7 +36,8 @@ class Item extends Component {
             checked5: false,
             checked6: false,
             confirmdelete: false,
-            msg: null
+            msgdelete: null,
+            msgedit: null
         }
     }
 
@@ -53,9 +54,15 @@ class Item extends Component {
 
 
         // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
-        if (this.state.msg === "OK") {
+        if (this.state.msgdelete === "OK") {
             this.state.confirmdelete = false;
-            this.state.msg = null;
+            this.state.msgdelete = null;
+            //setTimeout(() => {this.setState({confirmdelete: false, msg: null})}, 500);
+        }
+
+        if (this.state.msgedit === "OK") {
+            this.state.showModalEdit = false;
+            this.state.msgedit = null;
             //setTimeout(() => {this.setState({confirmdelete: false, msg: null})}, 500);
         }
 
@@ -96,7 +103,7 @@ class Item extends Component {
                             <div className="modal-header">
                                 <button className="btn btn-default" onClick={this.handleEdit}><span
                                     className="glyphicon glyphicon-remove"></span></button>
-                                <h4 className="modal-title"><b>Lista {list.name}</b></h4>
+                                <h4 className="modal-title"><b>{list.name}</b></h4>
 
                             </div>
                             <div className="modal-body">
@@ -245,40 +252,6 @@ class Item extends Component {
         );
     }
 
-    handleClick() {
-        //console.log('handleClick');
-        var css = (this.state.showpanel === false) ? true : false;
-        this.setState({showpanel: css});
-    }
-
-    handleModal() {
-        var css = (this.state.showModal === false) ? true : false;
-        this.setState({showModal: css});
-    }
-
-    handleDelete() {
-        // console.log(this.props, 'handleDelete');
-        this.setState({confirmdelete: true});
-    }
-
-    confirmdelete() {
-        const {dispatch} = this.props;
-        dispatch(deleteLists(this.props.list.id));
-        setTimeout(() => {
-            this.setState({msg: this.props.msg})
-        }, 500);
-    }
-
-    noconfirm() {
-        this.setState({confirmdelete: false});
-    }
-
-    handleEdit() {
-        //console.log(this.props, 'handleEdit');
-        var css = (this.state.showModalEdit === false) ? true : false;
-        this.setState({showModalEdit: css});
-    }
-
     handleiconclick1(event) {
         event.preventDefault();
         //console.log(this.state.checked1, 'handleiconclick1');
@@ -358,44 +331,17 @@ class Item extends Component {
         });
     }
 
-    _submitEdit(event) {
-        event.preventDefault();
-        var ref;
-        var listusers = [];
-        // console.log(this.state, 'icons');
-        if (this.state.checked1) ref = this.refs.icon1.value;
-        else if (this.state.checked2) ref = this.refs.icon2.value;
-        else if (this.state.checked3) ref = this.refs.icon3.value;
-        else if (this.state.checked4) ref = this.refs.icon4.value;
-        else if (this.state.checked5) ref = this.refs.icon5.value;
-        else if (this.state.checked6) ref = this.refs.icon6.value;
-        //console.log(this.refs.name.value, ref);
-
-        var user = "1,2";
-        var FormData = require('form-data');
-        //const form = new FormData();
-        //form.append('name', this.refs.name.value);
-        //form.append('icon', ref);
-        //form.append('users', user);
-
-
-        const form = document.querySelector('#form');
-        const data = new FormData(form);
-
-        let obj = {};
-        for (var pair of data.entries()) {
-            obj[pair[0]] = pair[1];
-        }
-
-        var data1 = [];
-        data1.push(obj);
-
-        // console.log(data1, 'edição');
-
-
-        const {dispatch} = this.props;
-        dispatch(editLists(this.props.list.id, obj));
+    handleClick() {
+        //console.log('handleClick');
+        var css = (this.state.showpanel === false) ? true : false;
+        this.setState({showpanel: css});
     }
+
+    handleModal() {
+        var css = (this.state.showModal === false) ? true : false;
+        this.setState({showModal: css});
+    }
+
 
     handleDelete() {
        // console.log(this.props, 'handleDelete');
@@ -404,7 +350,7 @@ class Item extends Component {
     confirmdelete() {
         const {dispatch} = this.props;
         dispatch(deleteLists(this.props.list.id));
-        setTimeout(() => {this.setState({msg: this.props.msg})}, 500);
+        setTimeout(() => {this.setState({msgdelete: this.props.msgdelete})}, 500);
     }
     noconfirm() {
         this.setState({confirmdelete: false});
@@ -413,43 +359,6 @@ class Item extends Component {
         //console.log(this.props, 'handleEdit');
         var css = (this.state.showModalEdit === false) ? true : false;
         this.setState({showModalEdit:css});
-    }
-
-    handleiconclick1(event) {
-        event.preventDefault();
-        //console.log(this.state.checked1, 'handleiconclick1');
-        var css = (this.state.checked1 === false) ? true : false;
-        this.setState({checked1:css, checked2:false, checked3:false, checked4:false,checked5:false,checked6:false});
-    }
-
-    handleiconclick2(event) {
-        event.preventDefault();
-        var css = (this.state.checked2 === false) ? true : false;
-        this.setState({checked2:css, checked1:false, checked3:false, checked4:false,checked5:false,checked6:false});
-    }
-
-    handleiconclick3(event) {
-        event.preventDefault();
-        var css = (this.state.checked3 === false) ? true : false;
-        this.setState({checked3:css, checked2:false, checked1:false, checked4:false,checked5:false,checked6:false});
-    }
-
-    handleiconclick4(event) {
-        event.preventDefault();
-        var css = (this.state.checked4 === false) ? true : false;
-        this.setState({checked4:css, checked2:false, checked3:false, checked1:false,checked5:false,checked6:false});
-    }
-
-    handleiconclick5(event) {
-        event.preventDefault();
-        var css = (this.state.checked5 === false) ? true : false;
-        this.setState({checked5:css, checked2:false, checked3:false, checked4:false,checked1:false,checked6:false});
-    }
-
-    handleiconclick6(event) {
-        event.preventDefault();
-        var css = (this.state.checked6 === false) ? true : false;
-        this.setState({checked6:css, checked2:false, checked3:false, checked4:false,checked5:false,checked1:false});
     }
 
      _submitEdit(event) {
@@ -484,6 +393,7 @@ class Item extends Component {
 
         const {dispatch} = this.props;
         dispatch(editLists(this.props.list.id, obj));
+         setTimeout(() => { this.setState({msgedit: this.props.msgedit})}, 500);
     }
 
     _submit(event) {
@@ -507,7 +417,7 @@ Item.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     //console.info('container Item mapStateToProps', state, ownProps);
-    return {msg: state.lists.msgdelete};
+    return {msgdelete: state.lists.msgdelete, msgedit: state.lists.msgedit};
 }
 
 

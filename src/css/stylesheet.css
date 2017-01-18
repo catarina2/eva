@@ -452,12 +452,6 @@ header .btn-list {
     float: right;
 }
 
-.menu-perfil {
-    color: white;
-    padding: 5vmin 0 0 6vmin;
-    font-size: 5vmin;
-}
-
 .row .panelrow {
     background-color: #f08143;
 } 
@@ -743,6 +737,13 @@ header .btn-list {
     padding: 10px 10px;
     height: 0px;
 }
+.btn-useryellow {
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+}
 .userred {
     background-image: url("../../img/lista/persona_vermelho30.png");
     background-color: rgba(255,255,255,0);
@@ -754,6 +755,26 @@ header .btn-list {
 }
 .guserred{
     background-image: url("../../img/lista/persona_vermelho30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.useryellow {
+    background-image: url("../../img/lista/persona_verde30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+    height: 0px;
+    background-size: 5vmin;
+   
+}
+.guseryellow{
+    background-image: url("../../img/lista/persona_verde30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 10px 10px;
@@ -1204,6 +1225,23 @@ header .btn-agend1 {
     text-align: left;
 }
 
+.menu-perfil {
+    color: white;
+    padding: 5vmin 0 0 6vmin;
+    font-size: 5vmin;
+}
+
+.gperfil {
+    color:white;
+}
+
+.btn-editperfil {
+    background-color: #6483A1;
+    padding:0;
+    font-size: 15px;
+    clear: right;
+}
+
 #sidebar-wrapper-perfil {
     background-color: #6cc5d3;
     height: 100%;
@@ -1465,3 +1503,31 @@ header .btn-perfil {
     background-color:#f7aa47;
     color: white;
 }
+
+.losange, .losange div {
+  margin: 0 auto;
+  transform-origin: 45% 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+.losange {
+    transform: rotate(45deg) translateY(6px) translateX(21px);
+    border: 2px solid #f7aa47;
+
+}
+.losange .los1 {
+  width: 290px;
+  height: 290px;
+  transform: rotate(-45deg) translateY(-50px) translateX(68px);
+}
+.losange .los1 img {
+  width: 50%;
+  height: 50%;
+}
+
+/*LOGIN*/
+.sectionLogin {
+    background-color:black;
+}
+/*FIM LOGIN*/

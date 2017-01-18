@@ -53,9 +53,10 @@ class Produto extends Component {
                 var showmodal;
                 var image;
                 if(item.image) {
-                    image = <div className="imagediv">
-                                    <img className= "image" src= {`http://develop.mmota.online/images/${item.image}`} />
-                            </div>;
+                    image =(<div className="losange">
+                             <div className="los1">        
+                                    <img width="100" height="100" src= {`http://develop.mmota.online/images/${item.image}`} />
+                            </div></div>);
                 }
                 else{
                     image =(<input type="button" ref="photo" className="btn btn-photo"></input>);
