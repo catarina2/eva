@@ -111,7 +111,7 @@ class Def extends Component {
                         <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper-perfil" role="navigation" >
                         <ul className="nav nav-perfil sidebar-nav">
                             <li className="sidebar-brand">
-                                    <Link to={`/agend`}>
+                                    <Link to={`calendar`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smagend" />
@@ -125,7 +125,7 @@ class Def extends Component {
                                     
                             </li>
                             <li>
-                                <Link to={`/list`}>
+                                <Link to={`lists`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smlist" />
@@ -137,7 +137,7 @@ class Def extends Component {
                                 </Link>
                             </li>
                             <li>
-                                    <Link to={`/mirror`}>
+                                    <Link to={`mirror`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smmirror" />

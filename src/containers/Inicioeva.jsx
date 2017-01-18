@@ -23,24 +23,24 @@ class Inicioeva extends Component {
                     <div className="container">
                         <div className="row">
                         <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                            <Link to={`/list`}>
+                            <Link to={`lists`}>
                                 <button className="btn btn-shoplist"></button>
                             </Link>
                         </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                                <Link to={`/mirror`}>
+                                <Link to={`mirror`}>
                                     <button className="btn btn-mirror"></button>
                                 </Link>
-                                <Link to={`/definition`}>
+                                <Link to={`definition`}>
                                     <button className="btn btn-definition"></button>
                                 </Link>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                                <Link to={`/agend`}>
+                                <Link to={`calendar`}>
                                    <button className="btn btn-agend"></button>
                                 </Link>
                             </div>

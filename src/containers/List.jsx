@@ -116,7 +116,7 @@ class List extends Component {
                         <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" >
                         <ul className="nav sidebar-nav">
                             <li className="sidebar-brand">
-                                    <Link to={`/agend`}>
+                                    <Link to={`calendar`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smagend" />
@@ -143,7 +143,7 @@ class List extends Component {
                                 </div>
                             </li>
                             <li>
-                                    <Link to={`/mirror`}>
+                                    <Link to={`mirror`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smmirror" />
@@ -155,7 +155,7 @@ class List extends Component {
                                     </Link>
                             </li>
                             <li>
-                                    <Link to={`/definition`}>
+                                    <Link to={`definition`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smdef" />

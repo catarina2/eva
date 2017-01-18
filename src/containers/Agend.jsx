@@ -102,7 +102,7 @@ class Agend extends Component{
                                 </div>
                             </li>
                             <li className="dropdown">
-                                <Link to={`/list`}>
+                                <Link to={`lists`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smlist" />
@@ -114,7 +114,7 @@ class Agend extends Component{
                                     </Link>
                             </li>
                             <li>
-                                    <Link to={`/mirror`}>
+                                    <Link to={`mirror`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smmirror" />
@@ -126,7 +126,7 @@ class Agend extends Component{
                                     </Link>
                             </li>
                             <li>
-                                    <Link to={`/definition`}>
+                                    <Link to={`definition`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smdef" />
