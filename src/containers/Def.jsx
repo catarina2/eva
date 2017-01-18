@@ -21,7 +21,7 @@ class Def extends Component {
         
         this.state = {
             showHideSidenav: 'hidden',
-            user: {name: null, family_id: null, birthday:null, color:null, email: null}, 
+            user: {name: null, family_id: null, birthday:null, color:null, email: null, password: null}, 
             showEdit: 'hidden'
         }
     }
@@ -262,9 +262,23 @@ class Def extends Component {
         this.setState({showEdit:css});
     }
 
-    _submitedit() {
+    _submitedit(event) {
         event.preventDefault();
-        console.log('dszfsdgdsg');
+        
+        let obj = {};
+
+        obj['name'] = this.refs.name.value;
+        obj['birthday'] = this.refs.birthday.value;
+        obj['color'] = 'green';
+        obj['email'] = this.state.user.email;
+        obj['family_id'] = this.state.user.family_id;
+        obj['password'] = 'xpto';
+
+        console.log(this.state.user.id, obj, 'edição perfil');
+
+
+        const {dispatch} = this.props;
+        dispatch(editUsers(this.state.user.id, obj));
     }
 
 
