@@ -431,7 +431,7 @@ class List extends Component {
                     </div>
                 </header>
                 <section>
-                        <ListComponent lists={this.props.lists.lists} />
+                        <ListComponent lists={this.props.lists.lists} users={this.props.users} />
                 </section>        
                 <footer>
                     <div className="container">

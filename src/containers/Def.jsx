@@ -3,6 +3,7 @@ import {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
+
 import {fetchLists, fetchFamilyUsers, editUsers} from '../actions';
 
 class Def extends Component {
@@ -35,12 +36,19 @@ class Def extends Component {
             pink: "userpink",
             blue: "userblue",
             red: "userred",
-            green: "usergreen"
+            green: "usergreen", 
+            msg: null
         }
     }
 
     render() {
         //console.log('Definições de perfil');
+        if(this.state.msg)
+        {
+            this.state.msg = null;
+            this.state.showEdit = "hidden";
+        }
+
         if(this.state.showEdit === 'show')
         {
                 console.log('Definições de perfil');
@@ -212,7 +220,9 @@ class Def extends Component {
              <div>
                 <header className="header header-perfil">
                     <div className="container">
+                    <Link to={`definition`}>
                         <div className="menu-title font-large">Definições</div>
+                    </Link>
                              <div className="edit-container">
                                 {showNav}
                             </div>
@@ -362,6 +372,7 @@ class Def extends Component {
 
         const {dispatch} = this.props;
         dispatch(editUsers(this.state.user.id, obj));
+        setTimeout(() => {this.setState({msg: this.props.msg})}, 500);
     }
 
 
@@ -370,7 +381,7 @@ class Def extends Component {
 const mapStateToProps = (state, ownProps) => {
     console.info('container DEF mapStateToProps', state, ownProps );
     console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
-    return {users:state.userslist.users};
+    return {users:state.userslist.users, msg:state.userslist.msg};
 }
 
 export default connect(mapStateToProps)(Def);

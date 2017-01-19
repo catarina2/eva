@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import { each } from 'lodash';
 
 const initState = {
     userslist: {}
@@ -6,6 +7,29 @@ const initState = {
 
 const users = (state = initState, action) => {
     switch (action.type) {
+        case types.RECEIVE_EDIT_USERS:
+            console.info('reducer RECEIVE_EDIT_USERS', state, action);
+            var users = state.users;
+            var user;
+            each(users, (item, key) => {
+              if(item.id === action.id)
+              {
+                user = key;
+              }
+
+             })
+
+            console.log(user);
+
+            var temp = {};
+            temp[user] = action.users.data;
+            temp = Object.assign(state.users, temp);
+            console.log(temp);
+            return Object.assign({}, state, {
+                userslist: temp, 
+                msg: action.users.msg
+            });
+
         case types.RECEIVE_USERS_BY_FAMILY:
         //console.info('reducer RECEIVE_USERS_BY_FAMILY', state, action);
         return Object.assign({}, state, {

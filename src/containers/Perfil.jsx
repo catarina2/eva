@@ -10,7 +10,7 @@ class Perfil extends Component {
         
         this.state = {
             showHideSidenav: 'hidden', 
-            perfil: [{name:'Perfil', icon: 'perfil'}, {name:'Segurança', icon: 'seg'}, {name:'Notificações', icon: 'notif'}, {name:'Contas', icon: 'account'}, {name:'Sons', icon: 'sounds'}, {name:'Widgets', icon: 'widgets'}, {name:'Idioma', icon: 'lang'}, {name:'Acessibilidade', icon: 'access'}, {name:'Versão', icon: 'version'}]
+            perfil: [{name:'Informação Pessoal', icon: 'perfil'}, {name:'Segurança', icon: 'seg'}, {name:'Notificações', icon: 'notif'}, {name:'Contas', icon: 'account'}, {name:'Sons', icon: 'sounds'}, {name:'Widgets', icon: 'widgets'}, {name:'Idioma', icon: 'lang'}, {name:'Acessibilidade', icon: 'access'}, {name:'Versão', icon: 'version'}]
         }
     }
 
@@ -83,10 +83,12 @@ class Perfil extends Component {
        // console.log(this.props.children, "filhos");
         return (
             <div>
-                <header className="header header-perfil">
+                 <header className="header header-perfil">
                     <div className="container">
                         <div className="menu-title font-large">Definições</div>
-                        {showNav}
+                             <div className="edit-container">
+                                {showNav}
+                            </div>
                     </div>
                 </header>
                 <section>
