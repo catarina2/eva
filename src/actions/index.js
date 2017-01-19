@@ -129,6 +129,15 @@ export function receiveeditlists(id, json) {
     }
 }
 
+export function receiveeditusers(id, json) {
+    console.info('action receiveeditusers', json);
+    return {
+        type: types.RECEIVE_EDIT_USERS,
+        users: json,
+        id: id
+    }
+}
+
 export function receivelistsdelete(id, json) {
    // console.info('action receivelists', json);
     return {
@@ -245,6 +254,6 @@ export function editUsers(id, lists) {
                 body: JSON.stringify(lists)
             })
             .then(response => response.json())
-           // .then(json => dispatch(receiveeditlists(id, json)));
+            .then(json => dispatch(receiveeditusers(id, json)));
     }
 }

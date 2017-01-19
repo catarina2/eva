@@ -33,7 +33,7 @@ class List extends Component {
             showHideSidenav: 'hidden',
             showModal: false,
             showpanel: false,
-            checked1: false,
+            checked1: true,
             checked2: false,
             checked3: false,
             checked4: false,
@@ -113,7 +113,7 @@ class List extends Component {
         }
         else {
             showNav = <div className="modal">
-                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" >
+                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                         <ul className="nav sidebar-nav">
                             <li className="sidebar-brand">
                                     <Link to={`calendar`}>
@@ -338,7 +338,7 @@ class List extends Component {
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <input type="text" className="form-control" ref="name" name="name" />
-                                            {this.state.name}
+                                            <div className="validation">{this.state.name}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -358,7 +358,7 @@ class List extends Component {
                                     </div>
                                     <div className="row">
                                        <div className="col-xs-12">
-                                            {this.state.user}
+                                            <div className="validation">{this.state.user}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -369,6 +369,7 @@ class List extends Component {
                                             <h4>Alterar Icon</h4>
                                         </div>
                                     </div>
+                                    <div className="row">
                                     <div className="row cc-selector display">
                                         <div className="col-xs-2 icon">
                                                  <input id="icon1" type="radio" name="icon1" ref="icon1" value="trabalho"/>
@@ -394,6 +395,7 @@ class List extends Component {
                                                  <input id="icon6" type="radio" name="icon6" ref="icon6" value="roupa"/>
                                                  <label className="icon-cc btn-icon6" htmlFor="icon6" onClick={this.handleiconclick6}></label>
                                         </div>
+                                    </div>
                                     </div>
                                      <div className="modal-footer">
                                         <div className="row">

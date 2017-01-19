@@ -17,12 +17,25 @@ class Def extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleuserpink = this.handleuserpink.bind(this);
+        this.handleuserblue = this.handleuserblue.bind(this);
+        this.handleuserred = this.handleuserred.bind(this);
+        this.handleusergreen = this.handleusergreen.bind(this);
+        
         this._submitedit = this._submitedit.bind(this);
         
         this.state = {
             showHideSidenav: 'hidden',
             user: {name: null, family_id: null, birthday:null, color:null, email: null, password: null}, 
-            showEdit: 'hidden'
+            showEdit: 'hidden', 
+            checked1:false,
+            checked2:false,
+            checked3:false,
+            checked4:false, 
+            pink: "userpink",
+            blue: "userblue",
+            red: "userred",
+            green: "usergreen"
         }
     }
 
@@ -35,8 +48,8 @@ class Def extends Component {
                 showedit = (
                 <div className="modal">
                     <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
+                        <div className="modal-content  modal-contentperfil">
+                            <div className="modal-header modal-headerperfil">
                                 <button className="btn btn-default" onClick={this.handleEdit}> <span className="glyphicon glyphicon-remove"></span></button>
                                 <h4 className="modal-title"><b>Editar Perfil</b></h4>
 
@@ -45,7 +58,7 @@ class Def extends Component {
                                 <form id="form" method="POST" onSubmit={this._submitedit}  encType="multipart/form-data">
                                     <div className="row">
                                         <div className="col-xs-1">
-                                            <button type="button" className="btn btn-edit"></button>
+                                            <button type="button" className="btn btn-editname"></button>
                                         </div>
                                         <div className="col-xs-10">
                                              <h4 >Nome do Utilizador</h4>
@@ -58,7 +71,7 @@ class Def extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-1">
-                                            <button type="button" className="btn btn-people"></button>
+                                            <button type="button" className="btn btn-editbirthday"></button>
                                         </div>
                                         <div className="col-xs-10">
                                             <h4>Data de Nascimento</h4>
@@ -71,10 +84,28 @@ class Def extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-1">
-                                            <button type="button" className="btn btn-invit"></button>
+                                            <button type="button" className="btn btn-editcolor"></button>
                                         </div>
                                         <div className="col-xs-10">
                                             <h4>Cor do Avatar</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row cc-selector display">
+                                        <div className="col-xs-2 icon">
+                                                 <input id="pink" type="radio" name="pink" ref="pink" value="pink" checked={this.state.checked1}/>
+                                                 <label className={this.state.pink} htmlFor="pink"  onClick={this.handleuserpink}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                                 <input id="red" type="radio" name="red" ref="red" value="red" checked={this.state.checked2}/>
+                                                 <label className={this.state.red} htmlFor="red"  onClick={this.handleuserred}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                                 <input id="green" type="radio" name="green" ref="green" value="green" checked={this.state.checked3}/>
+                                                 <label className={this.state.green} htmlFor="green"  onClick={this.handleusergreen}></label>
+                                        </div>
+                                        <div className="col-xs-2 icon">
+                                                 <input id="blue" type="radio" name="blue" ref="blue" value="blue" checked={this.state.checked4}/>
+                                                 <label className={this.state.blue} htmlFor="blue"  onClick={this.handleuserblue}></label>
                                         </div>
                                     </div>
                                    
@@ -84,11 +115,11 @@ class Def extends Component {
                                             </div>
                                             <div className="col-xs-8">
                                                 <Link to={`/`}>
-                                                    <button className="btn logolistsmall"></button>
+                                                    <button className="btn logolistsmallperfil"></button>
                                                 </Link>
                                             </div>
                                             <div className="col-xs-2">
-                                                <button type="submit" className="btn submit"></button>
+                                                <button type="submit" className="btn submitperfil"></button>
                                             </div>
                                     </div>
                                     </div>
@@ -111,7 +142,7 @@ class Def extends Component {
                         <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper-perfil" role="navigation" >
                         <ul className="nav nav-perfil sidebar-nav">
                             <li className="sidebar-brand">
-                                    <Link to={`calendar`}>
+                                    <Link to={`/calendar`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smagend" />
@@ -125,7 +156,7 @@ class Def extends Component {
                                     
                             </li>
                             <li>
-                                <Link to={`lists`}>
+                                <Link to={`/lists`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smlist" />
@@ -137,7 +168,7 @@ class Def extends Component {
                                 </Link>
                             </li>
                             <li>
-                                    <Link to={`mirror`}>
+                                    <Link to={`/mirror`}>
                                         <div className="row">
                                         <div className="col-xs-2">
                                              <input type="button" className="btn btn-smmirror" />
@@ -165,16 +196,26 @@ class Def extends Component {
         }
         var user = this.props.users;
         console.log(user);
+        var coloruser;
         if(user)
         {
             this.state.user = user[3];
+
+            if(this.state.user.color === 'pink') {coloruser = <label className="userpink"></label>};
+            if(this.state.user.color === 'blue') {coloruser = <label className="userblue"></label>};
+            if(this.state.user.color === 'green') {coloruser = <label className="usergreen"></label>};
+            if(this.state.user.color === 'red') {coloruser = <label className="userred"></label>};
+
         }
+
         return (
              <div>
                 <header className="header header-perfil">
                     <div className="container">
                         <div className="menu-title font-large">Definições</div>
-                            {showNav}
+                             <div className="edit-container">
+                                {showNav}
+                            </div>
                             {showedit}
                     </div>
                 </header>
@@ -200,33 +241,42 @@ class Def extends Component {
                                     </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-xs-12">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-familyperfil"></button>
+                                        </div>
+                                        <div className="col-xs-10">
                                             <h4>Familia</h4>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label >{this.state.user.family_id}</label>
+                                            <label className="labelperfil">{this.state.user.family_id}</label>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-xs-12">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-birthdayperfil"></button>
+                                        </div>
+                                        <div className="col-xs-10">
                                             <h4>Data de Nascimento</h4>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label>{this.state.user.birthday}</label>
+                                            <label className="labelperfil">{this.state.user.birthday}</label>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-xs-12">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-coloravatarperfil"></button>
+                                        </div>
+                                        <div className="col-xs-10">
                                             <h4>Cor do Avatar</h4>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label>{this.state.user.color}</label>
+                                             <label className="labelperfil">{coloruser}</label>
                                         </div>
                                     </div>
                     </div>
@@ -255,9 +305,37 @@ class Def extends Component {
         this.setState({showHideSidenav:css});
     }
 
+    handleuserpink(event) {
+        event.preventDefault();
+        var css = (this.state.checked1 === false) ? true : false;
+        var color = (this.state.pink === "userpink") ? "guserpink" : "userpink";
+        this.setState({checked1:css, checked2:false, checked3:false, checked4:false, pink: color, red:"userred", green:"usergreen", blue:"userblue"});
+    }
+
+    handleuserred(event) {
+        event.preventDefault();
+        var css = (this.state.checked2 === false) ? true : false;
+        var color = (this.state.red === "userred") ? "guserred" : "userred";
+        this.setState({checked2:css, checked1:false, checked3:false, checked4:false, red: color, pink: "userpink", green:"usergreen", blue:"userblue"});
+    }
+
+    handleusergreen(event) {
+        event.preventDefault();
+        var css = (this.state.checked3 === false) ? true : false;
+        var color = (this.state.green === "usergreen") ? "gusergreen" : "usergreen";
+        this.setState({checked3:css, checked2:false, checked1:false, checked4:false, green: color, pink: "userpink", red:"userred", blue:"userblue"});
+    }
+
+    handleuserblue(event) {
+        event.preventDefault();
+        var css = (this.state.checked4 === false) ? true : false;
+        var color = (this.state.blue === "userblue") ? "guserblue" : "userblue";
+        this.setState({checked4:css, checked2:false, checked3:false, checked1:false, blue: color, pink: "userpink", red:"userred", green:"usergreen"});
+    }
+
     handleEdit(){
         console.log('click no edit');
-         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
+         var css = (this.state.showEdit === "hidden") ? "show" : "hidden";
         console.log(css);
         this.setState({showEdit:css});
     }
@@ -265,11 +343,16 @@ class Def extends Component {
     _submitedit(event) {
         event.preventDefault();
         
+        var color;
+        if(this.state.checked1) {color = "pink";}
+        else if(this.state.checked2) {color = "red";}
+        else if(this.state.checked3) {color = "green";}
+        else if(this.state.checked4) {color = "blue";}
         let obj = {};
 
         obj['name'] = this.refs.name.value;
         obj['birthday'] = this.refs.birthday.value;
-        obj['color'] = 'green';
+        obj['color'] = color;
         obj['email'] = this.state.user.email;
         obj['family_id'] = this.state.user.family_id;
         obj['password'] = 'xpto';

@@ -47,12 +47,8 @@ class Produtos extends Component {
         
         if(this.state.msg === 'OK') {
             //console.log('mensagem apagada com sucesso');
-            this.state.showModal = false;
-            this.state.msg = null;
-            this.state.image = null;
-            this.state.name = null;
-            this.state.quant = null;
-          // setTimeout(() => {this.setState({showModal: false, msg: null, image, null})}, 1000);
+           
+           setTimeout(() => {this.setState({showModal: false, msg: null, image: null, name:null,quant:null})}, 1000);
             
         }
         if(this.state.msg === 'NOK')

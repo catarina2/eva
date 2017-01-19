@@ -539,6 +539,7 @@ header .btn-list {
     width: 66px;
     position: absolute;
     right: 20%;
+    background-size: 65px 65px;
 }
 
 .personas{
@@ -1225,14 +1226,115 @@ header .btn-agend1 {
     text-align: left;
 }
 
+.modal-contentperfil {
+    border-color: #6cc5d3;
+    border-radius:none;
+}
+
+.modal .modal-headerperfil {
+    border-bottom: none;
+    position: relative;
+    background-color: #6cc5d3;
+    color:#000;
+
+}
+
+.modal .modal-headerperfil .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 9px;
+    background-color: #6cc5d3;
+}
+
+.logolistsmallperfil {
+    text-align: center;
+    background-image: url("../../img/perfil/eva_pequeno.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 15px 44px;
+    position: absolute;
+    right: 23%;
+    margin-top: 10px;
+    background-size: 50px 15px;
+}
+
+.submitperfil {
+    background-image: url("../../img/perfil/botaocertoazul_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+}
+
 .menu-perfil {
     color: white;
     padding: 5vmin 0 0 6vmin;
     font-size: 5vmin;
 }
 
+.btn-editname {
+    background-image: url("../../img/perfil/editarnome_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+
+.btn-editbirthday {
+    background-image: url("../../img/perfil/datadenascimento_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+
+.btn-editcolor {
+    background-image: url("../../img/perfil/cordeperfil_15.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 10px;
+}
+
+.btn-familyperfil {
+    background-image: url("../../img/perfil/residencia_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 4px;
+}
+
+.btn-birthdayperfil {
+    background-image: url("../../img/perfil/datadenascimento_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 4px;
+}
+
+.btn-coloravatarperfil {
+    background-image: url("../../img/perfil/cordeperfil_20.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 13px 13px;
+    position:absolute;
+    margin-top: 4px;
+}
+
+.labelperfil {
+    margin-left: 6vmax;
+    font-size: 2.5vmax;
+    color: #6483A1;
+}
+
 .gperfil {
     color:white;
+    font-size: 5vmin;
 }
 
 .btn-editperfil {
@@ -1382,7 +1484,7 @@ header .btn-perfil {
     font-size: 4.5vmax;
     background-color: #6cc5d3;
     position: relative;
-    padding: 2.5vmin 9vmin 0 0;
+    padding: 2.5vmin 3vmin 0 0;
     float: right;
 }
 /*final do css para Definições*/
@@ -1531,3 +1633,13 @@ header .btn-perfil {
     background-color:black;
 }
 /*FIM LOGIN*/
+
+.validation {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn:active, .btn:hover, .btn:focus {
+    outline: none;
+}
