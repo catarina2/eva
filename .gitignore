@@ -1,7 +1,7 @@
 # dependencies
-node_modules
-build
-.ideia
+/node_modules
+/build
+/.ideia
 
 # misc
 .DS_Store

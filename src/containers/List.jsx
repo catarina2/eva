@@ -112,63 +112,62 @@ class List extends Component {
                         </button>;
         }
         else {
-            showNav = <div className="modal">
-                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                        <ul className="nav sidebar-nav">
-                            <li className="sidebar-brand">
-                                    <Link to={`calendar`}>
-                                        <div className="row">
-                                        <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smagend" />
-                                        </div>
-                                        <div className="col-xs-10 hamburguer">
-                                            <h3><b>Agenda</b> Familiar</h3>
-                                        </div>
-                                        </div>
-                                        
-                                    </Link>
-                                    
-                            </li>
-                            <li className="dropdown">
-                                <div className="row">
-                                    <div className="col-xs-2">
-                                         <input type="button" className="btn btn-smlist" />
-                                    </div>
-                                    <div className="col-xs-10 hamburguer">
-                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3> <span className="caret"></span></a>
-                                        <ul className="dropdown-menu" role="menu">
-                                            <li className="dropdown"><h3 className="dropownsize" onClick={this.handleModal}><b>Nova Lista</b></h3></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                    <Link to={`mirror`}>
-                                        <div className="row">
-                                        <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smmirror" />
-                                        </div>
-                                        <div className="col-xs-10 hamburguer">
-                                            <h3><b>Espelho</b></h3>
-                                        </div>
-                                        </div>
-                                    </Link>
-                            </li>
-                            <li>
-                                    <Link to={`definition`}>
-                                        <div className="row">
-                                        <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smdef" />
-                                        </div>
-                                        <div className="col-xs-10 hamburguer">
-                                            <h3><b>Definições</b></h3>
-                                        </div>
-                                        </div>
-                                    </Link>
-                            </li>
-                        </ul>
-                    </nav>
-                 </div>;
+             showNav =
+            <div className="modal">
+              <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul className="nav sidebar-nav">
+                  <li className="sidebar-brand">
+                    <Link to={`calendar`}>
+                    <div className="row menu-lat">
+                      <div className="col-xs-2">
+                        <input type="button" className="btn btn-smagend" />
+                      </div>
+                      <div className="col-xs-10 hamburguer">
+                        <h3><b>Agenda</b> Familiar</h3>
+                      </div>
+                    </div>
+                    </Link>
+                  </li>
+                  <li className="dropdown">
+                    <div className="row menu-lat">
+                      <div className="col-xs-2">
+                        <input type="button" className="btn btn-smlist" />
+                      </div>
+                      <div className="col-xs-10 hamburguer">
+                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" onClick={this.handleClick}><h3><b>Lista de Compras</b></h3></a>
+                        <li className="col-xs-12 dropdown">
+                          <div className="dropownsize font-medium" onClick={this.handleModal}><b>Nova Lista</b></div>
+                        </li>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <Link to={`mirror`}>
+                    <div className="row menu-lat">
+                      <div className="col-xs-2">
+                        <input type="button" className="btn btn-smmirror" />
+                      </div>
+                      <div className="col-xs-10 hamburguer">
+                        <h3><b>Espelho</b></h3>
+                      </div>
+                    </div>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`definition`}>
+                    <div className="row menu-lat">
+                      <div className="col-xs-2">
+                        <input type="button" className="btn btn-smdef" />
+                      </div>
+                      <div className="col-xs-10 hamburguer">
+                        <h3><b>Definições</b></h3>
+                      </div>
+                    </div>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>;
 
         }
 

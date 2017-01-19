@@ -19,6 +19,7 @@ export default (
         <Route path="/" component={App}>
             <IndexRoute component={Inicioeva} />
             <Route path="callback" component={Callback} />
+            <Route path="/" component={Inicioeva} />
             <Route path="lists" component={List} />
             <Route path="mirror" component={List} />
             <Route path="definition" component={Perfil}/>

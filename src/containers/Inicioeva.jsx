@@ -22,19 +22,14 @@ class Inicioeva extends Component {
                 <section>
                     <div className="container">
                         <div className="row">
-                        <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
+                        <div className="col-xs-12">
                             <Link to={`lists`}>
                                 <button className="btn btn-shoplist"></button>
                             </Link>
                         </div>
                         </div>
-                        <div>
-                        <a href="http://develop.mmota.online/oauth/authorize?client_id=1&redirect_uri=http://mmota.online/callback&response_type=code&scope">
-                            <button className="btn btn-default">LOGIN</button>
-                        </a>
-                        </div>
                         <div className="row">
-                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
+                            <div className="col-xs-12">
                                 <Link to={`mirror`}>
                                     <button className="btn btn-mirror"></button>
                                 </Link>
@@ -44,14 +39,14 @@ class Inicioeva extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
+                            <div className="col-xs-12">
                                 <Link to={`calendar`}>
                                    <button className="btn btn-agend"></button>
                                 </Link>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
+                            <div className="col-xs-12">
                                 <Link to={`/`}>
                                    <button className="btn btn-more"></button>
                                 </Link>

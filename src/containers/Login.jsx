@@ -9,41 +9,11 @@ class Login extends Component {
         return(
             <div>
                 
-                <section className="sectionLogin">
-                    <div className="container">
-                        <div className="row">
-                        <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                            <Link to={`/list`}>
-                                <button className="btn btn-shoplist"></button>
-                            </Link>
-                        </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                                <Link to={`/mirror`}>
-                                    <button className="btn btn-mirror"></button>
-                                </Link>
-                                <Link to={`/definition`}>
-                                    <button className="btn btn-definition"></button>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                                <Link to={`/agend`}>
-                                   <button className="btn btn-agend"></button>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
-                                <Link to={`/`}>
-                                   <button className="btn btn-more"></button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div>
+                    <a href="http://develop.mmota.online/oauth/authorize?client_id=6&redirect_uri=http://localhost:3000/callback&response_type=code&scope">
+                        <button className="btn btn-default">LOGIN</button>
+                    </a>
+                </div>
             </div>
         );
         

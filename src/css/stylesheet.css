@@ -25,6 +25,17 @@ html, body {
     padding: 0;
     box-sizing: border-box;
 }
+a {
+  color: #f47828;
+  text-decoration: none !important;
+}
+
+a:hover,
+a:active,
+{
+  color: #f47828;
+  text-decoration: none !important;
+}
 
 .row {
     margin-right: 0px;
@@ -74,7 +85,7 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vmin;
+    width: 100%;
     height: 20vmin;
     z-index: 2;
     text-align: left;
@@ -287,10 +298,16 @@ input[type=checkbox]{
 .dropdown-menu {
     margin-top: -20px;
 }
-li .dropdown{
-    margin-top: -6vmin;
-    position: absolute;
-    margin-left: -6vmin;
+li .dropdown {
+  padding: 5px 0 5px 55px;
+  left: -6vmax;
+}
+.dropdown-agend {
+  background-color: #f47828;
+}
+
+.dropdown-list {
+  background-color: #f7aa47;
 }
 
 .dropownsize {
@@ -332,15 +349,19 @@ li .dropdown{
     margin-left: 28%;
 }
 
+
+.sidebar-nav {
+  margin-top: 30px;
+}
+
 .nav {
-    background-color: #f08143;
-    text-align: left;
-    padding-left: 10px;
-    margin-top: -44px;
+  background-color: #f08143;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .nav>li {
-        margin-top: 70px;
+  margin-top: 30px;
 }
 .nav>li>a {
     padding: 0px 0px;
@@ -1215,7 +1236,6 @@ header .btn-agend1 {
     background-color: #cc5027;
     text-align: left;
     padding-left: 10px;
-    margin-top: -44px;
 }
 /*final do css para Agenda Familiar*/
 
@@ -1362,7 +1382,6 @@ header .btn-agend1 {
     background-color: #6cc5d3;
     text-align: left;
     padding-left: 10px;
-    margin-top: -44px;
 }
 
 section .perfil{
@@ -1529,9 +1548,8 @@ header .btn-perfil {
 } 
 
 .hamburguer {
-    margin-top: -20px;
-    position: absolute;
-    left: 31px;
+  margin-top: -18px;
+  margin-left: 10vmin;
 }
 /*final botão hamburguer*/
 

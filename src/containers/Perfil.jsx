@@ -24,60 +24,61 @@ class Perfil extends Component {
                         </button>;
         }
         else {
-            showNav = <div className="modal">
-                        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper-perfil" role="navigation" >
-                        <ul className="nav nav-perfil sidebar-nav">
-                            <li className="sidebar-brand">
-                                    <Link to={`calendar`}>
-                                        <div className="row">
-                                        <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smagend" />
-                                        </div>
-                                        <div className="col-xs-10 hamburguer">
-                                            <h3><b>Agenda</b> Familiar</h3>
-                                        </div>
-                                        </div>
-                                        
-                                    </Link>
-                                    
-                            </li>
-                            <li>
-                                <Link to={`lists`}>
-                                        <div className="row">
-                                        <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smlist" />
-                                        </div>
-                                        <div className="col-xs-10 hamburguer">
-                                            <h3><b>Lista de Compras</b></h3>
-                                        </div>
-                                        </div>
-                                </Link>
-                            </li>
-                            <li>
-                                    <Link to={`mirror`}>
-                                        <div className="row">
-                                        <div className="col-xs-2">
-                                             <input type="button" className="btn btn-smmirror" />
-                                        </div>
-                                        <div className="col-xs-10 hamburguer">
-                                            <h3><b>Espelho</b></h3>
-                                        </div>
-                                        </div>
-                                    </Link>
-                            </li>
-                            <li>
-                                    <div className="row" onClick={this.handleClick}>
-                                    <div className="col-xs-2">
-                                         <input type="button" className="btn btn-smdef" />
-                                    </div>
-                                    <div className="col-xs-10 hamburguer">
-                                        <h3><b>Definições</b></h3>
-                                    </div>
-                                    </div>
-                            </li>
-                        </ul>
-                    </nav>
-                 </div>;
+            showNav =
+          <div className="modal">
+            <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper-perfil" role="navigation">
+              <ul className="nav nav-perfil sidebar-nav">
+                <li className="sidebar-brand">
+                  <Link to={`calendar`}>
+                  <div className="row menu-lat">
+                    <div className="col-xs-2">
+                      <input type="button" className="btn btn-smagend" />
+                    </div>
+                    <div className="col-xs-10 hamburguer">
+                      <h3><b>Agenda</b> Familiar</h3>
+                    </div>
+                  </div>
+
+                  </Link>
+
+                </li>
+                <li>
+                  <Link to={`lists`}>
+                  <div className="row menu-lat">
+                    <div className="col-xs-2">
+                      <input type="button" className="btn btn-smlist" />
+                    </div>
+                    <div className="col-xs-10 hamburguer">
+                      <h3><b>Lista de Compras</b></h3>
+                    </div>
+                  </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={`mirror`}>
+                  <div className="row menu-lat">
+                    <div className="col-xs-2">
+                      <input type="button" className="btn btn-smmirror" />
+                    </div>
+                    <div className="col-xs-10 hamburguer">
+                      <h3><b>Espelho</b></h3>
+                    </div>
+                  </div>
+                  </Link>
+                </li>
+                <li>
+                  <div className="row menu-lat" onClick={this.handleClick}>
+                    <div className="col-xs-2">
+                      <input type="button" className="btn btn-smdef" />
+                    </div>
+                    <div className="col-xs-10 hamburguer">
+                      <h3><b>Definições</b></h3>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>;
 
         }
        // console.log(this.props.children, "filhos");

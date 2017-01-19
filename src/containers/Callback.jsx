@@ -12,9 +12,9 @@ class Callback extends Component {
     var http = new XMLHttpRequest();
     var url = "http://develop.mmota.online/oauth/token";
     var params = "grant_type=authorization_code";
-        params += '&client_id=1';
-        params += '&client_secret=cxpYKLhUjS1U7ajnejwgRSSpokI9BgwoEvM05POg';
-        params += '&redirect_uri=http://mmota.online/callback';
+        params += '&client_id=6';
+        params += '&client_secret=BqUt2kB3fylwsCwkKNSj3mplY2PMHneGEs5lD1so';
+        params += '&redirect_uri=http://localhost:3000//callback';
         params += '&code='+code;
 
     http.open("POST", url, true);
@@ -24,6 +24,7 @@ class Callback extends Component {
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     // função que irá obter a resposta do servidor
+    var user;
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
             
@@ -40,7 +41,7 @@ class Callback extends Component {
 
                 // exemplo de uma chamada para obter o utilizador autenticado
                 var http2 = new XMLHttpRequest();
-                var url = "http://develop.mmota.online/api/users";
+                var url = "http://develop.mmota.online/api/user";
 
                     http2.open("GET", url, true);
 
@@ -57,15 +58,63 @@ class Callback extends Component {
                             console.log(http2.responseText);
                         }
                     }
-
+                    
                     http2.send();
             }
             
         }
     }
     http.send(params);
+    
+     return(<div>
+                <header className="header-initial">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xs-12 list-group-horizontal-eva">
+                                <h1 className="logoeva">eva         </h1>
+                                <h5 className="eva"><b>   Environmental Virtual Assistant</b></h5>
+                            </div>
+                            <button className="btn setainicial"></button>
+                        </div>
+                    </div>
+                </header>
+                <section>
 
-     return(<div><h5>OLAMUNDO</h5></div>);
+                    <div className="container">
+                        <div className="row">
+                        <div className="col-xs-12">
+                            <Link to={`lists`}>
+                                <button className="btn btn-shoplist"></button>
+                            </Link>
+                        </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <Link to={`mirror`}>
+                                    <button className="btn btn-mirror"></button>
+                                </Link>
+                                <Link to={`definition`}>
+                                    <button className="btn btn-definition"></button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <Link to={`calendar`}>
+                                   <button className="btn btn-agend"></button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <Link to={`/`}>
+                                   <button className="btn btn-more"></button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>);
         
     }
 
