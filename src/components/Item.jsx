@@ -108,7 +108,7 @@ class Item extends Component {
              var userslist=[];
             
             var family = this.props.users;
-             //console.log(this.props.users, 'usersfamily');
+            console.log(family, 'usersfamily');
             //console.log(family, 'tamanho usersfamily');
 
             var fun1, fun2, fun3, fun4, fun5;

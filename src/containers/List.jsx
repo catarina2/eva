@@ -33,7 +33,7 @@ class List extends Component {
             showHideSidenav: 'hidden',
             showModal: false,
             showpanel: false,
-            checked1: true,
+            checked1: 'checked',
             checked2: false,
             checked3: false,
             checked4: false,
@@ -253,7 +253,7 @@ class List extends Component {
                   //if(check1)
 
                   userslist=(<div className='display'><div className="cc-selector">
-                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
+                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={this.state.check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
                             </div>
                             <div className="cc-selector">
@@ -299,7 +299,7 @@ class List extends Component {
                   //if(check1)
                   
                   userslist=(<div className='display'><div className="cc-selector">
-                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
+                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={this.state.checked1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
                             </div>
                             <div className="cc-selector">
@@ -372,27 +372,27 @@ class List extends Component {
                                     <div className="row">
                                     <div className="row cc-selector display">
                                         <div className="col-xs-2 icon">
-                                                 <input id="icon1" type="radio" name="icon1" ref="icon1" value="trabalho"/>
+                                                 <input id="icon1" type="radio" name="icon1" ref="icon1" value="trabalho" checked={this.state.checked1}/>
                                                  <label className="icon-cc btn-icon1" htmlFor="icon1"  onClick={this.handleiconclick1}></label>
                                         </div>
                                         <div className="col-xs-2 icon">
-                                                 <input id="icon2" type="radio" name="icon2" ref="icon2" value="natal"/>
+                                                 <input id="icon2" type="radio" name="icon2" ref="icon2" value="natal" checked={this.state.checked2}/>
                                                  <label className="icon-cc btn-icon2" htmlFor="icon2"  onClick={this.handleiconclick2}></label>
                                         </div>
                                         <div className="col-xs-2 icon">
-                                                 <input id="icon3" type="radio" name="icon3" ref="icon3" value="prenda"/>
+                                                 <input id="icon3" type="radio" name="icon3" ref="icon3" value="prenda" checked={this.state.checked3}/>
                                                  <label className="icon-cc btn-icon3" htmlFor="icon3"  onClick={this.handleiconclick3}></label>
                                         </div>
                                         <div className="col-xs-2 icon">
-                                                 <input id="icon4" type="radio" name="icon4" ref="icon4" value="ovo"/>
+                                                 <input id="icon4" type="radio" name="icon4" ref="icon4" value="ovo" checked={this.state.checked4}/>
                                                  <label className="icon-cc btn-icon4" htmlFor="icon4" onClick={this.handleiconclick4}></label>
                                         </div>
                                         <div className="col-xs-2 icon">
-                                                 <input id="icon5" type="radio" name="icon5" ref="icon5" value="ferias"/>
+                                                 <input id="icon5" type="radio" name="icon5" ref="icon5" value="ferias" checked={this.state.checked5}/>
                                                  <label className="icon-cc btn-icon5" htmlFor="icon5" onClick={this.handleiconclick5}></label>
                                         </div>
                                         <div className="col-xs-2 icon">
-                                                 <input id="icon6" type="radio" name="icon6" ref="icon6" value="roupa"/>
+                                                 <input id="icon6" type="radio" name="icon6" ref="icon6" value="roupa" checked={this.state.checked6}/>
                                                  <label className="icon-cc btn-icon6" htmlFor="icon6" onClick={this.handleiconclick6}></label>
                                         </div>
                                     </div>
@@ -470,12 +470,12 @@ class List extends Component {
         var users; //{name:this.state.family.name, color:"red"};
         var listusers = [];
         //console.log(this.state.checked1, this.state.checked2, this.state.checked3, this.state.checked4, this.state.checked5, this.state.checked6, 'icons');
-        if(this.state.checked1) ref=this.refs.icon1.value;
-        else if(this.state.checked2) ref=this.refs.icon2.value;
-        else if(this.state.checked3) ref=this.refs.icon3.value;
-        else if(this.state.checked4) ref=this.refs.icon4.value;
-        else if(this.state.checked5) ref=this.refs.icon5.value;
-        else if(this.state.checked6) ref=this.refs.icon6.value;
+        if(this.state.checked1 === "checked") ref=this.refs.icon1.value;
+        else if(this.state.checked2 === "checked") ref=this.refs.icon2.value;
+        else if(this.state.checked3 === "checked") ref=this.refs.icon3.value;
+        else if(this.state.checked4 === "checked") ref=this.refs.icon4.value;
+        else if(this.state.checked5 === "checked") ref=this.refs.icon5.value;
+        else if(this.state.checked6 === "checked") ref=this.refs.icon6.value;
 
         //console.log(this.state.red);
         if(this.state.pink) {
@@ -522,37 +522,37 @@ class List extends Component {
 
     handleiconclick1(event) {
         event.preventDefault();
-        var css = (this.state.checked1 === false) ? true : false;
+        var css = (this.state.checked1 === false) ? "checked" : false;
         this.setState({checked1:css, checked2:false, checked3:false, checked4:false,checked5:false,checked6:false});
     }
 
     handleiconclick2(event) {
         event.preventDefault();
-        var css = (this.state.checked2 === false) ? true : false;
+        var css = (this.state.checked2 === false) ? "checked" : false;
         this.setState({checked2:css, checked1:false, checked3:false, checked4:false,checked5:false,checked6:false});
     }
 
     handleiconclick3(event) {
         event.preventDefault();
-        var css = (this.state.checked3 === false) ? true : false;
+        var css = (this.state.checked3 === false) ? "checked" : false;
         this.setState({checked3:css, checked2:false, checked1:false, checked4:false,checked5:false,checked6:false});
     }
 
     handleiconclick4(event) {
         event.preventDefault();
-        var css = (this.state.checked4 === false) ? true : false;
+        var css = (this.state.checked4 === false) ? "checked" : false;
         this.setState({checked4:css, checked2:false, checked3:false, checked1:false,checked5:false,checked6:false});
     }
 
     handleiconclick5(event) {
         event.preventDefault();
-        var css = (this.state.checked5 === false) ? true : false;
+        var css = (this.state.checked5 === false) ? "checked" : false;
         this.setState({checked5:css, checked2:false, checked3:false, checked4:false,checked1:false,checked6:false});
     }
 
     handleiconclick6(event) {
         event.preventDefault();
-        var css = (this.state.checked6 === false) ? true : false;
+        var css = (this.state.checked6 === false) ? "checked" : false;
         this.setState({checked6:css, checked2:false, checked3:false, checked4:false,checked5:false,checked1:false});
     }
 
