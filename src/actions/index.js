@@ -216,9 +216,7 @@ export function updateProducts(id, product) {
                   },
                 body: JSON.stringify(product)
             })
-            .then(response =>  {
-            console.log('request succeeded with JSON response', product);
-        })
+            .then(response => response.json())
             .then(json => dispatch(receiveeditproducts(id, json)));
     }
 }

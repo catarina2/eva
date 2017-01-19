@@ -91,19 +91,19 @@ class Def extends Component {
                                         </div>
                                     </div>
                                     <div className="row cc-selector display">
-                                        <div className="col-xs-2 icon">
+                                        <div className="col-xs-2 iconperfil">
                                                  <input id="pink" type="radio" name="pink" ref="pink" value="pink" checked={this.state.checked1}/>
                                                  <label className={this.state.pink} htmlFor="pink"  onClick={this.handleuserpink}></label>
                                         </div>
-                                        <div className="col-xs-2 icon">
+                                        <div className="col-xs-2 iconperfil">
                                                  <input id="red" type="radio" name="red" ref="red" value="red" checked={this.state.checked2}/>
                                                  <label className={this.state.red} htmlFor="red"  onClick={this.handleuserred}></label>
                                         </div>
-                                        <div className="col-xs-2 icon">
+                                        <div className="col-xs-2 iconperfil">
                                                  <input id="green" type="radio" name="green" ref="green" value="green" checked={this.state.checked3}/>
                                                  <label className={this.state.green} htmlFor="green"  onClick={this.handleusergreen}></label>
                                         </div>
-                                        <div className="col-xs-2 icon">
+                                        <div className="col-xs-2 iconperfil">
                                                  <input id="blue" type="radio" name="blue" ref="blue" value="blue" checked={this.state.checked4}/>
                                                  <label className={this.state.blue} htmlFor="blue"  onClick={this.handleuserblue}></label>
                                         </div>
@@ -232,7 +232,7 @@ class Def extends Component {
                                     <div className="col-xs-6">
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <h4 className="specification">{this.state.user.name}</h4>
+                                            <h4 className="specification sizename">{this.state.user.name}</h4>
                                         </div>
                                     </div>
                                     </div>

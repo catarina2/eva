@@ -17,7 +17,7 @@ class Produto extends Component {
         this.noconfirm = this.noconfirm.bind(this);
         this._submit = this._submit.bind(this);
         
-        this.state = {unline: false, showModal:false, showEdit:false, confirmdelete:false, msg:null};
+        this.state = {unline: false, image: null,showModal:false, showEdit:false, msge:null, confirmdelete:false, msg:null, imagesend: null};
     }
 
      componentDidMount() {
@@ -35,6 +35,10 @@ class Produto extends Component {
 
            setTimeout(() => {this.setState({showModal: false, confirmdelete: false, msg: null})}, 500);
             
+        }
+        else if(this.state.msge === 'OK')
+        {
+            setTimeout(() => {this.setState({showEdit: false, confirmdelete: false, msge: null})}, 500);
         }
         if(this.state.unline === true)
         {
@@ -150,6 +154,13 @@ class Produto extends Component {
 
          if(this.state.showEdit)
         {
+                 var img;
+                    if(this.state.imagesend)
+                    {img =(<div className="imagediv"><img className= "image" src={this.state.image} /></div>);}
+                    else{
+                     img=(<label className="btn btn-photo" For="upload-file-selector">
+                                <input ref="image" id="upload-file-selector" type="file" onChange={this._onChange}/>
+                            </label>);}
                 var showedit;
                 showedit = (
                 <div className="modal">
@@ -179,7 +190,7 @@ class Produto extends Component {
                                     </div>
                                     </div>
                                     <div className="col-xs-6">
-                                       
+                                       {img}
                                     </div>
                                     </div>
                                     <div className="row">
@@ -247,10 +258,12 @@ class Produto extends Component {
         obj['title'] = this.refs.title.value;
         obj['quant'] = this.refs.quant.value;
         obj['description'] = this.refs.description.value;
+        if(this.state.imagesend) obj['image'] = this.state.imagesend;
         obj['list_id'] = this.props.item.list_id;
        // console.log(obj, this.props);
         const {dispatch} = this.props;
         dispatch(updateProducts(this.props.item.id, obj));
+        setTimeout(() => {this.setState({msge: this.props.msge})}, 500);
     }
 
 
@@ -288,6 +301,25 @@ class Produto extends Component {
         var show = (this.state.showEdit === false) ? true : false;
         this.setState({showEdit: show});
     }
+
+     _onChange(){
+       // console.log('change photo');
+          var input = document.querySelector('input[type="file"]');
+          var images = input.files[0];
+
+          var reader = new FileReader();
+          var url = reader.readAsDataURL(images);
+         // console.log(reader);
+          reader.onloadend = function (e) {
+          //  console.log('estou aqui');
+              this.setState({
+                  image: [reader.result],
+                  imagesend: images
+              })
+            }.bind(this);
+
+         //  console.log(reader);
+     }
 }
 
 Produto.propTypes = {
@@ -298,7 +330,7 @@ const mapStateToProps = (state, ownProps) => {
    console.log('container produto mapStateToProps', state, ownProps.item.id);
  //  console.log(state.productslist.productslist[ownProps.item.id]);
  // console.log('produto', state);
-    return {msg: state.productslist.msgdelete};
+    return {msg: state.productslist.msgdelete, msge: state.productslist.msgedit};
 }
 
 export default connect(mapStateToProps)(Produto);

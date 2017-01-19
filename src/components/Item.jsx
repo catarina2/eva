@@ -184,7 +184,9 @@ class Item extends Component {
                                                     <button className="btn logolistsmall"></button>
                                                 </Link>
                                             </div>
-                                            <div className="col-xs-2">
+                                            <div className="col-xs-2 display">
+                                                <button className="btn btn-delete" onClick={this.handleDelete}><span
+                                                    className="glyphicon glyphicon-trash glist"></span></button>
                                                 <button type="submit" className="btn submit"></button>
                                             </div>
                                         </div>
@@ -237,8 +239,6 @@ class Item extends Component {
                                 <div className="edit-container">
                                     <button className="btn btn-delete1" onClick={this.handleEdit}><span
                                         className="glyphicon glyphicon-edit glist"></span></button>
-                                    <button className="btn btn-delete" onClick={this.handleDelete}><span
-                                        className="glyphicon glyphicon-trash glist"></span></button>
                                 </div>
                             </div>
                             <div className="clear-container"></div>

@@ -177,7 +177,7 @@ section {
 }
 
 .panel-body {
-    padding: 35px;
+    padding: 12px 20px 30px 41px;
 }
 
 .panel-heading {
@@ -263,6 +263,7 @@ section {
 }
 .glist {
     color: white;
+    font-size: 20px;
 }
 
 .modal-body{
@@ -515,7 +516,7 @@ header .btn-list {
     height: 65px;
     position: absolute;
     left: 0;
-    top: 6vmin;
+    top: 10vmin;
 }
 
 .logolist {
@@ -647,6 +648,12 @@ header .btn-list {
     margin-right: 4vmin;
 }
 
+.iconperfil {
+    margin-right: 4vmin;
+    margin-top: -6vmin;
+}
+
+    
 .btn-icon1 {
     background-image: url("../../img/lista/trabalho_selecionar.png");
     background-color: rgba(255,255,255,0);
@@ -902,8 +909,8 @@ header .btn-list {
     background-image: url("../../img/lista/photo80.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 35px 45px;
-    position: absolute;
+    padding: 45px 45px;
+    position: relative;
     margin-left: 3vmax;
     margin-top: 5vmin;
 }
@@ -915,7 +922,7 @@ header .btn-list {
     padding: 35px 45px;
     position: absolute;
     margin-left: 10vmax;
-    margin-top: 8vmin;
+    margin-top:  10vmin;
     background-size: 20vmin;
 }
 
@@ -1642,4 +1649,8 @@ header .btn-perfil {
 
 .btn:active, .btn:hover, .btn:focus {
     outline: none;
+}
+
+.sizename {
+    font-size: 6vmax;
 }

@@ -9,6 +9,36 @@ const productslist = (state = initState, action) => {
     switch (action.type) {
       case types.RECEIVE_EDIT_PRODUTS:
         console.log(state, action, 'RECEIVE_DELETE_PRODUTS');
+
+        var products = state.productslist[action.productslist.data.list_id].data;
+        each(products, (item, key) => {
+              if(item.id === action.id)
+              {
+                product = key;
+              }
+
+             })
+
+        console.log(product, 'produto');
+
+         var x = {};
+         x[product] = action.productslist.data;
+         var temp = Object.assign(products, x);
+
+        console.log(temp, 'produto');
+        var rv = {};
+        rv["data"] = temp;
+        var r = {};
+        r[action.productslist.data.list_id] = rv;
+        console.log(r, 'rklsndlskdf');
+        products = Object.assign(state.productslist, r);
+        console.log(state, 'sdkfjlasfnzs');
+
+        return  Object.assign({}, state, {
+                   productslist: state.productslist,
+                   msgedit: action.productslist.msg,
+            });
+
         case types.RECEIVE_DELETE_PRODUTS:
         //console.log(state, action, 'RECEIVE_DELETE_PRODUTS');
         if(action.productslist.msg === 'OK'){
@@ -43,13 +73,15 @@ const productslist = (state = initState, action) => {
         }
         
         case types.RECEIVE_PRODUTS:
-       // console.log(state, action, 'RECEIVE_PRODUTS');
+        //console.log(state, action, 'RECEIVE_PRODUTS');
+        
+          var products;
            if(action.productslist.msg === 'NOK')
            {
-             temp = state.productslist;
+             products = state.productslist;
            }
            else {
-                var products;
+                
                 //console.log(state.productslist[action.id].data, 'listasasa');
                 if(state.productslist[action.id].data !== "List doesn't have products")
                 {temp = state.productslist[action.id].data;

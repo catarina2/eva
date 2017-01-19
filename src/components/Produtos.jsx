@@ -19,6 +19,7 @@ class Produtos extends Component {
             image: null,
             imagesend:null, 
             msg: null, 
+            msgd: this.props.msgd,
             name: null,
             quant: null
         }
@@ -31,13 +32,13 @@ class Produtos extends Component {
     }
     render() {
         var produtos;
-        if(this.props.msgd === 'OK')
+        if(this.state.msgd === 'OK')
         {
-           // console.log(this.props, 'podutos quando eliminamos');
+            console.log(this.props, 'podutos quando eliminamos');
             produtos  = this.props.produtos.productslist[this.props.id].data;
         }
         else {
-           // console.log(this.props, 'podutos normal');
+            console.log(this.props, 'podutos normal');
             produtos  = this.props.produtos.productslist[this.props.id].data;
         }
         
@@ -53,7 +54,7 @@ class Produtos extends Component {
         }
         if(this.state.msg === 'NOK')
        {
-        // console.log(this.props);
+         console.log(this.props, 'se não esta ok');
           if(this.props.data.length === 1) {
                if(this.props.data[0].indexOf("quant") === -1){
                 this.state.name = this.props.data[0];
@@ -106,7 +107,7 @@ class Produtos extends Component {
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <input type="text" className="form-control" ref="title" name="name" />
-                                            {this.state.name}
+                                            <div className="validation">{this.state.name}</div>
                                         </div>
                                     </div>
                                     </div>
@@ -122,7 +123,7 @@ class Produtos extends Component {
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <input type="text" className="form-control" ref="quant" name="name" />
-                                            {this.state.quant}
+                                            <div className="validation">{this.state.quant}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -215,7 +216,7 @@ class Produtos extends Component {
         form.append('description', this.refs.description.value);
         form.append('list_id', this.props.id);
         if(this.state.imagesend) form.append('image', this.state.imagesend);
-        this.setState({msg: this.props.msg});
+        
         const {dispatch} = this.props;
         dispatch(postProducts(this.props.id, form));
 
