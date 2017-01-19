@@ -28,6 +28,11 @@ class Inicioeva extends Component {
                             </Link>
                         </div>
                         </div>
+                        <div>
+                        <a href="http://develop.mmota.online/oauth/authorize?client_id=1&redirect_uri=http://mmota.online/callback&response_type=code&scope">
+                            <button className="btn btn-default">LOGIN</button>
+                        </a>
+                        </div>
                         <div className="row">
                             <div className="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                                 <Link to={`mirror`}>
