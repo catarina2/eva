@@ -33,7 +33,7 @@ class List extends Component {
             showHideSidenav: 'hidden',
             showModal: false,
             showpanel: false,
-            checked1: 'checked',
+            checked1: "checked",
             checked2: false,
             checked3: false,
             checked4: false,
@@ -253,7 +253,7 @@ class List extends Component {
                   //if(check1)
 
                   userslist=(<div className='display'><div className="cc-selector">
-                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={this.state.check1}/>
+                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
                             </div>
                             <div className="cc-selector">
@@ -299,7 +299,7 @@ class List extends Component {
                   //if(check1)
                   
                   userslist=(<div className='display'><div className="cc-selector">
-                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={this.state.checked1}/>
+                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
                             </div>
                             <div className="cc-selector">
@@ -419,7 +419,7 @@ class List extends Component {
             );
         }
 
-        //console.log(this.props, 3);
+        console.log(this.state, 3);
        
         return (
             <div>
