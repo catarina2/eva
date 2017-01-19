@@ -40,7 +40,7 @@ class Callback extends Component {
 
                 // exemplo de uma chamada para obter o utilizador autenticado
                 var http2 = new XMLHttpRequest();
-                var url = "http://api-teste.dev/api/v1/user";
+                var url = "http://develop.mmota.online/api/users";
 
                     http2.open("GET", url, true);
 
