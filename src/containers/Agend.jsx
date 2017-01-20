@@ -148,6 +148,7 @@ class Agend extends Component{
         {
 
             var userslist;
+
             if(this.state.family.users.length === 2)
             {
                userslist= ( <div className="cc-selector">
@@ -166,13 +167,13 @@ class Agend extends Component{
             }
             else if(this.state.family.users.length === 4)
             {
-               userslist= ( <div className="cc-selector">
-                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
-                                     <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
-                                     <input id="user2" type="radio" name="user2" ref="user2" value={this.state.family.users[1].name} checked={this.state.checkedu2}/>
-                                     <label className="user-cc btn-user2" For="user2" onClick={this.handleiconclicku2}></label>
-                                     <input id="user3" type="radio" name="user3" ref="user3" value={this.state.family.users[2].name} checked={this.state.checkedu3}/>
-                                     <label className="user-cc btn-user3" For="user3" onClick={this.handleiconclicku3}></label>
+               userslist= ( <div className="cc-selector display">
+                                     <input id="userblue" type="radio" name="userblue" ref="user3" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <label className="user-cc btn-userblue" For="userblue" onClick={this.handleiconclicku1}></label>
+                                     <input id="userpink" type="radio" name="userpink" ref="user4" value={this.state.family.users[1].name} checked={this.state.checkedu2}/>
+                                     <label className="user-cc btn-userpink" For="userpink" onClick={this.handleiconclicku2}></label>
+                                     <input id="usergreen" type="radio" name="usergreen" ref="user2" value={this.state.family.users[2].name} checked={this.state.checkedu3}/>
+                                     <label className="user-cc btn-usergreen" For="usergreen" onClick={this.handleiconclicku3}></label>
                             </div>);
             }
         showmodal = (
@@ -405,7 +406,7 @@ class Agend extends Component{
             
         var l = this.state.ev;
         l.push(add);
-
+        console.log(l);
         this.setState({ev: l, showModal: false, checkedu1: false, checkedu2: false, checkedu3: false, checkedu4:false});  
 
     }
@@ -415,10 +416,5 @@ Agend.propTypes = {
     items: PropTypes.array
 }
 
-const mapStateToProps = (state, ownProps) => {
-    // console.info('container List mapStateToProps', state, ownProps);
-    return state.contacts;
-}
-
-export default connect(mapStateToProps)(Agend);
+export default connect()(Agend);
 

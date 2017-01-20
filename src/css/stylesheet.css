@@ -1654,8 +1654,8 @@ header .btn-perfil {
   transform: rotate(-45deg) translateY(-50px) translateX(68px);
 }
 .losange .los1 img {
-  width: 50%;
-  height: 50%;
+    width: 45%;
+    height: 40%;
 }
 
 /*LOGIN*/

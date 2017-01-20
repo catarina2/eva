@@ -66,7 +66,7 @@ class Item extends Component {
         // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
         if (this.state.msgdelete === "OK") {
            
-            setTimeout(() => {this.setState({confirmdelete: false, msgdelete: null})}, 500);
+            setTimeout(() => {this.setState({confirmdelete: false, msgdelete: null, showModalEdit: false})}, 500);
         }
 
         if (this.state.msgedit === "OK") {
@@ -179,7 +179,7 @@ class Item extends Component {
                   if(check3 === 'green') {fun3 = this.handleiconclickgreen; check3 = this.state.green; className3 = this.state.cgreen}
                   if(check3 === 'yellow') {fun3 = this.handleiconclickyellow; check3 = this.state.yellow; className3 = this.state.cyellow}
                   //if(check1)
-
+                  console.log(this.state.cpink, 'rosa');
                   userslist=(<div className='display'><div className="cc-selector">
                                 <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
@@ -204,6 +204,7 @@ class Item extends Component {
                   check3 =family[2].color;
                   check4 =family[3].color;
                   
+                  console.log(check1, 'color')
                   if(check1 === 'red' ){ fun1 = this.handleiconclickred; check1 = this.state.red;  className1 = this.state.cred}
                   if(check1 === 'pink') {fun1 = this.handleiconclickpink; check1 = this.state.pink; className1 = this.state.cpink}
                   if(check1 === 'blue') {fun1 = this.handleiconclickblue; check1 = this.state.blue; className1 = this.state.cblue}
@@ -225,7 +226,7 @@ class Item extends Component {
                   if(check4 === 'green') {fun4 = this.handleiconclickgreen; check4 = this.state.green; className4 = this.state.cgreen}
                   if(check4 === 'yellow') {fun4 = this.handleiconclickyellow; check4 = this.state.yellow; className4 = this.state.cyellow}
                   //if(check1)
-                  
+                  console.log(check1, className1, 'familia de quatro');
                   userslist=(<div className='display'><div className="cc-selector">
                                 <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
@@ -281,7 +282,7 @@ class Item extends Component {
                                         <div className="col-xs-1">
                                         </div>
                                         <div className="col-xs-10 display">
-
+                                        {userslist}
                                         </div>
                                     </div>
                                     <div className="row">
@@ -476,13 +477,15 @@ class Item extends Component {
 
      handleiconclickpink(event) {
         event.preventDefault();
-        //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser pink');
+        console.log(this.state.cpink, 'handleclickuser pink');
         var css = (this.state.pink === false) ? true : false;
         var color = (this.state.cpink === 'userpink') ? 'guserpink' : 'userpink';
+        console.log(this.state.cpink, 'handleclickuser pink');
         this.setState({pink:css, cpink: color});
     }
     handleiconclickblue(event) {
         event.preventDefault();
+        console.log(this.state.cblue, 'handleclickuser pink');
         //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser blue');
         var css = (this.state.blue === false) ? true : false;
         var color = (this.state.cblue === 'userblue') ? 'guserblue' : 'userblue';

@@ -11,6 +11,7 @@ class Event extends Component {
     render() {
             var ev = this.props.ev;
             var persona = [];
+            console.log(ev, 'evento');
             ev.users.map((i, key) => {
                  if(i.color === "red")
                 {
@@ -51,7 +52,7 @@ Event.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     // console.info('container App mapStateToProps', state, ownProps);
-    return state.contacts;
+    return state.lists;
 }
 
 
