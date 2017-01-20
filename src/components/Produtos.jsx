@@ -198,6 +198,15 @@ class Produtos extends Component {
     }
 
     handleModal(){
+
+        if(this.state.showModal === false){
+            var header = document.getElementById("header");
+            header.classList.add("header-hide");
+        }else{
+            var header = document.getElementById("header");
+            header.className = "header header-list";
+
+        }
        // console.log('modalmodal');
         var css = (this.state.showModal === false) ? true : false;
        // console.log(css);

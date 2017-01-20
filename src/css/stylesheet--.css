@@ -25,14 +25,18 @@ html, body {
     padding: 0;
     box-sizing: border-box;
 }
-a{
-    color: #f47828;
-    text-decoration: none !important;
+a {
+  color: #f47828;
+  text-decoration: none !important;
 }
-a:hover, a:active,{
-    color: #f47828;
-    text-decoration: none !important;
+
+a:hover,
+a:active,
+{
+  color: #f47828;
+  text-decoration: none !important;
 }
+
 .row {
     margin-right: 0px;
 }
@@ -81,31 +85,25 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vmin;
+    width: 100%;
     height: 20vmin;
     z-index: 2;
     text-align: left;
 }
-.header-hide{
-    z-index: 1;
-}
+
 section {
    position: relative;
     top: 16vmin;
     z-index: 1;
     width: 100%;
 }
-.display-icons{
-    display: inline-flex;
-    margin-left: -35px;
-    margin-top: -5px;
-}
+
 .display {
     display: inline-flex;
 }
 .display1 {
-    margin: -2px -5px;
     display: inline-flex;
+    margin-left: 82%;
     padding-left: 0%;
 }
 .cc-selector {
@@ -134,6 +132,7 @@ section {
     background-size:contain;
     background-repeat:no-repeat;
     display:inline-block;
+    width:100px;height:70px;
     -webkit-transition: all 100ms ease-in;
        -moz-transition: all 100ms ease-in;
             transition: all 100ms ease-in;
@@ -203,8 +202,7 @@ section {
 .panel-title{
     display: inline-block;
     vertical-align: top;
-    width: 23vmax;
-    height: 50px;
+    width: 19vmax;
 }
 .list-info-container{
     display: inline-block;
@@ -227,12 +225,7 @@ section {
 .clear-container{
     clear: right;
 }
-.display1 .btn-default{
-    font-size: 20px;
-    padding: 1px 0px;
-}
 .btn-default {
-    padding: 1px 6px;
     border-color: transparent;
 }
 
@@ -279,10 +272,6 @@ section {
 .glyphicon-edit {
     color: #f7aa47;
 }
-.glist-trash {
-    color: #f7aa47;
-    font-size: 20px;
-}
 .glist {
     color: white;
     font-size: 20px;
@@ -309,22 +298,24 @@ input[type=checkbox]{
 .dropdown-menu {
     margin-top: -20px;
 }
-li .dropdown{
-    padding: 5px 0 5px 55px;
-    left: -6vmax;
+li .dropdown {
+  padding: 5px 0 5px 55px;
+  left: -6vmax;
 }
-.dropdown-agend{
-    background-color: #f47828;
+.dropdown-agend {
+  background-color: #f47828;
 }
-.dropdown-list{
-    background-color: #f7aa47;
+
+.dropdown-list {
+  background-color: #f7aa47;
 }
+
 .dropownsize {
     font-size: 5vmin;
 } 
 
 .specification {
-    margin-bottom: 15vmin;
+    margin-bottom: 18vmin;
     margin-top: 15vmin;
     padding-left: 7vmin;
 }
@@ -358,23 +349,22 @@ li .dropdown{
     margin-left: 28%;
 }
 
-.sidebar-nav{
-margin-top: 30px;
+
+.sidebar-nav {
+  margin-top: 30px;
 }
+
 .nav {
-    background-color: #f08143;
-    text-align: left;
-    padding-left: 10px;
+  background-color: #f08143;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .nav>li {
-        margin-top: 30px;
+  margin-top: 30px;
 }
 .nav>li>a {
     padding: 0px 0px;
-}
-.menu-lat{
-    margin-left: 0;
 }
 
 .modal {
@@ -589,14 +579,14 @@ header .btn-list {
 }
 
 .btn-delete {
-    background-color: white;
+    background-color: #f7AA47;
     padding:0;
     font-size: 15px;
     clear: right;
 }
 
 .btn-delete1 {
-    background-color: #f7aa47;
+    background-color: #f7AA47;
     padding: 0 10px 0 0;
     font-size: 15px;
 }
@@ -889,11 +879,7 @@ header .btn-list {
     background-image: url("../../img/lista/certo30.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    width: 34px;
-    height: 34px;
-    margin-left: -10px;
-    margin-top: -10px;
-    padding: 6px 16px;
+    padding: 20px 20px;
 }
 
 
@@ -976,9 +962,8 @@ header .btn-list {
     background-repeat: no-repeat;
     width: 71px;
     height: 24px;
-    padding-bottom: 20px;
     position: relative;
-    left: 7.5vmax;
+    left: 7vmax;
     float: left;
     align-self: auto;
     background-size: 50px 15px;
@@ -1081,6 +1066,13 @@ header .btn-agend1 {
     text-align: left;
 }
 
+.DayPicker-NavBar {
+
+}
+
+.DayPicker {
+
+}
 
 .date {
     margin-top: 25px;
@@ -1556,9 +1548,8 @@ header .btn-perfil {
 } 
 
 .hamburguer {
-    margin-top: -18px;
-    margin-left: 10vmin;
-
+  margin-top: -18px;
+  margin-left: 10vmin;
 }
 /*final botão hamburguer*/
 
@@ -1627,11 +1618,15 @@ header .btn-perfil {
     margin-left: 29%;
     margin-top: 10%;
 }
+.modal-footer .btn+.btn {
+    padding-left: 0vmin; 
+    margin-left: 0px;
+}
 .btn-confirm {
     margin-right: 16%;
     padding-left: 5vmin;
     padding-right: 5vmin;
-    border-radius: 5px;
+    border-radius: inherit;
     background-color:#f7aa47;
     color: white;
 }
@@ -1640,8 +1635,8 @@ header .btn-perfil {
   margin: 0 auto;
   transform-origin: 45% 50%;
   overflow: hidden;
-    width: 70px;
-    height: 70px;
+  width: 100px;
+  height: 100px;
 }
 .losange {
     transform: rotate(45deg) translateY(6px) translateX(21px);

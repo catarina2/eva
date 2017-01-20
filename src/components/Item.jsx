@@ -97,9 +97,6 @@ class Item extends Component {
         else if (list.icon === "ferias") {
             icon = <button className="btn ferias list-icon"></button>;
         }
-        else if (list.icon === "roupa") {
-            icon = <button className="btn roupa list-icon"></button>;
-        }
 
         var showedit;
         //console.log(this.state.showModalEdit);
@@ -320,10 +317,6 @@ class Item extends Component {
                                                  <input id="icon5" type="radio" name="icon5" ref="icon5" value="ferias"/>
                                                  <label className="icon-cc btn-icon5" htmlFor="icon5" onClick={this.handleiconclick5}></label>
                                         </div>
-                                        <div className="col-xs-2 icon">
-                                                 <input id="icon6" type="radio" name="icon6" ref="icon6" value="roupa"/>
-                                                 <label className="icon-cc btn-icon6" htmlFor="icon6" onClick={this.handleiconclick6}></label>
-                                        </div>
                                     </div>
                                      <div className="modal-footer">
                                         <div className="row">
@@ -334,9 +327,9 @@ class Item extends Component {
                                                     <button className="btn logolistsmall"></button>
                                                 </Link>
                                             </div>
-                                            <div className="col-xs-2 display">
+                                            <div className="col-xs-2 display-icons">
                                                 <button className="btn btn-delete" onClick={this.handleDelete}><span
-                                                    className="glyphicon glyphicon-trash glist"></span></button>
+                                                    className="glyphicon glyphicon-trash glist-trash"></span></button>
                                                 <button type="submit" className="btn submit"></button>
                                             </div>
                                         </div>
@@ -531,9 +524,17 @@ class Item extends Component {
 
     handleDelete() {
        // console.log(this.props, 'handleDelete');
+        setTimeout(() => {
+            var header = document.getElementById("header");
+            header.classList.add("header-hide");
+        }, 512);
        this.setState({confirmdelete: true});
     }
     confirmdelete() {
+
+        var header = document.getElementById("header");
+        header.classList.add("header-hide");
+
         const {dispatch} = this.props;
         dispatch(deleteLists(this.props.list.id));
         setTimeout(() => {this.setState({msgdelete: this.props.msgdelete})}, 500);
@@ -543,6 +544,14 @@ class Item extends Component {
     }
     handleEdit() {
         //console.log(this.props, 'handleEdit');
+        if(this.state.showModalEdit === false){
+            var header = document.getElementById("header");
+            header.classList.add("header-hide");
+        }else{
+            var header = document.getElementById("header");
+            header.className = "header header-list";
+
+        }
         var css = (this.state.showModalEdit === false) ? true : false;
         this.setState({showModalEdit:css});
     }
@@ -579,7 +588,8 @@ class Item extends Component {
 
         const {dispatch} = this.props;
         dispatch(editLists(this.props.list.id, obj));
-         setTimeout(() => { this.setState({msgedit: this.props.msgedit})}, 500);
+         setTimeout(() => { var header = document.getElementById("header");
+             header.className = "header header-list";this.setState({msgedit: this.props.msgedit})}, 500);
     }
 
     _submit(event) {
@@ -589,6 +599,9 @@ class Item extends Component {
             quant: this.refs.quant.value,
             desc: this.refs.description.value
         };
+
+        var header = document.getElementById("header");
+        header.className = "header header-list";
 
         var l = this.props.item.produtos;
 

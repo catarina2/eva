@@ -390,10 +390,6 @@ class List extends Component {
                                                  <input id="icon5" type="radio" name="icon5" ref="icon5" value="ferias" checked={this.state.checked5}/>
                                                  <label className="icon-cc btn-icon5" htmlFor="icon5" onClick={this.handleiconclick5}></label>
                                         </div>
-                                        <div className="col-xs-2 icon">
-                                                 <input id="icon6" type="radio" name="icon6" ref="icon6" value="roupa" checked={this.state.checked6}/>
-                                                 <label className="icon-cc btn-icon6" htmlFor="icon6" onClick={this.handleiconclick6}></label>
-                                        </div>
                                     </div>
                                     </div>
                                      <div className="modal-footer">
@@ -422,7 +418,7 @@ class List extends Component {
        
         return (
             <div>
-                <header className="header header-list">
+                <header id="header" className="header header-list">
                     <div className="container">
                     <div className="menu-title font-large">Lista de Compras</div>
                         {showNav}
