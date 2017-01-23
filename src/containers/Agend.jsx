@@ -4,7 +4,17 @@ import {Link} from 'react-router';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import Event from '../components/Event';
 
-import 'react-day-picker/lib/style.css';
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+import TimePicker from 'rc-time-picker';
+
+const showSecond = true;
+const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
+
+require('react-datepicker/dist/react-datepicker.css');
+require ('react-day-picker/lib/style.css');
+require ('rc-time-picker/assets/index.css');
 
 class Agend extends Component{
 
@@ -18,6 +28,8 @@ class Agend extends Component{
         this.handleiconclicku3 = this.handleiconclicku3.bind(this);
         this.handleiconclicku4 = this.handleiconclicku4.bind(this);
         this._submit = this._submit.bind(this);
+         this.handleChange = this.handleChange.bind(this);
+         this.onChange= this.onChange.bind(this);
         this.state = {
             checkedu1: false,
             checkedu2: false,
@@ -30,9 +42,11 @@ class Agend extends Component{
             month: new Date(),
             cd: null,
             showev: false,
+            startDate: moment(),
             family: {name:"martinho", users: [{name: "marta", color: "blue"}, {name: "catarina", color: "green"}, {name: "diogo", color: "pink"}, {name: "martinho", color:"red"}]},
             ev: [{day:"11-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"20h",note:"Jantar de raparigas",location:"Cais Madeirense"}, {day:"11-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"21h",note:"Jantar de raparigas",location:"Petiscos"},{day:"10-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"20h",note:"Jantar de raparigas",location:"Cais Madeirense"}]
            }
+
     }
     render(){
         var fullDate = this.state.month;
@@ -197,7 +211,11 @@ class Agend extends Component{
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <input type="text" className="form-control" ref="name" name="name" placeholder="DD-M-YYYY" />
+                                            <DatePicker
+                                                className="form-control"
+                                                placeholderText="DD-MM-YYYY"
+                                                todayButton={"EVA"}
+                                                selected={this.state.startDate} onChange={this.handleChange}/>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -217,7 +235,7 @@ class Agend extends Component{
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-1">
-                                            <button type="button" className="btn btn-hour"></button>
+                                            <button type="button" className="btn btn-hour" ></button>
                                         </div>
                                         <div className="col-xs-10">
                                             <h4>Hora do Evento</h4>
@@ -225,7 +243,12 @@ class Agend extends Component{
                                     </div>
                                     <div className="row">
                                       <div className="col-xs-12">
-                                            <input type="text" className="form-control" ref="hour" name="name" />
+                                          <TimePicker
+                                              showSecond={showSecond}
+                                              defaultValue={moment()}
+                                              className=""
+                                              onChange={this.onChange}
+                                              />
                                         </div>
                                     </div>
                                     <div className="row">
@@ -282,6 +305,7 @@ class Agend extends Component{
                     <div className="menu-title font-large"><b>Agenda </b>Familiar</div>
                         {showNav}
                         {showmodal}
+
                     
                     </div>
                 </header>
@@ -323,6 +347,14 @@ class Agend extends Component{
     	);
     }
 
+    onChange(value) {
+        console.log(value && value.format(str));
+    }
+    handleChange(date) {
+    this.setState({
+        startDate: date
+    });
+    }
     handleDayClick(e, day) {
         var fullDate = day;
         var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : (fullDate.getMonth()+1);

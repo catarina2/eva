@@ -20,7 +20,7 @@
 }
 
 html, body {
-    font-size:3vmin;;
+    font-size: 2.5vmax;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -91,7 +91,7 @@ footer {
 }
 section {
    position: relative;
-    top: 16vmin;
+    top: 15vmin;
     z-index: 1;
     width: 100%;
 }
@@ -1020,6 +1020,47 @@ label {
 /*final do css para Lista de Compras*/
 
 /*css para Agenda Familiar*/
+
+/*css para input react Datepicker*/
+
+
+.react-datepicker{
+    font-family:"Caviar dreams bold";
+    font-size: inherit;
+}
+.react-datepicker__header, .react-datepicker__today-button, .react-datepicker__day--selected{
+    background-color: #cc5027;
+    color: white;
+}
+ .react-datepicker__navigation--next{
+    border-left-color: white;
+}
+.react-datepicker__navigation--previous{
+    border-right-color: white;
+}
+.react-datepicker__triangle{
+    top: 1px;
+    border-bottom-color: #cc5027 !important;
+}
+.react-datepicker__day:hover{
+    background-color: #f47828;
+    color: white;
+}
+.react-datepicker__current-month, .react-datepicker__day-name{
+    color: white;
+}
+/*FIM css para input react Datepicker*/
+
+/*css para input react HourPicker*/
+.rc-time-picker-input{
+    padding: 6px 7px;
+    height: 34px;
+    font-size: 2.5vmax;
+    width: 170px;
+}
+
+
+
 .header-agend {
     background-image: url("../../img/agenda/banner_laranja_escuro.png");
     background-size: 100% 100%;
@@ -1069,7 +1110,7 @@ header .btn-agend1 {
     background-color: #f47828;
     font-size: 4vmax;
     margin-top: -4vmin;
-    padding: 2vmin 0 0 7vmax;
+    padding: 2.5vmin 0 0 7vmax;
     color: white;
     font-weight: bold;
 }
