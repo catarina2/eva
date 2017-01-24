@@ -9,7 +9,7 @@ var moment = require('moment');
 
 import TimePicker from 'rc-time-picker';
 
-const showSecond = true;
+const showSecond = false;
 const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
 require('react-datepicker/dist/react-datepicker.css');
@@ -30,12 +30,14 @@ class Agend extends Component{
         this._submit = this._submit.bind(this);
          this.handleChange = this.handleChange.bind(this);
          this.onChange= this.onChange.bind(this);
+         this.handleEventHour= this.handleEventHour.bind(this);
         this.state = {
             checkedu1: false,
             checkedu2: false,
             checkedu3: false,
             checkedu4: false,
             showModal: false,
+            checkEventHour: false,
             showHideSidenav: "hidden",
             selectedDay: null,
             day: null,
@@ -241,12 +243,26 @@ class Agend extends Component{
                                             <h4>Hora do Evento</h4>
                                         </div>
                                     </div>
-                                    <div className="row">
+                                      <div className="row">
+                                          <div className="col-xs-1">
+                                              <input type="checkbox" className="TodoDia" onClick={this.handleEventHour} checked={this.state.checkEventHour}/>
+                                          </div>
+                                          <div className="col-xs-10">
+                                              <h3 className="color-gray" >Dia inteiro</h3>
+                                          </div>
+                                      </div>
+                                    <div className="row" id="timePicker">
                                       <div className="col-xs-12">
                                           <TimePicker
                                               showSecond={showSecond}
                                               defaultValue={moment()}
-                                              className=""
+                                              className="hora-inicio"
+                                              onChange={this.onChange}
+                                              />
+                                          <TimePicker
+                                              showSecond={showSecond}
+                                              defaultValue={moment()}
+                                              className="hora-fim"
                                               onChange={this.onChange}
                                               />
                                         </div>
@@ -347,6 +363,26 @@ class Agend extends Component{
     	);
     }
 
+    handleEventHour(){
+        event.preventDefault();
+
+        var timePicker = document.getElementById("timePicker");
+        if(this.state.checkEventHour==false){
+            timePicker.classList.add('row-visually-hidden');
+
+            setTimeout(function () {timePicker.classList.add('row-hidden'); }, 20);
+
+        }else{
+            timePicker.className =('row row-visually-hidden');
+            setTimeout(function () {
+                timePicker.className =('row');
+            }, 20);
+        }
+
+        var css = (this.state.checkEventHour === false) ? true : false;
+        this.setState({checkEventHour:css});
+
+    }
     onChange(value) {
         console.log(value && value.format(str));
     }
@@ -355,6 +391,7 @@ class Agend extends Component{
         startDate: date
     });
     }
+
     handleDayClick(e, day) {
         var fullDate = day;
         var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : (fullDate.getMonth()+1);

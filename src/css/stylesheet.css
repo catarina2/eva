@@ -34,9 +34,18 @@ a:hover, a:active,{
     text-decoration: none !important;
 }
 .row {
-    margin-right: 0px;
+    margin-right: 0;
+    transition: all 0.3s linear;
 }
+.row-hidden{
+    display: none;
+}
+.row-visually-hidden{
+    opacity: 0;
+}
+.row-shown{
 
+}
 h1, h2, h3 {
     color: #FFFFFF;
 }
@@ -48,6 +57,9 @@ h1, h2, h3 {
 .font-medium{
     font-size: 3vmax;
     color: white;
+}
+.color-gray{
+    color: gray;
 }
 .glyphicon-remove{
     font-size: 3vmax;
@@ -1056,10 +1068,20 @@ label {
     padding: 6px 7px;
     height: 34px;
     font-size: 2.5vmax;
-    width: 170px;
+    width: 111px;
+}
+.rc-time-picker-panel-select, .rc-time-picker-panel-input{
+    font-size: 2.5vmax;
+}
+.rc-time-picker-panel-select{
+    width: 50%;
+}
+.rc-time-picker-panel-select-option-selected{
+    background-color: #f47828 !important;
+    color: white !important;
 }
 
-
+/*FIM css para input react HourPicker*/
 
 .header-agend {
     background-image: url("../../img/agenda/banner_laranja_escuro.png");
@@ -1121,7 +1143,9 @@ header .btn-agend1 {
     border: 1px solid #f47828;
     text-align: left;
 }
-
+.DayPicker-Day--selected{
+    background-color: #f47828 !important;
+}
 
 .date {
     margin-top: 25px;
@@ -1154,7 +1178,13 @@ header .btn-agend1 {
 }
 
 
-
+.TodoDia{
+    vertical-align: middle;
+    margin: 23px 5px 5px 5px !important;
+    font-size: 12px;
+    width: 4vmin;
+    height: 4vmin;
+}
 
 
 .btn-time {
