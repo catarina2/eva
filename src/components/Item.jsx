@@ -10,7 +10,7 @@ import {fetchListProducts, deleteLists, editLists} from '../actions';
 
 class Item extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
@@ -527,16 +527,22 @@ class Item extends Component {
 
     handleDelete() {
        // console.log(this.props, 'handleDelete');
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+
         setTimeout(() => {
-            var header = document.getElementById("header");
             header.classList.add("header-hide");
-        }, 512);
+            bodyScroll.classList.add("body-stop-scroll");
+        }, 520);
        this.setState({confirmdelete: true});
     }
     confirmdelete() {
 
         var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+
         header.classList.add("header-hide");
+        bodyScroll.classList.add("body-stop-scroll");
 
         const {dispatch} = this.props;
         dispatch(deleteLists(this.props.list.id));
@@ -547,13 +553,15 @@ class Item extends Component {
     }
     handleEdit() {
         //console.log(this.props, 'handleEdit');
-        if(this.state.showModalEdit === false){
-            var header = document.getElementById("header");
-            header.classList.add("header-hide");
-        }else{
-            var header = document.getElementById("header");
-            header.className = "header header-list";
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
 
+        if(this.state.showModalEdit === false){
+            header.classList.add("header-hide");
+            bodyScroll.classList.add("body-stop-scroll");
+        }else{
+            header.className = "header header-list";
+            bodyScroll.className = "";
         }
         var css = (this.state.showModalEdit === false) ? true : false;
         this.setState({showModalEdit:css});
@@ -588,11 +596,13 @@ class Item extends Component {
 
         console.log(obj, 'edição');
 
+         var header = document.getElementById("header");
+         var bodyScroll = document.getElementById("body");
+
 
         const {dispatch} = this.props;
         dispatch(editLists(this.props.list.id, obj));
-         setTimeout(() => { var header = document.getElementById("header");
-             header.className = "header header-list";this.setState({msgedit: this.props.msgedit})}, 500);
+         setTimeout(() => {bodyScroll.className = ""; header.className = "header header-list";this.setState({msgedit: this.props.msgedit})}, 500);
     }
 
     _submit(event) {
@@ -604,7 +614,10 @@ class Item extends Component {
         };
 
         var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+
         header.className = "header header-list";
+        bodyScroll.className = "";
 
         var l = this.props.item.produtos;
 

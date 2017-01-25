@@ -31,7 +31,11 @@ class Agend extends Component{
          this.handleChange = this.handleChange.bind(this);
          this.onChange= this.onChange.bind(this);
          this.handleEventHour= this.handleEventHour.bind(this);
-        this.state = {
+
+         var bodyScroll = document.getElementById("body");
+         bodyScroll.className = "";
+
+         this.state = {
             checkedu1: false,
             checkedu2: false,
             checkedu3: false,
@@ -79,7 +83,7 @@ class Agend extends Component{
                 show = (<ul className="list-group-agend">
                     {this.state.cd.map((i, key) => {
                             return (
-                                <div>
+                                <div className="event-item">
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <li key={key}>
@@ -416,12 +420,34 @@ class Agend extends Component{
         this.setState({selectedDay:day});
     }
     handleClick(){
+
+        var bodyScroll = document.getElementById("body");
+        bodyScroll.classList.add("body-stop-scroll");
+
         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
         this.setState({showHideSidenav:css});
+
+        if(this.state.showHideSidenav == "hidden"){
+            bodyScroll.classList.add("body-stop-scroll");
+        } else{
+            bodyScroll.className = "";
+        }
+
     }
      handleModal(){
+
+         var bodyScroll = document.getElementById("body");
+
         var css = (this.state.showModal === false) ? true : false;
         this.setState({showModal:css, showHideSidenav: 'hidden'});
+
+         if(this.state.showModal == false){
+             setTimeout(() => {
+                 bodyScroll.classList.add("body-stop-scroll");
+             }, 500);
+         } else{
+                 bodyScroll.className = "";
+         }
     }
     handleiconclicku1(event) {
         event.preventDefault();

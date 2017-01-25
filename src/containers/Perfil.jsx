@@ -7,7 +7,10 @@ class Perfil extends Component {
      constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        
+
+         var bodyScroll = document.getElementById("body");
+         bodyScroll.className = "";
+
         this.state = {
             showHideSidenav: 'hidden', 
             perfil: [{name:'Informação Pessoal', icon: 'perfil'}, {name:'Segurança', icon: 'seg'}, {name:'Notificações', icon: 'notif'}, {name:'Contas', icon: 'account'}, {name:'Sons', icon: 'sounds'}, {name:'Widgets', icon: 'widgets'}, {name:'Idioma', icon: 'lang'}, {name:'Acessibilidade', icon: 'access'}, {name:'Versão', icon: 'version'}]
@@ -125,6 +128,15 @@ class Perfil extends Component {
     }
 
     handleClick(){
+
+        var bodyScroll = document.getElementById("body");
+        if(this.state.showHideSidenav == "hidden"){
+            bodyScroll.classList.add("body-stop-scroll");
+        } else{
+            bodyScroll.className = "";
+
+        }
+
         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
         this.setState({showHideSidenav:css});
     }

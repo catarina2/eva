@@ -8,14 +8,13 @@ class Inicioeva extends Component {
         
         return(
             <div>
-                <header className="header-initial">
+                <header className="header header-initial">
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 list-group-horizontal-eva">
                                 <h1 className="logoeva">eva         </h1>
-                                <h5 className="eva"><b>   Environmental Virtual Assistant</b></h5>
+                                <h5 className="eva menu-title font-large"><b>   Environmental Virtual Assistant</b></h5>
                             </div>
-                            <button className="btn setainicial"></button>
                         </div>
                     </div>
                 </header>

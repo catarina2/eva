@@ -261,10 +261,12 @@ class Produto extends Component {
         if(this.state.imagesend) obj['image'] = this.state.imagesend;
         obj['list_id'] = this.props.item.list_id;
        // console.log(obj, this.props);
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+        var show = (this.state.showEdit === false) ? true : false;
         const {dispatch} = this.props;
         dispatch(updateProducts(this.props.item.id, obj));
-        setTimeout(() => {var header = document.getElementById("header");
-            header.className = "header header-list";this.setState({msge: this.props.msge})}, 500);
+        setTimeout(() => { bodyScroll.className = ""; header.className = "header header-list"; this.setState({msge: this.props.msge});this.setState({showEdit: show});}, 520);
     }
 
 
@@ -279,10 +281,13 @@ class Produto extends Component {
     }
 
     confirmdelete() {
+
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+
         const {dispatch} = this.props;
         dispatch(deleteProducts(this.props.item.id, this.props.item.list_id));
-        setTimeout(() => {var header = document.getElementById("header");
-            header.className = "header header-list";this.setState({msg: this.props.msg})}, 500);
+        setTimeout(() => { bodyScroll.className = ""; header.className = "header header-list";this.setState({msg: this.props.msg})}, 500);
     }
     noconfirm() {
         this.setState({confirmdelete: false});
@@ -295,12 +300,16 @@ class Produto extends Component {
     }
 
     handleClickProdut() {
+
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+
         if(this.state.showModal === false){
-            var header = document.getElementById("header");
             header.classList.add("header-hide");
+            bodyScroll.classList.add("body-stop-scroll");
         }else{
-            var header = document.getElementById("header");
             header.className = "header header-list";
+            bodyScroll.className = "";
 
         }
         var show = (this.state.showModal === false) ? true : false;
@@ -308,12 +317,16 @@ class Produto extends Component {
         this.setState({showModal: show});
     }
     handleClickEdit() {
+
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+
         if(this.state.showEdit === false){
-            var header = document.getElementById("header");
             header.classList.add("header-hide");
+            bodyScroll.classList.add("body-stop-scroll");
         }else{
-            var header = document.getElementById("header");
             header.className = "header header-list";
+            bodyScroll.className = "";
 
         }
         var show = (this.state.showEdit === false) ? true : false;

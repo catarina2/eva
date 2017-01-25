@@ -29,6 +29,9 @@ class List extends Component {
         this.handleiconclickyellow = this.handleiconclickyellow.bind(this);
         this._submit = this._submit.bind(this);
 
+        var bodyScroll = document.getElementById("body");
+        bodyScroll.className = "";
+
         this.state = {
             showHideSidenav: 'hidden',
             showModal: false,
@@ -450,13 +453,32 @@ class List extends Component {
     }
 
     handleClick(){
+
+        var bodyScroll = document.getElementById("body");
+        if(this.state.showHideSidenav == "hidden"){
+            bodyScroll.classList.add("body-stop-scroll");
+        } else{
+            bodyScroll.className = "";
+
+        }
+
         var css = (this.state.showHideSidenav === "hidden") ? "show" : "hidden";
         this.setState({showHideSidenav:css});
     }
 
     handleModal(){
+        var bodyScroll = document.getElementById("body");
+
         var css = (this.state.showModal === false) ? true : false;
         this.setState({showModal:css, showHideSidenav: 'hidden', checked1: false, checked2: false, checked3: false, checked4: false, checked5: false, checked6: false,  checkedu1: false, checkedu2: false, checkedu3: false, checkedu4: false });
+
+        if(this.state.showModal == false){
+            setTimeout(() => {
+                bodyScroll.classList.add("body-stop-scroll");
+            }, 500);
+        } else{
+            bodyScroll.className = "";
+        }
     }
 
     _submit(event) {
