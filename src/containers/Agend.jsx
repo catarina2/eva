@@ -182,31 +182,31 @@ class Agend extends Component{
         {
 
             var userslist;
-
+            console.log(this.state.family.users[0]);
             if(this.state.family.users.length === 2)
             {
                userslist= ( <div className="cc-selector">
-                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].id} checked={this.state.checkedu1}/>
                                      <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
                             </div>);
             }
             else if(this.state.family.users.length === 3)
             {
                userslist= ( <div className="cc-selector">
-                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].id} checked={this.state.checkedu1}/>
                                      <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
-                                     <input id="user2" type="radio" name="user2" ref="user2" value={this.state.family.users[1].name} checked={this.state.checkedu2}/>
+                                     <input id="user2" type="radio" name="user2" ref="user2" value={this.state.family.users[1].id} checked={this.state.checkedu2}/>
                                      <label className="user-cc btn-user2" For="user2" onClick={this.handleiconclicku2}></label>
                             </div>);
             }
             else if(this.state.family.users.length === 4)
             {
                userslist= ( <div className="cc-selector display">
-                                     <input id="userblue" type="radio" name="userblue" ref="user3" value={this.state.family.users[0].name} checked={this.state.checkedu1}/>
+                                     <input id="userblue" type="radio" name="userblue" ref="user3" value={this.state.family.users[0].id} checked={this.state.checkedu1}/>
                                      <label className="user-cc btn-userblue" For="userblue" onClick={this.handleiconclicku1}></label>
-                                     <input id="userpink" type="radio" name="userpink" ref="user4" value={this.state.family.users[1].name} checked={this.state.checkedu2}/>
+                                     <input id="userpink" type="radio" name="userpink" ref="user4" value={this.state.family.users[1].id} checked={this.state.checkedu2}/>
                                      <label className="user-cc btn-userpink" For="userpink" onClick={this.handleiconclicku2}></label>
-                                     <input id="usergreen" type="radio" name="usergreen" ref="user2" value={this.state.family.users[2].name} checked={this.state.checkedu3}/>
+                                     <input id="usergreen" type="radio" name="usergreen" ref="user2" value={this.state.family.users[2].id} checked={this.state.checkedu3}/>
                                      <label className="user-cc btn-usergreen" For="usergreen" onClick={this.handleiconclicku3}></label>
                             </div>);
             }
@@ -504,20 +504,19 @@ class Agend extends Component{
     _submit(event) {
         event.preventDefault();
 
-        var users = {name:this.state.family.name, color:"red"};
+        var users;      
         var listusers = [];
-        listusers.push(users);
 
         if(this.refs.user4.checked) {
-                users = {name: this.refs.user4.value, color:"pink"};
+                users = this.refs.user4.value;
                 listusers.push(users);
             }
         if(this.refs.user2.checked) {
-                users = {name: this.refs.user2.value,  color:"green"};
+                users = this.refs.user2.value;
                 listusers.push(users);
             }
         if(this.refs.user3.checked) {
-                users = {name: this.refs.user3.value, color:"blue"};
+                users = this.refs.user3.value;
                 listusers.push(users);
             }
 
@@ -527,7 +526,7 @@ class Agend extends Component{
 
         var FormData = require('form-data');
         const form = new FormData();
-        form.append('users', listusers);
+        form.append('users', user);
         form.append('date', this.state.startDate && this.state.startDate.format('MM/DD/YYYY'));
         form.append('location', this.refs.location.value);
         form.append('title', this.refs.title.value);
