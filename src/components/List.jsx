@@ -7,9 +7,11 @@ const List = ({lists}) => {
             <ul className="list-group">
                 {lists.map((list, key) => {
                     //console.log(item, 'item lalalalalall');
+                   // console.log(key, 'key da lista')
                     return (
                         <li key={key}>
-                                <Item list={list} key={key}/>
+
+                                <Item list={list} listkey={key}/>
                         </li>
                     
                     );

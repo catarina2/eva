@@ -48,7 +48,7 @@ class Produto extends Component {
         }
         else
         {
-            panel =<h4 className="blackletter" onClick={this.handleClickProdut}>{item.title}</h4>;
+            panel =<div onClick={this.handleClickProdut}><h4 className="blackletter" >{item.title}</h4><div className="product"><b>Quantidade:</b>{item.quant}</div></div>;
             cheched =  <input type="checkbox" className="check" onClick={this.handleClick}/>;
         }
         if(this.state.showModal)

@@ -59,6 +59,7 @@ class Item extends Component {
     }
 
     render() {
+        //console.log(this.props, 'propriedades Item')
         var list = this.props.list;
         var panel = null;
 
@@ -366,11 +367,13 @@ class Item extends Component {
             );
         }
 
-
+        var classname, button;
+        if(this.props.listkey%2 === 0){classname='panel-heading par'; button="btn btn-delete1 par"}
+          else {classname='panel-heading impar'; button="btn btn-delete1 impar"}
         return (
             <div className="panel panel-primary">
                 <div className="panelrow">
-                    <div className="panel-heading">
+                    <div className={classname}>
                         {icon}
 
                             <div className="panel-title" onClick={this.handleClick}>
@@ -381,7 +384,7 @@ class Item extends Component {
                                     <User id={list.id}/>
                                 </div>
                                 <div className="edit-container">
-                                    <button className="btn btn-delete1" onClick={this.handleEdit}><span
+                                    <button className={button}onClick={this.handleEdit}><span
                                         className="glyphicon glyphicon-edit glist"></span></button>
                                 </div>
                             </div>
@@ -627,12 +630,13 @@ class Item extends Component {
 }
 
 Item.propTypes = {
-    list: React.PropTypes.object.isRequired
+    list: React.PropTypes.object.isRequired,
+    listkey: React.PropTypes.number
 }
 
 const mapStateToProps = (state, ownProps) => {
     //console.info('container Item mapStateToProps', state, ownProps);
-    return {msgdelete: state.lists.msgdelete, msgedit: state.lists.msgedit, users:state.userslist.users};
+    return {msgdelete: state.lists.msgdelete, msgedit: state.lists.msgedit, users:state.userslist.userslist};
 }
 
 

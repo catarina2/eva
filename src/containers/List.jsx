@@ -9,7 +9,7 @@ class List extends Component {
        // console.log('componentdidMount');
         const {dispatch} = this.props;
         dispatch(fetchLists());
-        dispatch(fetchFamilyUsers(2));
+        dispatch(fetchFamilyUsers(1));
     }
 
     constructor(props) {
@@ -178,7 +178,7 @@ class List extends Component {
         {
             var userslist=[];
             
-            var family = this.props.users;
+            var family = this.props.users[1];
              //console.log(this.props.users, 'usersfamily');
             console.log(family, 'tamanho usersfamily');
 
@@ -188,44 +188,49 @@ class List extends Component {
             if(family.length ===1)
             {
 
-                  var usercolor='user'+family[0].color;
-                  var className;
-                  var check =family[0].color;
+                   usercolor1='user'+family[0].color;
+                  check1 =family[0].color;
                   
-                  if(check === 'red') {fun = this.handleiconclickred; className = this.state.cred} 
-                  if(check === 'pink') {fun = this.handleiconclickpink; className = this.state.cpink}
-                  if(check === 'blue') {fun = this.handleiconclickblue; className = this.state.cblue}
-                  if(check === 'green') {fun = this.handleiconclickgreen; className = this.state.cgreen}
-                  if(check === 'yellow') {fun = this.handleiconclickyellow; className = this.state.cyellow}
-                  userslist=(<div className="cc-selector">
-                                <input id={usercolor} type="radio" name={usercolor} ref={usercolor} value={family[0].id} defaultChecked={check}/>
-                                <label className={className} htmlFor={usercolor} onClick={fun}></label>    
+                  if(check1 === 'red' ){ fun1 = this.handleiconclickred; check1 = this.state.red;  className1 = this.state.cred}
+                  if(check1 === 'pink') {fun1 = this.handleiconclickpink; check1 = this.state.pink; className1 = this.state.cpink}
+                  if(check1 === 'blue') {fun1 = this.handleiconclickblue; check1 = this.state.blue; className1 = this.state.cblue}
+                  if(check1 === 'green') {fun1 = this.handleiconclickgreen; check1 = this.state.green; className1 = this.state.cgreen}
+                  if(check1 === 'yellow') {fun1 = this.handleiconclickyellow; check1 = this.state.yellow; className1 = this.state.cyellow}
+                  
+                  userslist=(<div className='display'><div className="cc-selector">
+                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
+                                <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
+                            </div>
                             </div>);
             }
             if(family.length===2)
             {
                   usercolor1='user'+family[0].color;
                   usercolor2='user'+family[1].color;
-                  className1 = 'user-cc btn-'+usercolor1;
-                  className2 = 'user-cc btn-'+usercolor2;
                   check1 =family[0].color;
                   check2 =family[1].color;
-                  if(check1 === 'red' ) fun1 = this.handleiconclickred;
-                  if(check1 === 'pink') fun1 = this.handleiconclickpink;
-                  if(check1 === 'blue') fun1 = this.handleiconclickblue;
-                  if(check1 === 'green') fun1 = this.handleiconclickgreen;
-                  if(check2 === 'red' ) fun2 = this.handleiconclickred;
-                  if(check2 === 'pink') fun2 = this.handleiconclickpink;
-                  if(check2 === 'blue') fun2 = this.handleiconclickblue;
-                  if(check2 === 'green') fun2 = this.handleiconclickgreen;
+                  
+                  if(check1 === 'red' ){ fun1 = this.handleiconclickred; check1 = this.state.red;  className1 = this.state.cred}
+                  if(check1 === 'pink') {fun1 = this.handleiconclickpink; check1 = this.state.pink; className1 = this.state.cpink}
+                  if(check1 === 'blue') {fun1 = this.handleiconclickblue; check1 = this.state.blue; className1 = this.state.cblue}
+                  if(check1 === 'green') {fun1 = this.handleiconclickgreen; check1 = this.state.green; className1 = this.state.cgreen}
+                  if(check1 === 'yellow') {fun1 = this.handleiconclickyellow; check1 = this.state.yellow; className1 = this.state.cyellow}
+                  if(check2 === 'red' ) {fun2 = this.handleiconclickred; check2 = this.state.red; className2 = this.state.cred}
+                  if(check2 === 'pink') {fun2 = this.handleiconclickpink; check2 = this.state.pink; className2 = this.state.cpink}
+                  if(check2 === 'blue') {fun2 = this.handleiconclickblue; check2 = this.state.blue; className2 = this.state.cblue}
+                  if(check2 === 'green') {fun2 = this.handleiconclickgreen; check2 = this.state.green; className2 = this.state.cgreen}
+                  if(check2 === 'yellow') {fun2 = this.handleiconclickyellow; check2 = this.state.yellow; className2 = this.state.cyellow}
+                 
+                  
                   userslist=(<div className='display'><div className="cc-selector">
-                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} defaultChecked={check1}/>
+                                <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
                             </div>
                             <div className="cc-selector">
-                                <input id={usercolor2} type="radio" name={usercolor2} ref={usercolor2} value={family[1].id} defaultChecked={check2}/>
+                                <input id={usercolor2} type="radio" name={usercolor2} ref={usercolor2} value={family[1].id} checked={check2}/>
                                 <label className={className2} htmlFor={usercolor2} onClick={fun2}></label>    
-                            </div></div>);
+                            </div>
+                           </div>);
             }
             var user1, user2, user3;
             if(family.length===3)
@@ -252,8 +257,8 @@ class List extends Component {
                   if(check3 === 'blue') {fun3 = this.handleiconclickblue; check3 = this.state.blue; className3 = this.state.cblue}
                   if(check3 === 'green') {fun3 = this.handleiconclickgreen; check3 = this.state.green; className3 = this.state.cgreen}
                   if(check3 === 'yellow') {fun3 = this.handleiconclickyellow; check3 = this.state.yellow; className3 = this.state.cyellow}
-                  //if(check1)
-
+                 
+                  
                   userslist=(<div className='display'><div className="cc-selector">
                                 <input id={usercolor1} type="radio" name={usercolor1} ref={usercolor1} value={family[0].id} checked={check1}/>
                                 <label className={className1} htmlFor={usercolor1} onClick={fun1}></label>    
@@ -265,7 +270,8 @@ class List extends Component {
                             <div className="cc-selector">
                                 <input id={usercolor3} type="radio" name={usercolor3} ref={usercolor3} value={family[2].id} checked={check3}/>
                                 <label className={className3} htmlFor={usercolor3} onClick={fun3}></label>    
-                            </div></div>);
+                            </div>
+                            </div>);
             }
             if(family.length===4)
             {
@@ -531,6 +537,7 @@ class List extends Component {
         form.append('name', this.refs.name.value);
         form.append('icon', ref);
         form.append('users', user);
+        form.append('created_by', 2);
         const {dispatch} = this.props;
         dispatch(postLists(form));
         setTimeout(() => {this.setState({msg: this.props.msg})}, 500);
@@ -619,8 +626,8 @@ List.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     console.info('container List mapStateToProps', state, ownProps);
-   // console.log(state.users, 'fgdfxgsdfgdgf users');
-    return {lists: state.lists, usersfamily: state.userslist, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.users};
+    console.log(state.users, 'fgdfxgsdfgdgf users');
+    return {lists: state.lists, usersfamily: state.userslist, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.userslist};
 }
 
 export default connect(mapStateToProps)(List);

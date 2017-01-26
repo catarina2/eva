@@ -199,6 +199,7 @@ section {
     background-color: #fff;
     -webkit-box-shadow: none;
     box-shadow: none;
+    margin-bottom: 0px;
 }
 
 .panel-primary {
@@ -207,14 +208,21 @@ section {
 
 .panel-body {
     padding: 12px 20px 30px 41px;
+    background-color: bisque;
 }
 
 .panel-heading {
     padding: 4vmin 0 0 0;
-    background-color: #f7aa47;
     width: 100%;
     min-height: 65px;
+}
 
+.par {
+    background-color: #f7aa47;
+}
+
+.impar {
+     background-color: #F7AA61;
 }
 
 .panel-title{
@@ -274,7 +282,7 @@ section {
 
 .blackletter {
     color: #000;
-    margin-top: -11px;
+    margin-top: -9px;
     margin-left: 40px;
 }
 
@@ -320,7 +328,7 @@ section {
     z-index: +1;
 }
 input[type=checkbox]{
-    margin: 6px 66px 0;
+    margin: 6px 35px 0;
 }
 
 .dropdown-menu {
@@ -354,6 +362,7 @@ li .dropdown{
 .list-group-item {
     border: none;
     margin-top: 15px;
+    background-color: bisque;
 }
 
 .wrapper {
@@ -611,7 +620,6 @@ header .btn-list {
 }
 
 .btn-delete1 {
-    background-color: #f7aa47;
     padding: 0 10px 0 0;
     font-size: 15px;
 }
@@ -960,7 +968,7 @@ header .btn-list {
     width: 38px;
     height: 38px;
     position: absolute;
-    margin: 0 -75px;
+    margin: -6px -87px;
     right: 84px;
     background-image: url("../../img/lista/adicionar_produto_30.png");
     background-color: rgba(255,255,255,0);
@@ -1776,4 +1784,12 @@ header .btn-perfil {
 
 .sizename {
     font-size: 6vmax;
+}
+
+.product{
+    font-size: 11px;
+    /* display: flex; */
+    margin-top: -1%;
+    margin-left: 12%;
+    color: coral;
 }
