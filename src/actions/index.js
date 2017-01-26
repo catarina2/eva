@@ -139,11 +139,34 @@ export function receiveeditusers(id, json) {
 }
 
 export function receivelistsdelete(id, json) {
-   // console.info('action receivelists', json);
+    // console.info('action receivelists', json);
     return {
         type: types.DELETE_LISTS,
         lists: json,
         id: id
+    }
+}
+
+
+export function receiveevents(json) {
+    console.info('action receive events: ', json);
+    return {
+        type: types.RECEIVE_EVENTS,
+        events: json
+    }
+}
+
+//              AGENDA
+
+export function postevent(events) {
+    return function(dispatch) {
+        console.info(events, 'POST EVENTS');
+        return fetch(`http://develop.mmota.online/api/events`, {
+            method: "POST",
+            body: events
+        })
+            .then(response => response.json())
+            .then(json => dispatch(receiveevents(json)));
     }
 }
 

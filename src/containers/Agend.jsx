@@ -4,6 +4,8 @@ import {Link} from 'react-router';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import Event from '../components/Event';
 
+import {postevent} from '../actions';
+
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
@@ -36,6 +38,9 @@ class Agend extends Component{
          bodyScroll.className = "";
 
          this.state = {
+
+             loggeduser:2,
+
             checkedu1: false,
             checkedu2: false,
             checkedu3: false,
@@ -49,11 +54,20 @@ class Agend extends Component{
             cd: null,
             showev: false,
             startDate: moment(),
+            initialtime: moment(),
+             finaltime: moment(),
             family: {name:"martinho", users: [{name: "marta", color: "blue"}, {name: "catarina", color: "green"}, {name: "diogo", color: "pink"}, {name: "martinho", color:"red"}]},
             ev: [{day:"11-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"20h",note:"Jantar de raparigas",location:"Cais Madeirense"}, {day:"11-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"21h",note:"Jantar de raparigas",location:"Petiscos"},{day:"10-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"20h",note:"Jantar de raparigas",location:"Cais Madeirense"}]
            }
 
     }
+
+    componentDidMount() {
+        //console.log(this.props.item, 'componentDidMount');
+        const {dispatch} = this.props;
+    }
+
+
     render(){
         var fullDate = this.state.month;
         var weekday = new Array(7);
@@ -206,39 +220,54 @@ class Agend extends Component{
 
                             </div>
                             <div className="modal-body">
-                                  <form id="form" method="POST" onSubmit={this._submit}>
-                                    <div className="row">
-                                        <div className="col-xs-1">
-                                            <button type="button" className="btn btn-time"></button>
-                                        </div>
-                                        <div className="col-xs-10">
-                                             <h4 >Dia do Evento</h4>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-12">
-                                            <DatePicker
-                                                className="form-control"
-                                                placeholderText="DD-MM-YYYY"
-                                                todayButton={"EVA"}
-                                                selected={this.state.startDate} onChange={this.handleChange}/>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-1">
-                                            <button type="button" className="btn btn-peopleagend"></button>
-                                        </div>
-                                        <div className="col-xs-10">
-                                            <h4>Convidar pessoas</h4>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-1">
-                                        </div>
-                                        <div className="col-xs-10">
-                                          {userslist}
-                                        </div>
-                                    </div>
+                                  <form id="form" method="POST" onSubmit={this._submit} encType="multipart/form-data">
+                                      <div className="row">
+                                          <div className="col-xs-1">
+                                              <button type="button" className="btn btn-note"></button>
+                                          </div>
+                                          <div className="col-xs-10">
+                                              <h4>Adicionar Título</h4>
+                                          </div>
+                                      </div>
+                                      <div className="row">
+                                          <div className="col-xs-12">
+                                              <input type="text" className="form-control" ref="title" name="name" />
+                                          </div>
+                                      </div>
+                                      <div className="row">
+                                          <div className="col-xs-1">
+                                              <button type="button" className="btn btn-time"></button>
+                                          </div>
+                                          <div className="col-xs-10">
+                                              <h4 >Dia do Evento</h4>
+                                          </div>
+                                      </div>
+                                      <div className="row">
+                                          <div className="col-xs-12">
+                                              <DatePicker
+                                                  className="form-control"
+                                                  placeholderText="DD-MM-YYYY"
+                                                  todayButton={"EVA"}
+                                                  minDate={moment()}
+                                                  value={this.state.startDate}
+                                                  selected={this.state.startDate} onChange={this.handleChange}/>
+                                          </div>
+                                      </div>
+                                      <div className="row">
+                                          <div className="col-xs-1">
+                                              <button type="button" className="btn btn-peopleagend"></button>
+                                          </div>
+                                          <div className="col-xs-10">
+                                              <h4>Convidar pessoas</h4>
+                                          </div>
+                                      </div>
+                                      <div className="row">
+                                          <div className="col-xs-1">
+                                          </div>
+                                          <div className="col-xs-10">
+                                              {userslist}
+                                          </div>
+                                      </div>
                                     <div className="row">
                                         <div className="col-xs-1">
                                             <button type="button" className="btn btn-hour" ></button>
@@ -252,22 +281,22 @@ class Agend extends Component{
                                               <input type="checkbox" className="TodoDia" onClick={this.handleEventHour} checked={this.state.checkEventHour}/>
                                           </div>
                                           <div className="col-xs-10">
-                                              <h3 className="color-gray" >Dia inteiro</h3>
+                                              <h3 className="color-gray day-time" >Dia inteiro</h3>
                                           </div>
                                       </div>
                                     <div className="row" id="timePicker">
                                       <div className="col-xs-12">
                                           <TimePicker
                                               showSecond={showSecond}
-                                              defaultValue={moment()}
+                                              value={this.state.initialtime}
                                               className="hora-inicio"
                                               onChange={this.onChange}
                                               />
                                           <TimePicker
                                               showSecond={showSecond}
-                                              defaultValue={moment()}
+                                              value={this.state.finaltime}
                                               className="hora-fim"
-                                              onChange={this.onChange}
+                                              onChange={this.onChange2}
                                               />
                                         </div>
                                     </div>
@@ -282,19 +311,6 @@ class Agend extends Component{
                                     <div className="row">
                                       <div className="col-xs-12">
                                             <input type="text" className="form-control" ref="location" name="name" />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-1">
-                                            <button type="button" className="btn btn-note"></button>
-                                        </div>
-                                        <div className="col-xs-10">
-                                            <h4>Adicionar Nota</h4>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                      <div className="col-xs-12">
-                                            <input type="text" className="form-control" ref="note" name="name" />
                                         </div>
                                     </div>
                                      <div className="modal-footer">
@@ -389,11 +405,24 @@ class Agend extends Component{
     }
     onChange(value) {
         console.log(value && value.format(str));
+        this.setState({
+            initialtime: value
+        });
+    }
+    onChange2(value) {
+        console.log(value && value.format(str));
+        this.setState({
+            finaltime: value
+        });
     }
     handleChange(date) {
+
+        console.log(date);
     this.setState({
         startDate: date
     });
+        console.log(this.state.startDate);
+
     }
 
     handleDayClick(e, day) {
@@ -472,7 +501,7 @@ class Agend extends Component{
         var css = (this.state.checkedu4 === false) ? true : false;
         this.setState({checkedu4:css});
     }
-       _submit(event) {
+    _submit(event) {
         event.preventDefault();
 
         var users = {name:this.state.family.name, color:"red"};
@@ -491,19 +520,38 @@ class Agend extends Component{
                 users = {name: this.refs.user3.value, color:"blue"};
                 listusers.push(users);
             }
+
+        let user = [];
+        user = listusers;
+        console.log("USERS - ", user);
+
+        var FormData = require('form-data');
+        const form = new FormData();
+        form.append('users', listusers);
+        form.append('date', this.state.startDate && this.state.startDate.format('MM/DD/YYYY'));
+        form.append('location', this.refs.location.value);
+        form.append('title', this.refs.title.value);
+        form.append('start_time', this.state.initialtime && this.state.initialtime.format(str));
+        form.append('end_time', this.state.finaltime && this.state.finaltime.format(str));
+        form.append('created_by', this.state.loggeduser);
+
         var add = {
-            day: this.refs.name.value,
+            created_by: this.state.loggeduser,
             users: listusers,
+            date: this.state.startDate && this.state.startDate.format('MM/DD/YYYY'),
             location: this.refs.location.value,
-            note: this.refs.note.value,
-            hour: this.refs.hour.value
+            title: this.refs.title.value,
+            starttime: this.state.initialtime && this.state.initialtime.format(str),
+            endtime: this.state.finaltime && this.state.finaltime.format(str)
         };
-            
+        console.log("payload - ", add);
         var l = this.state.ev;
         l.push(add);
-        console.log(l);
-        this.setState({ev: l, showModal: false, checkedu1: false, checkedu2: false, checkedu3: false, checkedu4:false});  
+        console.log("payload - ", l);
+        this.setState({ev: l, showModal: false, checkedu1: false, checkedu2: false, checkedu3: false, checkedu4:false});
 
+        const {dispatch} = this.props;
+        dispatch(postevent(form));
     }
 }
 

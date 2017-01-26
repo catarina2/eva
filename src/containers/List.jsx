@@ -180,7 +180,7 @@ class List extends Component {
             
             var family = this.props.users;
              //console.log(this.props.users, 'usersfamily');
-            //console.log(family, 'tamanho usersfamily');
+            console.log(family, 'tamanho usersfamily');
 
             var fun1, fun2, fun3, fun4, fun5;
             var fun;
@@ -517,7 +517,7 @@ class List extends Component {
             }
         let user = [];
         user = listusers;
-      
+        console.log('lista de utilizadores', user);
         //console.log(temp, 'lista de utiliza<dores');       
         let add = {
             name: this.refs.name.value,

@@ -1204,10 +1204,12 @@ header .btn-agend1 {
 .event-item{
     margin-bottom: 10px;
 }
-
+.day-time{
+    margin-top: 0;
+}
 .TodoDia{
     vertical-align: middle;
-    margin: 23px 5px 5px 5px !important;
+    margin: 0px 5px 5px 5px !important;
     font-size: 12px;
     width: 4vmin;
     height: 4vmin;
