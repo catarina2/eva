@@ -59,8 +59,8 @@ class List extends Component {
        if(this.state.msg === 'OK')
        {
        // console.log("ok");
-         
-          setTimeout(() => {this.setState({showModal: false, msg: this.props.msg, color: null, ccolor: null, userid:null, cname:null, nameicon:null, iconid:null,check: {0: "trabalho"}, name:null, user:null, data:this.props.data})}, 500)
+      
+          setTimeout(() => {this.setState({showModal: false, msg: null, color: null, ccolor: null, userid:null, cname:null, nameicon:null, iconid:null,check: {0: "trabalho"}, name:null, user:null, data:this.props.data})}, 500)
        }
       if(this.state.msg === 'NOK')
        {

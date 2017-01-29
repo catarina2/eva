@@ -114,6 +114,17 @@ class Perfil extends Component {
                         <hr/>
                         </div>
                 </section>
+                <footer className="footerfixedperfil navbar fixed-bottom">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xs-10">
+                                <div className="titlefooter">Environmental Virtual Assistant</div>
+                            </div>
+                            <div className="col-xs-2">
+                            </div>
+                        </div>
+                    </div>
+                </footer>
                 
             </div>
     	);

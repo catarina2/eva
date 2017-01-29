@@ -8,7 +8,7 @@ class Inicioeva extends Component {
         
         return(
             <div>
-                <header className="header header-initial">
+                <header className="headerpi header-initial">
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 list-group-horizontal-eva">
@@ -53,6 +53,17 @@ class Inicioeva extends Component {
                         </div>
                     </div>
                 </section>
+                 <footer className="footerfixedinicio navbar fixed-bottom">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xs-10">
+                                <div className="titlefooter">Environmental Virtual Assistant</div>
+                            </div>
+                            <div className="col-xs-2">
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         );
         
