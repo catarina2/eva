@@ -218,6 +218,11 @@ class Def extends Component {
 
         return (
              <div>
+                 <Link to={`/`}><header className="headerfirst ">
+                   <div className="container">
+                       <div className="title">eva</div>
+                    </div>
+                </header></Link>
                 <header className="header header-perfil">
                     <div className="container">
                     <Link to={`definition`}>
@@ -292,20 +297,7 @@ class Def extends Component {
                     </div>
                     </div>
                 </section>
-                <footer>
-                    <div className="row">
-                        <div className="col-xs-2">
-                             <button className="btn btn-imageclassperfil"></button>
-                        </div>
-                        <div className="col-xs-8">
-                            <Link to={`/`}>
-                                <button className="btn logoperfil"></button>
-                            </Link>
-                        </div>
-                        <div className="col-xs-2">
-                        </div>
-                    </div>
-                </footer>
+                
             </div>
         );
     }

@@ -336,6 +336,11 @@ class Agend extends Component{
         }
         return (
             <div>
+                <Link to={`/`}><header className="headerfirst ">
+                   <div className="container">
+                       <div className="title">eva</div>
+                    </div>
+                </header></Link>
                 <header className="header header-agend">
                     <div className="container">
                     <div className="menu-title font-large"><b>Agenda </b>Familiar</div>
@@ -366,12 +371,8 @@ class Agend extends Component{
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-2">
-                                 <button className="btn btn-imageclassagend"></button>
                             </div>
                             <div className="col-xs-8">
-                                <Link to={`/`}>
-                                    <button className="btn logoagend"></button>
-                                </Link>
                             </div>
                             <div className="col-xs-2">
                                 <button className="btn btn-newagend" onClick={this.handleModal}></button>

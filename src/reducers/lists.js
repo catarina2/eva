@@ -67,7 +67,7 @@ const lists = (state = initState, action) => {
                x[state.lists.length] = action.lists.data;
               // console.log(x);
                temp = Object.assign(state.lists, x);
-             //  console.log(temp, 'lists');
+              console.log(temp, 'listsOK');
            }
           
             return Object.assign({}, state, {

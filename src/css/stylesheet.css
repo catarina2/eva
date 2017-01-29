@@ -94,23 +94,59 @@ footer {
     width: 100%;
 }
 
+.title {
+    color: white;
+    font-family: jk abode;
+    font-size: 8vmin;
+}
+
+.titlefooter {
+    color: white;
+    font-family: "Caviar dreams bold";
+    font-size: 3vmin;
+    padding: 14px 0;
+    display: inline-block;
+}
+
+.navbar {
+        margin-bottom: 0px;
+        z-index: 1;
+}
+
 .header{
     position: absolute;
-    top: 0;
+    top: 10vmin;
     left: 0;
     width: 100%;
     height: 20vmin;
     z-index: 2;
     text-align: left;
 }
+.headerfirst{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vmin;
+    z-index: 2;
+    text-align: left;
+    background-color: #333333;
+}
 .header-hide{
     z-index: 1;
 }
+.footerfixed {
+    position: fixed;
+    bottom: 0;
+    background-color: #f08143;
+    height: 10vmin;
+}
 section {
    position: relative;
-    top: 15vmin;
-    z-index: 1;
+    top: 26vmin;
     width: 100%;
+    margin-bottom: 20vmin;
+    z-index: 1;
 }
 .display-icons{
     display: inline-flex;
@@ -495,6 +531,9 @@ margin-top: 30px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+.firstheader {
+
+}
 header .menu-title{
     padding: 10px 0;
     display: inline-block;
@@ -593,9 +632,11 @@ header .btn-list {
 
     height: 66px;
     width: 66px;
-    position: absolute;
-    right: 20%;
+    right: 1%;
     background-size: 65px 65px;
+    position: fixed;
+    bottom: 16px;
+    z-index: 1;
 }
 
 .personas{
@@ -719,7 +760,93 @@ header .btn-list {
     margin-top: -6vmin;
 }
 
-    
+.icontrabalho {
+    background-image: url("../../img/lista/trabalho_selecionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    background-size: 35px 35px;
+}
+.iconnatal {
+    background-image: url("../../img/lista/natal_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    background-size: 30px 35px;
+}
+.iconovo {
+    background-image: url("../../img/lista/pascoa_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 21px 20px;
+    background-size: 30px 35px;
+}
+.iconferias {
+    background-image: url("../../img/lista/ferias_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 30px;
+    background-size: 30px 35px;
+}
+.iconprenda {
+    background-image: url("../../img/lista/prenda_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 30px;
+    background-size: 45px 35px;
+}
+.gicontrabalho {
+    background-image: url("../../img/lista/trabalho_selecionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    background-size: 35px 35px;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.giconnatal {
+    background-image: url("../../img/lista/natal_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    background-size: 30px 35px;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.giconovo {
+    background-image: url("../../img/lista/pascoa_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 21px 20px;
+    background-size: 30px 35px;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.giconferias {
+    background-image: url("../../img/lista/ferias_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 30px;
+    background-size: 30px 35px;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+.giconprenda {
+    background-image: url("../../img/lista/prenda_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 30px;
+    background-size: 45px 35px;
+    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
+       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
+            filter: brightness(1) grayscale(1) opacity(0.9);
+}
+
+
 .btn-icon1 {
     background-image: url("../../img/lista/trabalho_selecionar.png");
     background-color: rgba(255,255,255,0);
