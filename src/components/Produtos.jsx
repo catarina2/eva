@@ -77,7 +77,7 @@ class Produtos extends Component {
            // console.log('modalmodal1')
             var img;
             if(this.state.imagesend)
-            {img =(<div className="imagediv"><img className= "image" src={this.state.image} /></div>);}
+            {img =(<div className="losange"> <div className="los1">  <img  width="100" height="100" src={this.state.image} /></div></div>);}
             else{
              img=(<label className="btn btn-photo" For="upload-file-selector">
                         <input ref="image" id="upload-file-selector" type="file" onChange={this._onChange}/>
