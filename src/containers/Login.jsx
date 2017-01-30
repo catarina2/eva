@@ -7,14 +7,19 @@ class Login extends Component {
     render() {
         
         return(
-            <div>
-                
-                <div>
-                    <a href="http://develop.mmota.online/oauth/authorize?client_id=6&redirect_uri=http://localhost:3000/callback&response_type=code&scope">
-                        <button className="btn btn-default">LOGIN</button>
-                    </a>
+                <div className="pageinitial">
+                   <div className="container">
+                       <div className="evalogin">eva</div>
+                       <div className="sloganinitial">Environmental Virtual Assistant</div>
+                       <div className="container logineva">
+                           <hr  className="classhrinitial"/>
+                           <a href="http://develop.mmota.online/oauth/authorize?client_id=6&redirect_uri=http://localhost:3000/callback&response_type=code&scope">
+                                 <button className="btn btn-login">Entrar </button>
+                           </a>
+                           <hr  className="classhrinitial"/>
+                        </div>
+                    </div>
                 </div>
-            </div>
         );
         
     }
