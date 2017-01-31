@@ -1097,6 +1097,10 @@ header .btn-list {
     box-shadow: 3px 3px 10px #888888;
 }
 
+.scrollperfil {
+    padding-bottom: 15vmin;
+}
+
 
 .submit {
     background-image: url("../../img/lista/certo30.png");
@@ -1163,15 +1167,15 @@ header .btn-list {
     margin-top: 5vmin;
 }
 
-.btn-photoperfil {
-    background-image: url("../../img/perfil/avatar1_60.png");
+.btn-photoperfilpink {
+    background-image: url(/static/media/persona_rosa30.ad2900e9.png);
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 35px 45px;
-    position: absolute;
-    margin-left: 10vmax;
-    margin-top:  10vmin;
-    background-size: 20vmin;
+    padding: 40px 40px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
 }
 
 .seta{

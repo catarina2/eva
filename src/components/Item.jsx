@@ -7,7 +7,7 @@ import {Link} from 'react-router';
 import { each } from 'lodash';
 
 import {fetchListUsers} from '../actions';
-import {fetchListProducts, deleteLists, editLists} from '../actions';
+import {fetchListProducts, deleteLists, editLists, postUsers} from '../actions';
 
 class Item extends Component {
     constructor(props) {
@@ -434,6 +434,8 @@ class Item extends Component {
         var temp = Object.assign(this.state.ccolor, x);
 
         this.setState({color:tempcolor, ccolor: temp});
+        //const {dispatch} = this.props;
+        //dispatch(postUsers(this.props.list.id, this.props.usersfamily[0]));
     }
 
 

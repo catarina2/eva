@@ -19,6 +19,17 @@ export function receiveUsersList(id, json) {
     }
 }
 
+export function receiveFamily(id, json) {
+    //console.info('action receiveUsersList', id, json);
+    return {
+        type: types.RECEIVE_FAMILY,
+        userslist: json,
+        id: id
+    }
+}
+
+
+
 export function receiveProdutsList(id, json) {
     //console.info('action receiveProdutsList', id, json);
     return {
@@ -280,3 +291,26 @@ export function editUsers(id, lists) {
             .then(json => dispatch(receiveeditusers(id, json)));
     }
 }
+
+export function postUsers(id, users) {
+    return function(dispatch) {
+    console.info(users, id, 'postUsers');
+        return fetch(`http://develop.mmota.online/api/lists/${id}/users`, {
+                method: 'POST',
+                body: users
+            })
+            .then(response => response.json())
+            .then(json => dispatch(receiveeditproducts(id, json)));
+    }
+}
+
+export function fetchFamily(id) {
+    //console.log('fetchListsUsers', id);
+    return function(dispatch) {
+        return fetch(`http://develop.mmota.online/api/families/${id}`)
+            .then(response => response.json())
+            .then(json => dispatch(receiveFamily(id, json)));
+    }
+}
+
+

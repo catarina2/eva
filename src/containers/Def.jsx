@@ -4,15 +4,10 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
 
-import {fetchLists, fetchFamilyUsers, editUsers} from '../actions';
+import {fetchLists, fetchFamilyUsers, fetchFamily, editUsers} from '../actions';
 
 class Def extends Component {
-    componentDidMount() {
-       // console.log('componentdidMount');
-        const {dispatch} = this.props;
-        dispatch(fetchLists());
-        dispatch(fetchFamilyUsers(2));
-    }
+    
 
     constructor(props) {
         super(props);
@@ -39,6 +34,14 @@ class Def extends Component {
             green: "usergreen", 
             msg: null
         }
+    }
+
+    componentDidMount() {
+       // console.log('componentdidMount');
+        const {dispatch} = this.props;
+        dispatch(fetchLists());
+        dispatch(fetchFamilyUsers(2));
+        dispatch(fetchFamily(2));
     }
 
     render() {
@@ -242,7 +245,7 @@ class Def extends Component {
                                 className="glyphicon glyphicon-edit gperfil"></span></button>
                         </div>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body scrollperfil">
                         <div className="row">
                                     <div className="col-xs-6">
                                     <div className="row">
@@ -252,7 +255,7 @@ class Def extends Component {
                                     </div>
                                     </div>
                                     <div className="col-xs-6">
-                                        <input type="button" ref="photo" className="btn btn-photoperfil"></input>
+                                        <input type="button" ref="photo" className="btn btn-photoperfilpink"></input>
                                     </div>
                                     </div>
                                     <div className="row">
@@ -265,7 +268,7 @@ class Def extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <label className="labelperfil">{this.state.user.family_id}</label>
+                                            <label className="labelperfil">{this.props.family}</label>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -279,19 +282,6 @@ class Def extends Component {
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <label className="labelperfil">{this.state.user.birthday}</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-1">
-                                            <button type="button" className="btn btn-coloravatarperfil"></button>
-                                        </div>
-                                        <div className="col-xs-10">
-                                            <h4>Cor do Avatar</h4>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-12">
-                                             <label className="labelperfil">{coloruser}</label>
                                         </div>
                                     </div>
                     </div>
@@ -383,7 +373,7 @@ class Def extends Component {
 const mapStateToProps = (state, ownProps) => {
     console.info('container DEF mapStateToProps', state, ownProps );
     console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
-    return {users:state.userslist.users, msg:state.userslist.msg};
+    return {users:state.userslist.users, msg:state.userslist.msg, family:state.userslist.family};
 }
 
 export default connect(mapStateToProps)(Def);
