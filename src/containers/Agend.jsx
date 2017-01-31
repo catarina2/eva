@@ -4,7 +4,10 @@ import {Link} from 'react-router';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import Event from '../components/Event';
 
-import {postevent} from '../actions';
+import { each } from 'lodash';
+
+
+import {postevent, fetchUserEvents, fetchFamilyUsers} from '../actions';
 
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
@@ -41,6 +44,15 @@ class Agend extends Component{
 
              loggeduser:2,
 
+             color: null,
+             ccolor: null,
+             userid: null,
+             user: null,
+
+             msg: this.props.msg,
+             data:this.props.data,
+
+
             checkedu1: false,
             checkedu2: false,
             checkedu3: false,
@@ -63,12 +75,15 @@ class Agend extends Component{
     }
 
     componentDidMount() {
-        //console.log(this.props.item, 'componentDidMount');
+        // console.log('componentdidMount');
         const {dispatch} = this.props;
+        dispatch(fetchUserEvents(this.state.loggeduser)); // MUDAR PARA ID FAMILIA  ex: loggeduser.family_id
+        dispatch(fetchFamilyUsers(this.state.loggeduser));
     }
 
 
     render(){
+        console.log("VER events em STATE: ", this.state.events);
         var fullDate = this.state.month;
         var weekday = new Array(7);
                 weekday[0] =  "Domingo";
@@ -181,35 +196,53 @@ class Agend extends Component{
         if(this.state.showModal)
         {
 
-            var userslist;
-            console.log(this.state.family.users[0]);
-            if(this.state.family.users.length === 2)
-            {
-               userslist= ( <div className="cc-selector">
-                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].id} checked={this.state.checkedu1}/>
-                                     <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
-                            </div>);
-            }
-            else if(this.state.family.users.length === 3)
-            {
-               userslist= ( <div className="cc-selector">
-                                     <input id="user4" type="radio" name="user4" ref="user4" value={this.state.family.users[0].id} checked={this.state.checkedu1}/>
-                                     <label className="user-cc btn-user4" For="user4" onClick={this.handleiconclicku1}></label>
-                                     <input id="user2" type="radio" name="user2" ref="user2" value={this.state.family.users[1].id} checked={this.state.checkedu2}/>
-                                     <label className="user-cc btn-user2" For="user2" onClick={this.handleiconclicku2}></label>
-                            </div>);
-            }
-            else if(this.state.family.users.length === 4)
-            {
-               userslist= ( <div className="cc-selector display">
-                                     <input id="userblue" type="radio" name="userblue" ref="user3" value={this.state.family.users[0].id} checked={this.state.checkedu1}/>
-                                     <label className="user-cc btn-userblue" For="userblue" onClick={this.handleiconclicku1}></label>
-                                     <input id="userpink" type="radio" name="userpink" ref="user4" value={this.state.family.users[1].id} checked={this.state.checkedu2}/>
-                                     <label className="user-cc btn-userpink" For="userpink" onClick={this.handleiconclicku2}></label>
-                                     <input id="usergreen" type="radio" name="usergreen" ref="user2" value={this.state.family.users[2].id} checked={this.state.checkedu3}/>
-                                     <label className="user-cc btn-usergreen" For="usergreen" onClick={this.handleiconclicku3}></label>
-                            </div>);
-            }
+
+            //USERS
+            var userslists=[];
+            var family = this.props.usersfamily;
+            //console.log(family, 'tamanho usersfamily');
+            console.log(this.props, 'tamanho usersfamily');
+            //foreach para os users de uma familia
+            var usercolor;
+            var className = {};
+            var colorstate = {};
+            var ccolor = {};
+            var color = {};
+            var userid = {};
+            each(family, (user, key) => {
+                usercolor = 'user'+ user.color;
+                ccolor[key] = usercolor;
+                color[key] = false;
+                userid[key] = user.id;
+                className="user-cc btn-user"+key;
+
+                if(this.state.ccolor === null)
+                {
+                    className = ccolor;
+                }
+                else{
+                    className = this.state.ccolor;
+                }
+
+                if(this.state.color === null)
+                {
+                    colorstate = color;
+                }
+                else {
+                    colorstate = this.state.color;
+                }
+                userslists.push(<div key ={key} className='display'>
+                    <div className="cc-selector">
+                        <input id={userid[key]} type="radio" name={userid[key]} ref={userid[key]} value={user.id} defaultChecked={this.state.checkedu1}/>
+                        <label className={className} htmlFor={userid[key]} onClick={this.handleclickuser.bind(this, key, user.color)}></label>
+                    </div>
+                </div>);
+            });
+            this.state.ccolor = className;
+            this.state.color = colorstate;
+            this.state.userid = userid;
+            //FINAL USERS
+
         showmodal = (
                 <div className="modal">
                     <div className="modal-dialog">
@@ -265,7 +298,7 @@ class Agend extends Component{
                                           <div className="col-xs-1">
                                           </div>
                                           <div className="col-xs-10">
-                                              {userslist}
+                                              {userslists}
                                           </div>
                                       </div>
                                     <div className="row">
@@ -372,9 +405,9 @@ class Agend extends Component{
                         <div className="row">
                             <div className="col-xs-2">
                             </div>
-                            <div className="col-xs-8">
+                            <div className="col-xs-7">
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-xs-3">
                                 <button className="btn btn-newagend" onClick={this.handleModal}></button>
                             </div>
                         </div>
@@ -479,6 +512,25 @@ class Agend extends Component{
                  bodyScroll.className = "";
          }
     }
+
+    handleclickuser(key, color, event) {
+        event.preventDefault();
+
+        var css = (this.state.color[key] === false) ? true : false;
+        var usercolor = (this.state.ccolor[key] === 'user'+color) ? 'guser'+color : 'user'+color;
+
+        var xcolor = {};
+        xcolor[key] = css;
+
+        var x = {};
+        x[key] = usercolor;
+
+        var tempcolor = Object.assign(this.state.color, xcolor);
+        var temp = Object.assign(this.state.ccolor, x);
+
+        this.setState({color:tempcolor, ccolor: temp});
+    }
+
     handleiconclicku1(event) {
         event.preventDefault();
         var css = (this.state.checkedu1 === false) ? true : false;

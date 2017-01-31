@@ -9,6 +9,7 @@ import Agend from '../containers/Agend';
 import Perfil from '../containers/Perfil';
 import Def from '../containers/Def';
 import Login from '../containers/Login';
+import Familia from '../containers/Familia';
 import Callback from '../containers/Callback';
 //import Def from '../containers/Def';
 
@@ -24,6 +25,7 @@ export default (
             <Route path="mirror" component={List} />
             <Route path="definition" component={Perfil}/>
             <Route path="definition/profile" component={Def} />
+            <Route path="definition/familia" component={Familia} />
             <Route path="calendar" component={Agend} />
         </Route>
     </Route>

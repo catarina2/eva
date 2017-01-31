@@ -4,11 +4,14 @@ import {connect} from 'react-redux';
 
 class Event extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {unline: false};
     }
 
     render() {
+
+        console.log("VER events em STATE: ", this.state);
+        console.log("VER events em PROPS: ", this.props);
             var ev = this.props.ev;
             var persona = [];
             console.log(ev, 'evento');

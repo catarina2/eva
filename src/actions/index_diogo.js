@@ -19,17 +19,6 @@ export function receiveUsersList(id, json) {
     }
 }
 
-export function receiveFamily(id, json) {
-    //console.info('action receiveUsersList', id, json);
-    return {
-        type: types.RECEIVE_FAMILY,
-        userslist: json,
-        id: id
-    }
-}
-
-
-
 export function receiveProdutsList(id, json) {
     //console.info('action receiveProdutsList', id, json);
     return {
@@ -40,7 +29,7 @@ export function receiveProdutsList(id, json) {
 }
 
 export function receiveUsersFamily(id, json) {
-    //console.info('action receiveUsersFamily',id, json);
+   console.info('action receiveUsersFamily',id, json);
     return {
         type: types.RECEIVE_USERS_BY_FAMILY,
         users: json, 
@@ -97,7 +86,7 @@ export function receiveproducts(id, json) {
 }
 
 export function receiveeditproducts(id, json) {
-    //console.info('action receiveeditproducts', json);
+    console.info('action receiveeditproducts', json);
     return {
         type: types.RECEIVE_EDIT_PRODUTS,
         productslist: json,
@@ -124,7 +113,7 @@ export function receivelists(json) {
 }
 
 export function receiveUsers(json) {
-   //console.info('action receiveUsers', json);
+    console.info('action receiveUsers', json);
     return {
         type: types.REQUEST_USERS,
         users: json
@@ -132,7 +121,7 @@ export function receiveUsers(json) {
 }
 
 export function receiveeditlists(id, json) {
-    //console.info('action receiveeditlists', json);
+    console.info('action receiveeditlists', json);
     return {
         type: types.RECEIVE_EDIT_LISTS,
         lists: json,
@@ -141,7 +130,7 @@ export function receiveeditlists(id, json) {
 }
 
 export function receiveeditusers(id, json) {
-    //console.info('action receiveeditusers', json);
+    console.info('action receiveeditusers', json);
     return {
         type: types.RECEIVE_EDIT_USERS,
         users: json,
@@ -155,6 +144,29 @@ export function receivelistsdelete(id, json) {
         type: types.DELETE_LISTS,
         lists: json,
         id: id
+    }
+}
+
+
+export function receiveevents(json) {
+    console.info('action receive events: ', json);
+    return {
+        type: types.RECEIVE_EVENTS,
+        events: json
+    }
+}
+
+//              AGENDA
+
+export function postevent(events) {
+    return function(dispatch) {
+        console.info(events, 'POST EVENTS');
+        return fetch(`http://develop.mmota.online/api/events`, {
+            method: "POST",
+            body: events
+        })
+            .then(response => response.json())
+            .then(json => dispatch(receiveevents(json)));
     }
 }
 
@@ -244,9 +256,9 @@ export function deleteProducts(id, idlist) {
 }
 
 export function fetchFamilyUsers(id) {
-    //console.log('fetchListsUsers', id);
+   //console.log('fetchListsUsers', id);
     return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/families/${id}/users`)
+        return fetch(`http://develop.mmota.online/api/users/${id}/family`)
             .then(response => response.json())
             .then(json => dispatch(receiveUsersFamily(id, json)));
     }
@@ -266,89 +278,5 @@ export function editUsers(id, lists) {
             })
             .then(response => response.json())
             .then(json => dispatch(receiveeditusers(id, json)));
-    }
-}
-
-export function postUsers(id, users) {
-    return function(dispatch) {
-    console.info(users, id, 'postUsers');
-        return fetch(`http://develop.mmota.online/api/lists/${id}/users`, {
-                method: 'POST',
-                body: users
-            })
-            .then(response => response.json())
-            .then(json => dispatch(receiveeditproducts(id, json)));
-    }
-}
-
-export function fetchFamily(id) {
-    //console.log('fetchListsUsers', id);
-    return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/families/${id}`)
-            .then(response => response.json())
-            .then(json => dispatch(receiveFamily(id, json)));
-    }
-}
-// ---------------------   AGENDA
-
-export function requestevents(json) {
-    console.info('action receive events: ', json);
-    return {
-        type: types.REQUEST_EVENTS,
-        events: json
-    }
-}
-
-export function ReceiveUserEvents(id, json) {
-    console.info('action receive events: ',id, json);
-    return {
-        type: types.RECEIVE_USER_EVENTS,
-        userevents: json,
-        family: id
-    }
-}
-
-
-export function fetchUserEvents(id) {
-    console.log('fetchListsUsers', id);
-    return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/users/${id}/events`)
-            .then(response => response.json())
-            .then(json => dispatch(ReceiveUserEvents(id, json)));
-    }
-}
-
-export function postevent(events) {
-    return function(dispatch) {
-        console.info(events, 'POST EVENTS');
-        return fetch(`http://develop.mmota.online/api/events`, {
-            method: "POST",
-            body: events
-        })
-            .then(response => response.json())
-            .then(json => dispatch(requestevents(json)));
-    }
-}
-
-// ---------------------   Familia
-
-export function receiveInviteToFamily(json) {
-    console.info('action receive events: ', json);
-    return {
-        type: types.RECEIVE_INVITE_TO_FAMILY,
-        invite: json
-    }
-}
-
-
-export function postInviteToFamily(invite) {
-    return function(dispatch) {
-        console.info(invite, 'POST EVENTS');
-        return fetch(`http://develop.mmota.online/api/invitations`, {
-            method: "POST",
-            body: invite
-        })
-            .then(response => response.json())
-            .then(json => dispatch(receiveInviteToFamily(json)));
     }
 }
