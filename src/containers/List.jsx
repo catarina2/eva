@@ -44,7 +44,7 @@ class List extends Component {
        // console.log('componentdidMount');
         const {dispatch} = this.props;
         dispatch(fetchLists());
-        dispatch(fetchFamilyUsers(1));
+        dispatch(fetchFamilyUsers(2));
     }
 
      componentWillUnMount() {
@@ -55,7 +55,6 @@ class List extends Component {
     render() {
         var showNav;
         var showmodal;
-        console.log(this.state.msg);
        if(this.state.msg === 'OK')
        {
        // console.log("ok");
@@ -66,7 +65,6 @@ class List extends Component {
        {
 
             var data = this.state.data;
-             console.log(this.state.msg, data);
             if(data.length === 2)
             {
               this.state.name = data[0];
@@ -157,8 +155,8 @@ class List extends Component {
         {
           //USERS
             var userslists=[];
-            var family = this.props.users[1];
-            console.log(family, 'tamanho usersfamily');
+            var family = this.props.usersfamily;
+            //console.log(family, 'tamanho usersfamily');
 
           //foreach para os users de uma familia
              var usercolor;
@@ -493,8 +491,8 @@ class List extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     //console.info('container List mapStateToProps', state, ownProps);
-    console.log(state.lists.dataadd, 'fgdfxgsdfgdgf users');
-    return {lists: state.lists, usersfamily: state.userslist, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.userslist};
+    //console.log(state.lists.dataadd, 'fgdfxgsdfgdgf users');
+    return {lists: state.lists, usersfamily: state.userslist.users, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.userslist};
 }
 
 export default connect(mapStateToProps)(List);

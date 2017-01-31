@@ -15,12 +15,6 @@ class Item extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        this.handleiconclick1 = this.handleiconclick1.bind(this);
-        this.handleiconclick2 = this.handleiconclick2.bind(this);
-        this.handleiconclick3 = this.handleiconclick3.bind(this);
-        this.handleiconclick4 = this.handleiconclick4.bind(this);
-        this.handleiconclick5 = this.handleiconclick5.bind(this);
-        this.handleiconclick6 = this.handleiconclick6.bind(this);
         this.handleclickuser = this.handleclickuser.bind(this);
         this.handleclickicon = this.handleclickicon.bind(this);
         this.confirmdelete = this.confirmdelete.bind(this);
@@ -32,25 +26,9 @@ class Item extends Component {
             showpanel: false,
             produtos: null,
             showModalEdit: false,
-            checked1: false,
-            checked2: false,
-            checked3: false,
-            checked4: false,
-            checked5: false,
-            checked6: false,
             confirmdelete: false,
             msgdelete: null,
             msgedit: null,
-            pink: false,
-            blue: false,
-            green: false,
-            red: false,
-            yellow:false,
-            cpink: 'userpink',
-            cblue: 'userblue',
-            cgreen: 'usergreen',
-            cred: 'userred',
-            cyellow: 'useryellow',
             color: null,
             ccolor: null,
             userid: null,
@@ -75,6 +53,7 @@ class Item extends Component {
         //console.log(this.props, 'propriedades Item')
         var list = this.props.list;
         var panel = null;
+        var namemessage;
 
 
         // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
@@ -86,6 +65,22 @@ class Item extends Component {
         if (this.state.msgedit === "OK") {
             this.state.showModalEdit = false;
             this.state.msgedit = null;
+            this.state.color =  null;
+            this.state.ccolor =  null;
+            this.state.userid =  null;
+            this.state.nameicon =  null;
+            this.state.cname =  null;
+            this.state.iconid =  null;
+            this.state.icons =  null;
+            this.state.check =  {0: "trabalho"};
+            this.state.icon= [{name: "trabalho", id: 0, classname: "gicontrabalho", state: "checked"}, {name: "natal", id: 1, classname: "iconnatal", state: "unchecked"}, {name: "ovo", id: 2,classname: "iconovo", state: "unchecked"}, {name: "ferias", id: 3,classname: "iconferias", state: "unchecked"}, {name: "prenda", id: 4,classname: "iconprenda", state: "unchecked"}];
+            
+            //setTimeout(() => {this.setState({confirmdelete: false, msg: null})}, 500);
+        }
+        if (this.state.msgedit === "NOK") {
+          var data = this.props.dataedit;
+          namemessage= data[0];
+             
             //setTimeout(() => {this.setState({confirmdelete: false, msg: null})}, 500);
         }
 
@@ -118,9 +113,11 @@ class Item extends Component {
         if (this.state.showModalEdit) {
              var userslists=[];
             
-            var family = this.props.users[1];
+            var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
             console.log(family, 'usersfamily');
             //USERS
+            var usersoflist = this.props.users[list.id]; 
+            console.log(usersoflist);
             var usercolor;
              var className = {};
              var colorstate = {};
@@ -128,11 +125,22 @@ class Item extends Component {
              var color = {};
              var userid = {};
              each(family, (user, key) => {
-                usercolor = 'user'+ user.color;
+                each(usersoflist, (u, keyu) => {
+                  if(u.name === user.name){
+                     
+                      usercolor = 'guser'+ user.color;
+                      console.log(usercolor);
+                      color[key] = true;
+                      return false;
+                  }
+                  else{
+                      usercolor = 'user'+ user.color;
+                      console.log(usercolor);
+                      color[key] = false;
+                  }
+                });
                 ccolor[key] = usercolor;
-                color[key] = false;
                 userid[key] = user.id;
-
                 if(this.state.ccolor === null)
                 {
                   className = ccolor;
@@ -158,6 +166,7 @@ class Item extends Component {
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
+            console.log(this.state.ccolor, this.state.color);
             //final USERS
             //ICONS
             var iconlists=[];
@@ -169,7 +178,27 @@ class Item extends Component {
               var classIcon = {};
               var iconstate = {};
               var iconlist = this.state.icon;
+              var iconlistsauxiliar = [];
+              var temp;
+              if(list.icon !== "trabalho")
+              {
+                  iconlist[0].state = "unchecked";
+                  iconlist[0].classname = "icontrabalho";
+              }
               each(iconlist, (icon, key) => {
+                if(icon.name === list.icon){
+                    icon.state = "checked";
+                    if(key === 0) icon.classname = icon.classname;
+                    else icon.classname = "g"+icon.classname;
+                    temp = icon;
+                }
+                else{
+                  temp = icon;
+                }
+                iconlistsauxiliar.push(temp);
+                 
+              });
+              each(iconlistsauxiliar, (icon, key) => {
                     iconname = 'icon'+ icon.name;
                     cname[key] = icon.classname;
                     nameicon[key] = icon.state;
@@ -228,7 +257,8 @@ class Item extends Component {
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <input type="text" className="form-control" ref="name" name="name"
-                                                   defaultValue={list.name}/>
+                                                   defaultValue={list.name} maxLength="20"/>
+                                            <div className="validation">{namemessage}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -406,122 +436,6 @@ class Item extends Component {
         this.setState({color:tempcolor, ccolor: temp});
     }
 
-    handleiconclick1(event) {
-        event.preventDefault();
-        //console.log(this.state.checked1, 'handleiconclick1');
-        var css = (this.state.checked1 === false) ? true : false;
-        this.setState({
-            checked1: css,
-            checked2: false,
-            checked3: false,
-            checked4: false,
-            checked5: false,
-            checked6: false
-        });
-    }
-
-    handleiconclick2(event) {
-        event.preventDefault();
-        var css = (this.state.checked2 === false) ? true : false;
-        this.setState({
-            checked2: css,
-            checked1: false,
-            checked3: false,
-            checked4: false,
-            checked5: false,
-            checked6: false
-        });
-    }
-
-    handleiconclick3(event) {
-        event.preventDefault();
-        var css = (this.state.checked3 === false) ? true : false;
-        this.setState({
-            checked3: css,
-            checked2: false,
-            checked1: false,
-            checked4: false,
-            checked5: false,
-            checked6: false
-        });
-    }
-
-    handleiconclick4(event) {
-        event.preventDefault();
-        var css = (this.state.checked4 === false) ? true : false;
-        this.setState({
-            checked4: css,
-            checked2: false,
-            checked3: false,
-            checked1: false,
-            checked5: false,
-            checked6: false
-        });
-    }
-
-    handleiconclick5(event) {
-        event.preventDefault();
-        var css = (this.state.checked5 === false) ? true : false;
-        this.setState({
-            checked5: css,
-            checked2: false,
-            checked3: false,
-            checked4: false,
-            checked1: false,
-            checked6: false
-        });
-    }
-
-    handleiconclick6(event) {
-        event.preventDefault();
-        var css = (this.state.checked6 === false) ? true : false;
-        this.setState({
-            checked6: css,
-            checked2: false,
-            checked3: false,
-            checked4: false,
-            checked5: false,
-            checked1: false
-        });
-    }
-
-     handleiconclickpink(event) {
-        event.preventDefault();
-        console.log(this.state.cpink, 'handleclickuser pink');
-        var css = (this.state.pink === false) ? true : false;
-        var color = (this.state.cpink === 'userpink') ? 'guserpink' : 'userpink';
-        console.log(this.state.cpink, 'handleclickuser pink');
-        this.setState({pink:css, cpink: color});
-    }
-    handleiconclickblue(event) {
-        event.preventDefault();
-        console.log(this.state.cblue, 'handleclickuser pink');
-        //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser blue');
-        var css = (this.state.blue === false) ? true : false;
-        var color = (this.state.cblue === 'userblue') ? 'guserblue' : 'userblue';
-        this.setState({blue:css, cblue: color});
-    }
-    handleiconclickred(event) {
-        event.preventDefault();
-        //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser red');
-        var css = (this.state.red === false) ? true : false;
-        var color = (this.state.cred === 'userred') ? 'guserred' : 'userred';
-        this.setState({red:css, cred: color});
-    }
-    handleiconclickgreen(event) {
-        event.preventDefault();
-        //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser green');
-        var css = (this.state.green === false) ? true : false;
-        var color = (this.state.cgreen === 'usergreen') ? 'gusergreen' : 'usergreen';
-        this.setState({green:css, cgreen: color});
-    }
-    handleiconclickyellow(event) {
-        event.preventDefault();
-        //console.log(this.state.pink, this.state.red, this.state.blue, 'handleclickuser green');
-        var css = (this.state.yellow === false) ? true : false;
-        var color = (this.state.cyellow === 'useryellow') ? 'guseryellow' : 'useryellow';
-        this.setState({yellow:css, cyellow: color});
-    }
 
     handleClick() {
         //console.log('handleClick');
@@ -579,32 +493,22 @@ class Item extends Component {
 
      _submitEdit(event) {
         event.preventDefault();
-        var ref;
-        var listusers = [];
-       // console.log(this.state, 'icons');
-        if(this.state.checked1) ref=this.refs.icon1.value;
-        else if(this.state.checked2) ref=this.refs.icon2.value;
-        else if(this.state.checked3) ref=this.refs.icon3.value;
-        else if(this.state.checked4) ref=this.refs.icon4.value;
-        else if(this.state.checked5) ref=this.refs.icon5.value;
-        else if(this.state.checked6) ref=this.refs.icon6.value;
-        //console.log(this.refs.name.value, ref);
 
-        var user ="1,2";
-        var FormData = require('form-data');
-        //const form = new FormData();
-        //form.append('name', this.refs.name.value);
-        //form.append('icon', ref);
-        //form.append('users', user);
-
-
+        var keychecked;
         let obj = {};
 
-        obj['name'] = this.refs.name.value;
-        obj['icon'] = 'trabalho';
-        obj['users'] = user;
+        each(this.state.nameicon, (icon, key) => {
+           if(icon === "checked")
+           {
+              keychecked = key;
+           }
+        });
+        var iconchecked = this.state.icon[keychecked];
+        
 
-        console.log(obj, 'edição');
+        obj['name'] = this.refs.name.value;
+        obj['icon'] = iconchecked.name;
+        obj['created_by'] = '2';
 
          var header = document.getElementById("header");
          var bodyScroll = document.getElementById("body");
@@ -643,7 +547,7 @@ Item.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     //console.info('container Item mapStateToProps', state, ownProps);
-    return {msgdelete: state.lists.msgdelete, msgedit: state.lists.msgedit, users:state.userslist.userslist};
+    return {usersfamily: state.userslist.users, msgdelete: state.lists.msgdelete, msgedit: state.lists.msgedit, dataedit: state.lists.dataedit, users:state.userslist.userslist};
 }
 
 

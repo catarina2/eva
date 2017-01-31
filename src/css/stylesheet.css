@@ -825,6 +825,7 @@ header .btn-list {
     background-repeat: no-repeat;
     padding: 20px 20px;
     background-size: 35px 35px;
+    margin-left: 2vmin;
 }
 .iconnatal {
     background-image: url("../../img/lista/natal_adicionar.png");
@@ -860,49 +861,45 @@ header .btn-list {
     background-repeat: no-repeat;
     padding: 20px 20px;
     background-size: 35px 35px;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+    margin-left: 0vmin;
 }
 .giconnatal {
     background-image: url("../../img/lista/natal_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 20px 20px;
+    padding: 20px 16px;
     background-size: 30px 35px;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .giconovo {
     background-image: url("../../img/lista/pascoa_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 21px 20px;
+    padding: 21px 16px;
     background-size: 30px 35px;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .giconferias {
     background-image: url("../../img/lista/ferias_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 20px 30px;
+    padding: 20px 16px;
     background-size: 30px 35px;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .giconprenda {
     background-image: url("../../img/lista/prenda_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 20px 30px;
+    padding: 20px 23px;
     background-size: 45px 35px;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 
 
@@ -1020,9 +1017,8 @@ header .btn-list {
     padding: 10px 10px;
     height: 0px;
     background-size: 5vmin;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .useryellow {
     background-image: url("../../img/lista/persona_verde30.png");
@@ -1040,9 +1036,8 @@ header .btn-list {
     padding: 10px 10px;
     height: 0px;
     background-size: 5vmin;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .userpink {
     background-image: url("../../img/lista/persona_rosa30.png");
@@ -1060,9 +1055,8 @@ header .btn-list {
     padding: 10px 10px;
     height: 0px;
     background-size: 5vmin;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .usergreen {
     background-image: url("../../img/lista/persona_verde30.png");
@@ -1080,9 +1074,8 @@ header .btn-list {
     padding: 10px 10px;
     height: 0px;
     background-size: 5vmin;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 .userblue {
     background-image: url("../../img/lista/persona_azul30.png");
@@ -1100,9 +1093,8 @@ header .btn-list {
     padding: 10px 10px;
     height: 0px;
     background-size: 5vmin;
-    -webkit-filter: brightness(1) grayscale(1) opacity(0.9);
-       -moz-filter: brightness(1) grayscale(1) opacity(0.9);
-            filter: brightness(1) grayscale(1) opacity(0.9);
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
 }
 
 
@@ -1154,7 +1146,7 @@ header .btn-list {
     width: 38px;
     height: 38px;
     position: absolute;
-    margin: -6px -87px;
+    margin: -13px -87px;
     right: 84px;
     background-image: url("../../img/lista/adicionar_produto_30.png");
     background-color: rgba(255,255,255,0);

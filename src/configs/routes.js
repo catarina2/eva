@@ -17,7 +17,7 @@ import Callback from '../containers/Callback';
 export default (
     <Route history={browserHistory}>
         <Route path="/" component={App}>
-            <IndexRoute component={Login} />
+            <IndexRoute component={Inicioeva} />
             <Route path="callback" component={Callback} />
             <Route path="/" component={Inicioeva} />
             <Route path="lists" component={List} />
