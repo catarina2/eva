@@ -528,55 +528,55 @@ margin-top: 30px;
 }
 
 .btn-shoplist {
-    background-image: url("../../img/menu/Listadecompras_inicial.png");
+    background-image: url("../../img/menu/ListaCompras_200.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 36px 36px;
-    background-size: 70px 70px;
+    padding: 39px 36px;
+    background-size: 80px 80px;
     position: absolute;
     right: 42%;
     top: 82px;
 }
 
 .btn-mirror {
-    background-image: url("../../img/menu/Espelho_inicial.png");
+    background-image: url("../../img/menu/Espelho_200.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 36px 36px;
-    background-size: 70px 70px;
+    background-size: 80px 80px;
     top: 127px;
     position: absolute;
     right: 54%;
 }
 
 .btn-definition {
-    background-image: url("../../img/menu/definicao_inicial.png");
+    background-image: url("../../img/menu/Perfil_200.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 36px 36px;
-    background-size: 70px 70px;
+    background-size: 80px 80px;
     top: 127px;
     position: absolute;
     right: 30%;
 }
 
 .btn-agend {
-    background-image: url("../../img/menu/agendafamiliar_inicial.png");
+    background-image: url("../../img/menu/Agenda_200.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 36px 36px;
-    background-size: 70px 70px;
+    background-size: 80px 80px;
     position: absolute;
     right: 42%;
     top: 173px;
 }
 
 .btn-more {
-    background-image: url("../../img/menu/adicionar_inicial.png");
+    background-image: url("../../img/menu/Adicionarf_200.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 36px 36px;
-    background-size: 70px 70px;
+    background-size: 75px 75px;
     position: absolute;
     right: 30%;
     top: 215px;
