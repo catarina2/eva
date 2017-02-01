@@ -1,3 +1,4 @@
+
 /*css geral*/
 @font-face
 {
@@ -215,10 +216,26 @@ section {
 .display {
     display: inline-flex;
 }
+.displayavatares {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-around;
+}
 .display1 {
     margin: -2px -5px;
     display: inline-flex;
     padding-left: 0%;
+}
+.cc-selectorperfil {
+    width: 15vmin;
+    height: 15vmin;
+}
+.cc-selectorperfil input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
 }
 .cc-selector {
     width: 10vmin;
@@ -1142,8 +1159,6 @@ header .btn-list {
 }
 
 
-
-
 .btn-produto {
     font-size: 15px;
     background-color: #f7aa47;
@@ -1167,8 +1182,136 @@ header .btn-list {
     margin-top: 5vmin;
 }
 
-.btn-photoperfilpink {
-    background-image: url(/static/media/persona_rosa30.ad2900e9.png);
+.blue{
+    background-color: darkturquoise;
+}
+.gblue{
+    background-color: darkturquoise;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+.pink{
+    background-color: palevioletred;
+}
+.gpink{
+    background-color: palevioletred;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+.green{
+    background-color: #66CD00;
+}
+.ggreen{
+    background-color: #66CD00;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+.red{
+    background-color: red;
+}
+.gred{
+    background-color: red;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+.yellow{
+    background-color: gold;
+}
+.gyellow{
+    background-color: gold;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+.orange{
+    background-color: darkorange;
+}
+.gorange{
+    background-color: darkorange;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+
+.btn-smallavatar1 {
+    background-image: url("../../img/users/user1_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 25px 25px;
+    border: none;
+}
+
+.btn-smallavatar2 {
+    background-image: url("../../img/users/user2_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 25px 25px;
+    border: none;
+}
+
+.btn-smallavatar3 {
+    background-image: url("../../img/users/user3_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 25px 25px;
+    border: none;
+}
+
+.btn-smallavatar4 {
+    background-image: url("../../img/users/user4_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 25px 25px;
+    border: none;
+}
+
+.btn-smallavatar5 {
+    background-image: url("../../img/users/user5_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 25px 25px;
+    border: none;
+}
+
+.btn-smallavatar6 {
+    background-image: url("../../img/users/user6_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 25px 25px;
+    border: none;
+}
+
+
+.btn-avatar1 {
+    background-image: url("../../img/users/user1_80.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 40px 40px;
@@ -1176,6 +1319,67 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
+    background-size: 54px 60px;
+}
+
+.btn-avatar2 {
+    background-image: url("../../img/users/user2_80.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 40px 40px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 54px 60px;
+}
+
+.btn-avatar3 {
+    background-image: url("../../img/users/user3_80.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 40px 40px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 54px 60px;
+}
+
+.btn-avatar4 {
+    background-image: url("../../img/users/user4_80.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 40px 40px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 55px 63px;
+}
+
+.btn-avatar5 {
+    background-image: url("../../img/users/user5_80.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 40px 40px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 51px 60px;
+}
+
+.btn-avatar6 {
+    background-image: url("../../img/users/user6_80.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 40px 40px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 54px 60px;
 }
 
 .seta{
@@ -1203,7 +1407,7 @@ header .btn-list {
 
 .modal .modal-dialog {
      margin: 10vmin;
-    margin-top: 16vmin;
+    margin-top: 10vmin;
     border-color: #f7aa47;
 
 }
@@ -1925,6 +2129,46 @@ header .btn-perfil {
     border-radius: 5px;
     background-color:#f7aa47;
     color: white;
+}
+
+.losangecolor, .losangecolor div {
+  transform-origin: 45% 50%;
+  overflow: hidden;
+    width: 35px;
+    height: 35px;
+}
+.losangecolor {
+    transform: rotate(45deg) translateY(-1px) translateX(1px);
+}
+.losangecolor .loscolor {
+    width: 267px;
+    height: 332px;
+    transform: rotate(-45deg) translateY(-19%) translateX(38%);
+}
+.losangecolor .loscolor img {
+    width: 45%;
+    height: 40%;
+}
+.losangeavatar, .losangeavatar div {
+  margin: 0 auto;
+  transform-origin: 45% 50%;
+  overflow: hidden;
+    width: 70px;
+    height: 70px;
+}
+.losangeavatar {
+    transform: rotate(45deg) translateY(8px) translateX(53px);
+    box-shadow: 6px -3px 10px #888888;
+}
+
+.losangeavatar .losavatar {
+    width: 267px;
+    height: 332px;
+    transform: rotate(-45deg) translateY(-60px) translateX(86px);
+}
+.losangeavatar .losavatar img {
+    width: 45%;
+    height: 40%;
 }
 
 .losange, .losange div {
