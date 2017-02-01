@@ -227,6 +227,16 @@ section {
     display: inline-flex;
     padding-left: 0%;
 }
+.cc-selectorlist {
+    width: 10vmin;
+}
+.cc-selectorlist input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
 .cc-selectorperfil {
     width: 15vmin;
     height: 15vmin;
@@ -862,14 +872,21 @@ header .btn-list {
     background-image: url("../../img/lista/ferias_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 20px 30px;
+    padding: 20px 22px;
     background-size: 30px 35px;
 }
 .iconprenda {
     background-image: url("../../img/lista/prenda_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 20px 30px;
+    padding: 20px 22px;
+    background-size: 45px 35px;
+}
+.iconroupa {
+    background-image: url("../../img/lista/roupa_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 22px;
     background-size: 45px 35px;
 }
 .gicontrabalho {
@@ -913,7 +930,16 @@ header .btn-list {
     background-image: url("../../img/lista/prenda_adicionar.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
-    padding: 20px 23px;
+    padding: 20px 20px;
+    background-size: 45px 35px;
+    border: 2px solid #f7aa47;
+    box-shadow: 3px 3px 10px #888888;
+}
+.giconroupa {
+    background-image: url("../../img/lista/roupa_adicionar.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
     background-size: 45px 35px;
     border: 2px solid #f7aa47;
     box-shadow: 3px 3px 10px #888888;
@@ -1231,6 +1257,85 @@ header .btn-list {
     box-shadow: 3px 3px 10px #888888;
 }
 
+.btn-smallavatarlist1 {
+    background-image: url("../../img/users/user1_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 15px 15px;
+    border: none;
+}
+
+.btn-smallavatarlist2 {
+    background-image: url("../../img/users/user2_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 15px 15px;
+    border: none;
+}
+
+.btn-smallavatarlist3 {
+    background-image: url("../../img/users/user3_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 15px 15px;
+    border: none;
+}
+
+.btn-smallavatarlist4 {
+    background-image: url("../../img/users/user4_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 15px 15px;
+    border: none;
+}
+
+.btn-smallavatarlist5 {
+    background-image: url("../../img/users/user5_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 15px 15px;
+    border: none;
+}
+
+.btn-smallavatarlist6 {
+    background-image: url("../../img/users/user6_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 18vmin;
+    margin-top: 10vmin;
+    margin-left: 10vmin;
+    background-size: 15px 15px;
+    border: none;
+}
+
+
 .btn-smallavatar1 {
     background-image: url("../../img/users/user1_30.png");
     background-color: rgba(255,255,255,0);
@@ -1435,6 +1540,12 @@ header .btn-list {
 
 label {
     margin-left: 2vmax;
+    font-size: 2.5vmax;
+    color: #f7aa47;
+}
+
+.labeluser {
+    margin-left: -1vmax;
     font-size: 2.5vmax;
     color: #f7aa47;
 }
@@ -2149,6 +2260,27 @@ header .btn-perfil {
     width: 45%;
     height: 40%;
 }
+
+.losangelist, .losangelist div {
+   transform-origin: 45% 50%;
+  overflow: hidden;
+    width: 25px;
+    height: 25px;
+}
+.losangelist {
+    transform: rotate(45deg) translateY(-1px) translateX(1px);
+}
+
+.losangelist .loslist {
+    width: 267px;
+    height: 332px;
+        transform: rotate(-45deg) translateY(-19%) translateX(40%);
+}
+.losangelist .loslist img {
+    width: 45%;
+    height: 40%;
+}
+
 .losangeavatar, .losangeavatar div {
   margin: 0 auto;
   transform-origin: 45% 50%;

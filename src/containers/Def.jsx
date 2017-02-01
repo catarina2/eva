@@ -241,7 +241,8 @@ class Def extends Component {
         var coloruser;
         if(user)
         {
-            this.state.user = user[3];
+            this.state.user = user[0];
+            console.log(user, 'users');
             var user = this.state.user.color.split("_");
             var color ="losangeavatar"+" "+user[1];
             var avatar = "btn btn-avatar"+ user[0];
