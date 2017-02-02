@@ -3,6 +3,8 @@ import {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
+import { each } from 'lodash';
+
 
 import {fetchLists, fetchFamilyUsers, fetchFamily, editUsers} from '../actions';
 
@@ -13,26 +15,20 @@ class Def extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        this.handleuserpink = this.handleuserpink.bind(this);
-        this.handleuserblue = this.handleuserblue.bind(this);
-        this.handleuserred = this.handleuserred.bind(this);
-        this.handleusergreen = this.handleusergreen.bind(this);
+        this.handleclickcolor = this.handleclickcolor.bind(this);
+        this.handleclickavatar = this.handleclickavatar.bind(this);
+        
         
         this._submitedit = this._submitedit.bind(this);
         
         this.state = {
             showHideSidenav: 'hidden',
             user: {name: null, family_id: null, birthday:null, color:null, email: null, password: null}, 
-            showEdit: 'hidden', 
-            checked1:false,
-            checked2:false,
-            checked3:false,
-            checked4:false, 
-            pink: "userpink",
-            blue: "userblue",
-            red: "userred",
-            green: "usergreen", 
-            msg: null
+            showEdit: 'hidden',
+            msg: null,
+            userlogged: 'undefined',
+            color:[{color: "blue", classname: "blue"}, {color: "pink",  classname: "pink"}, {color: "green",  classname: "green"}, {color: "red",  classname: "red"}, {color: "yellow",  classname: "yellow"}, {color: "orange",  classname: "orange"}],
+            avatar:[{avatar: "1", classname: "smallavatar1", color: "blue"}, {avatar: "2", classname: "smallavatar2", color: "blue"}, {avatar: "3", classname: "smallavatar3", color: "blue"}, {avatar: "4", classname: "smallavatar4", color: "blue"}, {avatar: "5", classname: "smallavatar5", color: "blue"}, {avatar: "6", classname: "smallavatar6", color: "blue"}]
         }
     }
 
@@ -48,13 +44,84 @@ class Def extends Component {
         //console.log('Definições de perfil');
         if(this.state.msg)
         {
+            var bodyScroll = document.getElementById("body");
+            bodyScroll.classList.remove("body-stop-scroll");
             this.state.msg = null;
             this.state.showEdit = "hidden";
+            setTimeout(() => {
+            this.state.color = [{color: "blue", classname: "blue"}, {color: "pink",  classname: "pink"}, {color: "green",  classname: "green"}, {color: "red",  classname: "red"}, {color: "yellow",  classname: "yellow"}, {color: "orange",  classname: "orange"}];
+            this.state.avatar = [{avatar: "1", classname: "smallavatar1", color: "blue"}, {avatar: "2", classname: "smallavatar2", color: "blue"}, {avatar: "3", classname: "smallavatar3", color: "blue"}, {avatar: "4", classname: "smallavatar4", color: "blue"}, {avatar: "5", classname: "smallavatar5", color: "blue"}, {avatar: "6", classname: "smallavatar6", color: "blue"}];
+            }, 1000);
         }
 
         if(this.state.showEdit === 'show')
         {
-                console.log('Definições de perfil');
+                  var colorlist=[];
+                  var color = this.state.color;
+                //  console.log(color, 'cor dos users')
+                  var userlogged = (this.state.userlogged === "undefined") ? "undefined" : this.state.userlogged.color.split("_");
+                  console.log(userlogged, 'userlogado');
+                  var x;
+                  each(color, (colorxx, key) => {
+                    if(userlogged[1] === colorxx.color) { 
+                        var xcolor = {};
+                        xcolor["color"] = colorxx.color;
+                        xcolor["classname"] = "g"+colorxx.classname;
+
+                        var tcolor = {};
+                        tcolor[key] = xcolor;
+                        Object.assign(this.state.color, tcolor);
+                        return false;
+                    }
+                  });
+
+                  console.log(this.state.color, 'lista de cores inicial');
+                  
+                  each(color, (colorxx, key) => {
+                       var colorlosange ="losangecolor"+" "+colorxx.classname;
+
+                       colorlist.push(<div key ={key} className='displayavatares'>
+                                        <div className="cc-selectorperfil">
+                                        <div className={colorlosange} onClick={this.handleclickcolor.bind(this, key, colorxx.color)}>
+                                            <input id={colorxx.color} type="radio" name={colorxx.color} ref={colorxx.color} value={colorxx.color} defaultChecked={coloruser}/>
+                                        </div>  
+                                        </div>
+                                      </div>);
+                    });
+                        console.log(this.state.color, 'lista das cores')
+
+                  var avatarlist=[];
+                  var avatar = this.state.avatar;
+                  var userloggedavatar = (this.state.userlogged === "undefined") ? "undefined" : this.state.userlogged.color.split("_");
+                  console.log(userloggedavatar, 'userlogado');
+                  var x;
+                  each(avatar, (avatar, key) => {
+                    if(userlogged[0] === avatar.avatar) { 
+                        var xcolor = {};
+                        xcolor["avatar"] = avatar.avatar;
+                        xcolor["classname"] = avatar.classname;
+                        xcolor["color"] = "g"+avatar.color;
+
+                        var tcolor = {};
+                        tcolor[key] = xcolor;
+                        Object.assign(this.state.avatar, tcolor);
+                        return false;
+                    }
+                  });
+                  console.log(this.state.avatar, 'lista de avatares');
+                  each(avatar, (avatar, key) => {
+                        var color = avatar.color;
+                        var colorlosange ="losangecolor"+" "+color;
+                        var classname ="btn-"+avatar.classname;
+                       avatarlist.push(<div key ={key} className='displayavatares' onClick={this.handleclickavatar.bind(this, key, avatar.avatar, color)}>
+                                        <div className="cc-selectorperfil">
+                                        <div className={colorlosange}>
+                                           <div className="loscolor"> <button ref="photo" className={classname}></button></div>
+                                        </div>
+                                        </div>
+                                      </div>);
+                    });
+
                 var showedit;
                 showedit = (
                 <div className="modal">
@@ -101,25 +168,28 @@ class Def extends Component {
                                             <h4>Cor do Avatar</h4>
                                         </div>
                                     </div>
-                                    <div className="row cc-selector display">
-                                        <div className="col-xs-2 iconperfil">
-                                                 <input id="pink" type="radio" name="pink" ref="pink" value="pink" checked={this.state.checked1}/>
-                                                 <label className={this.state.pink} htmlFor="pink"  onClick={this.handleuserpink}></label>
+                                     <div className="row">
+                                        <div className="col-xs-1">
                                         </div>
-                                        <div className="col-xs-2 iconperfil">
-                                                 <input id="red" type="radio" name="red" ref="red" value="red" checked={this.state.checked2}/>
-                                                 <label className={this.state.red} htmlFor="red"  onClick={this.handleuserred}></label>
-                                        </div>
-                                        <div className="col-xs-2 iconperfil">
-                                                 <input id="green" type="radio" name="green" ref="green" value="green" checked={this.state.checked3}/>
-                                                 <label className={this.state.green} htmlFor="green"  onClick={this.handleusergreen}></label>
-                                        </div>
-                                        <div className="col-xs-2 iconperfil">
-                                                 <input id="blue" type="radio" name="blue" ref="blue" value="blue" checked={this.state.checked4}/>
-                                                 <label className={this.state.blue} htmlFor="blue"  onClick={this.handleuserblue}></label>
+                                        <div className="col-xs-10 displayavatares">
+                                          {colorlist}
                                         </div>
                                     </div>
-                                   
+                                    <div className="row">
+                                        <div className="col-xs-1">
+                                            <button type="button" className="btn btn-editcolor"></button>
+                                        </div>
+                                        <div className="col-xs-10">
+                                            <h4>Avatar</h4>
+                                        </div>
+                                    </div>
+                                     <div className="row">
+                                        <div className="col-xs-1">
+                                        </div>
+                                        <div className="col-xs-10 displayavatares">
+                                          {avatarlist}
+                                        </div>
+                                    </div>
                                      <div className="modal-footer">
                                         <div className="row">
                                             <div className="col-xs-2">
@@ -210,13 +280,12 @@ class Def extends Component {
         var coloruser;
         if(user)
         {
-            this.state.user = user[3];
-
-            if(this.state.user.color === 'pink') {coloruser = <label className="userpink"></label>};
-            if(this.state.user.color === 'blue') {coloruser = <label className="userblue"></label>};
-            if(this.state.user.color === 'green') {coloruser = <label className="usergreen"></label>};
-            if(this.state.user.color === 'red') {coloruser = <label className="userred"></label>};
-
+            this.state.user = user[0];
+            this.state.userlogged = user[0];
+            console.log(user, 'users');
+            var user = this.state.user.color.split("_");
+            var color ="losangeavatar"+" "+user[1];
+            var avatar = "btn btn-avatar"+ user[0];
         }
 
         return (
@@ -255,7 +324,7 @@ class Def extends Component {
                                     </div>
                                     </div>
                                     <div className="col-xs-6">
-                                        <input type="button" ref="photo" className="btn btn-photoperfilpink"></input>
+                                    <div className={color}> <div className="losavatar"> <input type="button" ref="photo" className={avatar}></input></div></div> 
                                     </div>
                                     </div>
                                     <div className="row">
@@ -307,59 +376,125 @@ class Def extends Component {
         this.setState({showHideSidenav:css});
     }
 
-    handleuserpink(event) {
+    handleclickcolor(key,color,event) {
         event.preventDefault();
-        var css = (this.state.checked1 === false) ? true : false;
-        var color = (this.state.pink === "userpink") ? "guserpink" : "userpink";
-        this.setState({checked1:css, checked2:false, checked3:false, checked4:false, pink: color, red:"userred", green:"usergreen", blue:"userblue"});
+        console.log(this.state.color, this.state.color[key].color, this.state.color[key].classname, key, color)
+        var color = (this.state.color[key].classname === color) ? "g"+color : color;
+
+        var listcolor = [];
+        each(this.state.color, (color, key) => {
+            if(color.classname === "g"+color.color) {
+                var colorx= color.color;
+                var t = {};
+                t["color"] = color.color
+                t["classname"] = color.color;
+                
+                var c = {};
+                c[key] = t;
+                listcolor.push(t);
+            }
+            else{
+                var c = {};
+                c[key] = color;
+                listcolor.push(color);
+            }
+        });
+        console.log(listcolor, 'lista de cores')
+        var x = {};
+        x["color"] = this.state.color[key].color
+        x["classname"] = color;
+
+        var xcolor ={};
+        xcolor[key] = x;
+        console.log(xcolor)
+        var tempcolor = Object.assign(listcolor, xcolor);
+        console.log(tempcolor)
+
+
+        this.setState({color:tempcolor, userlogged: "undefined"});
+        console.log("color", this.state.color);
     }
 
-    handleuserred(event) {
+    handleclickavatar(key, avatar, color, event){
         event.preventDefault();
-        var css = (this.state.checked2 === false) ? true : false;
-        var color = (this.state.red === "userred") ? "guserred" : "userred";
-        this.setState({checked2:css, checked1:false, checked3:false, checked4:false, red: color, pink: "userpink", green:"usergreen", blue:"userblue"});
-    }
+       // console.log(this.state.avatar, this.state.avatar[key].avatar, avatar)
+        var avatar = (this.state.avatar[key].color === "blue") ? "g"+color : "blue";
 
-    handleusergreen(event) {
-        event.preventDefault();
-        var css = (this.state.checked3 === false) ? true : false;
-        var color = (this.state.green === "usergreen") ? "gusergreen" : "usergreen";
-        this.setState({checked3:css, checked2:false, checked1:false, checked4:false, green: color, pink: "userpink", red:"userred", blue:"userblue"});
-    }
+        var listavatar = [];
+        each(this.state.avatar, (avatar, key) => {
+            if(avatar.color === "gblue") {
+                var t = {};
+                t["avatar"] = avatar.avatar
+                t["classname"] = avatar.classname;
+                t["color"] = "blue";
+                
+                listavatar.push(t);
+            }
+            else{
+                listavatar.push(avatar);
+            }
+        });
 
-    handleuserblue(event) {
-        event.preventDefault();
-        var css = (this.state.checked4 === false) ? true : false;
-        var color = (this.state.blue === "userblue") ? "guserblue" : "userblue";
-        this.setState({checked4:css, checked2:false, checked3:false, checked1:false, blue: color, pink: "userpink", red:"userred", green:"usergreen"});
+        var x = {};
+        x["avatar"] = this.state.avatar[key].avatar
+        x["classname"] = this.state.avatar[key].classname;
+        x["color"] = avatar;
+
+        var xavatar ={};
+        xavatar[key] = x;
+
+        var tempavatar = Object.assign(listavatar, xavatar);
+
+        this.setState({avatar:tempavatar, userlogged:"undefined"});
     }
 
     handleEdit(){
-        console.log('click no edit');
-         var css = (this.state.showEdit === "hidden") ? "show" : "hidden";
-        console.log(css);
+       // console.log('click no edit');
+       var bodyScroll = document.getElementById("body");
+       if(this.state.showEdit === "hidden") {
+        bodyScroll.classList.add("body-stop-scroll");
+        }
+        else{
+             bodyScroll.classList.remove("body-stop-scroll");
+        }
+
+        var css = (this.state.showEdit === "hidden") ? "show" : "hidden";
+        //console.log(css);
         this.setState({showEdit:css});
     }
 
     _submitedit(event) {
         event.preventDefault();
+        console.log(this.state.color, this.state.avatar, "submit edit")
+        var color = this.state.color;
+        var coloruser;
+        each(color, (color, key) => {
+            if(color.color !== color.classname)
+                coloruser = color.color;
+        });
+
+
+        var avatar = this.state.avatar;
+        //console.log(this.state.avatar, 'avatares submit edit')
+        var avataruser;
+        each(avatar, (avatar, key) => {
+            if(avatar.color === "gblue")
+                avataruser = avatar.avatar;
+        });
+
         
-        var color;
-        if(this.state.checked1) {color = "pink";}
-        else if(this.state.checked2) {color = "red";}
-        else if(this.state.checked3) {color = "green";}
-        else if(this.state.checked4) {color = "blue";}
+        var avatarcolor = avataruser+"_"+coloruser;
+       // console.log(coloruser, avataruser,avatarcolor, 'corutilizador')
         let obj = {};
 
         obj['name'] = this.refs.name.value;
         obj['birthday'] = this.refs.birthday.value;
-        obj['color'] = color;
+        obj['color'] = avatarcolor;
         obj['email'] = this.state.user.email;
         obj['family_id'] = this.state.user.family_id;
         obj['password'] = 'xpto';
 
-        console.log(this.state.user.id, obj, 'edição perfil');
+       // console.log(this.state.user.id, obj, 'edição perfil');
 
 
         const {dispatch} = this.props;
@@ -371,8 +506,8 @@ class Def extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.info('container DEF mapStateToProps', state, ownProps );
-    console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
+    //console.info('container DEF mapStateToProps', state, ownProps );
+   // console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
     return {users:state.userslist.users, msg:state.userslist.msg, family:state.userslist.family};
 }
 

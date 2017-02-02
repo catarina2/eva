@@ -8,31 +8,21 @@ class Personas extends Component {
     }
 
     render() {
-        var user = this.props.user;
-        //console.log(user, 'sersdfsdg');
+        var user = this.props.user.color.split("_");
+        console.log(user, 'sersdfsdg');
+        var color ="losangelist"+" "+user[1];
+        var avatar = "btn-smallavatarlist"+ user[0];
         var persona;
-        if(user.color === "red")
-        {
-            persona=<input type="button" className='btn btn-personared personas'/>;
-        }
-        if(user.color === "blue")
-        {
-            persona=<input type="button" className='btn btn-personablue personas'/>
-        }
-        if(user.color === "green")
-        {
-            persona=<input type="button" className='btn btn-personagreen personas'/>
-        }
-        if(user.color === "pink")
-        {
-            persona=<input type="button" className='btn btn-personapink personas'/>
-        }
-        if(user.color === "bluedark")
-        {
-            persona=<input type="button" className='btn btn-personabluedark personas'/>
-        }
+        
+            persona = <div className='displayavatares'>
+                            <div className="cc-selectorlist">
+                            <div className={color}>
+                               <div className="loslist"> <button ref="photo" className={avatar}></button></div>
+                            </div>
+                            </div>
+                      </div>;
         return (
-            <div>
+            <div className="displayavatares">
                 {persona}
             </div>
         );

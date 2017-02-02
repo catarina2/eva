@@ -58,11 +58,15 @@ class Item extends Component {
 
         // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
         if (this.state.msgdelete === "OK") {
+            var bodyScroll = document.getElementById("body");
+            bodyScroll.classList.remove("body-stop-scroll");
            
             setTimeout(() => {this.setState({confirmdelete: false, msgdelete: null, showModalEdit: false})}, 500);
         }
 
         if (this.state.msgedit === "OK") {
+            var bodyScroll = document.getElementById("body");
+            bodyScroll.classList.remove("body-stop-scroll");
             this.state.showModalEdit = false;
             this.state.msgedit = null;
             this.state.color =  null;
@@ -114,36 +118,37 @@ class Item extends Component {
              var userslists=[];
             
             var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
-            console.log(family, 'usersfamily');
+            //console.log(family, 'usersfamily');
             //USERS
             var usersoflist = this.props.users[list.id]; 
-            console.log(usersoflist);
-            var usercolor;
+           // console.log(usersoflist);
+            var usercolor = {};
              var className = {};
              var colorstate = {};
              var ccolor = {};
              var color = {};
              var userid = {};
              each(family, (user, key) => {
+                var userxx = user.color.split("_");
                 each(usersoflist, (u, keyu) => {
                   if(u.name === user.name){
                      
-                      usercolor = 'guser'+ user.color;
-                      console.log(usercolor);
+                      ccolor[key] = "losangecolor"+" "+"g"+userxx[1];
+                      console.log(ccolor[key], key);
                       color[key] = true;
                       return false;
                   }
                   else{
-                      usercolor = 'user'+ user.color;
-                      console.log(usercolor);
+                      ccolor[key] = "losangecolor"+" "+userxx[1];
+                      console.log(ccolor[key], key);
                       color[key] = false;
                   }
                 });
-                ccolor[key] = usercolor;
+                var avatar = "btn-smallavatar"+ userxx[0];
                 userid[key] = user.id;
                 if(this.state.ccolor === null)
                 {
-                  className = ccolor;
+                  className[key] = ccolor[key];
                 }
                 else{
                    className = this.state.ccolor;
@@ -156,17 +161,15 @@ class Item extends Component {
                 else {
                   colorstate = this.state.color;
                 }
-               userslists.push(<div key ={key} className='display'>
-                                <div className="cc-selector">
-                                  <input id={usercolor} type="radio" name={usercolor} ref={usercolor} value={user.id} defaultChecked={user.color}/>
-                                  <label className={className[key]} htmlFor={usercolor} onClick={this.handleclickuser.bind(this, key, user.color)}></label>    
-                                </div>
+               userslists.push(<div key ={key} className='displayavatares'>
+                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, userxx[1])}>
+                                   <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                               </div>);
             });
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
-            console.log(this.state.ccolor, this.state.color);
+            //console.log(this.state.ccolor, this.state.color);
             //final USERS
             //ICONS
             var iconlists=[];
@@ -220,8 +223,8 @@ class Item extends Component {
                       iconstate = this.state.nameicon;
                     }
                    // console.log(classIcon, 'icon');
-                   iconlists.push(<div key ={key} className='display'>
-                                    <div className="cc-selector">
+                   iconlists.push(<div key ={key} className='displayavatares'>
+                                    <div className="cc-selectorperfil">
                                       <input id={iconname} type="radio" name={iconname} ref={iconname} value={iconname} defaultChecked={icon.name}/>
                                       <label className={classIcon[key]} htmlFor={iconname} onClick={this.handleclickicon.bind(this, key, icon.name)}></label>    
                                     </div>
@@ -272,7 +275,7 @@ class Item extends Component {
                                     <div className="row">
                                         <div className="col-xs-1">
                                         </div>
-                                        <div className="col-xs-10 display">
+                                        <div className="col-xs-10 displayavatares">
                                         {userslists}
                                         </div>
                                     </div>
@@ -291,7 +294,7 @@ class Item extends Component {
                                     <div className="row">
                                         <div className="col-xs-1">
                                         </div>
-                                        <div className="col-xs-10 display">
+                                        <div className="col-xs-10 displayavatares">
                                           {iconlists}
                                         </div>
                                     </div>
@@ -419,10 +422,10 @@ class Item extends Component {
 
      handleclickuser(key, color, event) {
        event.preventDefault();
-       console.log(this.props.list)
 
+        console.log(this.state.color, key, this.state.ccolor)
         var css = (this.state.color[key] === false) ? true : false;
-        var usercolor = (this.state.ccolor[key] === 'user'+color) ? 'guser'+color : 'user'+color;
+        var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
       
         var xcolor = {};
         xcolor[key] = css;
@@ -434,8 +437,6 @@ class Item extends Component {
         var temp = Object.assign(this.state.ccolor, x);
 
         this.setState({color:tempcolor, ccolor: temp});
-        //const {dispatch} = this.props;
-        //dispatch(postUsers(this.props.list.id, this.props.usersfamily[0]));
     }
 
 

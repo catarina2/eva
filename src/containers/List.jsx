@@ -60,7 +60,8 @@ class List extends Component {
        if(this.state.msg === 'OK')
        {
        // console.log("ok");
-      
+          var bodyScroll = document.getElementById("body");
+          bodyScroll.classList.remove("body-stop-scroll");
           setTimeout(() => {this.setState({showModal: false, msg: null, color: null, ccolor: null, userid:null, cname:null, nameicon:null, iconid:null,check: {0: "trabalho"}, name:null, user:null, data:this.props.data})}, 500)
        }
       if(this.state.msg === 'NOK')
@@ -167,15 +168,20 @@ class List extends Component {
              var ccolor = {};
              var color = {};
              var userid = {};
+             console.log(family, 0)
              each(family, (user, key) => {
-                usercolor = 'user'+ user.color;
-                ccolor[key] = usercolor;
+              console.log(user, 'user')
+                var userxx = user.color.split("_");
+                var colorxx ="losangecolor"+" "+userxx[1];
+                ccolor[key] = colorxx;
                 color[key] = false;
                 userid[key] = user.id;
+                
+                var avatar = "btn-smallavatar"+ userxx[0];
 
                 if(this.state.ccolor === null)
                 {
-                  className = ccolor;
+                  className[key] = colorxx;
                 }
                 else{
                    className = this.state.ccolor;
@@ -188,13 +194,13 @@ class List extends Component {
                 else {
                   colorstate = this.state.color;
                 }
-               userslists.push(<div key ={key} className='display'>
-                                <div className="cc-selector">
-                                  <input id={usercolor} type="radio" name={usercolor} ref={usercolor} value={user.id} defaultChecked={user.color}/>
-                                  <label className={className[key]} htmlFor={usercolor} onClick={this.handleclickuser.bind(this, key, user.color)}></label>    
-                                </div>
+               userslists.push(<div key ={key} className='displayavatares'>
+                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, userxx[1])}>
+                                   <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                               </div>);
             });
+             console.log(userid, 'id users')
+             
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
@@ -231,10 +237,10 @@ class List extends Component {
                   iconstate = this.state.nameicon;
                 }
                // console.log(classIcon, 'icon');
-               iconlists.push(<div key ={key} className='display'>
-                                <div className="cc-selector">
+               iconlists.push(<div key ={key} className='displayavatares'>
+                                <div className="cc-selectorperfil">
                                   <input id={iconname} type="radio" name={iconname} ref={iconname} value={iconname} defaultChecked={icon.name}/>
-                                  <label className={classIcon[key]} htmlFor={iconname} onClick={this.handleclickicon.bind(this, key, icon.name)}></label>    
+                                  <label className="labeluser" className={classIcon[key]} htmlFor={iconname} onClick={this.handleclickicon.bind(this, key, icon.name)}></label>    
                                 </div>
                               </div>);
             });
@@ -280,7 +286,7 @@ class List extends Component {
                                     <div className="row">
                                         <div className="col-xs-1">
                                         </div>
-                                        <div className="col-xs-10 display">
+                                        <div className="col-xs-10 displayavatares">
                                           {userslists}
                                         </div>
                                     </div>
@@ -300,7 +306,7 @@ class List extends Component {
                                     <div className="row">
                                     <div className="col-xs-1">
                                         </div>
-                                        <div className="col-xs-10 display">
+                                        <div className="col-xs-10 displayavatares">
                                           {iconlists}
                                         </div>
                                     </div>
@@ -362,8 +368,9 @@ class List extends Component {
     handleclickuser(key, color, event) {
        event.preventDefault();
 
+        console.log(this.state.color, key, this.state.ccolor)
         var css = (this.state.color[key] === false) ? true : false;
-        var usercolor = (this.state.ccolor[key] === 'user'+color) ? 'guser'+color : 'user'+color;
+        var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
       
         var xcolor = {};
         xcolor[key] = css;
@@ -467,7 +474,7 @@ class List extends Component {
 
         var color = this.state.color;
         var userid = this.state.userid;
-
+        console.log(color, userid);
         each(color, (color, key) => {
            if(color) {
               users = userid[key];
@@ -477,7 +484,7 @@ class List extends Component {
     
         let user = [];
         user = listusers;
-
+        console.log(user);
         var FormData = require('form-data');
         const form = new FormData();
         form.append('name', this.refs.name.value);

@@ -352,3 +352,15 @@ export function postInviteToFamily(invite) {
             .then(json => dispatch(receiveInviteToFamily(json)));
     }
 }
+
+export function postRegistar(user) {
+    return function(dispatch) {
+        console.info(user, 'POST Registos');
+        return fetch(`http://develop.mmota.online/api/users`, {
+            method: "POST",
+            body: user
+        })
+            .then(response => response.json())
+    }
+}
+

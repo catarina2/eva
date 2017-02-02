@@ -29,7 +29,8 @@ class Produto extends Component {
         //console.log(this.props.item, 'produto id');
         var item = this.props.item;
         var panel, cheched, line = null;
-        //console.log(item, 'produtos');
+        this.state.imagesend= item.image;
+        console.log(this.state.imagesend, 'imagem do produto');
        //console.log(this.props.msg, 'mensagem apagada com sucesso');
         if(this.state.msg === 'OK') {
 
@@ -63,7 +64,7 @@ class Produto extends Component {
                             </div></div>);
                 }
                 else{
-                    image =(<input type="button" ref="photo" className="btn btn-photo"></input>);
+                    image =null;
                 }
                 showmodal =(
                 <div className="modal">
@@ -156,7 +157,10 @@ class Produto extends Component {
         {
                  var img;
                     if(this.state.imagesend)
-                    {img =(<div className="imagediv"><img className= "image" src={this.state.image} /></div>);}
+                    {img =(<div className="losange">
+                             <div className="los1">        
+                                    <img width="100" height="100" src= {`http://develop.mmota.online/images/${this.state.imagesend}`} />
+                            </div></div>);}
                     else{
                      img=(<label className="btn btn-photo" For="upload-file-selector">
                                 <input ref="image" id="upload-file-selector" type="file" onChange={this._onChange}/>
@@ -260,6 +264,7 @@ class Produto extends Component {
         obj['description'] = this.refs.description.value;
         if(this.state.imagesend) obj['image'] = this.state.imagesend;
         obj['list_id'] = this.props.item.list_id;
+        obj['created_by'] = '2';
        // console.log(obj, this.props);
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");

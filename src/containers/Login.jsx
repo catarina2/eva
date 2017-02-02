@@ -1,8 +1,21 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import { each } from 'lodash';
+
+import {postRegistar} from '../actions';
 
 class Login extends Component {
+
+   constructor(props) {
+        super(props);
+     
+    }
+
+    componentDidMount() {
+       // console.log('componentdidMount');
+        const {dispatch} = this.props;
+    }
 
     render() {
         
@@ -13,8 +26,11 @@ class Login extends Component {
                        <div className="sloganinitial">Environmental Virtual Assistant</div>
                        <div className="container logineva">
                            <hr  className="classhrinitial"/>
-                           <a href="http://develop.mmota.online/oauth/authorize?client_id=6&redirect_uri=http://localhost:3000/callback&response_type=code&scope">
-                                 <button className="btn btn-login">Entrar </button>
+                            <Link to="register"><button className="btn btn-login">Registar </button></Link>
+                           <hr  className="classhrinitial"/>
+                           <hr  className="classhrinitial"/>
+                           <a href="http://develop.mmota.online/oauth/authorize?client_id=1&redirect_uri=http://localhost:3000/callback&response_type=code&scope">
+                                 <button className="btn btn-login">Login </button>
                            </a>
                            <hr  className="classhrinitial"/>
                         </div>
@@ -23,7 +39,10 @@ class Login extends Component {
         );
         
     }
+
 }
+
+
 
 Login.propTypes = {
     items: PropTypes.array
