@@ -3,6 +3,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
 class Callback extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+          token: null,
+        }
+    }
 
     render() {
         
@@ -49,7 +56,8 @@ class Callback extends Component {
                     http2.setRequestHeader('Accept', 'application/json, application/x-www-form-urlencoded');
                     http2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     http2.setRequestHeader("Authorization", token);
-
+                    this.state.token = token;
+                    console.log(this.state.token, 'token')
 
                     http2.onreadystatechange = function() {
                         if(http2.readyState == 4 && http2.status == 200) {
@@ -66,20 +74,19 @@ class Callback extends Component {
     }
     http.send(params);
     
-     return(<div>
-                <header className="header-initial">
+     return(
+            <div>
+                <header className="headerpi header-initial">
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 list-group-horizontal-eva">
                                 <h1 className="logoeva">eva         </h1>
-                                <h5 className="eva"><b>   Environmental Virtual Assistant</b></h5>
+                                <h5 className="eva menu-title font-large"><b>   Environmental Virtual Assistant</b></h5>
                             </div>
-                            <button className="btn setainicial"></button>
                         </div>
                     </div>
                 </header>
                 <section>
-
                     <div className="container">
                         <div className="row">
                         <div className="col-xs-12">
@@ -114,8 +121,19 @@ class Callback extends Component {
                         </div>
                     </div>
                 </section>
-            </div>);
-        
+                 <footer className="footerfixedinicio navbar fixed-bottom">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xs-10">
+                                <div className="titlefooter">Environmental Virtual Assistant</div>
+                            </div>
+                            <div className="col-xs-2">
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        );
     }
 
 

@@ -220,7 +220,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    justify-content: space-around;
+    justify-content: center;
 }
 .display1 {
     margin: -2px -5px;
@@ -404,7 +404,7 @@ section {
 
 .blackletter {
     color: #000;
-    margin-top: -9px;
+    margin-top: -11px;
     margin-left: 40px;
 }
 
@@ -1518,6 +1518,13 @@ background-size: 13px 13px;
     border-color: #f7aa47;
 
 }
+
+.modal-dregistar {
+    margin: 10vmin;
+    margin-top: 10vmin;
+    border-color: #f7aa47;
+}
+
 .modal-content {
     border-color: #f7aa47;
     border-radius:none;
@@ -1530,6 +1537,15 @@ background-size: 13px 13px;
     height: 60px;
     border-radius: 3px;
 
+}
+
+.modal .modal-registar {
+    border-bottom: none;
+    position: relative;
+    background-color: #3e7095;
+    color: #000;
+    height: 60px;
+    border-radius: 3px;
 }
 
 .modal .modal-header .btn {
@@ -1824,6 +1840,7 @@ header .btn-agend1 {
     border-color: #cc5027;
     border-radius:none;
 }
+
 
 .modal .modal-headeragend {
     border-bottom: none;
@@ -2297,6 +2314,39 @@ header .btn-perfil {
 .sectionLogin {
     background-color:black;
 }
+.modal-contentregister {
+    border-color: #3e7095;
+    border-radius:none;
+}
+
+.modal-contentregister {
+    border-color: #3e7095;
+    border-radius:none;
+}
+
+.modal .modal-headerregister {
+    border-bottom: none;
+    position: relative;
+    background-color: #3e7095;
+    color:#000;
+
+}
+
+.modal .modal-headerregister .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 9px;
+    background-color: #3e7095;
+}
+
+.submitreg {
+    background-image: url("../../img/certoazul_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+}
+
 /*FIM LOGIN*/
 
 .validation {
@@ -2313,11 +2363,10 @@ header .btn-perfil {
     font-size: 6vmax;
 }
 
-.product{
+.product {
     font-size: 11px;
-    /* display: flex; */
     margin-top: -1%;
-    margin-left: 12%;
+    margin-left: 14%;
     color: coral;
 }
 
@@ -2375,6 +2424,15 @@ header .btn-perfil {
     .losangeavatar .losavatar {
         transform: rotate(-45deg) translateY(-51px) translateX(97px);
     }
+    .product {
+        margin-left: 17%;
+    }
+    .blackletter {
+        margin-top: -15px;
+    }
+    .line {
+        margin-top: 7px;
+    }
 
 }
 @media screen and (max-width: 424px)
@@ -2403,6 +2461,9 @@ header .btn-perfil {
     }
     .losangeavatar {
         transform: rotate(45deg) translateY(17px) translateX(53px);
+    }
+    .product {
+        margin-left: 12%;
     }
 
 }

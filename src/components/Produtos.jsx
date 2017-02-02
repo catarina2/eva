@@ -224,6 +224,7 @@ class Produtos extends Component {
         form.append('quant', this.refs.quant.value);
         form.append('description', this.refs.description.value);
         form.append('list_id', this.props.id);
+        form.append('created_by', 2);
         if(this.state.imagesend) form.append('image', this.state.imagesend);
         
         const {dispatch} = this.props;

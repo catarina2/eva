@@ -37,7 +37,7 @@ class Item extends Component {
             iconid: null,
             icons:null,
             check: {0: "trabalho"},
-            icon: [{name: "trabalho", id: 0, classname: "gicontrabalho", state: "checked"}, {name: "natal", id: 1, classname: "iconnatal", state: "unchecked"}, {name: "ovo", id: 2,classname: "iconovo", state: "unchecked"}, {name: "ferias", id: 3,classname: "iconferias", state: "unchecked"}, {name: "prenda", id: 4,classname: "iconprenda", state: "unchecked"}, {name: "roupa", id: 5,classname: "iconroupa", state: "unchecked"}],
+            icon: [{name: "trabalho", id: 0, classname: "gicontrabalho", state: "checked"}, {name: "natal", id: 1, classname: "iconnatal", state: "unchecked"}, {name: "ovo", id: 2,classname: "iconovo", state: "unchecked"}, {name: "ferias", id: 3,classname: "iconferias", state: "unchecked"}, {name: "prenda", id: 4,classname: "iconprenda", state: "unchecked"}],
             
         }
     }
