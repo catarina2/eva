@@ -9,13 +9,12 @@ class Event extends Component {
     }
 
     render() {
-
-        console.log("VER events em STATE: ", this.state);
-        console.log("VER events em PROPS: ", this.props);
+        console.log("PROPS EVENT ",this.props.ev);
             var ev = this.props.ev;
             var persona = [];
-            console.log(ev, 'evento');
             ev.users.map((i, key) => {
+
+                console.log('USER COLOR', i.color);
                  if(i.color === "red")
                 {
                     persona.push(<input type="button" className='btn btn-personaredsmall'/>);
@@ -36,12 +35,13 @@ class Event extends Component {
                 {
                     persona.push(<input type="button" className='btn btn-personabluedarksmall'/>);
                 }
+                console.log('PERSONA', persona);
             });
             
                
         return (
             <div>
-               {ev.hour} {persona} {ev.note} - {ev.location}
+               {ev.start_time} {persona} {ev.title} - {ev.location}
             </div>
         );
     }
@@ -50,7 +50,7 @@ class Event extends Component {
 }
 
 Event.propTypes = {
-    item: React.PropTypes.object.isRequired
+    ev: React.PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {

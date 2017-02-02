@@ -292,7 +292,7 @@ export function fetchFamily(id) {
 // ---------------------   AGENDA
 
 export function requestevents(json) {
-    console.info('action receive events: ', json);
+    console.info('action request events: ', json);
     return {
         type: types.REQUEST_EVENTS,
         events: json
@@ -300,7 +300,7 @@ export function requestevents(json) {
 }
 
 export function ReceiveUserEvents(id, json) {
-    console.info('action receive events: ',id, json);
+    //console.info('action receive events: ',id, json);
     return {
         type: types.RECEIVE_USER_EVENTS,
         userevents: json,
@@ -310,7 +310,7 @@ export function ReceiveUserEvents(id, json) {
 
 
 export function fetchUserEvents(id) {
-    console.log('fetchListsUsers', id);
+    //console.log('fetchListsUsers', id);
     return function(dispatch) {
         return fetch(`http://develop.mmota.online/api/users/${id}/events`)
             .then(response => response.json())

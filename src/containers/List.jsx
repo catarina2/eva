@@ -53,6 +53,8 @@ class List extends Component {
     }
 
     render() {
+        console.log("VER lists em PROPS: ", this.props);
+        console.log("VER lists em STATE: ", this.state);
         var showNav;
         var showmodal;
        if(this.state.msg === 'OK')

@@ -42,7 +42,7 @@ class Agend extends Component{
 
          this.state = {
 
-             loggeduser:2,
+             loggeduser:3,
 
              color: null,
              ccolor: null,
@@ -69,7 +69,7 @@ class Agend extends Component{
             initialtime: moment(),
              finaltime: moment(),
             family: {name:"martinho", users: [{name: "marta", color: "blue"}, {name: "catarina", color: "green"}, {name: "diogo", color: "pink"}, {name: "martinho", color:"red"}]},
-            ev: [{day:"11-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"20h",note:"Jantar de raparigas",location:"Cais Madeirense"}, {day:"11-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"21h",note:"Jantar de raparigas",location:"Petiscos"},{day:"10-1-2017",users:[{name: "martinho", color:"red"},{name: "marta", color: "blue"}, {name: "catarina", color: "green"}], hour:"20h",note:"Jantar de raparigas",location:"Cais Madeirense"}]
+            ev: []
            }
 
     }
@@ -77,13 +77,19 @@ class Agend extends Component{
     componentDidMount() {
         // console.log('componentdidMount');
         const {dispatch} = this.props;
+        dispatch(fetchFamilyUsers(2));
         dispatch(fetchUserEvents(this.state.loggeduser)); // MUDAR PARA ID FAMILIA  ex: loggeduser.family_id
-        dispatch(fetchFamilyUsers(this.state.loggeduser));
     }
 
 
     render(){
-        console.log("VER events em STATE: ", this.state.events);
+
+        console.log("VER events em PROPS: ", this.props);
+
+        var ev= this.props.events.events;
+        this.state.ev=ev;
+        console.log("STATE ev ", ev);
+
         var fullDate = this.state.month;
         var weekday = new Array(7);
                 weekday[0] =  "Domingo";
@@ -201,7 +207,7 @@ class Agend extends Component{
             var userslists=[];
             var family = this.props.usersfamily;
             //console.log(family, 'tamanho usersfamily');
-            console.log(this.props, 'tamanho usersfamily');
+            console.log(this.props.usersfamily, 'tamanho usersfamily');
             //foreach para os users de uma familia
             var usercolor;
             var className = {};
@@ -386,7 +392,7 @@ class Agend extends Component{
                 <section>
                         <div className="">
                             <div className="">
-                                <DayPicker selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) } onDayClick={ this.handleDayClick } />
+                                <DayPicker selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) } onDayClick={ this.handleDayClick.bind(this) } />
                             </div>
                         </div>
                         <div className="container">
@@ -461,26 +467,39 @@ class Agend extends Component{
 
     handleDayClick(e, day) {
         var fullDate = day;
-        var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : (fullDate.getMonth()+1);
-        var currentDate = fullDate.getDate()+ "-"+twoDigitMonth+"-"+day.getFullYear();
+        var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate.getMonth() + 1) : (fullDate.getMonth() + 1);
+        var Day = fullDate.getDate();
+        if (twoDigitMonth == 10 || twoDigitMonth == 11 || twoDigitMonth == 12) {
+        } else {
+            twoDigitMonth = "0" + twoDigitMonth;
+        }
+        if (Day.toString().length < 2) {
+            Day = "0" + Day;
+        }
+        console.log("DIA ", Day);
+        var currentDate = Day + "/" + twoDigitMonth + "/" + day.getFullYear();
         var ev = [];
-        this.state.ev.map((i, key) => {
-            if(currentDate=== i.day)
-            {
-                ev.push(i);
+        console.log("VAR state.ev ", this.state.ev);
+        console.log("VAR currentDate ", currentDate);
+
+        each(this.state.ev, (id, key) => {
+            console.log("EACH event ", id.event);
+
+            console.log("VAR i.date ", id.event.date);
+            if (currentDate == id.event.date) {
+                console.info("VAR i ", id.event);
+                ev.push(id.event);
             }
-            
+
+            if (ev.length === 0) {
+                this.setState({showev: false});
+            }
+            else {
+                this.setState({showev: true, cd: ev});
+            }
+            this.setState({selectedDay: day});
         })
 
-        if(ev.length === 0)
-        {
-            this.setState({showev:false});
-        }
-        else
-        {
-            this.setState({showev:true, cd:ev});
-        }
-        this.setState({selectedDay:day});
     }
     handleClick(){
 
@@ -611,5 +630,9 @@ Agend.propTypes = {
     items: PropTypes.array
 }
 
-export default connect()(Agend);
+const mapStateToProps = (state, ownProps) => {
+
+    return {events: state.events, usersfamily: state.userslist.users, msg: state.events.msgadd, data: state.events.dataadd, users:state.userslist.userslist};
+}
+export default connect(mapStateToProps)(Agend);
 

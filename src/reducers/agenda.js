@@ -17,7 +17,7 @@ const events = (state = initState, action) => {
         case types.RECEIVE_USER_EVENTS:
             console.info('reducer RECEIVE_USER_EVENTS', state, action);
             return Object.assign({}, state, {
-                events: action.events.data
+                events: action.userevents.data
             });
         case types.REQUEST_EVENTS:
             console.info('reducer REQUEST_EVENTS', state, action);
