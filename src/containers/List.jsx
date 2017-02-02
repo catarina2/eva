@@ -58,7 +58,8 @@ class List extends Component {
        if(this.state.msg === 'OK')
        {
        // console.log("ok");
-      
+          var bodyScroll = document.getElementById("body");
+          bodyScroll.classList.remove("body-stop-scroll");
           setTimeout(() => {this.setState({showModal: false, msg: null, color: null, ccolor: null, userid:null, cname:null, nameicon:null, iconid:null,check: {0: "trabalho"}, name:null, user:null, data:this.props.data})}, 500)
        }
       if(this.state.msg === 'NOK')

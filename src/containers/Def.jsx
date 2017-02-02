@@ -26,6 +26,7 @@ class Def extends Component {
             user: {name: null, family_id: null, birthday:null, color:null, email: null, password: null}, 
             showEdit: 'hidden',
             msg: null,
+            userlogged: 'undefined',
             color:[{color: "blue", classname: "blue"}, {color: "pink",  classname: "pink"}, {color: "green",  classname: "green"}, {color: "red",  classname: "red"}, {color: "yellow",  classname: "yellow"}, {color: "orange",  classname: "orange"}],
             avatar:[{avatar: "1", classname: "smallavatar1", color: "blue"}, {avatar: "2", classname: "smallavatar2", color: "blue"}, {avatar: "3", classname: "smallavatar3", color: "blue"}, {avatar: "4", classname: "smallavatar4", color: "blue"}, {avatar: "5", classname: "smallavatar5", color: "blue"}, {avatar: "6", classname: "smallavatar6", color: "blue"}]
         }
@@ -43,11 +44,14 @@ class Def extends Component {
         //console.log('Definições de perfil');
         if(this.state.msg)
         {
+            var bodyScroll = document.getElementById("body");
+            bodyScroll.classList.remove("body-stop-scroll");
             this.state.msg = null;
             this.state.showEdit = "hidden";
+            setTimeout(() => {
             this.state.color = [{color: "blue", classname: "blue"}, {color: "pink",  classname: "pink"}, {color: "green",  classname: "green"}, {color: "red",  classname: "red"}, {color: "yellow",  classname: "yellow"}, {color: "orange",  classname: "orange"}];
             this.state.avatar = [{avatar: "1", classname: "smallavatar1", color: "blue"}, {avatar: "2", classname: "smallavatar2", color: "blue"}, {avatar: "3", classname: "smallavatar3", color: "blue"}, {avatar: "4", classname: "smallavatar4", color: "blue"}, {avatar: "5", classname: "smallavatar5", color: "blue"}, {avatar: "6", classname: "smallavatar6", color: "blue"}];
-        
+            }, 1000);
         }
 
         if(this.state.showEdit === 'show')
@@ -55,21 +59,56 @@ class Def extends Component {
                   var colorlist=[];
                   var color = this.state.color;
                 //  console.log(color, 'cor dos users')
-                  each(color, (color, key) => {
-                        var colorlosange ="losangecolor"+" "+color.classname;
-                    //    console.log(color.color)
+                  var userlogged = (this.state.userlogged === "undefined") ? "undefined" : this.state.userlogged.color.split("_");
+                  console.log(userlogged, 'userlogado');
+                  var x;
+                  each(color, (colorxx, key) => {
+                    if(userlogged[1] === colorxx.color) { 
+                        var xcolor = {};
+                        xcolor["color"] = colorxx.color;
+                        xcolor["classname"] = "g"+colorxx.classname;
+
+                        var tcolor = {};
+                        tcolor[key] = xcolor;
+                        Object.assign(this.state.color, tcolor);
+                        return false;
+                    }
+                  });
+
+                  console.log(this.state.color, 'lista de cores inicial');
+                  
+                  each(color, (colorxx, key) => {
+                       var colorlosange ="losangecolor"+" "+colorxx.classname;
+
                        colorlist.push(<div key ={key} className='displayavatares'>
                                         <div className="cc-selectorperfil">
-                                        <div className={colorlosange} onClick={this.handleclickcolor.bind(this, key, color.color)}>
-                                            <input id={color.color} type="radio" name={color.color} ref={color.color} value={color.color} defaultChecked={coloruser}/>
+                                        <div className={colorlosange} onClick={this.handleclickcolor.bind(this, key, colorxx.color)}>
+                                            <input id={colorxx.color} type="radio" name={colorxx.color} ref={colorxx.color} value={colorxx.color} defaultChecked={coloruser}/>
                                         </div>  
                                         </div>
                                       </div>);
                     });
+                        console.log(this.state.color, 'lista das cores')
 
                   var avatarlist=[];
                   var avatar = this.state.avatar;
-                 // console.log(avatar, 'cor dos users')
+                  var userloggedavatar = (this.state.userlogged === "undefined") ? "undefined" : this.state.userlogged.color.split("_");
+                  console.log(userloggedavatar, 'userlogado');
+                  var x;
+                  each(avatar, (avatar, key) => {
+                    if(userlogged[0] === avatar.avatar) { 
+                        var xcolor = {};
+                        xcolor["avatar"] = avatar.avatar;
+                        xcolor["classname"] = avatar.classname;
+                        xcolor["color"] = "g"+avatar.color;
+
+                        var tcolor = {};
+                        tcolor[key] = xcolor;
+                        Object.assign(this.state.avatar, tcolor);
+                        return false;
+                    }
+                  });
+                  console.log(this.state.avatar, 'lista de avatares');
                   each(avatar, (avatar, key) => {
                         var color = avatar.color;
                         var colorlosange ="losangecolor"+" "+color;
@@ -242,6 +281,7 @@ class Def extends Component {
         if(user)
         {
             this.state.user = user[0];
+            this.state.userlogged = user[0];
             console.log(user, 'users');
             var user = this.state.user.color.split("_");
             var color ="losangeavatar"+" "+user[1];
@@ -338,7 +378,7 @@ class Def extends Component {
 
     handleclickcolor(key,color,event) {
         event.preventDefault();
-       // console.log(this.state.color, this.state.color[key].color)
+        console.log(this.state.color, this.state.color[key].color, this.state.color[key].classname, key, color)
         var color = (this.state.color[key].classname === color) ? "g"+color : color;
 
         var listcolor = [];
@@ -359,20 +399,20 @@ class Def extends Component {
                 listcolor.push(color);
             }
         });
-        //console.log(listcolor, 'lista de cores')
+        console.log(listcolor, 'lista de cores')
         var x = {};
         x["color"] = this.state.color[key].color
         x["classname"] = color;
 
         var xcolor ={};
         xcolor[key] = x;
-
+        console.log(xcolor)
         var tempcolor = Object.assign(listcolor, xcolor);
+        console.log(tempcolor)
 
 
-
-        this.setState({color:tempcolor});
-        //console.log("color", this.state.color);
+        this.setState({color:tempcolor, userlogged: "undefined"});
+        console.log("color", this.state.color);
     }
 
     handleclickavatar(key, avatar, color, event){
@@ -405,19 +445,27 @@ class Def extends Component {
 
         var tempavatar = Object.assign(listavatar, xavatar);
 
-        this.setState({avatar:tempavatar});
+        this.setState({avatar:tempavatar, userlogged:"undefined"});
     }
 
     handleEdit(){
        // console.log('click no edit');
-         var css = (this.state.showEdit === "hidden") ? "show" : "hidden";
+       var bodyScroll = document.getElementById("body");
+       if(this.state.showEdit === "hidden") {
+        bodyScroll.classList.add("body-stop-scroll");
+        }
+        else{
+             bodyScroll.classList.remove("body-stop-scroll");
+        }
+
+        var css = (this.state.showEdit === "hidden") ? "show" : "hidden";
         //console.log(css);
         this.setState({showEdit:css});
     }
 
     _submitedit(event) {
         event.preventDefault();
-        
+        console.log(this.state.color, this.state.avatar, "submit edit")
         var color = this.state.color;
         var coloruser;
         each(color, (color, key) => {

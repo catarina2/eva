@@ -528,6 +528,8 @@ margin-top: 30px;
 .modal {
     display: block;
     background: rgba(0,0,1,0.5);
+    position: fixed;
+    overflow-y: auto;
 }
 /*final do css geral*/
 
@@ -1266,7 +1268,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 15px 15px;
+    background-size: 13px 13px;
     border: none;
 }
 
@@ -1279,7 +1281,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 15px 15px;
+background-size: 13px 13px;
     border: none;
 }
 
@@ -1292,7 +1294,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 15px 15px;
+    background-size: 13px 13px;
     border: none;
 }
 
@@ -1305,7 +1307,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 15px 15px;
+    background-size: 13px 13px;
     border: none;
 }
 
@@ -1318,7 +1320,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 15px 15px;
+    background-size: 13px 13px;
     border: none;
 }
 
@@ -1331,7 +1333,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 15px 15px;
+    background-size: 13px 13px;
     border: none;
 }
 
@@ -1345,7 +1347,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     border: none;
 }
 
@@ -1358,7 +1360,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     border: none;
 }
 
@@ -1371,7 +1373,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     border: none;
 }
 
@@ -1384,7 +1386,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     border: none;
 }
 
@@ -1397,7 +1399,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     border: none;
 }
 
@@ -1410,7 +1412,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     border: none;
 }
 
@@ -1424,7 +1426,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 54px 60px;
+    background-size: 45px 45px;
 }
 
 .btn-avatar2 {
@@ -1436,7 +1438,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 54px 60px;
+    background-size: 45px 45px;
 }
 
 .btn-avatar3 {
@@ -1448,7 +1450,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 54px 60px;
+    background-size: 45px 45px;
 }
 
 .btn-avatar4 {
@@ -1460,7 +1462,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 55px 63px;
+    background-size: 45px 45px;
 }
 
 .btn-avatar5 {
@@ -1472,7 +1474,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 51px 60px;
+    background-size: 45px 45px;
 }
 
 .btn-avatar6 {
@@ -1484,7 +1486,7 @@ header .btn-list {
     background-size: 18vmin;
     margin-top: 10vmin;
     margin-left: 10vmin;
-    background-size: 54px 60px;
+    background-size: 45px 45px;
 }
 
 .seta{
@@ -2168,45 +2170,7 @@ header .btn-perfil {
 }
 /*final botão hamburguer*/
 
-/*media-queries*/
-@media screen and (max-width: 374px)
-{
-    .panel-title{
-        width: 15vmax;
-    }
-    .btn-perfil {
-        background-image: url("../../img/perfil/perfil_10.png");
-        left: 18px;
-        margin-top: 2.5vmin;
-    }
-    .font-medium{
-        font-size: 2.5vmax;
-    }
-    .font-large{
-        font-size: 4vmax;
-    }
-    header .btn-list {
-        font-size: 4vmax;
-    }
-    .list{
-        padding-left: 10px;
-    }
-    .list-icon{
-        float: left;
-    }
 
-}
-@media screen and (max-width: 424px)
-{
-    .btn-perfil {
-        background-image: url("../../img/perfil/perfil_20.png");
-        left: 22px;
-        margin-top: 2vmin;
-    }
-
-}
-
-/*final media-queries*/
 #upload-file-selector {
     display:none;   
 }
@@ -2247,6 +2211,7 @@ header .btn-perfil {
   overflow: hidden;
     width: 35px;
     height: 35px;
+  border-radius: 4px;
 }
 .losangecolor {
     transform: rotate(45deg) translateY(-1px) translateX(1px);
@@ -2254,7 +2219,7 @@ header .btn-perfil {
 .losangecolor .loscolor {
     width: 267px;
     height: 332px;
-    transform: rotate(-45deg) translateY(-19%) translateX(38%);
+    transform: rotate(-45deg) translateY(-18%) translateX(39%);
 }
 .losangecolor .loscolor img {
     width: 45%;
@@ -2264,8 +2229,9 @@ header .btn-perfil {
 .losangelist, .losangelist div {
    transform-origin: 45% 50%;
   overflow: hidden;
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
+    border-radius: 4px;
 }
 .losangelist {
     transform: rotate(45deg) translateY(-1px) translateX(1px);
@@ -2274,7 +2240,7 @@ header .btn-perfil {
 .losangelist .loslist {
     width: 267px;
     height: 332px;
-        transform: rotate(-45deg) translateY(-19%) translateX(40%);
+    transform: rotate(-45deg) translateY(-19%) translateX(40.6%);
 }
 .losangelist .loslist img {
     width: 45%;
@@ -2287,6 +2253,7 @@ header .btn-perfil {
   overflow: hidden;
     width: 70px;
     height: 70px;
+    border-radius: 4px;
 }
 .losangeavatar {
     transform: rotate(45deg) translateY(8px) translateX(53px);
@@ -2296,7 +2263,7 @@ header .btn-perfil {
 .losangeavatar .losavatar {
     width: 267px;
     height: 332px;
-    transform: rotate(-45deg) translateY(-60px) translateX(86px);
+    transform: rotate(-45deg) translateY(-53px) translateX(92px);
 }
 .losangeavatar .losavatar img {
     width: 45%;
@@ -2309,6 +2276,7 @@ header .btn-perfil {
   overflow: hidden;
     width: 70px;
     height: 70px;
+    border-radius: 4px;
 }
 .losange {
     transform: rotate(45deg) translateY(6px) translateX(21px);
@@ -2352,3 +2320,91 @@ header .btn-perfil {
     margin-left: 12%;
     color: coral;
 }
+
+/*media-queries*/
+@media screen and (max-width: 374px)
+{
+    .panel-title{
+        width: 15vmax;
+    }
+    .btn-perfil {
+        background-image: url("../../img/perfil/perfil_10.png");
+        left: 18px;
+        margin-top: 2.5vmin;
+    }
+    .font-medium{
+        font-size: 2.5vmax;
+    }
+    .font-large{
+        font-size: 4vmax;
+    }
+    header .btn-list {
+        font-size: 4vmax;
+    }
+    .list{
+        padding-left: 10px;
+    }
+    .list-icon{
+        float: left;
+    }
+
+    .losangelist .loslist {
+        transform: rotate(-45deg) translateY(-17%) translateX(42.6%);
+    }
+    .losangelist, .losangelist div {
+        width: 25px;
+        height: 25px;
+    }
+    .losangecolor .loscolor {
+        transform: rotate(-45deg) translateY(-17%) translateX(41%);
+    }
+
+    .specification {
+        margin-bottom: 15vmin;
+        margin-top: 18vmin;
+        padding-left: 7vmin;
+    }
+    .sizename {
+        font-size: 5vmax;
+    }
+    .losangeavatar, .losangeavatar div {
+        width: 65px;
+        height: 65px;
+        border-radius: 4px;
+    }
+    .losangeavatar .losavatar {
+        transform: rotate(-45deg) translateY(-51px) translateX(97px);
+    }
+
+}
+@media screen and (max-width: 424px)
+{
+    .btn-perfil {
+        background-image: url("../../img/perfil/perfil_20.png");
+        left: 22px;
+        margin-top: 2vmin;
+    }
+
+}
+
+@media screen and (min-width: 425px)
+{
+    .losangelist .loslist {
+        width: 267px;
+        height: 332px;
+        transform: rotate(-45deg) translateY(-20%) translateX(38.6%);
+    }
+    .losangecolor .loscolor {
+        transform: rotate(-45deg) translateY(-20%) translateX(37%);
+    }
+
+    .losangeavatar .losavatar {
+        transform: rotate(-45deg) translateY(-57px) translateX(86px);
+    }
+    .losangeavatar {
+        transform: rotate(45deg) translateY(17px) translateX(53px);
+    }
+
+}
+
+/*final media-queries*/

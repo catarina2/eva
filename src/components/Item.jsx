@@ -58,11 +58,15 @@ class Item extends Component {
 
         // console.log(this.state.msg, this.props.lists, 'mensagem de apagar');
         if (this.state.msgdelete === "OK") {
+            var bodyScroll = document.getElementById("body");
+            bodyScroll.classList.remove("body-stop-scroll");
            
             setTimeout(() => {this.setState({confirmdelete: false, msgdelete: null, showModalEdit: false})}, 500);
         }
 
         if (this.state.msgedit === "OK") {
+            var bodyScroll = document.getElementById("body");
+            bodyScroll.classList.remove("body-stop-scroll");
             this.state.showModalEdit = false;
             this.state.msgedit = null;
             this.state.color =  null;
@@ -114,10 +118,10 @@ class Item extends Component {
              var userslists=[];
             
             var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
-            console.log(family, 'usersfamily');
+            //console.log(family, 'usersfamily');
             //USERS
             var usersoflist = this.props.users[list.id]; 
-            console.log(usersoflist);
+           // console.log(usersoflist);
             var usercolor = {};
              var className = {};
              var colorstate = {};
@@ -165,7 +169,7 @@ class Item extends Component {
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
-            console.log(this.state.ccolor, this.state.color);
+            //console.log(this.state.ccolor, this.state.color);
             //final USERS
             //ICONS
             var iconlists=[];
