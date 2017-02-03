@@ -171,8 +171,9 @@ class List extends Component {
              console.log(family, 0)
              each(family, (user, key) => {
               console.log(user, 'user')
-                var userxx = user.color.split("_");
-                var colorxx ="losangecolor"+" "+userxx[1];
+                var userxx = user.avatar;
+                var colorxx ="losangecolor"+" "+user.color;
+                 //console.log("COLORXX", user);
                 ccolor[key] = colorxx;
                 color[key] = false;
                 userid[key] = user.id;
@@ -207,7 +208,9 @@ class List extends Component {
           //FINAL USERS
           //ICONS
           var iconlists=[];
-          var icon = this.state.icon;
+
+            //console.log("ICON: ", this.state.icon);
+            var icon = this.state.icon;
 
           var iconname;
           var cname = {};

@@ -41,7 +41,7 @@ class Event extends Component {
                
         return (
             <div>
-               {ev.start_time} {persona} {ev.title} - {ev.location}
+               {ev.start_time}-{ev.end_time} {persona} {ev.title} - {ev.location}
             </div>
         );
     }

@@ -1723,10 +1723,13 @@ header .btn-agend1 {
     border-top: 2px solid #f47828;
 }
 .list-group-agend {
-    padding-left: 25px;
+    padding-left: 20px;
 }
 .event-item{
     margin-bottom: 10px;
+}
+.event-item .row  .col-xs-12{
+    padding-left: 0;
 }
 .day-time{
     margin-top: 0;

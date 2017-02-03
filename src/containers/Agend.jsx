@@ -220,7 +220,8 @@ class Agend extends Component{
                 ccolor[key] = usercolor;
                 color[key] = false;
                 userid[key] = user.id;
-                className="user-cc btn-user"+key;
+                console.log("KEY: ",key, user);
+                className="user-cc btn-avatar"+key;
 
                 if(this.state.ccolor === null)
                 {
@@ -243,6 +244,8 @@ class Agend extends Component{
                         <label className={className} htmlFor={userid[key]} onClick={this.handleclickuser.bind(this, key, user.color)}></label>
                     </div>
                 </div>);
+
+                console.log("USERLIST ARRAY: ",userslists);
             });
             this.state.ccolor = className;
             this.state.color = colorstate;

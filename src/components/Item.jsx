@@ -129,22 +129,24 @@ class Item extends Component {
              var color = {};
              var userid = {};
              each(family, (user, key) => {
-                var userxx = user.color.split("_");
+                 console.log("USER ", user);
+                var userxx = user.avatar;
                 each(usersoflist, (u, keyu) => {
+                    console.log("USERFLIST ", u);
                   if(u.name === user.name){
                      
-                      ccolor[key] = "losangecolor"+" "+"g"+userxx[1];
+                      ccolor[key] = "losangecolor"+" "+"g"+user.color;
                       console.log(ccolor[key], key);
                       color[key] = true;
                       return false;
                   }
                   else{
-                      ccolor[key] = "losangecolor"+" "+userxx[1];
+                      ccolor[key] = "losangecolor"+" "+user.color;
                       console.log(ccolor[key], key);
                       color[key] = false;
                   }
                 });
-                var avatar = "btn-smallavatar"+ userxx[0];
+                var avatar = "btn-smallavatar"+ userxx;
                 userid[key] = user.id;
                 if(this.state.ccolor === null)
                 {
@@ -162,7 +164,7 @@ class Item extends Component {
                   colorstate = this.state.color;
                 }
                userslists.push(<div key ={key} className='displayavatares'>
-                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, userxx[1])}>
+                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color)}>
                                    <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                               </div>);
             });
@@ -423,7 +425,7 @@ class Item extends Component {
      handleclickuser(key, color, event) {
        event.preventDefault();
 
-        console.log(this.state.color, key, this.state.ccolor)
+        console.log("COLOR: ", color);
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
       
