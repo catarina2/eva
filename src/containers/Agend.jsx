@@ -35,6 +35,7 @@ class Agend extends Component{
         this._submit = this._submit.bind(this);
          this.handleChange = this.handleChange.bind(this);
          this.onChange= this.onChange.bind(this);
+         this.onChange2= this.onChange2.bind(this);
          this.handleEventHour= this.handleEventHour.bind(this);
 
          var bodyScroll = document.getElementById("body");
@@ -100,13 +101,13 @@ class Agend extends Component{
                 weekday[5] = "Sexta-feira";
                 weekday[6] = "Sábado";
         var n = weekday[fullDate.getDay()];
-        var currentDate = fullDate.getDate()+n;
+        var currentDate = fullDate.getDate()+" "+n;
         let currentDate1=null;
         if(this.state.selectedDay!==null)
         {
             var fullDate1 = this.state.selectedDay;
             var n1 = weekday[fullDate1.getDay()];
-            currentDate1 = fullDate1.getDate()+n1;
+            currentDate1 = fullDate1.getDate()+" "+n1;
         }
         var show;
         if(this.state.showev === false)
@@ -215,17 +216,21 @@ class Agend extends Component{
             var ccolor = {};
             var color = {};
             var userid = {};
+            console.log(family, 0)
             each(family, (user, key) => {
-                usercolor = 'user'+ user.color;
-                ccolor[key] = usercolor;
+                console.log(user, 'user')
+                var userxx = user.avatar;
+                var colorxx ="losangecolor"+" "+user.color;
+                //console.log("COLORXX", user);
+                ccolor[key] = colorxx;
                 color[key] = false;
                 userid[key] = user.id;
-                console.log("KEY: ",key, user);
-                className="user-cc btn-avatar"+key;
+
+                var avatar = "btn-smallavatar"+ userxx[0];
 
                 if(this.state.ccolor === null)
                 {
-                    className = ccolor;
+                    className[key] = colorxx;
                 }
                 else{
                     className = this.state.ccolor;
@@ -238,15 +243,12 @@ class Agend extends Component{
                 else {
                     colorstate = this.state.color;
                 }
-                userslists.push(<div key ={key} className='display'>
-                    <div className="cc-selector">
-                        <input id={userid[key]} type="radio" name={userid[key]} ref={userid[key]} value={user.id} defaultChecked={this.state.checkedu1}/>
-                        <label className={className} htmlFor={userid[key]} onClick={this.handleclickuser.bind(this, key, user.color)}></label>
-                    </div>
+                userslists.push(<div key ={key} className='displayavatares'>
+                    <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color)}>
+                        <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                 </div>);
-
-                console.log("USERLIST ARRAY: ",userslists);
             });
+
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
@@ -306,7 +308,7 @@ class Agend extends Component{
                                       <div className="row">
                                           <div className="col-xs-1">
                                           </div>
-                                          <div className="col-xs-10">
+                                          <div className="col-xs-10 displayavatares">
                                               {userslists}
                                           </div>
                                       </div>
@@ -539,7 +541,7 @@ class Agend extends Component{
         event.preventDefault();
 
         var css = (this.state.color[key] === false) ? true : false;
-        var usercolor = (this.state.ccolor[key] === 'user'+color) ? 'guser'+color : 'user'+color;
+        var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
 
         var xcolor = {};
         xcolor[key] = css;

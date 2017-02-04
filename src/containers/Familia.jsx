@@ -101,16 +101,22 @@ class Familia extends Component {
     _submitedit(event) {
         event.preventDefault();
 
-        let obj = {};
+        //let obj = {};
 
-        obj['family_id'] = 2;
-        obj['created_by'] = 2;
-        obj['email'] = this.refs.email.value;
+        //obj['email'] = this.refs.email.value;
+        //obj['family_id'] = 1;
+        //obj['created_by'] = 1;
+        //console.log(obj);
 
+        var FormData = require('form-data');
+        const form = new FormData();
+        form.append('email', this.refs.email.value);
+        form.append('family_id', 1);
+        form.append('created_by', 1);
 
 
         const {dispatch} = this.props;
-        dispatch(postInviteToFamily(this.state.user.id, obj));
+        dispatch(postInviteToFamily(form));
     }
 
 

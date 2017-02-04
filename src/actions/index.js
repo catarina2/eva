@@ -343,7 +343,7 @@ export function receiveInviteToFamily(json) {
 
 export function postInviteToFamily(invite) {
     return function(dispatch) {
-        console.info(invite, 'POST EVENTS');
+        console.info('POST EVENTS', invite);
         return fetch(`http://develop.mmota.online/api/invitations`, {
             method: "POST",
             body: invite
