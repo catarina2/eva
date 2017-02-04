@@ -15,6 +15,7 @@ class Produto extends Component {
         this.handleClickEdit = this.handleClickEdit.bind(this);
         this.confirmdelete = this.confirmdelete.bind(this);
         this.noconfirm = this.noconfirm.bind(this);
+        this._onChange = this._onChange.bind(this);
         this._submit = this._submit.bind(this);
         
         this.state = {unline: false, image: null,showModal:false, showEdit:false, msge:null, confirmdelete:false, msg:null, imagesend: null};
@@ -26,10 +27,10 @@ class Produto extends Component {
     }
 
     render() {
-        //console.log(this.props.item, 'produto id');
+        console.log(this.props.item, this.state.imagesend, this.state, 'produto id');
         var item = this.props.item;
         var panel, cheched, line = null;
-        this.state.imagesend= item.image;
+        if(item.image) this.state.imagesend= item.image;
         console.log(this.state.imagesend, 'imagem do produto');
        //console.log(this.props.msg, 'mensagem apagada com sucesso');
         if(this.state.msg === 'OK') {
@@ -156,6 +157,7 @@ class Produto extends Component {
          if(this.state.showEdit)
         {
                  var img;
+                 console.log(this.state.imagesend, 'imagem enviada')
                     if(this.state.imagesend)
                     {img =(<div className="losange">
                              <div className="los1">        
@@ -257,20 +259,21 @@ class Produto extends Component {
         event.preventDefault();
        //console.log(this.refs.title.value, this.refs.quant.value, this.refs.description.value );
 
-        let obj = {};
-
-        obj['title'] = this.refs.title.value;
-        obj['quant'] = this.refs.quant.value;
-        obj['description'] = this.refs.description.value;
-        if(this.state.imagesend) obj['image'] = this.state.imagesend;
-        obj['list_id'] = this.props.item.list_id;
-        obj['created_by'] = '2';
+        var FormData = require('form-data');
+        var form = new FormData();
+        form.append('title', this.refs.title.value);
+        form.append('quant', this.refs.quant.value);
+        form.append('description', this.refs.description.value);
+        form.append('list_id', this.props.item.list_id);
+        form.append('created_by', 2);
+        if(this.state.imagesend) form.append('image', this.state.imagesend);
+        
        // console.log(obj, this.props);
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");
         var show = (this.state.showEdit === false) ? true : false;
         const {dispatch} = this.props;
-        dispatch(updateProducts(this.props.item.id, obj));
+        dispatch(updateProducts(this.props.item.id, form));
         setTimeout(() => { bodyScroll.className = ""; header.className = "header header-list"; this.setState({msge: this.props.msge});this.setState({showEdit: show});}, 520);
     }
 
@@ -342,19 +345,18 @@ class Produto extends Component {
        // console.log('change photo');
           var input = document.querySelector('input[type="file"]');
           var images = input.files[0];
+          console.log(input, images, 'onchange')
 
           var reader = new FileReader();
           var url = reader.readAsDataURL(images);
-         // console.log(reader);
+          console.log(reader);
           reader.onloadend = function (e) {
           //  console.log('estou aqui');
               this.setState({
                   image: [reader.result],
-                  imagesend: images
+                  imagesend: images.name
               })
             }.bind(this);
-
-         //  console.log(reader);
      }
 }
 

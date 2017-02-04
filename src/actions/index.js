@@ -219,13 +219,10 @@ export function postProducts(id, product) {
 
 export function updateProducts(id, product) {
     return function(dispatch) {
-    //console.info(product, id, 'postProducts');
+    console.info(product, id, 'updateProducts');
         return fetch(`http://develop.mmota.online/api/products/${id}`, {
-                method: 'PUT',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify(product)
+                method: 'POST',
+                body: product
             })
             .then(response => response.json())
             .then(json => dispatch(receiveeditproducts(id, json)));
@@ -364,3 +361,28 @@ export function postRegistar(user) {
     }
 }
 
+//add/remove users
+export function addUser(idlist, iduser) {
+    return function(dispatch) {
+        console.info(idlist, iduser, 'addUser');
+        return fetch(`http://develop.mmota.online/api/lists/${idlist}/users`, {
+            method: "POST",
+            body: iduser
+        })
+            .then(response => response.json())
+    }
+}
+
+export function removeUser(idlist, iduser) {
+    return function(dispatch) {
+        console.info(idlist, iduser,'removeUser');
+        return fetch(`http://develop.mmota.online/api/lists/${idlist}/users`, {
+            method: "DELETE",
+            headers: {
+                    'Content-Type': 'application/json'
+                  },
+            body: JSON.stringify(iduser)
+        })
+            .then(response => response.json())
+    }
+}

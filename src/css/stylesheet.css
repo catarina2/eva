@@ -186,7 +186,13 @@ footer {
 .footerfixedinicio {
     position: fixed;
     bottom: 0;
-    background-color: #898989;
+    background-color: #001;
+    height: 10vmin;
+}
+.footerfixedmirror {
+    position: fixed;
+    bottom: 0;
+    background-color: #46B695;
     height: 10vmin;
 }
 .footerfixed {
@@ -541,7 +547,7 @@ margin-top: 30px;
 
 /*css para Página Inicial*/
 .header-initial{
-    background-image: url("../../img/banner_cinzento.png");
+    background-image: url("../../img/barra_cinza.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -619,6 +625,12 @@ margin-top: 30px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+.header-mirror {
+    background-image: url("../../img/barra_espelho.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 .firstheader {
 
 }
@@ -1211,34 +1223,34 @@ header .btn-list {
 }
 
 .blue{
-    background-color: darkturquoise;
+    background-color: #0090D4;
 }
 .gblue{
-    background-color: darkturquoise;
+    background-color: #0090D4;
     border: 2px solid #f7aa47;
     box-shadow: 3px 3px 10px #888888;
 }
 .pink{
-    background-color: palevioletred;
+    background-color: #F08365;
 }
 .gpink{
-    background-color: palevioletred;
+    background-color: #F08365;
     border: 2px solid #f7aa47;
     box-shadow: 3px 3px 10px #888888;
 }
 .green{
-    background-color: #66CD00;
+    background-color: #46B695;
 }
 .ggreen{
-    background-color: #66CD00;
+    background-color: #46B695;
     border: 2px solid #f7aa47;
     box-shadow: 3px 3px 10px #888888;
 }
 .red{
-    background-color: red;
+    background-color: #E42627;
 }
 .gred{
-    background-color: red;
+    background-color: #E42627;
     border: 2px solid #f7aa47;
     box-shadow: 3px 3px 10px #888888;
 }

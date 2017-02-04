@@ -7,7 +7,7 @@ import {Link} from 'react-router';
 import { each } from 'lodash';
 
 import {fetchListUsers} from '../actions';
-import {fetchListProducts, deleteLists, editLists, postUsers} from '../actions';
+import {fetchListProducts, deleteLists, editLists, postUsers, addUser, removeUser} from '../actions';
 
 class Item extends Component {
     constructor(props) {
@@ -164,7 +164,7 @@ class Item extends Component {
                   colorstate = this.state.color;
                 }
                userslists.push(<div key ={key} className='displayavatares'>
-                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color)}>
+                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color, user.id)}>
                                    <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                               </div>);
             });
@@ -422,13 +422,29 @@ class Item extends Component {
 
     }
 
-     handleclickuser(key, color, event) {
+     handleclickuser(key, color, id, event) {
        event.preventDefault();
 
         console.log("COLOR: ", color);
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
       
+        console.log("estado do user", css, id, this.props, this.props.list.id);
+        if(css === true)
+        {
+          var FormData = require('form-data');
+          const form = new FormData();
+          form.append('users', id);
+          const {dispatch} = this.props;
+          dispatch(addUser(this.props.list.id, form));
+        }
+        else {
+          console.log("remover user da lista")
+         var obj = {};
+         obj['users'] = id;
+          const {dispatch} = this.props;
+          dispatch(removeUser(this.props.list.id, obj));
+        }
         var xcolor = {};
         xcolor[key] = css;
 
