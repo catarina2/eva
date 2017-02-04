@@ -8,10 +8,8 @@ class Personas extends Component {
     }
 
     render() {
-        var user = this.props.user.color.split("_");
-        console.log(user, 'sersdfsdg');
-        var color ="losangelist"+" "+user[1];
-        var avatar = "btn-smallavatarlist"+ user[0];
+        var color ="losangelist"+" "+this.props.user.color;
+        var avatar = "btn-smallavatarlist"+ this.props.user.avatar;
         var persona;
         
             persona = <div className='displayavatares'>

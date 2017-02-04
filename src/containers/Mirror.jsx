@@ -13,7 +13,7 @@ class Mirror extends Component {
                        <div className="title">eva</div>
                     </div>
                 </header></Link>
-                <header id="header" className="header header-list">
+                <header id="header" className="header header-mirror">
                     <div className="container">
                     <div className="menu-title font-large">Espelho</div>
                     </div>
@@ -21,7 +21,7 @@ class Mirror extends Component {
                 <section>
                         <h4> Página em Desenvolvimento</h4>
                 </section>        
-                <footer className="footerfixed navbar fixed-bottom">
+                <footer className="footerfixedmirror navbar fixed-bottom">
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-10">

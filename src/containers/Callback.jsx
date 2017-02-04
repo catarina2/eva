@@ -20,7 +20,7 @@ class Callback extends Component {
     var url = "http://develop.mmota.online/oauth/token";
     var params = "grant_type=authorization_code";
         params += '&client_id=1';
-        params += '&client_secret=nHQp4jtGMyspdCqvnb1vThGZYbqLnmIhYHYX39z6';
+        params += '&client_secret=R4TXLVA8R028CGECmb9YZxnMqbQUpAAXQawZDgHE';
         params += '&redirect_uri=http://localhost:3000//callback';
         params += '&code='+code;
 

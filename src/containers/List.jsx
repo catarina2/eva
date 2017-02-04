@@ -53,8 +53,6 @@ class List extends Component {
     }
 
     render() {
-        console.log("VER lists em PROPS: ", this.props);
-        console.log("VER lists em STATE: ", this.state);
         var showNav;
         var showmodal;
        if(this.state.msg === 'OK')
@@ -168,9 +166,7 @@ class List extends Component {
              var ccolor = {};
              var color = {};
              var userid = {};
-             console.log(family, 0)
              each(family, (user, key) => {
-              console.log(user, 'user')
                 var userxx = user.avatar;
                 var colorxx ="losangecolor"+" "+user.color;
                  //console.log("COLORXX", user);
@@ -178,7 +174,7 @@ class List extends Component {
                 color[key] = false;
                 userid[key] = user.id;
                 
-                var avatar = "btn-smallavatar"+ userxx[0];
+                var avatar = "btn-smallavatar"+ user.avatar;
 
                 if(this.state.ccolor === null)
                 {
@@ -196,11 +192,10 @@ class List extends Component {
                   colorstate = this.state.color;
                 }
                userslists.push(<div key ={key} className='displayavatares'>
-                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, userxx[1])}>
+                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color)}>
                                    <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                               </div>);
             });
-             console.log(userid, 'id users')
              
             this.state.ccolor = className;
             this.state.color = colorstate;
@@ -371,7 +366,7 @@ class List extends Component {
     handleclickuser(key, color, event) {
        event.preventDefault();
 
-        console.log(this.state.color, key, this.state.ccolor)
+        console.log(this.state.color, key, this.state.ccolor, 'lalalalalall')
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
       
@@ -385,6 +380,7 @@ class List extends Component {
         var temp = Object.assign(this.state.ccolor, x);
 
         this.setState({color:tempcolor, ccolor: temp});
+        console.log(this.state.color, key, this.state.ccolor, 'lalalalalallsdfdsfg')
     }
 
     handleclickicon(key, name, event){
@@ -477,7 +473,6 @@ class List extends Component {
 
         var color = this.state.color;
         var userid = this.state.userid;
-        console.log(color, userid);
         each(color, (color, key) => {
            if(color) {
               users = userid[key];
@@ -487,7 +482,6 @@ class List extends Component {
     
         let user = [];
         user = listusers;
-        console.log(user);
         var FormData = require('form-data');
         const form = new FormData();
         form.append('name', this.refs.name.value);
