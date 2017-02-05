@@ -209,7 +209,7 @@ footer {
 }
 section {
    position: relative;
-    top: 26vmin;
+    top: 25vmin;
     width: 100%;
     margin-bottom: 25%;
     z-index: 1;
@@ -221,6 +221,9 @@ section {
 }
 .display {
     display: inline-flex;
+}
+.displayEventAvatar{
+    display: inline-block;
 }
 .displayavatares {
     display: flex;
@@ -1428,16 +1431,71 @@ background-size: 13px 13px;
     border: none;
 }
 
+.btn-smallEventavatar1 {
+    background-image: url("../../img/users/user1_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 17px 17px;
+    border: none;
+}
 
+.btn-smallEventavatar2 {
+    background-image: url("../../img/users/user2_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 17px 17px;
+    border: none;
+}
+
+.btn-smallEventavatar3 {
+    background-image: url("../../img/users/user3_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 17px 17px;
+    border: none;
+}
+
+.btn-smallEventavatar4 {
+    background-image: url("../../img/users/user4_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 17px 17px;
+    border: none;
+}
+
+.btn-smallEventavatar5 {
+    background-image: url("../../img/users/user5_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 17px 17px;
+    border: none;
+}
+
+.btn-smallEventavatar6 {
+    background-image: url("../../img/users/user6_30.png");
+    background-color: rgba(255,255,255,0);
+    background-repeat: no-repeat;
+    padding: 20px 20px;
+    height: 0px;
+    background-size: 17px 17px;
+    border: none;
+}
 .btn-avatar1 {
     background-image: url("../../img/users/user1_80.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 40px 40px;
     height: 0px;
-    background-size: 18vmin;
-    margin-top: 10vmin;
-    margin-left: 10vmin;
     background-size: 45px 45px;
 }
 
@@ -2236,6 +2294,28 @@ header .btn-perfil {
     border-radius: 5px;
     background-color:#f7aa47;
     color: white;
+}
+
+.losangeUserEvent, .Userevent div {
+    transform-origin: 45% 50%;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.losangeUserEvent {
+    transform: rotate(45deg) translateY(-1px) translateX(1px);
+}
+.losangeUserEvent .Userevent {
+    width: 20px;
+    height: 20px;
+    transform: rotate(-45deg) translateY(10%) translateX(8%);
+}
+.losangeUserEvent .Userevent img {
+    width: 20%;
+    height: 10%;
 }
 
 .losangecolor, .losangecolor div {

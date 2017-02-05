@@ -327,6 +327,32 @@ export function postevent(events) {
     }
 }
 
+export function addUserToEvent(idEvent, iduser) {
+    return function(dispatch) {
+        console.info('addUserToEvent', idEvent, iduser);
+        return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
+            method: "POST",
+            body: iduser
+        })
+            .then(response => response.json())
+    }
+}
+
+export function removeUserToEvent(idEvent, iduser) {
+    return function(dispatch) {
+        console.info('removeUserToEvent', idEvent, iduser);
+        return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(iduser)
+        })
+            .then(response => response.json())
+    }
+}
+
+
 // ---------------------   Familia
 
 export function receiveInviteToFamily(json) {
@@ -361,7 +387,7 @@ export function postRegistar(user) {
     }
 }
 
-//add/remove users
+//add/remove users LISTA
 export function addUser(idlist, iduser) {
     return function(dispatch) {
         console.info(idlist, iduser, 'addUser');

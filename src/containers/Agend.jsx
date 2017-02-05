@@ -7,7 +7,7 @@ import Event from '../components/Event';
 import { each } from 'lodash';
 
 
-import {postevent, fetchUserEvents, fetchFamilyUsers} from '../actions';
+import {postevent, fetchUserEvents, fetchFamilyUsers, addUserToEvent, removeUserToEvent} from '../actions';
 
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
@@ -122,7 +122,7 @@ class Agend extends Component{
                                 <div className="event-item">
                                     <div className="row">
                                         <div className="col-xs-12">
-                                            <li key={key}>
+                                            <li className="displayEventAvatar" key={key}>
                                                 <Event ev={i}/>
                                             </li>
                                         </div>
@@ -584,23 +584,17 @@ class Agend extends Component{
         var users;      
         var listusers = [];
 
-        if(this.refs.user4.checked) {
-                users = this.refs.user4.value;
+        var color = this.state.color;
+        var userid = this.state.userid;
+        each(color, (color, key) => {
+            if(color) {
+                users = userid[key];
                 listusers.push(users);
             }
-        if(this.refs.user2.checked) {
-                users = this.refs.user2.value;
-                listusers.push(users);
-            }
-        if(this.refs.user3.checked) {
-                users = this.refs.user3.value;
-                listusers.push(users);
-            }
-
+        });
+        console.log("USERS - ", users);
         let user = [];
         user = listusers;
-        console.log("USERS - ", user);
-
         var FormData = require('form-data');
         const form = new FormData();
         form.append('users', user);
@@ -611,23 +605,20 @@ class Agend extends Component{
         form.append('end_time', this.state.finaltime && this.state.finaltime.format(str));
         form.append('created_by', this.state.loggeduser);
 
-        var add = {
-            created_by: this.state.loggeduser,
-            users: listusers,
-            date: this.state.startDate && this.state.startDate.format('MM/DD/YYYY'),
-            location: this.refs.location.value,
-            title: this.refs.title.value,
-            starttime: this.state.initialtime && this.state.initialtime.format(str),
-            endtime: this.state.finaltime && this.state.finaltime.format(str)
-        };
-        console.log("payload - ", add);
-        var l = this.state.ev;
-        l.push(add);
-        console.log("payload - ", l);
-        this.setState({ev: l, showModal: false, checkedu1: false, checkedu2: false, checkedu3: false, checkedu4:false});
-
         const {dispatch} = this.props;
         dispatch(postevent(form));
+        setTimeout(() => {this.setState({msg: this.props.msg, data:this.props.data});}, 500);
+        setTimeout(() => {
+            console.log("EVENTS DATA", this.state.data);
+            each(user, (user, key) => {
+
+                const {dispatch} = this.props;
+                dispatch(addUserToEvent(this.state.data.id, user[key]));
+
+            });
+        }, 500);
+        setTimeout(() => {console.info("EVENTS USERS DATA", this.props.data);}, 500);
+
     }
 }
 

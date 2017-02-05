@@ -2,6 +2,8 @@ import React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux';
 
+import { each } from 'lodash';
+
 class Event extends Component {
     constructor(props) {
         super(props);
@@ -12,30 +14,19 @@ class Event extends Component {
         console.log("PROPS EVENT ",this.props.ev);
             var ev = this.props.ev;
             var persona = [];
+
             ev.users.map((i, key) => {
 
-                console.log('USER COLOR', i.color);
-                 if(i.color === "red")
-                {
-                    persona.push(<input type="button" className='btn btn-personaredsmall'/>);
-                }
-                if(i.color === "blue")
-                {
-                    persona.push(<input type="button" className='btn btn-personabluesmall'/>);
-                }
-                if(i.color === "green")
-                {
-                    persona.push(<input type="button" className='btn btn-personagreensmall'/>);
-                }
-                if(i.color === "pink")
-                {
-                    persona.push(<input type="button" className='btn btn-personapinksmall'/>);
-                }
-                if(i.color === "bluedark")
-                {
-                    persona.push(<input type="button" className='btn btn-personabluedarksmall'/>);
-                }
-                console.log('PERSONA', persona);
+                var classNameLosangle ={};
+                var className = {};
+                var avatar = "btn-smallEventavatar"+i.avatar+" "+i.color;
+
+                classNameLosangle[i]="losangeUserEvent"+" "+i.color;
+
+                className[i]="btn btn-persona"+i.color+"small";
+                console.info("ICON CLASSNAME: ", className[i])
+                persona.push(<div className={classNameLosangle[i]}> <div className="Userevent"> <button ref="photo" className={avatar}></button></div></div>);
+
             });
             
                
