@@ -189,7 +189,7 @@ footer {
 .footerfixedinicio {
     position: fixed;
     bottom: 0;
-    background-color: #001;
+    background-color: #434242;
     height: 10vmin;
 }
 .footerfixedmirror {
@@ -2274,6 +2274,18 @@ header .btn-perfil {
     padding: 2.5vmin 3vmin 0 0;
     float: right;
 }
+
+header .btn-callback {
+    font-size: 2.5vmax;
+    background-color: #434242;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    padding: 1.5vmin 2vmin;
+    float: right;
+    color: white;
+    font-weight: bold;
+}
 /*final do css para Definições*/
 
 /*botão hamburguer*/
@@ -2518,6 +2530,14 @@ header .btn-perfil {
     margin-top: -1%;
     margin-left: 14%;
     color: coral;
+}
+
+.userLogged {
+    display: inline-block;
+    position: absolute;
+    right: 40%;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 /*media-queries*/

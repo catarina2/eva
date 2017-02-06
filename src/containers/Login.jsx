@@ -29,7 +29,7 @@ class Login extends Component {
                             <Link to="register"><button className="btn btn-login">Registar </button></Link>
                            <hr  className="classhrinitial"/>
                            <hr  className="classhrinitial"/>
-                           <a href="http://develop.mmota.online/oauth/authorize?client_id=1&redirect_uri=http://localhost:3000/callback&response_type=code&scope">
+                           <a href="http://develop.mmota.online/oauth/authorize?client_id=1&redirect_uri=http://mmota.online/callback&response_type=code&scope">
                                  <button className="btn btn-login">Login </button>
                            </a>
                            <hr  className="classhrinitial"/>

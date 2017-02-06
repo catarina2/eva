@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router';
+import {postLogout} from '../actions';
+
 
 class Callback extends Component {
     constructor(props) {
@@ -23,7 +25,7 @@ class Callback extends Component {
     var params = "grant_type=authorization_code";
         params += '&client_id=1';
         params += '&client_secret=R4TXLVA8R028CGECmb9YZxnMqbQUpAAXQawZDgHE';
-        params += '&redirect_uri=http://localhost:3000/callback';
+        params += '&redirect_uri=http://mmota.online/callback';
         params += '&code='+code;
 
     http.open("POST", url, true);
@@ -91,18 +93,17 @@ class Callback extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 list-group-horizontal-eva">
-                                <h1 className="logoeva">eva         </h1>
-                                <h5 className="eva menu-title font-large"><b>   Environmental Virtual Assistant</b></h5>
+                                <h1 className="logoeva">eva</h1>
+                                <button className="btn btn-callback" aria-label="Left Align" onClick={this.handleLogout}>
+                                  Logout
+                                 </button>
                             </div>
-                            <a onClick={this.handleLogout}>
-                                Logout
-                           </a>
                         </div>
                     </div>
                 </header>
                 <section>
                     <div className="container">
-                    <p>Olá {user}</p>
+                    <p className="userLogged">Olá {user}</p>
                         <div className="row">
                         <div className="col-xs-12">
                             <Link to={`lists`}>
@@ -156,6 +157,7 @@ class Callback extends Component {
        console.log('logoutlallaalla');
        window.localStorage.clear();
        window.location = "http://develop.mmota.online/logout" ;
+       
 
     }
 
