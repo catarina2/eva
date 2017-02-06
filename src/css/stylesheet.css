@@ -180,6 +180,9 @@ footer {
     text-align: left;
     background-color: #333333;
 }
+.headerfirst-hide, .btn-newagend-hide{
+    z-index: 0 !important;
+}
 .header-hide{
     z-index: 1;
 }

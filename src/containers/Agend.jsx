@@ -429,7 +429,7 @@ class Agend extends Component{
         }
         return (
             <div>
-                <Link to={`/`}><header className="headerfirst ">
+                <Link to={`/`}><header id="headerfirst" className="headerfirst ">
                    <div className="container">
                        <div className="title">eva</div>
                     </div>
@@ -468,7 +468,7 @@ class Agend extends Component{
                             <div className="col-xs-7">
                             </div>
                             <div className="col-xs-3">
-                                <button className="btn btn-newagend" onClick={this.handleModal}></button>
+                                <button id="btn-newagend" className="btn btn-newagend" onClick={this.handleModal}></button>
                             </div>
                         </div>
                     </div>
@@ -646,8 +646,7 @@ class Agend extends Component{
                 dispatch(addUserToEvent(this.state.data.id, user[key], token));
             });
         }, 500);
-        setTimeout(() => {console.info("EVENTS USERS DATA", this.props.data);}, 500);
-
+        setTimeout(() => {this.setState({showModal: false}, this.props.data);}, 500);
     }
 }
 

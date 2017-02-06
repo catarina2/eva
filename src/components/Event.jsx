@@ -2,6 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {Link} from 'react-router';
 import { each } from 'lodash';
 
 var DatePicker = require('react-datepicker');
@@ -16,12 +17,16 @@ require('react-datepicker/dist/react-datepicker.css');
 require ('react-day-picker/lib/style.css');
 require ('rc-time-picker/assets/index.css');
 
-import {deleteLists, editLists, postUsers, fetchFamilyUsers, addUserToEvent, removeUserToEvent} from '../actions';
+import {DeleteEvent, EditEvent, fetchFamilyUsers, addUserToEvent, removeUserToEvent} from '../actions';
 
 
 class Event extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.onChange= this.onChange.bind(this);
+        this.onChange2= this.onChange2.bind(this);
+        this.handleEventHour= this.handleEventHour.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleclickuser = this.handleclickuser.bind(this);
@@ -34,7 +39,16 @@ class Event extends Component {
             showModalEdit: false,
             confirmdelete: false,
             msgdelete: null,
-            msgedit: null
+            msgedit: null,
+
+            color: null,
+            ccolor: null,
+            userid: null,
+
+            startDate: moment(),
+            initialtime: moment(),
+            finaltime: moment(),
+            checkEventHour: false,
 
         };
     }
@@ -43,7 +57,7 @@ class Event extends Component {
 
     }
     render() {
-        console.log("PROPS EVENT ",this.props.ev);
+        console.log("PROPS EVENT ",this.props.ev, "date ", this.props.ev.date);
             var ev = this.props.ev;
             var persona = [];
             var time="";
@@ -69,32 +83,41 @@ class Event extends Component {
             var userslists = [];
 
             var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
-            console.log("PROPS ", this.props.usersfamily);
+            //console.log("PROPS ", this.props.usersfamily);
             //USERS
-            var usersoflist = this.props.ev.users; // FALTA ID
-            // console.log(usersoflist);
+            var usersofevent = this.props.ev.users; // FALTA ID
             var usercolor = {};
             var className = {};
             var colorstate = {};
             var ccolor = {};
             var color = {};
             var userid = {};
+
+            var hour=ev.start_time.substring(0, 2);
+            var minute=ev.start_time.substring(3, 5);
+            var startTime=moment().hour(hour).minute(minute);
+            console.log("startTime ",startTime, "hour ",hour,"minute ",minute);
+                hour=ev.end_time.substring(0, 2);
+                minute=ev.end_time.substring(3, 5);
+            var endTime=moment().hour(hour).minute(minute);
+            console.log("endTime ", endTime,"hour ",hour,"minute ",minute);
+
             each(family, (user, key) => {
-                console.log("USER ", user);
+                //console.info("Each Family ");
                 var userxx = user.avatar;
                 //console.log("USER ", user.avatar);
-                each(usersoflist, (u, keyu) => {
-                    console.log("USERFLIST ", u);
-                    if (u.name === user.name) {
+                each(usersofevent, (u, keyu) => {
+                    //console.log("Each usersofevent");
+                    if (u.name == user.name) {
 
                         ccolor[key] = "losangecolor" + " " + "g" + user.color;
-                        console.log("color[key] if ",ccolor[key], key);
+                        //console.log("color[key] if ",ccolor[key], key);
                         color[key] = true;
                         return false;
                     }
                     else {
                         ccolor[key] = "losangecolor" + " " + user.color;
-                        console.log("color[key] else ",ccolor[key], key);
+                        //console.log("color[key] else ",ccolor[key], key);
                         color[key] = false;
                     }
                 });
@@ -113,16 +136,12 @@ class Event extends Component {
                 else {
                     colorstate = this.state.color;
                 }
-                userslists.push(<div key={key} className='displayavatares'>
-                    <div className="cc-selectorperfil"
-                         onClick={this.handleclickuser.bind(this, key, user.color, user.id)}>
-                        <div className={className[key]}>
-                            <div className="loscolor">
-                                <button ref="photo" className={avatar}></button>
-                            </div>
-                        </div>
-                    </div>
+                //console.log("PRE USERLISTS: ",key, user.color, user.id);
+                userslists.push(<div key ={key} className='displayavatares'>
+                    <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color, user.id)}>
+                        <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
                 </div>);
+                //console.log("USERLISTS: ", userslists);
             });
             this.state.ccolor = className;
             this.state.color = colorstate;
@@ -135,7 +154,7 @@ class Event extends Component {
                         <div className="modal-header">
                             <button className="btn btn-default" onClick={this.handleEdit}><span
                                 className="glyphicon glyphicon-remove"></span></button>
-                            <h4 className="modal-title"><b>{}</b></h4>
+                            <h4 className="modal-title"><b>{ev.title}</b></h4>
 
                         </div>
                         <div className="modal-body">
@@ -145,12 +164,12 @@ class Event extends Component {
                                         <button type="button" className="btn btn-note"></button>
                                     </div>
                                     <div className="col-xs-10">
-                                        <h4>Título do evento</h4>
+                                        <h4>Titulo do evento</h4>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-xs-12">
-                                        <input type="text" className="form-control" defaultValue="título" maxLength="20" ref="title" name="name" />
+                                        <input type="text" className="form-control" defaultValue={ev.title} maxLength="20" ref="title" name="name" />
                                     </div>
                                 </div>
                                 <div className="row">
@@ -170,7 +189,8 @@ class Event extends Component {
                                             todayButton={"EVA"}
                                             minDate={moment()}
                                             value={this.state.startDate}
-                                            selected={this.state.startDate} onChange={this.handleChange}/>
+                                            openToDate={moment(ev.date)}
+                                            selected={moment(ev.date)} onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -208,13 +228,13 @@ class Event extends Component {
                                     <div className="col-xs-12">
                                         <TimePicker
                                             showSecond={showSecond}
-                                            value={this.state.initialtime}
+                                            defaultValue={startTime}
                                             className="hora-inicio"
                                             onChange={this.onChange}
                                             />
                                         <TimePicker
                                             showSecond={showSecond}
-                                            value={this.state.finaltime}
+                                            defaultValue={endTime}
                                             className="hora-fim"
                                             onChange={this.onChange2}
                                             />
@@ -230,7 +250,7 @@ class Event extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col-xs-12">
-                                        <input type="text" className="form-control" ref="location" name="name" />
+                                        <input type="text" className="form-control" defaultValue={ev.location} ref="location" name="name" />
                                     </div>
                                 </div>
                                 <div className="modal-footer">
@@ -294,12 +314,12 @@ class Event extends Component {
     handleclickuser(key, color, id, event) {
         event.preventDefault();
 
-        console.log("COLOR: ", color);
+        //console.log("COLOR: ", this.state.ccolor[0]);
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
 
        var token = window.localStorage.getItem("UserLoggedToken");
-        console.log("estado do user", css, id, this.props, this.props.list.id);
+        //console.log("estado do user", css, id, this.props, this.props.list.id);
         if(css === true)
         {
             var FormData = require('form-data');
@@ -326,7 +346,47 @@ class Event extends Component {
 
         this.setState({color:tempcolor, ccolor: temp});
     }
+    handleEventHour(){
+        event.preventDefault();
 
+        var timePicker = document.getElementById("timePicker");
+        if(this.state.checkEventHour==false){
+            timePicker.classList.add('row-visually-hidden');
+
+            setTimeout(function () {timePicker.classList.add('row-hidden'); }, 20);
+
+        }else{
+            timePicker.className =('row row-visually-hidden');
+            setTimeout(function () {
+                timePicker.className =('row');
+            }, 20);
+        }
+
+        var css = (this.state.checkEventHour === false) ? true : false;
+        this.setState({checkEventHour:css});
+
+    }
+    onChange(value) {
+        console.log(value && value.format(str));
+        this.setState({
+            initialtime: value
+        });
+    }
+    onChange2(value) {
+        console.log(value && value.format(str));
+        this.setState({
+            finaltime: value
+        });
+    }
+    handleChange(date) {
+
+        console.log(date);
+        this.setState({
+            startDate: date
+        });
+        console.log(this.state.startDate);
+
+    }
     handleDelete() {
         // console.log(this.props, 'handleDelete');
         var header = document.getElementById("header");
@@ -347,7 +407,7 @@ class Event extends Component {
         bodyScroll.classList.add("body-stop-scroll");
 
         const {dispatch} = this.props;
-        dispatch(deleteLists(this.props)); // FALTA ID
+        dispatch(DeleteEvent(this.props)); // FALTA ID
         setTimeout(() => {this.setState({msgdelete: this.props.msgdelete})}, 500);
     }
     noconfirm() {
@@ -355,14 +415,20 @@ class Event extends Component {
     }
     handleEdit() {
         //console.log(this.props, 'handleEdit');
+        var headerfirst = document.getElementById("headerfirst");
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");
+        var btnNewagend = document.getElementById("btn-newagend");
 
         if(this.state.showModalEdit === false){
+            headerfirst.classList.add("headerfirst-hide");
             header.classList.add("header-hide");
+            btnNewagend.classList.add("btn-newagend-hide");
             bodyScroll.classList.add("body-stop-scroll");
         }else{
-            header.className = "header header-list";
+            headerfirst.className = "headerfirst";
+            header.className = "header header-agend";
+            btnNewagend.className = "btn btn-newagend";
             bodyScroll.className = "";
         }
         var css = (this.state.showModalEdit === false) ? true : false;
@@ -371,29 +437,39 @@ class Event extends Component {
     _submitEdit(event) {
         event.preventDefault();
 
-        var keychecked;
-        let obj = {};
+        var users;
+        var listusers = [];
 
-        each(this.state.nameicon, (icon, key) => {
-            if(icon === "checked")
-            {
-                keychecked = key;
+        var color = this.state.color;
+        var userid = this.state.userid;
+        each(color, (color, key) => {
+            if(color) {
+                users = userid[key];
+                listusers.push(users);
             }
         });
-        var iconchecked = this.state.icon[keychecked];
-
-
-        obj['name'] = this.refs.name.value;
-        obj['icon'] = iconchecked.name;
-        obj['created_by'] = '2';
-
-        var header = document.getElementById("header");
-        var bodyScroll = document.getElementById("body");
-
-
+        //console.log("USERS - ", users);
+        let user = [];
+        user = listusers;
+        var FormData = require('form-data');
+        const form = new FormData();
+        form.append('users', user);
+        form.append('date', this.state.startDate && this.state.startDate.format('DD/MM/YYYY'));
+        form.append('location', this.refs.location.value);
+        form.append('title', this.refs.title.value);
+        if(this.state.checkEventHour==false) {
+            form.append('start_time', this.state.initialtime && this.state.initialtime.format(str));
+            form.append('end_time', this.state.finaltime && this.state.finaltime.format(str));
+        }else{
+            form.append('start_time', "00:00");
+            form.append('end_time', "00:00");
+        }
+        form.append('created_by', this.state.loggeduser);
+        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(editLists(this.props, obj)); // FALTA ID
-        setTimeout(() => {bodyScroll.className = ""; header.className = "header header-list";this.setState({msgedit: this.props.msgedit})}, 500);
+        dispatch(EditEvent(form, token));
+
+        setTimeout(() => {this.setState({showModalEdit: false}, this.props.data);}, 500);
     }
 
 }

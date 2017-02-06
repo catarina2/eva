@@ -81,6 +81,7 @@ class Callback extends Component {
     }
     http.send(params);
     var user = window.localStorage.getItem("UserLoggedName");
+        console.log("USER ", user);
     
      return(
             <div>
