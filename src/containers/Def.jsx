@@ -38,6 +38,7 @@ class Def extends Component {
         var family = window.localStorage.getItem("UserLoggedFamily_id");
         const {dispatch} = this.props;
         dispatch(fetchLists(token));
+        console.log(family, 'familia');
         dispatch(fetchFamilyUsers(family, token));
         dispatch(fetchFamily(family, token));
     }
@@ -507,7 +508,7 @@ class Def extends Component {
 const mapStateToProps = (state, ownProps) => {
     //console.info('container DEF mapStateToProps', state, ownProps );
    // console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
-    return {users:state.userslist.users, msg:state.userslist.msg, family:state.userslist.family};
+    return {users:state.userslist.usersdef, msg:state.userslist.msg, family:state.userslist.family};
 }
 
 export default connect(mapStateToProps)(Def);

@@ -161,6 +161,15 @@ export function receiveeditusers(id, json) {
     }
 }
 
+export function receiveUserRegister(json) {
+    console.info('action receiveUserRegister', json);
+    return {
+        type: types.RECEIVE_NEW_USERS,
+        userslist: json
+    }
+}
+
+
 export function receivelistsdelete(id, json) {
     // console.info('action receivelists', json);
     return {
@@ -355,6 +364,18 @@ export function fetchUserEvents(id, token) {
     }
 }
 
+export function fetchUserLists(id, token) {
+    //console.log('fetchListsUsers', id);
+    return function(dispatch) {
+        return fetch(`http://develop.mmota.online/api/users/${id}/lists`, {
+             headers: {
+                    'Authorization': token
+                  }})
+            .then(response => response.json())
+            .then(json => dispatch(ReceiveUserEvents(id, json)));
+    }
+}
+
 export function postevent(events, token) {
     return function(dispatch) {
         console.info(events, 'POST EVENTS');
@@ -428,34 +449,49 @@ export function postInviteToFamily(invite, token) {
 
 export function postRegistar(user) {
     return function(dispatch) {
-        //console.info(user, 'POST Registos');
+        console.info(user, 'POST Registos');
         return fetch(`http://develop.mmota.online/api/users`, {
             method: "POST",
             body: user
         })
             .then(response => response.json())
+            .then(json => dispatch(receiveUserRegister(json)));
     }
 }
 
 //add/remove users LISTA
-export function addUser(idlist, iduser) {
+export function addUser(idlist, iduser, token) {
     return function(dispatch) {
         console.info(idlist, iduser, 'addUser');
         return fetch(`http://develop.mmota.online/api/lists/${idlist}/users`, {
             method: "POST",
+             headers: {
+                    'Authorization': token
+                  },
             body: iduser
         })
             .then(response => response.json())
     }
 }
 
-export function removeUser(idlist, iduser) {
+export function postCreateFamily(familyCreate) {
+    return function(dispatch) {
+        return fetch(`http://develop.mmota.online/api/families`, {
+            method: "POST",
+            body: familyCreate
+        })
+            .then(response => response.json())
+    }
+}
+
+export function removeUser(idlist, iduser, token) {
     return function(dispatch) {
         console.info(idlist, iduser,'removeUser');
         return fetch(`http://develop.mmota.online/api/lists/${idlist}/users`, {
             method: "DELETE",
             headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': token
                   },
             body: JSON.stringify(iduser)
         })

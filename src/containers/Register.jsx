@@ -2,30 +2,101 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import { each } from 'lodash';
+import {browserHistory} from 'react-router';
 
-import {postRegistar} from '../actions';
+import {postRegistar, postCreateFamily} from '../actions';
 
 class Register extends Component {
+
+ componentDidMount() {
+       // console.log('componentdidMount');
+        const {dispatch} = this.props;
+    }
 
    constructor(props) {
         super(props);
         this.handleclickcolor = this.handleclickcolor.bind(this);
         this.handleclickavatar = this.handleclickavatar.bind(this);
         this._submit = this._submit.bind(this);
+        this._submitFamily = this._submitFamily.bind(this);
 
         this.state = {
+          msg: null,
+          data: null,
+          name: null,
+          email: null, 
+          password: null, 
+          birthday:null,
+          userlogged: null,
           showHideSidenav: false,
           color:[{color: "blue", classname: "blue"}, {color: "pink",  classname: "pink"}, {color: "green",  classname: "green"}, {color: "red",  classname: "red"}, {color: "yellow",  classname: "yellow"}, {color: "orange",  classname: "orange"}],
           avatar:[{avatar: "1", classname: "smallavatar1", color: "blue"}, {avatar: "2", classname: "smallavatar2", color: "blue"}, {avatar: "3", classname: "smallavatar3", color: "blue"}, {avatar: "4", classname: "smallavatar4", color: "blue"}, {avatar: "5", classname: "smallavatar5", color: "blue"}, {avatar: "6", classname: "smallavatar6", color: "blue"}]
         }
     }
 
-    componentDidMount() {
-       // console.log('componentdidMount');
-        const {dispatch} = this.props;
-    }
-
+   
     render() {
+
+        console.log(this.state.msg)
+        if(this.state.msg === 'NOK')
+        {
+
+            var data = this.state.data;
+            if(data.length === 4)
+            {
+              this.state.name = data[0];
+              this.state.email = data[1];
+              this.state.password = data[2];
+              this.state.birthday = data[3];
+            }
+           
+           this.state.msg = null;
+           this.state.data = null;
+        }
+        var family;
+        if(this.state.msg === "Create a family")
+        {
+            console.log(this.state.data, 'data do user que se registou')
+            this.state.userlogged = this.state.data.id;
+            console.log(this.state.userlogged, 'user registado');
+             family = (
+               <div className="modal">
+                    <div className="modal-dialog">
+                        <div className="modal-content modal-contentregister">
+                            <div className="modal-header modal-headerregister">
+                                <h4 className="modal-title"><b>Crie a sua familia</b></h4>
+
+                            </div>
+                            <div className="modal-body">
+                                <form id="form" method="POST" onSubmit={this._submitFamily}  encType="multipart/form-data">
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                             <h4 >Nome da familia:</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                            <input type="text" className="form-control" ref="name" name="name" maxLength="20"/>
+                                        </div>
+                                    </div>
+                                     <div className="modal-footer">
+                                        <div className="row">
+                                            <div className="col-xs-2">
+                                            </div>
+                                            <div className="col-xs-8">
+                                            </div>
+                                            <div className="col-xs-2">
+                                                <button type="submit" className="btn submitreg"></button>
+                                            </div>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
           var showmodal;
                 var colorlist=[];
                 var color = this.state.color;
@@ -63,7 +134,7 @@ class Register extends Component {
                     <div className="modal-dialog">
                         <div className="modal-content modal-contentregister">
                             <div className="modal-header modal-headerregister">
-                                <h4 className="modal-title"><b>Novo Evento</b></h4>
+                                <h4 className="modal-title"><b>Registo</b></h4>
 
                             </div>
                             <div className="modal-body">
@@ -76,6 +147,7 @@ class Register extends Component {
                                     <div className="row">
                                         <div className="col-xs-12">
                                             <input type="text" className="form-control" ref="name" name="name" maxLength="20"/>
+                                            <div className="validation">{this.state.name}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -85,7 +157,8 @@ class Register extends Component {
                                     </div>
                                      <div className="row">
                                         <div className="col-xs-12">
-                                            <input type="text" className="form-control" ref="email" name="email" maxLength="20"/>
+                                            <input type="text" className="form-control" ref="email" name="email"/>
+                                            <div className="validation">{this.state.email}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -96,6 +169,7 @@ class Register extends Component {
                                      <div className="row">
                                         <div className="col-xs-12">
                                             <input type="password" className="form-control" ref="password" name="password" maxLength="20"/>
+                                            <div className="validation">{this.state.password}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -106,6 +180,7 @@ class Register extends Component {
                                      <div className="row">
                                         <div className="col-xs-12">
                                             <input type="password" className="form-control" ref="passwordconfirm" name="passwordconfirm" maxLength="20"/>
+                                            <div className="validation">{this.state.password}</div>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -116,6 +191,7 @@ class Register extends Component {
                                      <div className="row">
                                         <div className="col-xs-12">
                                             <input type="date" className="form-control" ref="birthday" name="birthday" maxLength="20"/>
+                                            <div className="validation">{this.state.birthday}</div>
                                         </div>
                                     </div>
                                    <div className="row">
@@ -164,7 +240,7 @@ class Register extends Component {
                 <div className="pageinitial">
                    <div className="container">
                        {showmodal}
-                       
+                       {family}
                     </div>
                 </div>
                 </div>
@@ -239,6 +315,20 @@ class Register extends Component {
         this.setState({avatar:tempavatar, userlogged:"undefined"});
     }
 
+
+    _submitFamily(event) {
+        event.preventDefault();
+        console.log(this.state.userlogged)
+        var FormData = require('form-data');
+        const form = new FormData();
+        form.append('name', this.refs.name.value);
+        form.append('user', this.state.userlogged);
+        const {dispatch} = this.props;
+        dispatch(postCreateFamily(form));
+        browserHistory.push('/');
+    }
+
+
      _submit(event) {
         event.preventDefault();
         console.log(this.props)
@@ -270,6 +360,7 @@ class Register extends Component {
         form.append('code', code);
         const {dispatch} = this.props;
         dispatch(postRegistar(form));
+        setTimeout(() => {this.setState({msg: this.props.msg, data: this.props.data})}, 500);
 
     }
 }
@@ -281,8 +372,9 @@ Register.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.info('container List mapStateToProps', state, ownProps);
-    return state.lists;
+     console.info('container Register mapStateToProps', state, ownProps);
+     return {usersfamily: state.userslist.users, msg: state.userslist.msg, data: state.userslist.data};
+
 }
 
 export default connect(mapStateToProps)(Register);

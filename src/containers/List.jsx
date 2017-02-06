@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import ListComponent from '../components/List';
-import {fetchLists, postLists, fetchFamilyUsers} from '../actions';
+import {fetchLists, postLists, fetchFamilyUsers, fetchUserLists} from '../actions';
 
 import { each } from 'lodash';
 
@@ -44,8 +44,9 @@ class List extends Component {
        // console.log('componentdidMount');
        var family = window.localStorage.getItem("UserLoggedFamily_id");
        var token = window.localStorage.getItem("UserLoggedToken");
+       var id = window.localStorage.getItem("UserLoggedId");
         const {dispatch} = this.props;
-        dispatch(fetchLists(token));
+        dispatch(fetchUserLists(id, token));
         dispatch(fetchFamilyUsers(family, token));
     }
 
