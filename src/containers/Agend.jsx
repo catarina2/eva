@@ -39,8 +39,6 @@ class Agend extends Component{
 
          this.state = {
 
-             loggeduser:3,
-
              color: null,
              ccolor: null,
              userid: null,
@@ -75,8 +73,9 @@ class Agend extends Component{
         const {dispatch} = this.props;
         var token = window.localStorage.getItem("UserLoggedToken");
         var family = window.localStorage.getItem("UserLoggedFamily_id");
+        var id = window.localStorage.getItem("UserLoggedId");
         dispatch(fetchFamilyUsers(family, token));
-        dispatch(fetchUserEvents(this.state.loggeduser, token)); // MUDAR PARA ID FAMILIA  ex: loggeduser.family_id
+        dispatch(fetchUserEvents(id, token)); // MUDAR PARA ID FAMILIA  ex: loggeduser.family_id
     }
 
 
@@ -264,6 +263,9 @@ class Agend extends Component{
             var ccolor = {};
             var color = {};
             var userid = {};
+
+            if(family){
+
             console.log(family, 0)
             each(family, (user, key) => {
                 console.log(user, 'user')
@@ -301,7 +303,9 @@ class Agend extends Component{
             this.state.color = colorstate;
             this.state.userid = userid;
             //FINAL USERS
-
+        }else{
+            userslists.push(<div className='displayavatares'>Convide membros para a sua familia.</div>);
+        }
         showmodal = (
                 <div className="modal">
                     <div className="modal-dialog">
@@ -398,7 +402,7 @@ class Agend extends Component{
                                             <button type="button" className="btn btn-location"></button>
                                         </div>
                                         <div className="col-xs-10">
-                                            <h4>Adicionar Localização</h4>
+                                            <h4>Adicionar Local</h4>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -416,7 +420,7 @@ class Agend extends Component{
                                                 </Link>
                                             </div>
                                             <div className="col-xs-2">
-                                                <button type="submit" className="btn submitagend"></button>
+                                                <button type="submit" className="btn submit-agend"></button>
                                             </div>
                                     </div>
                                     </div>
@@ -429,7 +433,7 @@ class Agend extends Component{
         }
         return (
             <div>
-                <Link to={`/`}><header id="headerfirst" className="headerfirst ">
+                <Link to={`/callback`}><header id="headerfirst" className="headerfirst ">
                    <div className="container">
                        <div className="title">eva</div>
                     </div>
@@ -460,14 +464,13 @@ class Agend extends Component{
                         <hr className="classhr-end"/>
                         </div>
                 </section>
-                <footer>
+                <footer className="footerfixedagenda navbar fixed-bottom">
                     <div className="container">
                         <div className="row">
+                            <div className="col-xs-10">
+                                <div className="titlefooter">Environmental Virtual Assistant</div>
+                            </div>
                             <div className="col-xs-2">
-                            </div>
-                            <div className="col-xs-7">
-                            </div>
-                            <div className="col-xs-3">
                                 <button id="btn-newagend" className="btn btn-newagend" onClick={this.handleModal}></button>
                             </div>
                         </div>
@@ -611,13 +614,22 @@ class Agend extends Component{
 
         var color = this.state.color;
         var userid = this.state.userid;
-        each(color, (color, key) => {
-            if(color) {
-                users = userid[key];
-                listusers.push(users);
-            }
-        });
-        //console.log("USERS - ", users);
+        console.log("color - ", color);
+        if(color !=null){
+            each(color, (color, key) => {
+                if(color) {
+                    users = userid[key];
+                    listusers.push(users);
+
+                }
+            });
+        }else{
+            var id = window.localStorage.getItem("UserLoggedId");
+            users= id;
+            listusers.push(users);
+        }
+
+        console.log("USERS - ", users);
         let user = [];
         user = listusers;
         var FormData = require('form-data');
@@ -633,7 +645,8 @@ class Agend extends Component{
             form.append('start_time', "00:00");
             form.append('end_time', "00:00");
         }
-        form.append('created_by', this.state.loggeduser);
+        var id = window.localStorage.getItem("UserLoggedId");
+        form.append('created_by', id);
        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
         dispatch(postevent(form, token));

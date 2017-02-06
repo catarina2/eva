@@ -334,6 +334,25 @@ export function fetchFamily(id, token) {
 }
 // ---------------------   AGENDA
 
+export function receivedeleteevent(idEvent, id, json) {
+    //  console.info('action receiveproducts', json);
+    return {
+        type: types.RECEIVE_DELETE_EVENTS,
+        events: json,
+        id: id,
+        idEvent:idEvent
+    }
+}
+
+export function receiveeditevents(id, json) {
+    console.info('action receiveeditevents', json);
+    return {
+        type: types.RECEIVE_EDIT_EVENTS,
+        productslist: json,
+        id: id
+    }
+}
+
 export function requestevents(json) {
     console.info('action request events: ', json);
     return {
@@ -351,14 +370,28 @@ export function ReceiveUserEvents(id, json) {
     }
 }
 
+export function updateEvents(id, event, token) {
+    return function(dispatch) {
+        console.info(id, event, 'updateEvents');
+        return fetch(`http://develop.mmota.online/api/events/${id}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': token
+            },
+            body: event
+        })
+            .then(response => response.json())
+            .then(json => dispatch(receiveeditevents(id, json)));
+    }
+}
 
 export function fetchUserEvents(id, token) {
     //console.log('fetchListsUsers', id);
     return function(dispatch) {
         return fetch(`http://develop.mmota.online/api/users/${id}/events`, {
-             headers: {
-                    'Authorization': token
-                  }})
+            headers: {
+                'Authorization': token
+            }})
             .then(response => response.json())
             .then(json => dispatch(ReceiveUserEvents(id, json)));
     }
@@ -368,9 +401,9 @@ export function fetchUserLists(id, token) {
     //console.log('fetchListsUsers', id);
     return function(dispatch) {
         return fetch(`http://develop.mmota.online/api/users/${id}/lists`, {
-             headers: {
-                    'Authorization': token
-                  }})
+            headers: {
+                'Authorization': token
+            }})
             .then(response => response.json())
             .then(json => dispatch(receiveLists(json)));
     }
@@ -381,9 +414,9 @@ export function postevent(events, token) {
         console.info(events, 'POST EVENTS');
         return fetch(`http://develop.mmota.online/api/events`, {
             method: "POST",
-             headers: {
-                    'Authorization': token
-                  },
+            headers: {
+                'Authorization': token
+            },
             body: events
         })
             .then(response => response.json())
@@ -397,8 +430,8 @@ export function addUserToEvent(idEvent, iduser, token) {
         return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
             method: "POST",
             headers: {
-                    'Authorization': token
-                  },
+                'Authorization': token
+            },
             body: iduser
         })
             .then(response => response.json())
@@ -411,7 +444,7 @@ export function removeUserToEvent(idEvent, iduser, token) {
         return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json', 
+                'Content-Type': 'application/json',
                 'Authorization': token
             },
             body: JSON.stringify(iduser)

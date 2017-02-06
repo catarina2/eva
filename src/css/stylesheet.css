@@ -204,6 +204,12 @@ footer {
     background-color: #f08143;
     height: 10vmin;
 }
+.footerfixedagenda {
+    position: fixed;
+    bottom: 0;
+    background-color: #f47828;
+    height: 10vmin;
+}
 .footerfixedperfil {
     position: fixed;
     bottom: 0;
@@ -754,6 +760,7 @@ header .btn-list {
     margin-top: 18vmin;
 }
 
+
 .btn-newlist {
     background-image: url("../../img/lista/adicionar_lista.png");
     background-color: rgba(255,255,255,0);
@@ -767,7 +774,6 @@ header .btn-list {
     bottom: 16px;
     z-index: 1;
 }
-
 .personas{
     border: 0 solid transparent;
     width: 29px !important;
@@ -1737,12 +1743,14 @@ header .btn-agend1 {
 }
 
 .btn-newagend {
-    background-image: url("../../img/agenda/adicionar.png");
+    background-image: url("../../img/agenda/Adicionar_evento.png");
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
 
     height: 66px;
     width: 66px;
+    right: 1%;
+    background-size: 65px 65px;
     position: fixed;
     bottom: 16px;
     z-index: 1;
@@ -1905,8 +1913,8 @@ float: right;
     margin-top: 13px;
 }
 
-.submitagend {
-    background-image: url("../../img/agenda/certofamilia30.png");
+.submit-agend {
+    background-image: url("../../img/agenda/certofamilia30.png") !important;
     background-color: rgba(255,255,255,0);
     background-repeat: no-repeat;
     padding: 20px 20px;

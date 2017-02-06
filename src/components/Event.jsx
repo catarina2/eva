@@ -17,7 +17,7 @@ require('react-datepicker/dist/react-datepicker.css');
 require ('react-day-picker/lib/style.css');
 require ('rc-time-picker/assets/index.css');
 
-import {DeleteEvent, EditEvent, fetchFamilyUsers, addUserToEvent, removeUserToEvent} from '../actions';
+import {DeleteEvent, updateEvents, fetchFamilyUsers, addUserToEvent, removeUserToEvent} from '../actions';
 
 
 class Event extends Component {
@@ -81,8 +81,8 @@ class Event extends Component {
         var showedit;
         if (this.state.showModalEdit) {
             var userslists = [];
-
             var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
+
             //console.log("PROPS ", this.props.usersfamily);
             //USERS
             var usersofevent = this.props.ev.users; // FALTA ID
@@ -92,6 +92,9 @@ class Event extends Component {
             var ccolor = {};
             var color = {};
             var userid = {};
+            console.log("PROPS ", this.props.ev);
+
+            if(family){
 
             var hour=ev.start_time.substring(0, 2);
             var minute=ev.start_time.substring(3, 5);
@@ -146,7 +149,9 @@ class Event extends Component {
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
-
+            }else{
+                userslists.push(<div className='displayavatares'>Convide membros para a sua familia.</div>);
+            }
         showedit = (
             <div className="modal">
                 <div className="modal-dialog">
@@ -245,7 +250,7 @@ class Event extends Component {
                                         <button type="button" className="btn btn-location"></button>
                                     </div>
                                     <div className="col-xs-10">
-                                        <h4>Adicionar Localização</h4>
+                                        <h4>Adicionar Local</h4>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -326,14 +331,14 @@ class Event extends Component {
             const form = new FormData();
             form.append('users', id);
             const {dispatch} = this.props;
-            dispatch(addUserToEvent(this.props.list.id, form, token));
+            dispatch(addUserToEvent(this.props.ev.id, form, token));
         }
         else {
             console.log("remover user da lista")
             var obj = {};
             obj['users'] = id;
             const {dispatch} = this.props;
-            dispatch(removeUserToEvent(this.props.list.id, obj, token));
+            dispatch(removeUserToEvent(this.props.ev.id, obj, token));
         }
         var xcolor = {};
         xcolor[key] = css;
@@ -389,25 +394,33 @@ class Event extends Component {
     }
     handleDelete() {
         // console.log(this.props, 'handleDelete');
+        var headerfirst = document.getElementById("headerfirst");
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");
+        var btnNewagend = document.getElementById("btn-newagend");
 
         setTimeout(() => {
+            headerfirst.classList.add("headerfirst-hide");
             header.classList.add("header-hide");
+            btnNewagend.classList.add("btn-newagend-hide");
             bodyScroll.classList.add("body-stop-scroll");
         }, 520);
         this.setState({confirmdelete: true});
     }
     confirmdelete() {
 
+        var headerfirst = document.getElementById("headerfirst");
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");
+        var btnNewagend = document.getElementById("btn-newagend");
 
+        headerfirst.classList.add("headerfirst-hide");
         header.classList.add("header-hide");
+        btnNewagend.classList.add("btn-newagend-hide");
         bodyScroll.classList.add("body-stop-scroll");
 
         const {dispatch} = this.props;
-        dispatch(DeleteEvent(this.props)); // FALTA ID
+        dispatch(DeleteEvent(this.props.ev.id)); // FALTA ID
         setTimeout(() => {this.setState({msgdelete: this.props.msgdelete})}, 500);
     }
     noconfirm() {
@@ -437,20 +450,37 @@ class Event extends Component {
     _submitEdit(event) {
         event.preventDefault();
 
+        var headerfirst = document.getElementById("headerfirst");
+        var header = document.getElementById("header");
+        var bodyScroll = document.getElementById("body");
+        var btnNewagend = document.getElementById("btn-newagend");
+
+        if(this.state.showModalEdit === false){
+            headerfirst.classList.add("headerfirst-hide");
+            header.classList.add("header-hide");
+            btnNewagend.classList.add("btn-newagend-hide");
+            bodyScroll.classList.add("body-stop-scroll");
+        }else{
+            headerfirst.className = "headerfirst";
+            header.className = "header header-agend";
+            btnNewagend.className = "btn btn-newagend";
+            bodyScroll.className = "";
+        }
+
         var users;
-        var listusers = [];
+        var eventusers = [];
 
         var color = this.state.color;
         var userid = this.state.userid;
         each(color, (color, key) => {
             if(color) {
                 users = userid[key];
-                listusers.push(users);
+                eventusers.push(users);
             }
         });
         //console.log("USERS - ", users);
         let user = [];
-        user = listusers;
+        user = eventusers;
         var FormData = require('form-data');
         const form = new FormData();
         form.append('users', user);
@@ -464,10 +494,12 @@ class Event extends Component {
             form.append('start_time', "00:00");
             form.append('end_time', "00:00");
         }
-        form.append('created_by', this.state.loggeduser);
+        var id = window.localStorage.getItem("UserLoggedId");
+        form.append('created_by', id);
         var token = window.localStorage.getItem("UserLoggedToken");
+        console.log("Form - ", form);
         const {dispatch} = this.props;
-        dispatch(EditEvent(form, token));
+        dispatch(updateEvents(this.props.ev.id, form, token));
 
         setTimeout(() => {this.setState({showModalEdit: false}, this.props.data);}, 500);
     }
