@@ -34,10 +34,12 @@ class Def extends Component {
 
     componentDidMount() {
        // console.log('componentdidMount');
+        var token = window.localStorage.getItem("UserLoggedToken");
+        var family = window.localStorage.getItem("UserLoggedFamily_id");
         const {dispatch} = this.props;
-        dispatch(fetchLists());
-        dispatch(fetchFamilyUsers(2));
-        dispatch(fetchFamily(2));
+        dispatch(fetchLists(token));
+        dispatch(fetchFamilyUsers(family, token));
+        dispatch(fetchFamily(family, token));
     }
 
     render() {
@@ -274,9 +276,21 @@ class Def extends Component {
         var coloruser;
         if(user)
         {
-            this.state.user = user[0];
-            this.state.userlogged = user[0];
-            var user = this.state.user.color.split("_");
+            console.log(user, 'USERRS')
+            var userId = window.localStorage.getItem("UserLoggedId");
+            var keyUser;
+            
+            each(user, (user, key) =>
+            {
+                console.log('each ', user.id, 'user ', userId)
+                if(user.id == userId){
+                    console.log('each if', key)
+                     keyUser = key};
+            });
+
+            console.log(keyUser, 'key do user')
+            this.state.user = user[keyUser];
+            this.state.userlogged = user[keyUser];
             var color ="losangeavatar"+" "+this.state.user.color;
             var avatar = "btn btn-avatar"+ this.state.user.avatar;
         }
@@ -481,9 +495,9 @@ class Def extends Component {
 
         console.log(this.state.user.id, obj, 'edição perfil');
 
-
+        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(editUsers(this.state.user.id, obj));
+        dispatch(editUsers(this.state.user.id, obj, token));
         setTimeout(() => {this.setState({msg: this.props.msg})}, 500);
     }
 

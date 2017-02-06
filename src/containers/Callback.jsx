@@ -13,15 +13,15 @@ class Callback extends Component {
 
     render() {
         
-        var code = document.location.search.substring(6);
-
+        var code = document.location.search.substring(5);
+        var token = '';
     // criar a chamada AJAX para obter o token, atenção aos parâmetros, novamente têm ce ser iguais aos criados no laravel
     var http = new XMLHttpRequest();
     var url = "http://develop.mmota.online/oauth/token";
     var params = "grant_type=authorization_code";
         params += '&client_id=1';
         params += '&client_secret=R4TXLVA8R028CGECmb9YZxnMqbQUpAAXQawZDgHE';
-        params += '&redirect_uri=http://localhost:3000//callback';
+        params += '&redirect_uri=http://localhost:3000/callback';
         params += '&code='+code;
 
     http.open("POST", url, true);
@@ -44,7 +44,10 @@ class Callback extends Component {
             {
                 
                 // este é o token que devemos guardar para enviar em todas as chamas daqui para a frente 
-                var token = "Bearer "+response.access_token;
+                token = "Bearer "+response.access_token;
+                console.log(token, 'token')
+                window.localStorage.setItem("UserLoggedToken", token);
+                
 
                 // exemplo de uma chamada para obter o utilizador autenticado
                 var http2 = new XMLHttpRequest();
@@ -56,23 +59,28 @@ class Callback extends Component {
                     http2.setRequestHeader('Accept', 'application/json, application/x-www-form-urlencoded');
                     http2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     http2.setRequestHeader("Authorization", token);
-                    this.state.token = token;
-                    console.log(this.state.token, 'token')
 
                     http2.onreadystatechange = function() {
                         if(http2.readyState == 4 && http2.status == 200) {
 
                             // ver na consola a informação do utilizador autenticado!
-                            console.log(http2.responseText);
+                            console.log(JSON.parse(http2.responseText));
+                            var data = JSON.parse(http2.responseText);
+                            console.log(data.data, 'data');
+                            window.localStorage.setItem("UserLoggedName", data.data.name);
+                            window.localStorage.setItem("UserLoggedId", data.data.id);
+                            window.localStorage.setItem("UserLoggedFamily_id", data.data.family_id);
                         }
                     }
                     
                     http2.send();
+                    
             }
             
         }
     }
     http.send(params);
+    var user = window.localStorage.getItem("UserLoggedName");
     
      return(
             <div>
@@ -88,6 +96,7 @@ class Callback extends Component {
                 </header>
                 <section>
                     <div className="container">
+                    <p>Olá {user}</p>
                         <div className="row">
                         <div className="col-xs-12">
                             <Link to={`lists`}>

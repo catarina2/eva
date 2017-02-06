@@ -22,8 +22,10 @@ class Familia extends Component {
 
     componentDidMount() {
         // console.log('componentdidMount');
+        var token = window.localStorage.getItem("UserLoggedToken");
+        var family = window.localStorage.getItem("UserLoggedFamily_id");
         const {dispatch} = this.props;
-        dispatch(fetchFamily(2));
+        dispatch(fetchFamily(family, token));
     }
 
     render() {
@@ -114,9 +116,9 @@ class Familia extends Component {
         form.append('family_id', 1);
         form.append('created_by', 1);
 
-
+        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(postInviteToFamily(form));
+        dispatch(postInviteToFamily(form, token));
     }
 
 

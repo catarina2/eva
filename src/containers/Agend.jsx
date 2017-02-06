@@ -73,8 +73,10 @@ class Agend extends Component{
     componentDidMount() {
         // console.log('componentdidMount');
         const {dispatch} = this.props;
-        dispatch(fetchFamilyUsers(2));
-        dispatch(fetchUserEvents(this.state.loggeduser)); // MUDAR PARA ID FAMILIA  ex: loggeduser.family_id
+        var token = window.localStorage.getItem("UserLoggedToken");
+        var family = window.localStorage.getItem("UserLoggedFamily_id");
+        dispatch(fetchFamilyUsers(family, token));
+        dispatch(fetchUserEvents(this.state.loggeduser, token)); // MUDAR PARA ID FAMILIA  ex: loggeduser.family_id
     }
 
 
@@ -632,16 +634,16 @@ class Agend extends Component{
             form.append('end_time', "00:00");
         }
         form.append('created_by', this.state.loggeduser);
-
+       var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(postevent(form));
+        dispatch(postevent(form, token));
         setTimeout(() => {this.setState({msg: this.props.msg, data:this.props.data});}, 500);
         setTimeout(() => {
             //console.log("EVENTS DATA", this.state.data);
             each(user, (user, key) => {
                 console.info("USERS - ", user, user[key]);
                 const {dispatch} = this.props;
-                dispatch(addUserToEvent(this.state.data.id, user[key]));
+                dispatch(addUserToEvent(this.state.data.id, user[key], token));
             });
         }, 500);
         setTimeout(() => {console.info("EVENTS USERS DATA", this.props.data);}, 500);

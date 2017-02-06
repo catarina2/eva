@@ -298,6 +298,7 @@ class Event extends Component {
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
 
+       var token = window.localStorage.getItem("UserLoggedToken");
         console.log("estado do user", css, id, this.props, this.props.list.id);
         if(css === true)
         {
@@ -305,14 +306,14 @@ class Event extends Component {
             const form = new FormData();
             form.append('users', id);
             const {dispatch} = this.props;
-            dispatch(addUserToEvent(this.props.list.id, form));
+            dispatch(addUserToEvent(this.props.list.id, form, token));
         }
         else {
             console.log("remover user da lista")
             var obj = {};
             obj['users'] = id;
             const {dispatch} = this.props;
-            dispatch(removeUserToEvent(this.props.list.id, obj));
+            dispatch(removeUserToEvent(this.props.list.id, obj, token));
         }
         var xcolor = {};
         xcolor[key] = css;

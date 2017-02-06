@@ -7,7 +7,7 @@ import {Link} from 'react-router';
 import { each } from 'lodash';
 
 import {fetchListUsers} from '../actions';
-import {fetchListProducts, deleteLists, editLists, postUsers, addUser, removeUser} from '../actions';
+import {fetchListProducts, deleteLists, editLists, addUser, removeUser} from '../actions';
 
 class Item extends Component {
     constructor(props) {
@@ -44,9 +44,10 @@ class Item extends Component {
 
     componentDidMount() {
         //console.log(this.props.item, 'componentDidMount');
+        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(fetchListUsers(this.props.list.id));
-        dispatch(fetchListProducts(this.props.list.id));
+        dispatch(fetchListUsers(this.props.list.id, token));
+        dispatch(fetchListProducts(this.props.list.id, token));
     }
 
     render() {
@@ -428,7 +429,7 @@ class Item extends Component {
         console.log("COLOR: ", color);
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
-      
+        var token = window.localStorage.getItem("UserLoggedToken");
         console.log("estado do user", css, id, this.props, this.props.list.id);
         if(css === true)
         {
@@ -436,14 +437,14 @@ class Item extends Component {
           const form = new FormData();
           form.append('users', id);
           const {dispatch} = this.props;
-          dispatch(addUser(this.props.list.id, form));
+          dispatch(addUser(this.props.list.id, form, token));
         }
         else {
           console.log("remover user da lista")
          var obj = {};
          obj['users'] = id;
           const {dispatch} = this.props;
-          dispatch(removeUser(this.props.list.id, obj));
+          dispatch(removeUser(this.props.list.id, obj, token));
         }
         var xcolor = {};
         xcolor[key] = css;
@@ -489,8 +490,9 @@ class Item extends Component {
         header.classList.add("header-hide");
         bodyScroll.classList.add("body-stop-scroll");
 
+        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(deleteLists(this.props.list.id));
+        dispatch(deleteLists(this.props.list.id, token));
         setTimeout(() => {this.setState({msgdelete: this.props.msgdelete})}, 500);
     }
     noconfirm() {
@@ -535,8 +537,9 @@ class Item extends Component {
          var bodyScroll = document.getElementById("body");
 
 
+         var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(editLists(this.props.list.id, obj));
+        dispatch(editLists(this.props.list.id, obj, token));
          setTimeout(() => {bodyScroll.className = ""; header.className = "header header-list";this.setState({msgedit: this.props.msgedit})}, 500);
     }
 

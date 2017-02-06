@@ -42,9 +42,11 @@ class List extends Component {
 
      componentDidMount() {
        // console.log('componentdidMount');
+       var family = window.localStorage.getItem("UserLoggedFamily_id");
+       var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(fetchLists());
-        dispatch(fetchFamilyUsers(2));
+        dispatch(fetchLists(token));
+        dispatch(fetchFamilyUsers(family, token));
     }
 
      componentWillUnMount() {
@@ -55,6 +57,8 @@ class List extends Component {
     render() {
         var showNav;
         var showmodal;
+        var user = window.localStorage.getItem("UserLoggedName");
+        console.log(user, 'listas user logado')
        if(this.state.msg === 'OK')
        {
        // console.log("ok");
@@ -460,6 +464,8 @@ class List extends Component {
         var users; //{name:this.state.family.name, color:"red"};
         var listusers = [];
         var iconc;
+        var token = window.localStorage.getItem("UserLoggedToken");
+        var userLogged = window.localStorage.getItem("UserLoggedId");
         //console.log(this.state.checked1, this.state.checked2, this.state.checked3, this.state.checked4, this.state.checked5, this.state.checked6, 'icons');
 
         var iconname = this.state.nameicon;
@@ -487,9 +493,9 @@ class List extends Component {
         form.append('name', this.refs.name.value);
         form.append('icon', iconc);
         form.append('users', user);
-        form.append('created_by', 2);
+        form.append('created_by', userLogged);
         const {dispatch} = this.props;
-        dispatch(postLists(form));
+        dispatch(postLists(form, token));
         setTimeout(() => {this.setState({msg: this.props.msg, data:this.props.data})}, 500);
 
     }

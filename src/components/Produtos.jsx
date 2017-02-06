@@ -5,7 +5,7 @@ import Produto from './Produto';
 import { each } from 'lodash';
 import {Link} from 'react-router';
 
-import {postProducts, receiveByQuerystring} from '../actions';
+import {postProducts} from '../actions';
 
 class Produtos extends Component {
     constructor(props) {
@@ -226,9 +226,9 @@ class Produtos extends Component {
         form.append('list_id', this.props.id);
         form.append('created_by', 2);
         if(this.state.imagesend) form.append('image', this.state.imagesend);
-        
+         var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(postProducts(this.props.id, form));
+        dispatch(postProducts(this.props.id, form, token));
 
         setTimeout(() => {this.setState({msg: this.props.msg})}, 500);
     }

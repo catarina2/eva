@@ -58,30 +58,42 @@ export function requestContacts() {
 
 // THUNKS
 
-export function fetchLists() {
+export function fetchLists(token) {
     //console.log('fetchLists');
     return function(dispatch) {
         dispatch(requestContacts());
-        return fetch(`http://develop.mmota.online/api/lists`)
+        return fetch(`http://develop.mmota.online/api/lists`, {
+                 headers: {
+                    'Authorization': token
+                  }
+            })
             .then(response => response.json())
             .then(json => dispatch(receiveLists(json)));
     }
 }
 
-export function fetchListUsers(id) {
+export function fetchListUsers(id, token) {
    // console.log('fetchListsUsers', id);
     return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/lists/${id}/users`)
+        return fetch(`http://develop.mmota.online/api/lists/${id}/users`, {
+            headers: {
+                    'Authorization': token
+                  }
+        })
             .then(response => response.json())
             .then(json => dispatch(receiveUsersList(id, json)));
     }
 }
 
-export function fetchListProducts(id) {
+export function fetchListProducts(id, token) {
    // console.log('fetchListsUsers', id);
     return function(dispatch) {
 
-        return fetch(`http://develop.mmota.online/api/lists/${id}/products`)
+        return fetch(`http://develop.mmota.online/api/lists/${id}/products`, {
+            headers: {
+                    'Authorization': token
+                  }
+        })
             .then(response => response.json())
             .then(json => dispatch(receiveProdutsList(id, json)));
     }
@@ -158,11 +170,14 @@ export function receivelistsdelete(id, json) {
     }
 }
 
-export function postLists(lists) {
+export function postLists(lists, token) {
     return function(dispatch) {
-    //console.info(lists, 'postLists');
+    console.info(lists, token, 'postLists');
         return fetch(`http://develop.mmota.online/api/lists`, {
                 method: "POST",
+                 headers: {
+                    'Authorization': token
+                  },
                 body: lists
             })
             .then(response => response.json())
@@ -171,13 +186,14 @@ export function postLists(lists) {
 }
 
 
-export function editLists(id, lists) {
+export function editLists(id, lists, token) {
     return function(dispatch) {
     //console.info(lists, 'postLists');
         return fetch(`http://develop.mmota.online/api/lists/${id}`, {
                 method: 'PUT',
                   headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': token
                   },
                 body: JSON.stringify(lists)
             })
@@ -186,11 +202,14 @@ export function editLists(id, lists) {
     }
 }
 
-export function deleteLists(id) {
+export function deleteLists(id, token) {
     return function(dispatch) {
     //console.info(id, 'deleteLists');
         return fetch(`http://develop.mmota.online/api/lists/${id}`, {
-                method: "DELETE"
+                method: "DELETE", 
+            headers: {
+                    'Authorization': token
+                  }
             })
             .then(response => response.json())
             .then(json => dispatch(receivelistsdelete(id, json)));
@@ -205,11 +224,14 @@ export function fetchProducts(id) {
     }
 }
 
-export function postProducts(id, product) {
+export function postProducts(id, product, token) {
     return function(dispatch) {
     //console.info(product, id, 'postProducts');
         return fetch(`http://develop.mmota.online/api/products`, {
                 method: "POST",
+                 headers: {
+                    'Authorization': token
+                  },
                 body: product
             })
             .then(response => response.json())
@@ -217,11 +239,14 @@ export function postProducts(id, product) {
     }
 }
 
-export function updateProducts(id, product) {
+export function updateProducts(id, product, token) {
     return function(dispatch) {
     console.info(product, id, 'updateProducts');
         return fetch(`http://develop.mmota.online/api/products/${id}`, {
                 method: 'POST',
+                 headers: {
+                    'Authorization': token
+                  },
                 body: product
             })
             .then(response => response.json())
@@ -229,21 +254,28 @@ export function updateProducts(id, product) {
     }
 }
 
-export function deleteProducts(id, idlist) {
+export function deleteProducts(id, idlist, token) {
     return function(dispatch) {
     //console.info(id, 'deleteProducts');
         return fetch(`http://develop.mmota.online/api/products/${id}`, {
-                method: "DELETE"
+                method: "DELETE", 
+                 headers: {
+                    'Authorization': token
+                  }
             })
             .then(response => response.json())
             .then(json => dispatch(receivedeleteproduct(idlist, id, json)));
     }
 }
 
-export function fetchFamilyUsers(id) {
+export function fetchFamilyUsers(id, token) {
     console.log('fetchListsUsers', id);
     return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/families/${id}/users`)
+        return fetch(`http://develop.mmota.online/api/families/${id}/users`, {
+             headers: {
+                    'Authorization': token
+                  }
+        })
             .then(response => response.json())
             .then(json => dispatch(receiveUsersFamily(id, json)));
     }
@@ -251,13 +283,14 @@ export function fetchFamilyUsers(id) {
 
 
 
-export function editUsers(id, lists) {
+export function editUsers(id, lists, token) {
     return function(dispatch) {
     //console.info(lists, 'postLists');
         return fetch(`http://develop.mmota.online/api/users/${id}`, {
                 method: 'PUT',
                   headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': token
                   },
                 body: JSON.stringify(lists)
             })
@@ -278,10 +311,14 @@ export function postUsers(id, users) {
     }
 }
 
-export function fetchFamily(id) {
+export function fetchFamily(id, token) {
     //console.log('fetchListsUsers', id);
     return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/families/${id}`)
+        return fetch(`http://develop.mmota.online/api/families/${id}`, {
+             headers: {
+                    'Authorization': token
+                  }
+        })
             .then(response => response.json())
             .then(json => dispatch(receiveFamily(id, json)));
     }
@@ -306,20 +343,26 @@ export function ReceiveUserEvents(id, json) {
 }
 
 
-export function fetchUserEvents(id) {
+export function fetchUserEvents(id, token) {
     //console.log('fetchListsUsers', id);
     return function(dispatch) {
-        return fetch(`http://develop.mmota.online/api/users/${id}/events`)
+        return fetch(`http://develop.mmota.online/api/users/${id}/events`, {
+             headers: {
+                    'Authorization': token
+                  }})
             .then(response => response.json())
             .then(json => dispatch(ReceiveUserEvents(id, json)));
     }
 }
 
-export function postevent(events) {
+export function postevent(events, token) {
     return function(dispatch) {
         console.info(events, 'POST EVENTS');
         return fetch(`http://develop.mmota.online/api/events`, {
             method: "POST",
+             headers: {
+                    'Authorization': token
+                  },
             body: events
         })
             .then(response => response.json())
@@ -327,24 +370,28 @@ export function postevent(events) {
     }
 }
 
-export function addUserToEvent(idEvent, iduser) {
+export function addUserToEvent(idEvent, iduser, token) {
     return function(dispatch) {
         console.info('addUserToEvent', idEvent, iduser);
         return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
             method: "POST",
+            headers: {
+                    'Authorization': token
+                  },
             body: iduser
         })
             .then(response => response.json())
     }
 }
 
-export function removeUserToEvent(idEvent, iduser) {
+export function removeUserToEvent(idEvent, iduser, token) {
     return function(dispatch) {
         //console.info('removeUserToEvent', idEvent, iduser);
         return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json', 
+                'Authorization': token
             },
             body: JSON.stringify(iduser)
         })
@@ -364,11 +411,14 @@ export function receiveInviteToFamily(json) {
 }
 
 
-export function postInviteToFamily(invite) {
+export function postInviteToFamily(invite, token) {
     return function(dispatch) {
         //console.info('POST EVENTS', invite);
         return fetch(`http://develop.mmota.online/api/invitations`, {
             method: "POST",
+             headers: {
+                    'Authorization': token
+                  },
             body: invite
         })
             .then(response => response.json())

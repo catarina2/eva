@@ -272,8 +272,9 @@ class Produto extends Component {
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");
         var show = (this.state.showEdit === false) ? true : false;
+         var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(updateProducts(this.props.item.id, form));
+        dispatch(updateProducts(this.props.item.id, form, token));
         setTimeout(() => { bodyScroll.className = ""; header.className = "header header-list"; this.setState({msge: this.props.msge});this.setState({showEdit: show});}, 520);
     }
 
@@ -292,9 +293,9 @@ class Produto extends Component {
 
         var header = document.getElementById("header");
         var bodyScroll = document.getElementById("body");
-
+        var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;
-        dispatch(deleteProducts(this.props.item.id, this.props.item.list_id));
+        dispatch(deleteProducts(this.props.item.id, this.props.item.list_id, token));
         setTimeout(() => { bodyScroll.className = ""; header.className = "header header-list";this.setState({msg: this.props.msg})}, 500);
     }
     noconfirm() {
