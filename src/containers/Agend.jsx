@@ -85,12 +85,80 @@ class Agend extends Component{
 
     render(){
 
-        console.log("VER events em PROPS: ", this.props);
+        //console.log("VER events em PROPS: ", this.props);
 
         var ev= this.props.events.events;
         this.state.ev=ev;
-        console.log("STATE ev ", ev);
+        //console.log("STATE ev ", ev);
+        const event = this.props.events.events;
+        //console.log("event: ", event);
 
+        const EventDays={};
+        const birthdays = {
+            3: [{ name: 'Mirko', age: 35 }, { name: 'Gianluca', age: 29 }],
+            8: [{ name: 'Elena', age: 21 }],
+            9: [{ name: 'Irene', age: 43 }],
+            12: [{ name: 'Paolo', age: 78 }, { name: 'Giorgia', age: 18 }],
+            18: [{ name: 'Claudia', age: 54 }],
+            22: [{ name: 'Maria', age: 9 }, { name: 'Luigi', age: 67 }],
+            25: [{ name: 'Simone', age: 31 }],
+            26: [{ name: 'Marta', age: 46 }],
+        };
+
+        var eventDate=[];
+        each(event, (event, key) => {
+            //console.log("event: ", event.event);
+            var eventdate = event.event.date;
+            eventdate=eventdate.substring(0, 2);
+            EventDays[eventdate] = [{date: event.event.date}],[{day: eventdate}];
+
+        })
+        //console.log("Event: ", EventDays, birthdays);
+        //console.log("birthdays: ", birthdays);
+
+        function renderDay(day) {
+            var EventList=[];
+
+            const date = day.getDate();
+            var month= day.getMonth()+1;
+            var year= day.getFullYear();
+            var dateEvent=date;
+            if (date.toString().length < 2) {
+                dateEvent = "0" + dateEvent;
+            }
+            if (month.toString().length < 2) {
+                month = "0" + month;
+            }
+            var fullDate= dateEvent+"/"+month+"/"+year;
+            var FullDate=String(fullDate);
+            //console.log("EventDays: ", EventDays[dateEvent]);
+            //console.log("date: ", dateEvent, "month: ", month,"year: ", year);
+            //console.log("fullDate: ", fullDate);
+
+            EventDays[dateEvent] &&
+            EventDays[dateEvent].map((EventDays, i) =>{
+                //console.log("EventDays: ", EventDays.date, "FullDate: ", FullDate);
+                if(EventDays.date===FullDate){
+                    //console.log("EventDays: ", EventDays.date, "FullDate: ", FullDate);
+                    EventList.push(<div className="EventNotification" key={ i }>
+                    </div>);
+                }});
+
+
+            return (
+                <div>
+                    { date }
+                    <div className="Events-List">
+                        {EventList}
+                    </div>
+                </div>
+            )
+        }
+
+        const MONTHS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+            'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
+            'Dezembro'];
+        const WEEKDAYS_SHORT = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
         var fullDate = this.state.month;
         var weekday = new Array(7);
                 weekday[0] =  "Domingo";
@@ -101,7 +169,9 @@ class Agend extends Component{
                 weekday[5] = "Sexta-feira";
                 weekday[6] = "Sábado";
         var n = weekday[fullDate.getDay()];
+        //console.log("Insert EVENT TAG: ", n);
         var currentDate = fullDate.getDate()+" "+n;
+        //console.log("Insert EVENT TAG: ", fullDate.getDate());
         let currentDate1=null;
         if(this.state.selectedDay!==null)
         {
@@ -120,7 +190,7 @@ class Agend extends Component{
                     {this.state.cd.map((i, key) => {
                             return (
                                 <div className="event-item">
-                                    <div className="row">
+                                    <div className="row Notification-container">
                                         <div className="col-xs-12">
                                             <li className="displayEventAvatar" key={key}>
                                                 <Event ev={i}/>
@@ -291,6 +361,7 @@ class Agend extends Component{
                                               <DatePicker
                                                   className="form-control"
                                                   placeholderText="DD-MM-YYYY"
+                                                  dateFormat="DD-MM-YYYY"
                                                   todayButton={"EVA"}
                                                   minDate={moment()}
                                                   value={this.state.startDate}
@@ -397,7 +468,7 @@ class Agend extends Component{
                 <section>
                         <div className="">
                             <div className="">
-                                <DayPicker selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) } onDayClick={ this.handleDayClick.bind(this) } />
+                                <DayPicker  renderDay={renderDay } months={ MONTHS } weekdaysShort={ WEEKDAYS_SHORT } selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) } onDayClick={ this.handleDayClick.bind(this) } />
                             </div>
                         </div>
                         <div className="container">
@@ -408,7 +479,7 @@ class Agend extends Component{
                         </div>
                         <hr className="classhr"/>
                         {show}
-                        <hr className="classhr"/>
+                        <hr className="classhr-end"/>
                         </div>
                 </section>
                 <footer>
@@ -481,18 +552,18 @@ class Agend extends Component{
         if (Day.toString().length < 2) {
             Day = "0" + Day;
         }
-        console.log("DIA ", Day);
+        //console.log("DIA ", Day);
         var currentDate = Day + "/" + twoDigitMonth + "/" + day.getFullYear();
         var ev = [];
-        console.log("VAR state.ev ", this.state.ev);
-        console.log("VAR currentDate ", currentDate);
+        //console.log("VAR state.ev ", this.state.ev);
+        //console.log("VAR currentDate ", currentDate);
 
         each(this.state.ev, (id, key) => {
-            console.log("EACH event ", id.event);
+            //console.log("EACH event ", id.event);
 
-            console.log("VAR i.date ", id.event.date);
+            //console.log("VAR i.date ", id.event.date);
             if (currentDate == id.event.date) {
-                console.info("VAR i ", id.event);
+                //console.info("VAR i ", id.event);
                 ev.push(id.event);
             }
 
@@ -592,26 +663,31 @@ class Agend extends Component{
                 listusers.push(users);
             }
         });
-        console.log("USERS - ", users);
+        //console.log("USERS - ", users);
         let user = [];
         user = listusers;
         var FormData = require('form-data');
         const form = new FormData();
         form.append('users', user);
-        form.append('date', this.state.startDate && this.state.startDate.format('MM/DD/YYYY'));
+        form.append('date', this.state.startDate && this.state.startDate.format('DD/MM/YYYY'));
         form.append('location', this.refs.location.value);
         form.append('title', this.refs.title.value);
-        form.append('start_time', this.state.initialtime && this.state.initialtime.format(str));
-        form.append('end_time', this.state.finaltime && this.state.finaltime.format(str));
+        if(this.state.checkEventHour==false) {
+            form.append('start_time', this.state.initialtime && this.state.initialtime.format(str));
+            form.append('end_time', this.state.finaltime && this.state.finaltime.format(str));
+        }else{
+            form.append('start_time', "00:00");
+            form.append('end_time', "00:00");
+        }
         form.append('created_by', this.state.loggeduser);
 
         const {dispatch} = this.props;
         dispatch(postevent(form));
         setTimeout(() => {this.setState({msg: this.props.msg, data:this.props.data});}, 500);
         setTimeout(() => {
-            console.log("EVENTS DATA", this.state.data);
+            //console.log("EVENTS DATA", this.state.data);
             each(user, (user, key) => {
-
+                console.info("USERS - ", user, user[key]);
                 const {dispatch} = this.props;
                 dispatch(addUserToEvent(this.state.data.id, user[key]));
 

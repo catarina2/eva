@@ -15,12 +15,12 @@ const initState = {
 const events = (state = initState, action) => {
     switch (action.type) {
         case types.RECEIVE_USER_EVENTS:
-            console.info('reducer RECEIVE_USER_EVENTS', state, action);
+            //console.info('reducer RECEIVE_USER_EVENTS', state, action);
             return Object.assign({}, state, {
                 events: action.userevents.data
             });
         case types.REQUEST_EVENTS:
-            console.info('reducer REQUEST_EVENTS', state, action);
+            //console.info('reducer REQUEST_EVENTS', state, action);
             var x = {};
             var temp;
             if(action.events.msg === 'NOK')

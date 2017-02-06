@@ -340,7 +340,7 @@ export function addUserToEvent(idEvent, iduser) {
 
 export function removeUserToEvent(idEvent, iduser) {
     return function(dispatch) {
-        console.info('removeUserToEvent', idEvent, iduser);
+        //console.info('removeUserToEvent', idEvent, iduser);
         return fetch(`http://develop.mmota.online/api/lists/${idEvent}/users`, {
             method: "DELETE",
             headers: {
@@ -356,7 +356,7 @@ export function removeUserToEvent(idEvent, iduser) {
 // ---------------------   Familia
 
 export function receiveInviteToFamily(json) {
-    console.info('action receive events: ', json);
+    //console.info('action receive events: ', json);
     return {
         type: types.RECEIVE_INVITE_TO_FAMILY,
         invite: json
@@ -366,7 +366,7 @@ export function receiveInviteToFamily(json) {
 
 export function postInviteToFamily(invite) {
     return function(dispatch) {
-        console.info('POST EVENTS', invite);
+        //console.info('POST EVENTS', invite);
         return fetch(`http://develop.mmota.online/api/invitations`, {
             method: "POST",
             body: invite
@@ -378,7 +378,7 @@ export function postInviteToFamily(invite) {
 
 export function postRegistar(user) {
     return function(dispatch) {
-        console.info(user, 'POST Registos');
+        //console.info(user, 'POST Registos');
         return fetch(`http://develop.mmota.online/api/users`, {
             method: "POST",
             body: user

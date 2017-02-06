@@ -11,20 +11,24 @@ class Event extends Component {
     }
 
     render() {
-        console.log("PROPS EVENT ",this.props.ev);
+        //console.log("PROPS EVENT ",this.props.ev);
             var ev = this.props.ev;
             var persona = [];
-
+            var time="";
             ev.users.map((i, key) => {
 
                 var classNameLosangle ={};
                 var className = {};
                 var avatar = "btn-smallEventavatar"+i.avatar+" "+i.color;
-
+                if(ev.start_time==ev.end_time && ev.start_time=="00:00"){
+                    time="Todo o dia"
+                }else{
+                    time= ev.start_time+"-"+ev.end_time;
+                }
                 classNameLosangle[i]="losangeUserEvent"+" "+i.color;
 
                 className[i]="btn btn-persona"+i.color+"small";
-                console.info("ICON CLASSNAME: ", className[i])
+                //console.info("ICON CLASSNAME: ", className[i])
                 persona.push(<div className={classNameLosangle[i]}> <div className="Userevent"> <button ref="photo" className={avatar}></button></div></div>);
 
             });
@@ -32,7 +36,7 @@ class Event extends Component {
                
         return (
             <div>
-               {ev.start_time}-{ev.end_time} {persona} {ev.title} - {ev.location}
+               {time} {persona} {ev.title} - {ev.location}
             </div>
         );
     }

@@ -31,14 +31,14 @@ const users = (state = initState, action) => {
             var temp = {};
             temp[user] = action.users.data;
             temp = Object.assign(state.users, temp);
-            console.log(temp);
+            //console.log(temp);
             return Object.assign({}, state, {
                 userslist: temp, 
                 msg: action.users.msg
             });
 
         case types.RECEIVE_USERS_BY_FAMILY:
-        console.info('reducer RECEIVE_USERS_BY_FAMILY', state, action);
+        //console.info('reducer RECEIVE_USERS_BY_FAMILY', state, action);
         return Object.assign({}, state, {
                 users: action.users.data
             });

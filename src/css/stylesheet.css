@@ -211,7 +211,7 @@ section {
    position: relative;
     top: 25vmin;
     width: 100%;
-    margin-bottom: 25%;
+    margin-bottom: 30%;
     z-index: 1;
 }
 .display-icons{
@@ -1437,7 +1437,7 @@ background-size: 13px 13px;
     background-repeat: no-repeat;
     padding: 20px 20px;
     height: 0px;
-    background-size: 17px 17px;
+    background-size: 15px 15px;
     border: none;
 }
 
@@ -1447,7 +1447,7 @@ background-size: 13px 13px;
     background-repeat: no-repeat;
     padding: 20px 20px;
     height: 0px;
-    background-size: 17px 17px;
+    background-size: 15px 15px;
     border: none;
 }
 
@@ -1457,7 +1457,7 @@ background-size: 13px 13px;
     background-repeat: no-repeat;
     padding: 20px 20px;
     height: 0px;
-    background-size: 17px 17px;
+    background-size: 15px 15px;
     border: none;
 }
 
@@ -1467,7 +1467,7 @@ background-size: 13px 13px;
     background-repeat: no-repeat;
     padding: 20px 20px;
     height: 0px;
-    background-size: 17px 17px;
+    background-size: 15px 15px;
     border: none;
 }
 
@@ -1477,7 +1477,7 @@ background-size: 13px 13px;
     background-repeat: no-repeat;
     padding: 20px 20px;
     height: 0px;
-    background-size: 17px 17px;
+    background-size: 15px 15px;
     border: none;
 }
 
@@ -1487,7 +1487,7 @@ background-size: 13px 13px;
     background-repeat: no-repeat;
     padding: 20px 20px;
     height: 0px;
-    background-size: 17px 17px;
+    background-size: 15px 15px;
     border: none;
 }
 .btn-avatar1 {
@@ -1770,7 +1770,23 @@ header .btn-agend1 {
     margin-top: 25px;
     font-size: 20px;
 }
-
+.Events-List{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    display: inline-block;
+}
+.EventNotification{
+float: right;
+    width: 5px;
+    height: 5px;
+    border-radius: 4px;
+    background-color:#cc5027;
+}
+.Notification-container{
+    background-color: bisque;
+    padding: 5px;
+}
 .DayPicker-NavButton {
     width: 3.5vmin;
     height: 6.5vmin;
@@ -1792,11 +1808,16 @@ header .btn-agend1 {
     margin-top: 2px;
     border-top: 2px solid #f47828;
 }
+.classhr-end{
+    margin-top: 12px;
+    margin-bottom: 2px;
+    border-top: 2px solid #f47828;
+}
 .list-group-agend {
     padding-left: 20px;
 }
 .event-item{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .event-item .row  .col-xs-12{
     padding-left: 0;
@@ -2299,19 +2320,19 @@ header .btn-perfil {
 .losangeUserEvent, .Userevent div {
     transform-origin: 45% 50%;
     overflow: hidden;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 4px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .losangeUserEvent {
     transform: rotate(45deg) translateY(-1px) translateX(1px);
 }
 .losangeUserEvent .Userevent {
-    width: 20px;
-    height: 20px;
-    transform: rotate(-45deg) translateY(10%) translateX(8%);
+    width: 15px;
+    height: 15px;
+    transform: rotate(-45deg) translateY(8%) translateX(-3%);
 }
 .losangeUserEvent .Userevent img {
     width: 20%;
