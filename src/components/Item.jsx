@@ -115,62 +115,62 @@ class Item extends Component {
         //console.log(this.state.showModalEdit);
 
         if (this.state.showModalEdit) {
-             var userslists=[];
-            
-            var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
-            //console.log(family, 'usersfamily');
-            //USERS
-            var usersoflist = this.props.users[list.id]; 
-           // console.log(usersoflist);
-            var usercolor = {};
-             var className = {};
-             var colorstate = {};
-             var ccolor = {};
-             var color = {};
-             var userid = {};
-             each(family, (user, key) => {
-                 console.log("USER ", user);
-                var userxx = user.avatar;
-                each(usersoflist, (u, keyu) => {
-                    console.log("USERFLIST ", u);
-                  if(u.name === user.name){
-                     
-                      ccolor[key] = "losangecolor"+" "+"g"+user.color;
-                      console.log(ccolor[key], key);
-                      color[key] = true;
-                      return false;
-                  }
-                  else{
-                      ccolor[key] = "losangecolor"+" "+user.color;
-                      console.log(ccolor[key], key);
-                      color[key] = false;
-                  }
-                });
-                var avatar = "btn-smallavatar"+ userxx;
-                userid[key] = user.id;
-                if(this.state.ccolor === null)
-                {
-                  className[key] = ccolor[key];
-                }
-                else{
-                   className = this.state.ccolor;
-                }
+                var userslists=[];
 
-                if(this.state.color === null)
-                {
-                  colorstate = color;
-                }
-                else {
-                  colorstate = this.state.color;
-                }
-               userslists.push(<div key ={key} className='displayavatares'>
-                                <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color, user.id)}>
-                                   <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
-                              </div>);
-            });
-            this.state.ccolor = className;
-            this.state.color = colorstate;
-            this.state.userid = userid;
+                var family = this.props.usersfamily;   //users da familia da pessoa loga alterar quando tiver login
+                //console.log(family, 'usersfamily');
+                //USERS
+                var usersoflist = this.props.users[list.id];
+                // console.log(usersoflist);
+                var usercolor = {};
+                var className = {};
+                var colorstate = {};
+                var ccolor = {};
+                var color = {};
+                var userid = {};
+                each(family, (user, key) => {
+                    console.log("USER ", user);
+                    var userxx = user.avatar;
+                    each(usersoflist, (u, keyu) => {
+                        console.log("USERFLIST ", u);
+                        if(u.name === user.name){
+
+                            ccolor[key] = "losangecolor"+" "+"g"+user.color;
+                            console.log(ccolor[key], key);
+                            color[key] = true;
+                            return false;
+                        }
+                        else{
+                            ccolor[key] = "losangecolor"+" "+user.color;
+                            console.log(ccolor[key], key);
+                            color[key] = false;
+                        }
+                    });
+                    var avatar = "btn-smallavatar"+ userxx;
+                    userid[key] = user.id;
+                    if(this.state.ccolor === null)
+                    {
+                        className[key] = ccolor[key];
+                    }
+                    else{
+                        className = this.state.ccolor;
+                    }
+
+                    if(this.state.color === null)
+                    {
+                        colorstate = color;
+                    }
+                    else {
+                        colorstate = this.state.color;
+                    }
+                    userslists.push(<div key ={key} className='displayavatares'>
+                        <div className="cc-selectorperfil" onClick={this.handleclickuser.bind(this, key, user.color, user.id)}>
+                            <div className={className[key]}> <div className="loscolor"> <button ref="photo" className={avatar}></button></div></div> </div>
+                    </div>);
+                });
+                this.state.ccolor = className;
+                this.state.color = colorstate;
+                this.state.userid = userid;
             //console.log(this.state.ccolor, this.state.color);
             //final USERS
             //ICONS

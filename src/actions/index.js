@@ -40,7 +40,7 @@ export function receiveProdutsList(id, json) {
 }
 
 export function receiveUsersFamily(id, json) {
-    //console.info('action receiveUsersFamily',id, json);
+    console.info('action receiveUsersFamily',id, json);
     return {
         type: types.RECEIVE_USERS_BY_FAMILY,
         users: json, 
@@ -241,7 +241,7 @@ export function deleteProducts(id, idlist) {
 }
 
 export function fetchFamilyUsers(id) {
-    //console.log('fetchListsUsers', id);
+    console.log('fetchListsUsers', id);
     return function(dispatch) {
         return fetch(`http://develop.mmota.online/api/families/${id}/users`)
             .then(response => response.json())

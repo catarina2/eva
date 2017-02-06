@@ -7,7 +7,7 @@ import Event from '../components/Event';
 import { each } from 'lodash';
 
 
-import {postevent, fetchUserEvents, fetchFamilyUsers, addUserToEvent, removeUserToEvent} from '../actions';
+import {postevent, fetchUserEvents, fetchFamilyUsers, addUserToEvent} from '../actions';
 
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
@@ -28,10 +28,6 @@ class Agend extends Component{
         this.handleDayClick  = this.handleDayClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleModal = this.handleModal.bind(this);
-        this.handleiconclicku1 = this.handleiconclicku1.bind(this);
-        this.handleiconclicku2 = this.handleiconclicku2.bind(this);
-        this.handleiconclicku3 = this.handleiconclicku3.bind(this);
-        this.handleiconclicku4 = this.handleiconclicku4.bind(this);
         this._submit = this._submit.bind(this);
          this.handleChange = this.handleChange.bind(this);
          this.onChange= this.onChange.bind(this);
@@ -69,7 +65,6 @@ class Agend extends Component{
             startDate: moment(),
             initialtime: moment(),
              finaltime: moment(),
-            family: {name:"martinho", users: [{name: "marta", color: "blue"}, {name: "catarina", color: "green"}, {name: "diogo", color: "pink"}, {name: "martinho", color:"red"}]},
             ev: []
            }
 
@@ -94,27 +89,15 @@ class Agend extends Component{
         //console.log("event: ", event);
 
         const EventDays={};
-        const birthdays = {
-            3: [{ name: 'Mirko', age: 35 }, { name: 'Gianluca', age: 29 }],
-            8: [{ name: 'Elena', age: 21 }],
-            9: [{ name: 'Irene', age: 43 }],
-            12: [{ name: 'Paolo', age: 78 }, { name: 'Giorgia', age: 18 }],
-            18: [{ name: 'Claudia', age: 54 }],
-            22: [{ name: 'Maria', age: 9 }, { name: 'Luigi', age: 67 }],
-            25: [{ name: 'Simone', age: 31 }],
-            26: [{ name: 'Marta', age: 46 }],
-        };
 
         var eventDate=[];
         each(event, (event, key) => {
-            //console.log("event: ", event.event);
             var eventdate = event.event.date;
             eventdate=eventdate.substring(0, 2);
             EventDays[eventdate] = [{date: event.event.date}],[{day: eventdate}];
 
         })
-        //console.log("Event: ", EventDays, birthdays);
-        //console.log("birthdays: ", birthdays);
+
 
         function renderDay(day) {
             var EventList=[];
@@ -131,15 +114,10 @@ class Agend extends Component{
             }
             var fullDate= dateEvent+"/"+month+"/"+year;
             var FullDate=String(fullDate);
-            //console.log("EventDays: ", EventDays[dateEvent]);
-            //console.log("date: ", dateEvent, "month: ", month,"year: ", year);
-            //console.log("fullDate: ", fullDate);
 
             EventDays[dateEvent] &&
             EventDays[dateEvent].map((EventDays, i) =>{
-                //console.log("EventDays: ", EventDays.date, "FullDate: ", FullDate);
                 if(EventDays.date===FullDate){
-                    //console.log("EventDays: ", EventDays.date, "FullDate: ", FullDate);
                     EventList.push(<div className="EventNotification" key={ i }>
                     </div>);
                 }});
@@ -169,9 +147,7 @@ class Agend extends Component{
                 weekday[5] = "Sexta-feira";
                 weekday[6] = "Sábado";
         var n = weekday[fullDate.getDay()];
-        //console.log("Insert EVENT TAG: ", n);
         var currentDate = fullDate.getDate()+" "+n;
-        //console.log("Insert EVENT TAG: ", fullDate.getDate());
         let currentDate1=null;
         if(this.state.selectedDay!==null)
         {
@@ -345,7 +321,7 @@ class Agend extends Component{
                                       </div>
                                       <div className="row">
                                           <div className="col-xs-12">
-                                              <input type="text" className="form-control" ref="title" name="name" />
+                                              <input type="text" className="form-control" maxLength="20" ref="title" name="name" />
                                           </div>
                                       </div>
                                       <div className="row">
@@ -456,7 +432,7 @@ class Agend extends Component{
                        <div className="title">eva</div>
                     </div>
                 </header></Link>
-                <header className="header header-agend">
+                <header id="header"  className="header header-agend">
                     <div className="container">
                     <div className="menu-title font-large"><b>Agenda </b>Familiar</div>
                         {showNav}
@@ -625,30 +601,6 @@ class Agend extends Component{
 
         this.setState({color:tempcolor, ccolor: temp});
     }
-
-    handleiconclicku1(event) {
-        event.preventDefault();
-        var css = (this.state.checkedu1 === false) ? true : false;
-        this.setState({checkedu1:css});
-    }
-
-    handleiconclicku2(event) {
-        event.preventDefault();
-        var css = (this.state.checkedu2 === false) ? true : false;
-        this.setState({checkedu2:css});
-    }
-
-    handleiconclicku3(event) {
-        event.preventDefault();
-        var css = (this.state.checkedu3 === false) ? true : false;
-        this.setState({checkedu3:css});
-    }
-
-    handleiconclicku4(event) {
-        event.preventDefault();
-        var css = (this.state.checkedu4 === false) ? true : false;
-        this.setState({checkedu4:css});
-    }
     _submit(event) {
         event.preventDefault();
 
@@ -690,7 +642,6 @@ class Agend extends Component{
                 console.info("USERS - ", user, user[key]);
                 const {dispatch} = this.props;
                 dispatch(addUserToEvent(this.state.data.id, user[key]));
-
             });
         }, 500);
         setTimeout(() => {console.info("EVENTS USERS DATA", this.props.data);}, 500);

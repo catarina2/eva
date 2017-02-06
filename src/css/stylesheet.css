@@ -222,8 +222,31 @@ section {
 .display {
     display: inline-flex;
 }
+.row.Notification-container .col-xs-12{
+    padding-right: 0 !important;
+}
 .displayEventAvatar{
+
+}
+.Event-container{
+    width: 100%;
     display: inline-block;
+}
+.Event-item{
+display: inline-block;
+    width: 85%;
+}
+.Event-items{
+    padding-top: 5px;
+}
+.edit-Eventcontainer{
+    float: right;
+}
+.btn-deleteEvent{
+    vertical-align: middle;
+    display: block;
+    margin: 0 auto;
+    background-color: bisque !important;
 }
 .displayavatares {
     display: flex;
