@@ -31,7 +31,6 @@ class Familia extends Component {
     render() {
         //console.log('Definições de perfil');
 
-            console.log('Definições de perfil');
             var showedit;
             showedit = (
                 <div className="modal">
@@ -80,7 +79,6 @@ class Familia extends Component {
             );
 
         var user = this.props.users;
-        console.log(user);
         var coloruser;
         if(user)
         {
@@ -125,8 +123,8 @@ class Familia extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.info('container DEF mapStateToProps', state, ownProps );
-    console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
+    //console.info('container DEF mapStateToProps', state, ownProps );
+    //console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
     return {family:state.userslist.family};
 }
 

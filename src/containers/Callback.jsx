@@ -12,6 +12,7 @@ class Callback extends Component {
 
         this.state = {
           token: null,
+          name:null
         }
     }
 
@@ -39,7 +40,7 @@ class Callback extends Component {
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
             
-            console.log(http.responseText)
+            //console.log(http.responseText)
 
             // obtem o objeto retornado e transforma-o num JSON válido.
             var response = JSON.parse(http.responseText);
@@ -49,7 +50,7 @@ class Callback extends Component {
                 
                 // este é o token que devemos guardar para enviar em todas as chamas daqui para a frente 
                 token = "Bearer "+response.access_token;
-                console.log(token, 'token')
+                //console.log(token, 'token')
                 window.localStorage.setItem("UserLoggedToken", token);
                 
 
@@ -68,9 +69,9 @@ class Callback extends Component {
                         if(http2.readyState == 4 && http2.status == 200) {
 
                             // ver na consola a informação do utilizador autenticado!
-                            console.log(JSON.parse(http2.responseText));
+                           // console.log(JSON.parse(http2.responseText));
                             var data = JSON.parse(http2.responseText);
-                            console.log(data.data, 'data');
+                            //console.log(data.data, 'data');
                             window.localStorage.setItem("UserLoggedName", data.data.name);
                             window.localStorage.setItem("UserLoggedId", data.data.id);
                             window.localStorage.setItem("UserLoggedFamily_id", data.data.family_id);
@@ -85,7 +86,8 @@ class Callback extends Component {
     }
     http.send(params);
     var user = window.localStorage.getItem("UserLoggedName");
-        console.log("USER ", user);
+        //console.log("USER ", user);
+        this.state.name = user;
     
      return(
             <div>
@@ -103,7 +105,7 @@ class Callback extends Component {
                 </header>
                 <section>
                     <div className="container">
-                    <p className="userLogged">Olá {user}</p>
+                    <p className="userLogged">Olá {this.state.name}</p>
                         <div className="row">
                         <div className="col-xs-12">
                             <Link to={`lists`}>
@@ -154,7 +156,6 @@ class Callback extends Component {
 
     handleLogout(event) {
        event.preventDefault();
-       console.log('logoutlallaalla');
        window.localStorage.clear();
        window.location = "http://develop.mmota.online/logout" ;
        

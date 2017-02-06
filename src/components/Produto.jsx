@@ -27,11 +27,9 @@ class Produto extends Component {
     }
 
     render() {
-        console.log(this.props.item, this.state.imagesend, this.state, 'produto id');
         var item = this.props.item;
         var panel, cheched, line = null;
         if(item.image) this.state.imagesend= item.image;
-        console.log(this.state.imagesend, 'imagem do produto');
        //console.log(this.props.msg, 'mensagem apagada com sucesso');
         if(this.state.msg === 'OK') {
 
@@ -157,7 +155,6 @@ class Produto extends Component {
          if(this.state.showEdit)
         {
                  var img;
-                 console.log(this.state.imagesend, 'imagem enviada')
                     if(this.state.imagesend)
                     {img =(<div className="losange">
                              <div className="los1">        
@@ -346,11 +343,9 @@ class Produto extends Component {
        // console.log('change photo');
           var input = document.querySelector('input[type="file"]');
           var images = input.files[0];
-          console.log(input, images, 'onchange')
 
           var reader = new FileReader();
           var url = reader.readAsDataURL(images);
-          console.log(reader);
           reader.onloadend = function (e) {
           //  console.log('estou aqui');
               this.setState({
@@ -366,7 +361,6 @@ Produto.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-   console.log('container produto mapStateToProps', state, ownProps.item.id);
  //  console.log(state.productslist.productslist[ownProps.item.id]);
  // console.log('produto', state);
     return {msg: state.productslist.msgdelete, msge: state.productslist.msgedit};

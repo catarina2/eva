@@ -57,7 +57,7 @@ class Event extends Component {
 
     }
     render() {
-        console.log("PROPS EVENT ",this.props.ev, "date ", this.props.ev.date);
+        //console.log("PROPS EVENT ",this.props.ev, "date ", this.props.ev.date);
             var ev = this.props.ev;
             var persona = [];
             var time="";
@@ -92,18 +92,15 @@ class Event extends Component {
             var ccolor = {};
             var color = {};
             var userid = {};
-            console.log("PROPS ", this.props.ev);
 
             if(family){
 
             var hour=ev.start_time.substring(0, 2);
             var minute=ev.start_time.substring(3, 5);
             var startTime=moment().hour(hour).minute(minute);
-            console.log("startTime ",startTime, "hour ",hour,"minute ",minute);
                 hour=ev.end_time.substring(0, 2);
                 minute=ev.end_time.substring(3, 5);
             var endTime=moment().hour(hour).minute(minute);
-            console.log("endTime ", endTime,"hour ",hour,"minute ",minute);
 
             each(family, (user, key) => {
                 //console.info("Each Family ");
@@ -334,7 +331,6 @@ class Event extends Component {
             dispatch(addUserToEvent(this.props.ev.id, form, token));
         }
         else {
-            console.log("remover user da lista")
             var obj = {};
             obj['users'] = id;
             const {dispatch} = this.props;
@@ -372,24 +368,19 @@ class Event extends Component {
 
     }
     onChange(value) {
-        console.log(value && value.format(str));
         this.setState({
             initialtime: value
         });
     }
     onChange2(value) {
-        console.log(value && value.format(str));
         this.setState({
             finaltime: value
         });
     }
     handleChange(date) {
-
-        console.log(date);
         this.setState({
             startDate: date
         });
-        console.log(this.state.startDate);
 
     }
     handleDelete() {
@@ -497,7 +488,6 @@ class Event extends Component {
         var id = window.localStorage.getItem("UserLoggedId");
         form.append('created_by', id);
         var token = window.localStorage.getItem("UserLoggedToken");
-        console.log("Form - ", form);
         const {dispatch} = this.props;
         dispatch(updateEvents(this.props.ev.id, form, token));
 

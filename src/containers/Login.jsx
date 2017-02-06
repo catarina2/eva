@@ -49,7 +49,7 @@ Login.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-     console.info('container Login mapStateToProps', state, ownProps);
+     //console.info('container Login mapStateToProps', state, ownProps);
     return state.lists;
 }
 

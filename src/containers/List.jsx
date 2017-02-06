@@ -59,7 +59,6 @@ class List extends Component {
         var showNav;
         var showmodal;
         var user = window.localStorage.getItem("UserLoggedName");
-        console.log(user, 'listas user logado')
        if(this.state.msg === 'OK')
        {
        // console.log("ok");
@@ -162,7 +161,6 @@ class List extends Component {
           //USERS
             var userslists=[];
             var family = this.props.usersfamily;
-            console.log(family, 'tamanho usersfamily');
 
           //foreach para os users de uma familia
              var usercolor;
@@ -378,7 +376,6 @@ class List extends Component {
     handleclickuser(key, color, event) {
        event.preventDefault();
 
-        console.log(this.state.color, key, this.state.ccolor, 'lalalalalall')
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
       
@@ -392,7 +389,6 @@ class List extends Component {
         var temp = Object.assign(this.state.ccolor, x);
 
         this.setState({color:tempcolor, ccolor: temp});
-        console.log(this.state.color, key, this.state.ccolor, 'lalalalalallsdfdsfg')
     }
 
     handleclickicon(key, name, event){
@@ -511,7 +507,7 @@ class List extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.info('container List mapStateToProps', state, ownProps);
+    //console.info('container List mapStateToProps', state, ownProps);
     //console.log(state.lists.dataadd, 'fgdfxgsdfgdgf users');
     return {lists: state.lists, usersfamily: state.userslist.users, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.userslist};
 }

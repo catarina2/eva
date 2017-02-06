@@ -130,20 +130,16 @@ class Item extends Component {
                 var color = {};
                 var userid = {};
                 each(family, (user, key) => {
-                    console.log("USER ", user);
                     var userxx = user.avatar;
                     each(usersoflist, (u, keyu) => {
-                        console.log("USERFLIST ", u);
                         if(u.name === user.name){
 
                             ccolor[key] = "losangecolor"+" "+"g"+user.color;
-                            console.log(ccolor[key], key);
                             color[key] = true;
                             return false;
                         }
                         else{
                             ccolor[key] = "losangecolor"+" "+user.color;
-                            console.log(ccolor[key], key);
                             color[key] = false;
                         }
                     });
@@ -383,7 +379,6 @@ class Item extends Component {
 
     handleclickicon(key, name, event){
       event.preventDefault();
-      console.log(key, name, 'handleclickicon');
 
        var css = (this.state.nameicon[key] === "unchecked") ? "checked" : "unchecked";
 
@@ -425,12 +420,9 @@ class Item extends Component {
 
      handleclickuser(key, color, id, event) {
        event.preventDefault();
-
-        console.log("COLOR: ", color);
         var css = (this.state.color[key] === false) ? true : false;
         var usercolor = (this.state.ccolor[key] === "losangecolor"+" "+color) ? "losangecolor"+" "+'g'+color : "losangecolor"+" "+color;
         var token = window.localStorage.getItem("UserLoggedToken");
-        console.log("estado do user", css, id, this.props, this.props.list.id);
         if(css === true)
         {
           var FormData = require('form-data');
@@ -440,7 +432,6 @@ class Item extends Component {
           dispatch(addUser(this.props.list.id, form, token));
         }
         else {
-          console.log("remover user da lista")
          var obj = {};
          obj['users'] = id;
           const {dispatch} = this.props;

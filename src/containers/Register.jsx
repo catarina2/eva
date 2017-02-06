@@ -37,7 +37,6 @@ class Register extends Component {
    
     render() {
 
-        console.log(this.state.msg)
         if(this.state.msg === 'NOK')
         {
 
@@ -56,9 +55,7 @@ class Register extends Component {
         var family;
         if(this.state.msg === "Create a family")
         {
-            console.log(this.state.data, 'data do user que se registou')
             this.state.userlogged = this.state.data.id;
-            console.log(this.state.userlogged, 'user registado');
              family = (
                <div className="modal">
                     <div className="modal-dialog">
@@ -318,7 +315,6 @@ class Register extends Component {
 
     _submitFamily(event) {
         event.preventDefault();
-        console.log(this.state.userlogged)
         var FormData = require('form-data');
         const form = new FormData();
         form.append('name', this.refs.name.value);
@@ -331,7 +327,6 @@ class Register extends Component {
 
      _submit(event) {
         event.preventDefault();
-        console.log(this.props)
         var color = this.state.color;
         var coloruser;
         each(color, (color, key) => {
@@ -372,7 +367,7 @@ Register.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-     console.info('container Register mapStateToProps', state, ownProps);
+     //console.info('container Register mapStateToProps', state, ownProps);
      return {usersfamily: state.userslist.users, msg: state.userslist.msg, data: state.userslist.data};
 
 }

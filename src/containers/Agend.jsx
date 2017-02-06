@@ -266,9 +266,7 @@ class Agend extends Component{
 
             if(family){
 
-            console.log(family, 0)
             each(family, (user, key) => {
-                console.log(user, 'user')
                 var userxx = user.avatar;
                 var colorxx ="losangecolor"+" "+user.color;
                 //console.log("COLORXX", user);
@@ -501,24 +499,19 @@ class Agend extends Component{
 
     }
     onChange(value) {
-        console.log(value && value.format(str));
         this.setState({
             initialtime: value
         });
     }
     onChange2(value) {
-        console.log(value && value.format(str));
         this.setState({
             finaltime: value
         });
     }
     handleChange(date) {
-
-        console.log(date);
     this.setState({
         startDate: date
     });
-        console.log(this.state.startDate);
 
     }
 
@@ -614,7 +607,6 @@ class Agend extends Component{
 
         var color = this.state.color;
         var userid = this.state.userid;
-        console.log("color - ", color);
         if(color !=null){
             each(color, (color, key) => {
                 if(color) {
@@ -629,7 +621,6 @@ class Agend extends Component{
             listusers.push(users);
         }
 
-        console.log("USERS - ", users);
         let user = [];
         user = listusers;
         var FormData = require('form-data');
@@ -654,7 +645,6 @@ class Agend extends Component{
         setTimeout(() => {
             //console.log("EVENTS DATA", this.state.data);
             each(user, (user, key) => {
-                console.info("USERS - ", user, user[key]);
                 const {dispatch} = this.props;
                 dispatch(addUserToEvent(this.state.data.id, user[key], token));
             });

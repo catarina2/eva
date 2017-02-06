@@ -34,11 +34,9 @@ class Produtos extends Component {
         var produtos;
         if(this.state.msgd === 'OK')
         {
-            console.log(this.props, 'podutos quando eliminamos');
             produtos  = this.props.produtos.productslist[this.props.id].data;
         }
         else {
-            console.log(this.props, 'podutos normal');
             produtos  = this.props.produtos.productslist[this.props.id].data;
         }
         
@@ -54,7 +52,6 @@ class Produtos extends Component {
         }
         if(this.state.msg === 'NOK')
        {
-         console.log(this.props, 'se não esta ok');
           if(this.props.data.length === 1) {
                if(this.props.data[0].indexOf("quant") === -1){
                 this.state.name = this.props.data[0];

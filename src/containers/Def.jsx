@@ -39,7 +39,6 @@ class Def extends Component {
         var id = window.localStorage.getItem("UserLoggedId");
         const {dispatch} = this.props;
         dispatch(fetchUserLists(id, token));
-        console.log(family, 'familia');
         dispatch(fetchFamilyUsers(family, token));
         dispatch(fetchFamily(family, token));
     }
@@ -64,7 +63,6 @@ class Def extends Component {
                   var color = this.state.color;
                 //  console.log(color, 'cor dos users')
                   var userlogged = (this.state.userlogged === "undefined") ? "undefined" : this.state.userlogged;
-                  console.log(userlogged, 'userlogado');
                   var x;
                   each(color, (colorxx, key) => {
                     if(userlogged.color === colorxx.color) { 
@@ -278,19 +276,15 @@ class Def extends Component {
         var coloruser;
         if(user)
         {
-            console.log(user, 'USERRS')
             var userId = window.localStorage.getItem("UserLoggedId");
             var keyUser;
             
             each(user, (user, key) =>
             {
-                console.log('each ', user.id, 'user ', userId)
                 if(user.id == userId){
-                    console.log('each if', key)
                      keyUser = key};
             });
 
-            console.log(keyUser, 'key do user')
             this.state.user = user[keyUser];
             this.state.userlogged = user[keyUser];
             var color ="losangeavatar"+" "+this.state.user.color;
@@ -495,7 +489,6 @@ class Def extends Component {
         obj['family_id'] = this.state.user.family_id;
         obj['password'] = 'xpto';
 
-        console.log(this.state.user.id, obj, 'edição perfil');
 
         var token = window.localStorage.getItem("UserLoggedToken");
         const {dispatch} = this.props;

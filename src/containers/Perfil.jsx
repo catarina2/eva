@@ -18,7 +18,7 @@ class Perfil extends Component {
     }
 
     render() {
-       console.log(this.state.perfil);
+       //console.log(this.state.perfil);
         var showNav;
         if(this.state.showHideSidenav === 'hidden')
         {
