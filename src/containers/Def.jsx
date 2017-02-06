@@ -6,7 +6,7 @@ import {Link} from 'react-router';
 import { each } from 'lodash';
 
 
-import {fetchLists, fetchFamilyUsers, fetchFamily, editUsers} from '../actions';
+import {fetchUserLists, fetchFamilyUsers, fetchFamily, editUsers} from '../actions';
 
 class Def extends Component {
     
@@ -36,8 +36,9 @@ class Def extends Component {
        // console.log('componentdidMount');
         var token = window.localStorage.getItem("UserLoggedToken");
         var family = window.localStorage.getItem("UserLoggedFamily_id");
+        var id = window.localStorage.getItem("UserLoggedId");
         const {dispatch} = this.props;
-        dispatch(fetchLists(token));
+        dispatch(fetchUserLists(id, token));
         console.log(family, 'familia');
         dispatch(fetchFamilyUsers(family, token));
         dispatch(fetchFamily(family, token));
@@ -298,7 +299,7 @@ class Def extends Component {
 
         return (
              <div>
-                 <Link to={`/`}><header className="headerfirst ">
+                 <Link to={`/callback`}><header className="headerfirst ">
                    <div className="container">
                        <div className="title">eva</div>
                     </div>
@@ -508,7 +509,7 @@ class Def extends Component {
 const mapStateToProps = (state, ownProps) => {
     //console.info('container DEF mapStateToProps', state, ownProps );
    // console.log(state.userslist.users, 'fgdfxgsdfgdgf users');
-    return {users:state.userslist.usersdef, msg:state.userslist.msg, family:state.userslist.family};
+    return {users:state.userslist.users, msg:state.userslist.msg, family:state.userslist.family};
 }
 
 export default connect(mapStateToProps)(Def);

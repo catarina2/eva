@@ -1,10 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {browserHistory} from 'react-router';
 
 class Callback extends Component {
     constructor(props) {
         super(props);
+        this.handleLogout = this.handleLogout.bind(this);
 
         this.state = {
           token: null,
@@ -92,6 +94,9 @@ class Callback extends Component {
                                 <h1 className="logoeva">eva         </h1>
                                 <h5 className="eva menu-title font-large"><b>   Environmental Virtual Assistant</b></h5>
                             </div>
+                            <a onClick={this.handleLogout}>
+                                Logout
+                           </a>
                         </div>
                     </div>
                 </header>
@@ -144,6 +149,14 @@ class Callback extends Component {
                 </footer>
             </div>
         );
+    }
+
+    handleLogout(event) {
+       event.preventDefault();
+       console.log('logoutlallaalla');
+       window.localStorage.clear();
+       window.location = "http://develop.mmota.online/logout" ;
+
     }
 
 

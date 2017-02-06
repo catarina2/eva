@@ -372,7 +372,7 @@ export function fetchUserLists(id, token) {
                     'Authorization': token
                   }})
             .then(response => response.json())
-            .then(json => dispatch(ReceiveUserEvents(id, json)));
+            .then(json => dispatch(receiveLists(json)));
     }
 }
 

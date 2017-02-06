@@ -55,7 +55,7 @@ const lists = (state = initState, action) => {
                 datadelete: action.lists.data
             });
         case types.REQUEST_LISTS:
-      //console.info('reducer REQUEST_LISTS', state, action);
+      console.info('reducer REQUEST_LISTS', state, action);
            var x = {};
            var temp;
            if(action.lists.msg === 'NOK')
@@ -76,7 +76,7 @@ const lists = (state = initState, action) => {
                 dataadd: action.lists.data
             });
         case types.RECEIVE_LISTS:
-            // console.info('reducer RECEIVE_CONTACTS', state, action);
+             console.info('reducer RECEIVE_LISTS', state, action);
             return Object.assign({}, state, {
                 lists: action.lists.data
             });

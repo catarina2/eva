@@ -162,7 +162,7 @@ class List extends Component {
           //USERS
             var userslists=[];
             var family = this.props.usersfamily;
-            //console.log(family, 'tamanho usersfamily');
+            console.log(family, 'tamanho usersfamily');
 
           //foreach para os users de uma familia
              var usercolor;
@@ -171,6 +171,8 @@ class List extends Component {
              var ccolor = {};
              var color = {};
              var userid = {};
+             if(family)
+              {
              each(family, (user, key) => {
                 var userxx = user.avatar;
                 var colorxx ="losangecolor"+" "+user.color;
@@ -205,6 +207,11 @@ class List extends Component {
             this.state.ccolor = className;
             this.state.color = colorstate;
             this.state.userid = userid;
+          }else{
+             userslists.push(<div className='displayavatares'>
+                                Convide membros para a sua familia.
+                             </div>);
+          }
           //FINAL USERS
           //ICONS
           var iconlists=[];
@@ -337,7 +344,7 @@ class List extends Component {
        
         return (
             <div>
-                 <Link to={`/`}><header className="headerfirst ">
+                 <Link to={`/callback`}><header className="headerfirst ">
                    <div className="container">
                        <div className="title">eva</div>
                     </div>
@@ -480,6 +487,7 @@ class List extends Component {
 
         var color = this.state.color;
         var userid = this.state.userid;
+
         each(color, (color, key) => {
            if(color) {
               users = userid[key];
@@ -503,7 +511,7 @@ class List extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //console.info('container List mapStateToProps', state, ownProps);
+    console.info('container List mapStateToProps', state, ownProps);
     //console.log(state.lists.dataadd, 'fgdfxgsdfgdgf users');
     return {lists: state.lists, usersfamily: state.userslist.users, msg: state.lists.msgadd, data: state.lists.dataadd, users:state.userslist.userslist};
 }

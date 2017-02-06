@@ -46,7 +46,7 @@ const users = (state = initState, action) => {
         case types.RECEIVE_USERS_BY_FAMILY:
         console.info('reducer RECEIVE_USERS_BY_FAMILY', state, action);
         return Object.assign({}, state, {
-                usersdef: action.users.data
+                users: action.users.data
             });
         case types.RECEIVE_USERS_BY_LIST:
             //console.info('reducer RECEIVE_USER_BY_ID', state, action);
